@@ -1,0 +1,18 @@
+.authen-template{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1515986821211-0443679c2c9e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8a29pfGVufDB8fDB8fHww');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.authen-template_form{
+    background-color: #fff;
+    /* width: 500px;
+    height: 700px; */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow:1px 2px 10px rgb(116, 113, 113);
+}

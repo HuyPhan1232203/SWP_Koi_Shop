@@ -1,0 +1,10 @@
+.button_container{
+    display: flex;
+    justify-content: center;
+}
+.registerForm{
+    color: red;
+    display: flex;
+    justify-content: center;
+    font-family: serif;
+}
