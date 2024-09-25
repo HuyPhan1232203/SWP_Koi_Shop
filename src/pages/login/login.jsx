@@ -33,7 +33,7 @@ function LoginPage() {
   return (
     <Authen_template>
       <div className="form_header">
-        <h1>Login</h1>
+        <h1>Login update</h1>
       </div>
       <Form
         className="loginForm"
