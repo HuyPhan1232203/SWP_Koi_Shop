@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./src/pages/login/login";
 import RegisterPage from "./src/pages/register/register";
 import HomePage from "./src/pages/home/home";
+import KoiManagement from "./src/KoiManagement";
 
 function App() {
   const router = createBrowserRouter([
@@ -16,6 +17,10 @@ function App() {
     {
       path: "register",
       element: <RegisterPage />,
+    },
+    {
+      path: "koiManager",
+      element: <KoiManagement />,
     },
   ]);
 
