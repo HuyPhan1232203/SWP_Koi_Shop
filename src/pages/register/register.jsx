@@ -95,7 +95,7 @@ function RegisterPage() {
 
         <p className="forward-text">
           Already have an account?
-          <Link to="/login">login</Link>
+          <Link to="/login">Login</Link>
         </p>
       </Form>
     </Authen_template>
