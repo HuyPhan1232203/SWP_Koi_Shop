@@ -87,7 +87,7 @@ function LoginPage() {
           <input className="inputplace" placeholder="Password"></input>
         </Form.Item>
         <div className="button_container">
-          <Button className="button" type="primary">
+          <Button className="button" type="primary" htmlType="submit">
             Login
           </Button>
           <Button className="gg-button" onClick={handleLoginWithEmail}>
