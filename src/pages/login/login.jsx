@@ -47,6 +47,7 @@ function LoginPage() {
         // ...
       });
   };
+
   return (
     <Authen_template>
       <div className="form_header">
@@ -86,9 +87,7 @@ function LoginPage() {
           <input className="inputplace" placeholder="Password"></input>
         </Form.Item>
         <div className="button_container">
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
+          <Button type="primary">Login</Button>
           <Button onClick={handleLoginWithEmail}>Login Google</Button>
         </div>
         <p className="forward-text">

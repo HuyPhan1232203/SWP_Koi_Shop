@@ -88,8 +88,8 @@ function RegisterPage() {
         </Form.Item>
 
         <div className="button_container">
-          <Button type="primary" htmlType="submit">
-            Register
+          <Button className="register-button" type="primary" htmlType="submit">
+            <span>Register</span>
           </Button>
         </div>
 

@@ -8,4 +8,7 @@
     justify-content: center;
     font-family: serif;
 }
-
+.register-button{
+    border-radius: 20px;
+    padding: 10px 20px;
+}
