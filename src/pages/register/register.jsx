@@ -1,8 +1,23 @@
 import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form, Input } from "antd";
 import "./register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../config/axios";
+import { toast } from "react-toastify";
+
 function RegisterPage() {
+  const navigate = useNavigate();
+  const handleRegister = async (values) => {
+    try {
+      values.role = "CUSTOMER";
+      const response = await api.post("register", values);
+      toast.success("Successfully Register New Account!");
+      navigate("/login");
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  };
+
   return (
     <Authen_template>
       <div className="registerForm">
@@ -12,6 +27,7 @@ function RegisterPage() {
         labelCol={{
           span: 24,
         }}
+        onFinish={handleRegister}
       >
         <Form.Item
           name="txtUsername"
@@ -72,12 +88,16 @@ function RegisterPage() {
         </Form.Item>
 
         <div className="button_container">
-          <Button>Register</Button>
+          <Button type="primary" htmlType="submit">
+            Register
+          </Button>
         </div>
+
         <p className="forward-text">
           Already have an account?
           <Link to="/login">login</Link>
         </p>
+        <Link to="/login">Login</Link>
       </Form>
     </Authen_template>
   );
