@@ -10,14 +10,14 @@ import {
     Table,
     Upload,
   } from "antd";
-  // import "./KoiManagement.css";
+  // import "./ManagementKoi.css";
   import { useEffect, useState } from "react";
   import axios from "axios";
   import { useForm } from "antd/es/form/Form";
   import { toast } from "react-toastify";
   import { PlusOutlined } from "@ant-design/icons";
-  import uploadFile from "./utils/file";
-  const KoiManagement = () => {
+import uploadFile from "../../../utils/file";
+  const ManagementKoi = () => {
     const [KoiFish, setKoiFish] = useState([]);
     const api = "https://66dd5ecbf7bcc0bbdcddee93.mockapi.io/KoiSHop";
     const getBase64 = (file) =>
@@ -292,5 +292,5 @@ import {
       </div>
     );
   };
-  export default KoiManagement;
+  export default ManagementKoi;
   

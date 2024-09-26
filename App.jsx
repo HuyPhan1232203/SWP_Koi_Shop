@@ -4,6 +4,7 @@ import RegisterPage from "./src/pages/register/register";
 import HomePage from "./src/pages/home/home";
 import KoiManagement from "./src/KoiManagement";
 import Dashboard from "./src/conponent/dashboard";
+import ManagementKoi from "./src/pages/manager/manage-koi-list";
 
 function App() {
   const router = createBrowserRouter([
@@ -30,7 +31,7 @@ function App() {
       children: [
         {
           path: "koilist",
-          element: <KoiManagement />,
+          element: <ManagementKoi />,
         },
       ],
     },
