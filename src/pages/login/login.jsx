@@ -61,7 +61,8 @@ function LoginPage() {
       >
         <Form.Item
           // label="Username"
-          name="txtUsername"
+          // name="txtUsername"
+          name="phone"
           rules={[
             {
               required: true,
@@ -73,7 +74,8 @@ function LoginPage() {
         </Form.Item>
         <Form.Item
           // label="Password"
-          name="txtPassword"
+          // name="txtPassword"
+          name="password"
           rules={[
             {
               required: true,
