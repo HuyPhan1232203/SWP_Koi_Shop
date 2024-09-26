@@ -9,10 +9,12 @@
     justify-content: center;
 }
 .authen-template_form{
-    background-color: #fff;
+    border: 1px white solid;
     /* width: 500px;
     height: 700px; */
     border-radius: 15px;
-    padding: 30px;
-    box-shadow:1px 2px 10px rgb(116, 113, 113);
+    box-shadow:5px 5px 9px rgb(201, 195, 195);
+    background: transparent;
+    backdrop-filter: blur(8px);
+    padding: 50px;
 }

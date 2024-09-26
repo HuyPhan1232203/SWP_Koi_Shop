@@ -14,29 +14,26 @@ function RegisterPage() {
         }}
       >
         <Form.Item
-          label="Username:"
           name="txtUsername"
           rules={[
             { required: true, message: "Please enter your username" },
             { min: 3, message: "Must be at least 3 characters" },
           ]}
         >
-          <Input />
+          <input className="inputplace" placeholder="Username"></input>
         </Form.Item>
 
         <Form.Item
-          label="Password:"
           name="txtPassword"
           rules={[
             { required: true, message: "Please enter your password" },
             { min: 6, message: "Must be at least 6 characters" },
           ]}
         >
-          <Input.Password />
+          <input className="inputplace" placeholder="Password"></input>
         </Form.Item>
 
         <Form.Item
-          label="Confirm Password:"
           name="txtConfirmPassword"
           dependencies={["txtPassword"]}
           rules={[
@@ -51,11 +48,10 @@ function RegisterPage() {
             }),
           ]}
         >
-          <Input.Password />
+          <input className="inputplace" placeholder="Confirm Password"></input>
         </Form.Item>
 
         <Form.Item
-          label="Phone:"
           name="txtPhone"
           rules={[
             { required: true, message: "Please enter your phone number" },
@@ -65,21 +61,23 @@ function RegisterPage() {
             },
           ]}
         >
-          <Input />
+          <input className="inputplace" placeholder="Phone"></input>
         </Form.Item>
 
         <Form.Item
-          label="Address:"
           name="txtAddress"
           rules={[{ required: true, message: "Please enter your address!" }]}
         >
-          <Input.TextArea rows={4} />
+          <input className="inputplace" placeholder="Address"></input>
         </Form.Item>
 
         <div className="button_container">
           <Button>Register</Button>
         </div>
-        <Link to="/login">login</Link>
+        <p className="forward-text">
+          Already have an account?
+          <Link to="/login">login</Link>
+        </p>
       </Form>
     </Authen_template>
   );

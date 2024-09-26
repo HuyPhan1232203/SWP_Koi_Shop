@@ -33,7 +33,7 @@ function LoginPage() {
   return (
     <Authen_template>
       <div className="form_header">
-        <h1>Login update</h1>
+        <h1>Login</h1>
       </div>
       <Form
         className="loginForm"
@@ -42,7 +42,7 @@ function LoginPage() {
         }}
       >
         <Form.Item
-          label="Username"
+          // label="Username"
           name="txtUsername"
           rules={[
             {
@@ -51,10 +51,10 @@ function LoginPage() {
             },
           ]}
         >
-          <Input></Input>
+          <input className="inputplace" placeholder="Username"></input>
         </Form.Item>
         <Form.Item
-          label="Password"
+          // label="Password"
           name="txtPassword"
           rules={[
             {
@@ -63,15 +63,18 @@ function LoginPage() {
             },
           ]}
         >
-          <Input.Password></Input.Password>
+          <input className="inputplace" placeholder="Password"></input>
         </Form.Item>
         <div className="button_container">
           <Button>Login</Button>
           <Button onClick={handleLoginWithEmail}>Login Google</Button>
         </div>
-        <Link to="/register" className="register">
-          register
-        </Link>
+        <p className="forward-text">
+          Don't have an account?
+          <Link to="/register" className="register">
+            Register
+          </Link>{" "}
+        </p>
       </Form>
     </Authen_template>
   );

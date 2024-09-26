@@ -3,8 +3,26 @@
     justify-content: center;
 }
 .form_header{
-    color: red;
+    font-weight: 700;
+    color: #fff;
     display: flex;
     justify-content: center;
     font-family: serif;
 }
+
+.Input{
+    background: transparent;
+    backdrop-filter: blur(8px);
+}
+.inputplace{
+    background: transparent;
+    padding: 10px 70px 10px 10px;
+    border-radius: 30px;
+    border: 1px white solid;
+
+}
+.forward-text{
+    padding-top: 20px;
+    margin-left: 10px;
+}
+
