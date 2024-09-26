@@ -29,7 +29,7 @@ function App() {
       element: <Dashboard />,
       children: [
         {
-          path: "koi-list",
+          path: "koilist",
           element: <KoiManagement />,
         },
       ],
