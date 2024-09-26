@@ -5,6 +5,7 @@ import "./login.css";
 import { provider } from "../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import api from "../../config/axios";
 function LoginPage() {
   const navigate = useNavigate();
   const handleLogin = async (values) => {
