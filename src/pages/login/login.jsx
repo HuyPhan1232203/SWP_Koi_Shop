@@ -84,7 +84,11 @@ function LoginPage() {
             },
           ]}
         >
-          <input className="inputplace" placeholder="Password"></input>
+          <input
+            type="password"
+            className="inputplace"
+            placeholder="Password"
+          ></input>
         </Form.Item>
         <div className="button_container">
           <Button className="button" type="primary" htmlType="submit">
