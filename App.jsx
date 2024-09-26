@@ -3,6 +3,7 @@ import LoginPage from "./src/pages/login/login";
 import RegisterPage from "./src/pages/register/register";
 import HomePage from "./src/pages/home/home";
 import KoiManagement from "./src/KoiManagement";
+import Dashboard from "./src/conponent/dashboard";
 
 function App() {
   const router = createBrowserRouter([
@@ -21,6 +22,17 @@ function App() {
     {
       path: "koiManager",
       element: <KoiManagement />,
+    },
+
+    {
+      path: "dashboard",
+      element: <Dashboard />,
+      children: [
+        {
+          path: "koi-list",
+          element: <KoiManagement />,
+        },
+      ],
     },
   ]);
 
