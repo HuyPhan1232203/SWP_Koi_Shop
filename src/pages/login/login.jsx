@@ -3,9 +3,25 @@ import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form, Input } from "antd";
 import "./login.css";
 import { provider } from "../../config/firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 function LoginPage() {
-  const handleLogin = () => {};
+  const navigate = useNavigate();
+  const handleLogin = async (values) => {
+    try {
+      const response = await api.post("login", values);
+      toast.success("Successfully Login!");
+      console.log(response);
+      const { role, token } = response.data;
+      localStorage.setItem("token", token);
+
+      if (role === "ADMIN") {
+        
+      }
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  };
   const handleLoginWithEmail = () => {
     const auth = getAuth();
     signInWithPopup(auth, provider)
