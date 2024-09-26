@@ -24,6 +24,7 @@
 .forward-text{
     padding-top: 20px;
     margin-left: 10px;
+    color: #fff;
 }
 ::placeholder{
     color: #fff;
@@ -45,6 +46,12 @@
 }
 .gg-button:hover{
     background-color: #e3e1e1;
+}
+.register{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding-left: 6px;
 }
 
 

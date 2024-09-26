@@ -6,6 +6,7 @@ import { provider } from "../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../config/axios";
+import { GoogleOutlined } from "@ant-design/icons";
 function LoginPage() {
   const navigate = useNavigate();
   const handleLogin = async (values) => {
@@ -95,6 +96,7 @@ function LoginPage() {
             Login
           </Button>
           <Button className="gg-button" onClick={handleLoginWithEmail}>
+            <GoogleOutlined />
             Login Google
           </Button>
         </div>
