@@ -97,7 +97,6 @@ function RegisterPage() {
           Already have an account?
           <Link to="/login">login</Link>
         </p>
-        <Link to="/login">Login</Link>
       </Form>
     </Authen_template>
   );
