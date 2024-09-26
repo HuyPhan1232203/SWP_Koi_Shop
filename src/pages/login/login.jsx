@@ -56,6 +56,7 @@ function LoginPage() {
         labelCol={{
           span: 24,
         }}
+        onFinish={handleLogin}
       >
         <Form.Item
           // label="Username"
