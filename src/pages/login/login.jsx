@@ -87,8 +87,12 @@ function LoginPage() {
           <input className="inputplace" placeholder="Password"></input>
         </Form.Item>
         <div className="button_container">
-          <Button type="primary">Login</Button>
-          <Button onClick={handleLoginWithEmail}>Login Google</Button>
+          <Button className="button" type="primary">
+            Login
+          </Button>
+          <Button className="gg-button" onClick={handleLoginWithEmail}>
+            Login Google
+          </Button>
         </div>
         <p className="forward-text">
           Don't have an account?
