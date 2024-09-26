@@ -16,7 +16,7 @@ function LoginPage() {
       localStorage.setItem("token", token);
 
       if (role === "ADMIN") {
-        
+        navigate("/dashboard");
       }
     } catch (err) {
       toast.error(err.response.data);
@@ -82,7 +82,9 @@ function LoginPage() {
           <input className="inputplace" placeholder="Password"></input>
         </Form.Item>
         <div className="button_container">
-          <Button type="primary">Login</Button>
+          <Button type="primary" htmlType="submit">
+            Login
+          </Button>
           <Button onClick={handleLoginWithEmail}>Login Google</Button>
         </div>
         <p className="forward-text">
