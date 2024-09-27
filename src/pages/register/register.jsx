@@ -30,7 +30,7 @@ function RegisterPage() {
         onFinish={handleRegister}
       >
         <Form.Item
-          name="txtUsername"
+          name="username"
           rules={[
             { required: true, message: "Please enter your username" },
             { min: 3, message: "Must be at least 3 characters" },
@@ -40,7 +40,7 @@ function RegisterPage() {
         </Form.Item>
 
         <Form.Item
-          name="txtPassword"
+          name="password"
           rules={[
             { required: true, message: "Please enter your password" },
             { min: 6, message: "Must be at least 6 characters" },
@@ -50,13 +50,13 @@ function RegisterPage() {
         </Form.Item>
 
         <Form.Item
-          name="txtConfirmPassword"
-          dependencies={["txtPassword"]}
+          name="confirm"
+          dependencies={["password"]}
           rules={[
             { required: true, message: "Please confirm your password" },
             ({ getFieldValue }) => ({
               validator(_, value) {
-                if (!value || getFieldValue("txtPassword") === value) {
+                if (!value || getFieldValue("password") === value) {
                   return Promise.resolve();
                 }
                 return Promise.reject(new Error("Passwords do not match"));
@@ -68,7 +68,7 @@ function RegisterPage() {
         </Form.Item>
 
         <Form.Item
-          name="txtPhone"
+          name="phone"
           rules={[
             { required: true, message: "Please enter your phone number" },
             {
@@ -81,10 +81,16 @@ function RegisterPage() {
         </Form.Item>
 
         <Form.Item
-          name="txtAddress"
+          name="role"
           rules={[{ required: true, message: "Please enter your address!" }]}
         >
-          <input className="inputplace" placeholder="Address"></input>
+          <input className="inputplace" placeholder="role"></input>
+        </Form.Item>
+        <Form.Item
+          name="code"
+          rules={[{ required: true, message: "Please enter your code!" }]}
+        >
+          <input className="inputplace" placeholder="code"></input>
         </Form.Item>
 
         <div className="button_container">
