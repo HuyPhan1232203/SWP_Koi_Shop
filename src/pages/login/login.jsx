@@ -1,7 +1,9 @@
+import React, { useState } from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form, Input } from "antd";
 import "./login.css";
+// import { useState } from "react";
 import { provider } from "../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,8 +11,10 @@ import api from "../../config/axios";
 import { GoogleOutlined } from "@ant-design/icons";
 function LoginPage() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const handleLogin = async (values) => {
     try {
+      setLoading(true);
       const response = await api.post("login", values);
       toast.success("Successfully Login!");
       console.log(response);
@@ -20,8 +24,10 @@ function LoginPage() {
       if (role === "ADMIN") {
         navigate("/dashboard");
       }
+      setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
+      setLoading(false);
     }
   };
   const handleLoginWithEmail = () => {
@@ -92,7 +98,12 @@ function LoginPage() {
           ></input>
         </Form.Item>
         <div className="button_container">
-          <Button className="button" type="primary" htmlType="submit">
+          <Button
+            disabled={loading}
+            className="button"
+            type="primary"
+            htmlType="submit"
+          >
             Login
           </Button>
           <Button className="gg-button" onClick={handleLoginWithEmail}>

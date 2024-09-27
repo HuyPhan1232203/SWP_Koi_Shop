@@ -4,17 +4,22 @@ import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 function RegisterPage() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const handleRegister = async (values) => {
     try {
+      setLoading(true);
       values.role = "CUSTOMER";
       const response = await api.post("register", values);
       toast.success("Successfully Register New Account!");
       navigate("/login");
+      setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
+      setLoading(false);
     }
   };
 
@@ -94,7 +99,12 @@ function RegisterPage() {
         </Form.Item>
 
         <div className="button_container">
-          <Button className="register-button" type="primary" htmlType="submit">
+          <Button
+            disabled={loading}
+            className="register-button"
+            type="primary"
+            htmlType="submit"
+          >
             <span>Register</span>
           </Button>
         </div>
