@@ -70,15 +70,15 @@ function LoginPage() {
         <Form.Item
           // label="Username"
           // name="txtUsername"
-          name="phone"
+          name="email"
           rules={[
             {
               required: true,
-              message: "Please enter your username",
+              message: "Please enter your email",
             },
           ]}
         >
-          <input className="inputplace" placeholder="Username"></input>
+          <input className="inputplace" placeholder="Email"></input>
         </Form.Item>
         <Form.Item
           // label="Password"

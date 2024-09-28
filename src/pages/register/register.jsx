@@ -43,6 +43,15 @@ function RegisterPage() {
         >
           <input className="inputplace" placeholder="Username"></input>
         </Form.Item>
+        <Form.Item
+          name="email"
+          rules={[
+            { required: true, message: "Please enter your username" },
+            { min: 3, message: "Must be at least 3 characters" },
+          ]}
+        >
+          <input className="inputplace" placeholder="Username"></input>
+        </Form.Item>
 
         <Form.Item
           name="password"
@@ -83,19 +92,6 @@ function RegisterPage() {
           ]}
         >
           <input className="inputplace" placeholder="Phone"></input>
-        </Form.Item>
-
-        <Form.Item
-          name="role"
-          rules={[{ required: true, message: "Please enter your address!" }]}
-        >
-          <input className="inputplace" placeholder="role"></input>
-        </Form.Item>
-        <Form.Item
-          name="code"
-          rules={[{ required: true, message: "Please enter your code!" }]}
-        >
-          <input className="inputplace" placeholder="code"></input>
         </Form.Item>
 
         <div className="button_container">
