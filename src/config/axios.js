@@ -3,7 +3,7 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: 'http://103.200.20.221:8080/api/',
-    // baseURL: 'http://14.225.220.131:8080/api/',
+    // baseURL: 'http://14.225.206.168:8080/api/',
   });
 
   const handleBefore = (config) => {

@@ -17,9 +17,9 @@ import { useForm } from "antd/es/form/Form";
 import { toast } from "react-toastify";
 import { PlusOutlined } from "@ant-design/icons";
 import uploadFile from "./utils/file";
+import api from "./config/axios";
 const KoiManagement = () => {
   const [KoiFish, setKoiFish] = useState([]);
-  const api = "https://66dd5ecbf7bcc0bbdcddee93.mockapi.io/KoiSHop";
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -30,11 +30,18 @@ const KoiManagement = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
+  //GET
   const fetchKoi = async () => {
-    const response = await axios.get(api);
-    setKoiFish(response.data);
-    console.log(response.data);
+    try {
+      const response = await api.get("koi");
+      setKoiFish(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.error("Error fetching Koi:", err); // Log full error in console
+      toast.error(err.message || "An error occurred while fetching Koi fish"); // Display useful message in the toast
+    }
   };
+
   useEffect(() => {
     fetchKoi();
   }, []);
@@ -73,6 +80,11 @@ const KoiManagement = () => {
       key: "price",
     },
     {
+      title: "vendor",
+      dataIndex: "vendor",
+      key: "vendor",
+    },
+    {
       title: "gender",
       dataIndex: "gender",
       key: "gender",
@@ -88,19 +100,20 @@ const KoiManagement = () => {
       key: "size",
     },
     {
-      title: "description",
-      dataIndex: "description",
-      key: "description",
+      title: "breed",
+      dataIndex: "breed",
+      key: "breed",
     },
+
     {
       title: "origin",
       dataIndex: "origin",
       key: "origin",
     },
     {
-      title: "status",
-      dataIndex: "status",
-      key: "status",
+      title: "description",
+      dataIndex: "description",
+      key: "description",
     },
     {
       title: "Action",
@@ -123,7 +136,7 @@ const KoiManagement = () => {
   ];
   const handleDeleteKoi = async (id) => {
     try {
-      await axios.delete(`${api}/${id}`);
+      await api.delete(`${"koi"}/${id}`);
       toast.success("Deleteted successfully!!!");
       fetchKoi();
     } catch (err) {
@@ -139,7 +152,7 @@ const KoiManagement = () => {
     }
     try {
       setSubmitKoi(true);
-      await axios.post(api, Koi);
+      await api.post("koi", Koi);
       fetchKoi();
       toast.success("successfully added Koi fish");
       formStand.resetFields();
