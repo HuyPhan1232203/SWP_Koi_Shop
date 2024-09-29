@@ -17,11 +17,11 @@ function LoginPage() {
       setLoading(true);
       const response = await api.post("login", values);
       toast.success("Successfully Login!");
-      console.log(response);
+      console.log(response.data);
       const { role, token } = response.data;
       localStorage.setItem("token", token);
 
-      if (role === "ADMIN") {
+      if (role === "MANAGER") {
         navigate("/dashboard");
       }
       setLoading(false);
