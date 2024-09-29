@@ -45,12 +45,9 @@ function RegisterPage() {
         </Form.Item>
         <Form.Item
           name="email"
-          rules={[
-            { required: true, message: "Please enter your username" },
-            { min: 3, message: "Must be at least 3 characters" },
-          ]}
+          rules={[{ required: true, message: "Please enter your email" }]}
         >
-          <input className="inputplace" placeholder="Username"></input>
+          <input className="inputplace" placeholder="Email"></input>
         </Form.Item>
 
         <Form.Item
