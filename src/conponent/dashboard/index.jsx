@@ -20,7 +20,9 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem("Koi List", "koilist", <ProductOutlined />),
-  // getItem("Staff List", "1", <ProductOutlined />),
+  getItem("Voucher List", "", <ProductOutlined />),
+  getItem("Staff List", "", <ProductOutlined />),
+  getItem("Profile", "", <ProductOutlined />),
 ];
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
