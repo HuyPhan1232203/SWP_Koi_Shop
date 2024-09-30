@@ -108,17 +108,28 @@ const ManagementKoi = () => {
       key: "id",
       render: (id) => {
         return (
-          <Popconfirm
-            onConfirm={() => {
-              handleDeleteKoi(id);
-            }}
-            title="Delete"
-            description="Are you sure"
-          >
-            <Button type="primary" danger>
-              Delete
+          <>
+            <Button
+              type="primary"
+              onClick={() => {
+                setShowModal(true);
+                form.setFieldsValue(category);
+              }}
+            >
+              Edit
             </Button>
-          </Popconfirm>
+            <Popconfirm
+              onConfirm={() => {
+                handleDeleteKoi(id);
+              }}
+              title="Delete"
+              description="Are you sure"
+            >
+              <Button type="primary" danger>
+                Delete
+              </Button>
+            </Popconfirm>
+          </>
         );
       },
     },
