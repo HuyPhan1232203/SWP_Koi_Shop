@@ -60,6 +60,9 @@ function ManageVoucher() {
   );
   return (
     <div>
+      <div>
+        <h1>Voucher Management</h1>
+      </div>
       <CRUDTemplate columns={columns} formItems={formItems} />
     </div>
   );
