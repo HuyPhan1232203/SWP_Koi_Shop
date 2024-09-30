@@ -19,7 +19,7 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem("Koi List", "koilist", <ProductOutlined />),
   getItem("Voucher List", "voucher", <ContainerOutlined />),
-  getItem("Staff List", "", <IdcardOutlined />),
+  getItem("Staff List", "staff", <IdcardOutlined />),
   getItem("Profile", "", <ProfileOutlined />),
 ];
 const Dashboard = () => {

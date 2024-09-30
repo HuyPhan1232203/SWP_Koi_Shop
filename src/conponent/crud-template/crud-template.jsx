@@ -1,7 +1,7 @@
 import { Button, Form, Input, Modal, Popconfirm, Table } from "antd";
 import React, { useEffect, useState } from "react";
-import api from "../../../config/axios";
 import { toast } from "react-toastify";
+import api from "../../config/axios";
 
 function CRUDTemplate({ columns, formItems, path }) {
   const [datas, setDatas] = useState([]);
