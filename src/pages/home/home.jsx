@@ -57,14 +57,14 @@ function HomePage() {
                 <li className="nav_li nav_li_koi">
                   Koi List
                   <ul className="nav_li_koi_elements">
-                    <li>heasdasd</li>
-                    <li>he</li>
-                    <li>he</li>
-                    <li>he</li>
-                    <li>he</li>
-                    <li>he</li>
-                    <li>he</li>
-                    <li>he</li>
+                    <li>Koi Kohaku</li>
+                    <li>Koi Ogon</li>
+                    <li>Koi Showa</li>
+                    <li>Koi Tancho</li>
+                    <li>Koi Bekko</li>
+                    <li>Koi Doistu</li>
+                    <li>Koi Ginrin</li>
+                    <li>Koi Goshiki</li>
                   </ul>
                 </li>
                 <li className="nav_li">About Us</li>
