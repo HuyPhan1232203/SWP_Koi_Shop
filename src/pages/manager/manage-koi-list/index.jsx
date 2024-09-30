@@ -223,6 +223,13 @@ const ManagementKoi = () => {
       >
         <Form onFinish={handleSubmitKoi} form={formStand}>
           <Form.Item
+            label="id"
+            rules={[{ required: true, message: "Please Input" }]}
+            name="id"
+          >
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
             label="Name"
             rules={[{ required: true, message: "Please Input" }]}
             name="name"
