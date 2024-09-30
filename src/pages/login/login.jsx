@@ -25,7 +25,7 @@ function LoginPage() {
         navigate("/dashboard");
       }
       if (role === "CUSTOMER") {
-        navigate("");
+        navigate("/dashboard-customer");
       }
       setLoading(false);
     } catch (err) {
