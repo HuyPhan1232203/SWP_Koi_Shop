@@ -23,6 +23,9 @@ function LoginPage() {
 
       if (role === "MANAGER") {
         navigate("/dashboard");
+      } 
+      if (role === "CUSTOMER") {
+        navigate("/dashboard");
       }
       setLoading(false);
     } catch (err) {
