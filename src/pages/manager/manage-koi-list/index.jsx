@@ -12,14 +12,13 @@ import {
 } from "antd";
 // import "./ManagementKoi.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useForm } from "antd/es/form/Form";
 import { toast } from "react-toastify";
 import { PlusOutlined } from "@ant-design/icons";
 import uploadFile from "../../../utils/file";
+import api from "../../../config/axios";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
-  const api = "https://66dd5ecbf7bcc0bbdcddee93.mockapi.io/KoiSHop";
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -31,7 +30,7 @@ const ManagementKoi = () => {
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
   const fetchKoi = async () => {
-    const response = await axios.get(api);
+    const response = await api.get("koi");
     setKoiFish(response.data);
     console.log(response.data);
   };
@@ -47,7 +46,6 @@ const ManagementKoi = () => {
   const handleClosenModal = () => {
     setOpenModal(false);
   };
-
   const cols = [
     {
       title: "Image",
@@ -73,6 +71,11 @@ const ManagementKoi = () => {
       key: "price",
     },
     {
+      title: "vendor",
+      dataIndex: "vendor",
+      key: "vendor",
+    },
+    {
       title: "gender",
       dataIndex: "gender",
       key: "gender",
@@ -88,36 +91,38 @@ const ManagementKoi = () => {
       key: "size",
     },
     {
-      title: "description",
-      dataIndex: "description",
-      key: "description",
+      title: "breed",
+      dataIndex: "breed",
+      key: "breed",
     },
+
     {
       title: "origin",
       dataIndex: "origin",
       key: "origin",
     },
     {
-      title: "status",
-      dataIndex: "status",
-      key: "status",
+      title: "description",
+      dataIndex: "description",
+      key: "description",
     },
     {
       title: "Action",
       dataIndex: "id",
       key: "id",
-      render: (id) => {
+      render: (id, koi) => {
         return (
-          <>
+          <div style={{ display: "flex" }}>
             <Button
               type="primary"
               onClick={() => {
-                setShowModal(true);
-                form.setFieldsValue(category);
+                setOpenModal(true);
+                formStand.setFieldsValue(koi);
               }}
             >
               Edit
             </Button>
+
             <Popconfirm
               onConfirm={() => {
                 handleDeleteKoi(id);
@@ -129,20 +134,21 @@ const ManagementKoi = () => {
                 Delete
               </Button>
             </Popconfirm>
-          </>
+          </div>
         );
       },
     },
   ];
   const handleDeleteKoi = async (id) => {
     try {
-      await axios.delete(`${api}/${id}`);
+      await api.delete(`koi/${id}`);
       toast.success("Deleteted successfully!!!");
       fetchKoi();
     } catch (err) {
       toast.error(err);
     }
   };
+  //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     if (fileList.length > 0) {
       const file = fileList[0];
@@ -152,9 +158,16 @@ const ManagementKoi = () => {
     }
     try {
       setSubmitKoi(true);
-      await axios.post(api, Koi);
+      if (Koi.id) {
+        //update
+        const response = await api.put(`koi/${Koi.id}`, Koi);
+        console.log(response);
+      } else {
+        //create
+        await api.post("koi", Koi);
+      }
       fetchKoi();
-      toast.success("successfully added Koi fish");
+      toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
@@ -212,14 +225,24 @@ const ManagementKoi = () => {
           <Form.Item
             label="Name"
             rules={[{ required: true, message: "Please Input" }]}
-            name="Name"
+            name="name"
           >
             <Input></Input>
           </Form.Item>
           <Form.Item
             label="price"
-            rules={[{ required: true, message: "Please Input" }]}
+            rules={[
+              { required: true, message: "Please Input" },
+              // { min: 1000, message: "Price cannot lower than 1000" },
+            ]}
             name="price"
+          >
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
+            label="vendor"
+            rules={[{ required: true, message: "Please Input" }]}
+            name="vendor"
           >
             <Input></Input>
           </Form.Item>
@@ -229,8 +252,8 @@ const ManagementKoi = () => {
             name="gender"
           >
             <Radio.Group name="radiogroup">
-              <Radio value="Gender1">Gender1</Radio>
-              <Radio value="Gender2">Gender2</Radio>
+              <Radio value="Male">Male</Radio>
+              <Radio value="Female">Female</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item
@@ -241,9 +264,9 @@ const ManagementKoi = () => {
             <Input></Input>
           </Form.Item>
           <Form.Item
-            label="status"
+            label="breed"
             rules={[{ required: true, message: "Please Input" }]}
-            name="status"
+            name="breed"
           >
             <Input></Input>
           </Form.Item>
