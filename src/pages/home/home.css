@@ -76,5 +76,8 @@
 .cart_icon:hover{
     cursor: pointer;
 }
+.footer{
+    display: flex;
+}
 
 
