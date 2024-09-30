@@ -82,32 +82,30 @@ function ManageVoucher() {
       title: "Action",
       dataIndex: "id",
       key: "id",
-      render: (id) => {
-        return (
-          <>
-            <Button
-              type="primary"
-              onClick={() => {
-                setShowModal(true);
-                form.setFieldsValue(category);
-              }}
-            >
-              Edit
+      render: (id) => (
+        <>
+          <Button
+            type="primary"
+            onClick={() => {
+              setShowModal(true);
+              form.setFieldsValue(category);
+            }}
+          >
+            Edit
+          </Button>
+          <Popconfirm
+            onConfirm={() => {
+              handleDeleteKoi(id);
+            }}
+            title="Delete"
+            description="Are you sure"
+          >
+            <Button type="primary" danger>
+              Delete
             </Button>
-            <Popconfirm
-              onConfirm={() => {
-                handleDeleteKoi(id);
-              }}
-              title="Delete"
-              description="Are you sure"
-            >
-              <Button type="primary" danger>
-                Delete
-              </Button>
-            </Popconfirm>
-          </>
-        );
-      },
+          </Popconfirm>
+        </>
+      ),
     },
   ];
 
