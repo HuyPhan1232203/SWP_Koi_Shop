@@ -40,11 +40,10 @@
 .authenticate{
     margin-right: 30px;
     display: flex;
-   width: 120px;
-   justify-content: space-around;
+   width: 200px;
+   /* justify-content: space-around; */
 }
 .authen{
-    
     text-decoration: none;
     color: #fff;
 }

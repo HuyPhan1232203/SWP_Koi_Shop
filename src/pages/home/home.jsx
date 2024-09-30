@@ -3,6 +3,28 @@ import { Link } from "react-router-dom";
 import "./home.css";
 import { UserOutlined } from "@ant-design/icons";
 function HomePage() {
+  const username = sessionStorage.getItem("username");
+  const authenticate = (username) => {
+    if (username == null) {
+      return (
+        <div className="authenticate">
+          <Link className="authen" to="/login">
+            <UserOutlined />
+            login /
+          </Link>
+          <Link className="authen" to="/register">
+            register
+          </Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="authenticate">
+          <div className="authen">welcome, {username}</div>
+        </div>
+      );
+    }
+  };
   return (
     <div className="homepage">
       <div className="header">
@@ -15,15 +37,7 @@ function HomePage() {
               <li className="nav_li">Koi List</li>
               <li className="nav_li">About Us</li>
             </ul>
-            <div className="authenticate">
-              <Link className="authen" to="/login">
-                <UserOutlined />
-                login /
-              </Link>
-              <Link className="authen" to="/register">
-                register
-              </Link>
-            </div>
+            {authenticate(username)}
           </div>
         </div>
       </div>
