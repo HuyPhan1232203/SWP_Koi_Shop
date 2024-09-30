@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
+  ContainerOutlined,
+  IdcardOutlined,
   ProductOutlined,
-  TeamOutlined,
-  UserOutlined,
+  ProfileOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { Link, Outlet } from "react-router-dom";
@@ -19,10 +17,19 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem("Koi List", "koilist", <ProductOutlined />),
-  getItem("Voucher List", "", <ProductOutlined />),
-  getItem("Staff List", "", <ProductOutlined />),
-  getItem("Profile", "", <ProductOutlined />),
+  getItem("Koi List", "koilist", <ProductOutlined />, [
+    getItem("Koi Kohaku", "1"),
+    getItem("Koi Ogon", "2"),
+    getItem("Koi Showa", "3"),
+    getItem("Koi Tancho", "4"),
+    getItem("Koi Bekko", "6"),
+    getItem("Koi Doistu", "7"),
+    getItem("Koi Ginrin", "8"),
+    getItem("Koi Goshiki", "9"),
+  ]),
+  getItem("Voucher List", "", <ContainerOutlined />),
+  getItem("Staff List", "", <IdcardOutlined />),
+  getItem("Profile", "", <ProfileOutlined />),
 ];
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
