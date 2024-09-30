@@ -29,7 +29,10 @@ function HomePage() {
     <div className="homepage">
       <div className="header">
         <div className="headerbar">
+          <div className="logo-container">
+          <img src="/assets/images/koi-logo.png" alt="Logo" className="logo" />
           <h1 className="header_title">Koi Farm Shop</h1>
+          </div>
           <div className="navigate">
             <ul className="subnav">
               <li className="nav_li">Home</li>
