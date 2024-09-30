@@ -17,7 +17,8 @@ function LoginPage() {
       setLoading(true);
       const response = await api.post("login", values);
       toast.success("Successfully Login!");
-      console.log(response.data);
+      console.log(response.data.username);
+      sessionStorage.setItem("username", response.data.username);
       const { role, token } = response.data;
       localStorage.setItem("token", token);
       if (role === "MANAGER") {

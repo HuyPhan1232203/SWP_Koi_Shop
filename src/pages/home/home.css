@@ -58,6 +58,45 @@
 .authen{
     text-decoration: none;
     color: #fff;
+    position: relative;
+}
+.authen:hover{
+    cursor: pointer;
+}
+.user_action{
+    background-color: #c3b9b9;
+    width: 150px;
+    list-style: none;
+}
+.user_action{
+    border-radius: 3px;
+    z-index: 1;
+    display: none;
+    position: absolute;
+    padding: 0;
+    margin-top: 10px;
+}
+.user_action::after{
+    content: "";
+    border-width: 15px 18px;
+    border-style: solid;
+    border-color: transparent transparent #c3b9b9 transparent;
+    position: absolute;
+    left: 10px;
+    top: -29px;
+    cursor: pointer;
+}
+.user_action li{
+    padding: 10px;
+}
+/* .point{
+    
+} */
+.user_action li:hover{
+    background-color: #b9b0b0;
+}
+.authen:hover .user_action{
+    display: block;
 }
 .nav_li,.nav_li a{
     padding:48px 20px;

@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
-import {
-  LogoutOutlined,
-  ShoppingCartOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Popconfirm } from "antd";
+import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import { Modal, Popconfirm } from "antd";
 function HomePage() {
   const nav = useNavigate();
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
   const handleLogOut = () => {
     sessionStorage.removeItem("username");
-    nav("/");
+    handleCloseModal();
   };
   const username = sessionStorage.getItem("username");
   const authenticate = (username) => {
@@ -32,7 +35,6 @@ function HomePage() {
     } else {
       return (
         <div className="authenticate">
-          <div className="authen">welcome, {username}</div>
           <div>
             <Link className="cart" to="/">
               <ShoppingCartOutlined
@@ -42,17 +44,14 @@ function HomePage() {
               <p>Shopping Cart</p>
             </Link>
           </div>
-          <Link className="logout_btn">
-            <div className="logout">
-              <Popconfirm
-                onConfirm={handleLogOut}
-                title="LogOut"
-                description="Are you sure?"
-              >
-                LogOut
-              </Popconfirm>
-            </div>
-          </Link>
+          <div className="authen">
+            User | {username}
+            <ul className="user_action">
+              <li>My Profile</li>
+              <li>Purchase Order</li>
+              <li onClick={handleOpenModal}>LogOut</li>
+            </ul>
+          </div>
         </div>
       );
     }
@@ -96,6 +95,14 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <Modal
+          title="LogOut"
+          open={openModal}
+          onCancel={handleCloseModal}
+          onOk={handleLogOut}
+        >
+          Are you sure want to log out?
+        </Modal>
       </div>
       <div className="container"></div>
       <div className="footer"></div>
