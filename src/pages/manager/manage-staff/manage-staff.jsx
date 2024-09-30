@@ -48,6 +48,9 @@ function ManageStaff() {
   );
   return (
     <div>
+      <div>
+        <h1>Staff Management</h1>
+      </div>
       <CRUDTemplate columns={columns} formItems={formItems} path="" />
     </div>
   );
