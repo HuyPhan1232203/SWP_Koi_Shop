@@ -30,17 +30,22 @@ function HomePage() {
       <div className="header">
         <div className="headerbar">
           <div className="logo-container">
-          <img src="/assets/images/koi-logo.png" alt="Logo" className="logo" />
-          <h1 className="header_title">Koi Farm Shop</h1>
-          </div>
-          <div className="navigate">
-            <ul className="subnav">
-              <li className="nav_li">Home</li>
-              <li className="nav_li">Introduction</li>
-              <li className="nav_li">Koi List</li>
-              <li className="nav_li">About Us</li>
-            </ul>
-            {authenticate(username)}
+            <img
+              src="/assets/images/koi-logo.png"
+              alt="Logo"
+              className="logo"
+            />
+            <h1 className="header_title">Koi Shop</h1>
+            <div className="header_nav">
+              <ul className="subnav">
+                <li className="nav_li">Home</li>
+                <li className="nav_li">Introduction</li>
+                <li className="nav_li">Koi List</li>
+                <li className="nav_li">About Us</li>
+              </ul>
+
+              {authenticate(username)}
+            </div>
           </div>
         </div>
       </div>

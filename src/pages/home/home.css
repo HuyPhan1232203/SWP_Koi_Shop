@@ -13,14 +13,16 @@
 }
 
 .logo-container {
+    width: 100%;
     display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between;
     align-items: center; /* Center items vertically */
 }
 
 .logo {
-    width: 70px; /* Adjust size as needed */
+    margin-top: -20px;
+    width: 150px; /* Adjust size as needed */
     height: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Space between logo and title */
   }
 .container{
     width: 100%;
@@ -35,8 +37,9 @@
     font-weight: 700;
     color: #fff;
     font-family: serif;
+    width: 200px;
 }
-.navigate{
+.header_nav{
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -59,7 +62,7 @@
     color: #fff;
 }
 .nav_li{
-    padding: 20px;
+    padding:48px 20px;
     list-style-type: none;
     font-weight: 700;
     color: #fff;
