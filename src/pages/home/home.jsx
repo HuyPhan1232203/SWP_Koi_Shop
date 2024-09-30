@@ -54,7 +54,19 @@ function HomePage() {
                   <a href="#">Home</a>
                 </li>
                 <li className="nav_li">Introduction</li>
-                <li className="nav_li">Koi List</li>
+                <li className="nav_li nav_li_koi">
+                  Koi List
+                  <ul className="nav_li_koi_elements">
+                    <li>heasdasd</li>
+                    <li>he</li>
+                    <li>he</li>
+                    <li>he</li>
+                    <li>he</li>
+                    <li>he</li>
+                    <li>he</li>
+                    <li>he</li>
+                  </ul>
+                </li>
                 <li className="nav_li">About Us</li>
               </ul>
 
@@ -64,9 +76,7 @@ function HomePage() {
         </div>
       </div>
       <div className="container"></div>
-      <div className="footer">
-        
-      </div>
+      <div className="footer"></div>
     </div>
   );
 }

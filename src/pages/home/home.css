@@ -76,6 +76,29 @@
 .cart_icon:hover{
     cursor: pointer;
 }
+.nav_li_koi{
+    position: relative;
+}
+.nav_li_koi:hover .nav_li_koi_elements{
+    display: block;
+}
+.nav_li_koi_elements{
+    margin-top: 48px;
+    margin-left: -20px;
+    position: absolute;
+    display: none;
+    list-style: none;
+    padding: 0;
+    background:rgba(255, 255, 255, .85) ;
+    color: #B78E75;
+}
+.nav_li_koi_elements li:hover{
+    background-color: #a29b9b;
+}
+.nav_li_koi_elements li{
+    padding:10px 60px 10px 5px;
+    border-bottom: 1px solid #B78E75;
+}
 .footer{
     display: flex;
 }
