@@ -1,8 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
-import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  LogoutOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Popconfirm } from "antd";
 function HomePage() {
+  const nav = useNavigate();
+  const handleLogOut = () => {
+    sessionStorage.removeItem("username");
+    nav("/");
+  };
   const username = sessionStorage.getItem("username");
   const authenticate = (username) => {
     if (username == null) {
@@ -23,14 +33,26 @@ function HomePage() {
       return (
         <div className="authenticate">
           <div className="authen">welcome, {username}</div>
-          <div className="cart">
-            <Link to="/">
+          <div>
+            <Link className="cart" to="/">
               <ShoppingCartOutlined
                 className="cart_icon"
-                style={{ fontSize: "20px", color: "#fff" }}
+                style={{ fontSize: "20px", color: "#fff", padding: "3px" }}
               />
+              <p>Shopping Cart</p>
             </Link>
           </div>
+          <Link className="logout_btn">
+            <div className="logout">
+              <Popconfirm
+                onConfirm={handleLogOut}
+                title="LogOut"
+                description="Are you sure?"
+              >
+                LogOut
+              </Popconfirm>
+            </div>
+          </Link>
         </div>
       );
     }

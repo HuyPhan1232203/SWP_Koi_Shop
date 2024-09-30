@@ -52,7 +52,7 @@
 .authenticate{
     margin-right: 30px;
     display: flex;
-    width: 250px;
+    width: 30%;
    justify-content: space-around;
 }
 .authen{
@@ -71,8 +71,24 @@
     background-color: #c3b9b9;
     cursor: pointer;
 }
+.cart{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+.cart p{
+    margin-bottom: 0rem
+}
 .cart_icon:hover{
     cursor: pointer;
+}
+.logout_btn{
+    text-decoration: none;
+}
+.logout{
+    color: rgb(216, 64, 64);
+    font-weight: 500;
 }
 .nav_li_koi{
     position: relative;
@@ -95,8 +111,10 @@
     cursor: pointer;
 }
 .nav_li_koi_elements li{
-    padding:10px 60px 10px 5px;
+    width: 170px;
+    padding: 10px 0;
     border-bottom: 1px solid #B78E75;
+    cursor: pointer;
 }
 .footer{
     display: flex;
