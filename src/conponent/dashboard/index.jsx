@@ -17,17 +17,8 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem("Koi List", "koilist", <ProductOutlined />, [
-    getItem("Koi Kohaku", "1"),
-    getItem("Koi Ogon", "2"),
-    getItem("Koi Showa", "3"),
-    getItem("Koi Tancho", "4"),
-    getItem("Koi Bekko", "6"),
-    getItem("Koi Doistu", "7"),
-    getItem("Koi Ginrin", "8"),
-    getItem("Koi Goshiki", "9"),
-  ]),
-  getItem("Voucher List", "", <ContainerOutlined />),
+  getItem("Koi List", "koilist", <ProductOutlined />),
+  getItem("Voucher List", "voucher", <ContainerOutlined />),
   getItem("Staff List", "", <IdcardOutlined />),
   getItem("Profile", "", <ProfileOutlined />),
 ];
