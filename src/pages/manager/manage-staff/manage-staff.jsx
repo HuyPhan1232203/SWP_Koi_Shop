@@ -48,7 +48,7 @@ function ManageStaff() {
   );
   return (
     <div>
-      <CRUDTemplate columns={columns} formItems={formItems} />
+      <CRUDTemplate columns={columns} formItems={formItems} path="" />
     </div>
   );
 }
