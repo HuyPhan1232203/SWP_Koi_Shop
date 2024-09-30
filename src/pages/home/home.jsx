@@ -1,26 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./home.css";
-import { UserOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 function HomePage() {
   const username = sessionStorage.getItem("username");
   const authenticate = (username) => {
     if (username == null) {
       return (
         <div className="authenticate">
-          <Link className="authen" to="/login">
-            <UserOutlined />
-            login /
-          </Link>
-          <Link className="authen" to="/register">
-            register
-          </Link>
+          <div className="authen_choice">
+            <Link className="authen" to="/login">
+              <UserOutlined />
+              login /
+            </Link>
+            <Link className="authen" to="/register">
+              register
+            </Link>
+          </div>
         </div>
       );
     } else {
       return (
         <div className="authenticate">
           <div className="authen">welcome, {username}</div>
+          <div className="cart">
+            <Link to="/">
+              <ShoppingCartOutlined
+                className="cart_icon"
+                style={{ fontSize: "20px", color: "#fff" }}
+              />
+            </Link>
+          </div>
         </div>
       );
     }
@@ -30,15 +40,19 @@ function HomePage() {
       <div className="header">
         <div className="headerbar">
           <div className="logo-container">
-            <img
-              src="/assets/images/koi-logo.png"
-              alt="Logo"
-              className="logo"
-            />
+            <a href="#">
+              <img
+                src="/assets/images/koi-logo.png"
+                alt="Logo"
+                className="logo"
+              />
+            </a>
             <h1 className="header_title">Koi Shop</h1>
             <div className="header_nav">
               <ul className="subnav">
-                <li className="nav_li">Home</li>
+                <li className="nav_li">
+                  <a href="#">Home</a>
+                </li>
                 <li className="nav_li">Introduction</li>
                 <li className="nav_li">Koi List</li>
                 <li className="nav_li">About Us</li>
@@ -50,7 +64,9 @@ function HomePage() {
         </div>
       </div>
       <div className="container"></div>
-      <div className="footer"></div>
+      <div className="footer">
+        
+      </div>
     </div>
   );
 }

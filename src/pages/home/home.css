@@ -54,21 +54,27 @@
 .authenticate{
     margin-right: 30px;
     display: flex;
-   width: 200px;
-   /* justify-content: space-around; */
+    width: 250px;
+   justify-content: space-around;
 }
 .authen{
     text-decoration: none;
     color: #fff;
 }
-.nav_li{
+.nav_li,.nav_li a{
     padding:48px 20px;
     list-style-type: none;
     font-weight: 700;
     color: #fff;
-    /* font-size: 20px; */
+    text-decoration: none;
 }
+
 .nav_li:hover{
     background-color: #c3b9b9;
     cursor: pointer;
 }
+.cart_icon:hover{
+    cursor: pointer;
+}
+
+
