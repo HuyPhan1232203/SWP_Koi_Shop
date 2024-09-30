@@ -37,10 +37,6 @@ function App() {
         },
       ],
     },
-    {
-      path: "dashboard-customer",
-      element: <DashboardCustomer />,
-    },
   ]);
 
   return <RouterProvider router={router} />;
