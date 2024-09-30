@@ -20,7 +20,6 @@ function LoginPage() {
       console.log(response.data);
       const { role, token } = response.data;
       localStorage.setItem("token", token);
-
       if (role === "MANAGER") {
         navigate("/dashboard");
       }
