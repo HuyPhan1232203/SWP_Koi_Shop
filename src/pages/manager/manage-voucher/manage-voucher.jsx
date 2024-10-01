@@ -5,6 +5,11 @@ import { Form, Input } from "antd";
 function ManageVoucher() {
   const columns = [
     {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
       title: "Expired Date",
       dataIndex: "expiredDate",
       key: "expiredDate",
@@ -18,6 +23,13 @@ function ManageVoucher() {
 
   const formItems = (
     <>
+    <Form.Item
+        label="ID"
+        rules={[{ required: true, message: "Please Input ID!" }]}
+        name="id"
+      >
+        <Input></Input>
+      </Form.Item>
       <Form.Item
         label="Expired Date"
         rules={[{ required: true, message: "Please Input Expired Date!" }]}
