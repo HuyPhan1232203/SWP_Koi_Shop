@@ -12,7 +12,6 @@ import {
 } from "antd";
 // import "./ManagementKoi.css";
 import { useEffect, useState } from "react";
-import { useForm } from "antd/es/form/Form";
 import { toast } from "react-toastify";
 import { PlusOutlined } from "@ant-design/icons";
 import uploadFile from "../../../utils/file";
@@ -29,23 +28,27 @@ const ManagementKoi = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [formStand] = Form.useForm();
+  const [submitKoi, setSubmitKoi] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  //FETCH
   const fetchKoi = async () => {
     const response = await api.get("koi");
     setKoiFish(response.data);
-    console.log(response.data);
   };
+  //USE EFFECT
   useEffect(() => {
     fetchKoi();
   }, []);
-  const [formStand] = useForm();
-  const [submitKoi, setSubmitKoi] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  //OPEN MODAL
   const handleOpenModal = () => {
     setOpenModal(true);
   };
+  //CLOSE MODEL
   const handleClosenModal = () => {
     setOpenModal(false);
   };
+  //COLUMNS
   const cols = [
     {
       title: "Image",
@@ -139,6 +142,7 @@ const ManagementKoi = () => {
       },
     },
   ];
+  //DELETE
   const handleDeleteKoi = async (id) => {
     try {
       await api.delete(`koi/${id}`);
@@ -164,14 +168,16 @@ const ManagementKoi = () => {
         console.log(response);
       } else {
         //create
-        await api.post("koi", Koi);
+        const response = await api.post("koi", Koi);
+        console.log(response);
+        console.log("error");
       }
       fetchKoi();
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
-      console.log(err);
+      console.log("error");
     } finally {
       setSubmitKoi(false);
     }
@@ -216,18 +222,14 @@ const ManagementKoi = () => {
         confirmLoading={submitKoi}
         title={<span className="Modal_header">KOI INFORMATION</span>}
         open={openModal}
-        onCancel={handleClosenModal}
-        onOk={() => {
-          formStand.submit();
+        onCancel={() => {
+          handleClosenModal();
+          formStand.resetFields();
         }}
+        onOk={formStand.submit}
       >
         <Form onFinish={handleSubmitKoi} form={formStand}>
-          <Form.Item
-            hidden
-            label="id"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="id"
-          >
+          <Form.Item hidden label="id" name="id">
             <Input></Input>
           </Form.Item>
           <Form.Item
