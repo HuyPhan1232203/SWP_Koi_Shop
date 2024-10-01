@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input } from "antd";
+import { Form, Input, InputNumber } from "antd";
 import CRUDTemplate from "../../../conponent/crud-template/crud-template";
 
 function ManageVoucher() {
@@ -69,7 +69,7 @@ function ManageVoucher() {
         rules={[{ required: true, message: "Please Input quantity" }]}
         name="quantity"
       >
-        <Input.Number></Input.Number>
+        <InputNumber></InputNumber>
       </Form.Item>
       <Form.Item
         label="description"
@@ -83,20 +83,25 @@ function ManageVoucher() {
         rules={[{ required: true, message: "Please Input minimumPoints" }]}
         name="minimumPoints"
       >
-        <Input.Number></Input.Number>
+        <InputNumber></InputNumber>
       </Form.Item>
       <Form.Item
         label="minimumPrice"
         rules={[{ required: true, message: "Please Input minimumPrice" }]}
         name="minimumPrice"
       >
-        <Input.Number></Input.Number>
+        <InputNumber></InputNumber>
       </Form.Item>
     </>
   );
   return (
     <div>
-      <CRUDTemplate columns={columns} formItems={formItems} apiName="voucher" />
+      <CRUDTemplate
+        columns={columns}
+        formItems={formItems}
+        apiName="voucher"
+        name="Voucher"
+      />
     </div>
   );
 }

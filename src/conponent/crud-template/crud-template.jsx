@@ -1,168 +1,198 @@
-import { Button, Form, Input, Modal, Popconfirm, Table } from "antd";
-import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Form,
+  Image,
+  Input,
+  InputNumber,
+  Modal,
+  Popconfirm,
+  Radio,
+  Table,
+  Upload,
+} from "antd";
+import { useEffect, useState } from "react";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
-// import api from "../../../config/axios";
+import uploadFile from "../../utils/file";
+import { PlusOutlined } from "@ant-design/icons";
+// import "./ManagementKoi.css";
 
-function CRUDTemplate({ columns, formItems, apiName }) {
-  const [datas, setDatas] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-  const tableColumn = [
+const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
+  const [KoiFish, setKoiFish] = useState([]);
+  const getBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [fileList, setFileList] = useState([]);
+  const [formStand] = Form.useForm();
+  const [submitKoi, setSubmitKoi] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  //FETCH
+  const fetchKoi = async () => {
+    const response = await api.get(apiName);
+    setKoiFish(response.data);
+  };
+  //USE EFFECT
+  useEffect(() => {
+    fetchKoi();
+  }, []);
+  //OPEN MODAL
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  //CLOSE MODEL
+  const handleClosenModal = () => {
+    setOpenModal(false);
+  };
+  //COLUMNS
+  const cols = [
     ...columns,
     {
       title: "Action",
       dataIndex: "id",
       key: "id",
-      render: (id, apiName) => (
-        <>
-          <Button
-            type="primary"
-            onClick={() => {
-              setShowModal(true);
-              form.setFieldsValue({ apiName });
-            }}
-          >
-            Edit
-          </Button>
-          <Popconfirm
-            title="Delete"
-            description="sure?"
-            onConfirm={() => {
-              handleDelete(id);
-            }}
-          >
-            <Button type="primary" danger>
-              Delete
+      render: (id, koi) => {
+        return (
+          <div style={{ display: "flex" }}>
+            <Button
+              type="primary"
+              onClick={() => {
+                setOpenModal(true);
+                formStand.setFieldsValue(koi);
+              }}
+            >
+              Edit
             </Button>
-          </Popconfirm>
-        </>
-      ),
+
+            <Popconfirm
+              onConfirm={() => {
+                handleDeleteKoi(id);
+              }}
+              title="Delete"
+              description="Are you sure"
+            >
+              <Button type="primary" danger>
+                Delete
+              </Button>
+            </Popconfirm>
+          </div>
+        );
+      },
     },
   ];
-  //   const column = [
-  //     {
-  //       title: "ID",
-  //       dataIndex: "id",
-  //       key: "id",
-  //     },
-  //     {
-  //       title: "name",
-  //       dataIndex: "name",
-  //       key: "name",
-  //     },
-  //     {
-  //       title: "description",
-  //       dataIndex: "description",
-  //       key: "description",
-  //     },
-  //     {
-  //       title: "Action",
-  //       dataIndex: "id",
-  //       key: "id",
-  //       render: (id, apiName) => (
-  //         <>
-  //           <Button
-  //             type="primary"
-  //             onClick={() => {
-  //               setShowModal(true);
-  //               form.setFieldsValue({ apiName });
-  //             }}
-  //           >
-  //             Edit
-  //           </Button>
-  //           <Popconfirm
-  //             title="Delete"
-  //             description="sure?"
-  //             onConfirm={() => {
-  //               handleDelete(id);
-  //             }}
-  //           >
-  //             <Button type="primary" danger>
-  //               Delete
-  //             </Button>
-  //           </Popconfirm>
-  //         </>
-  //       ),
-  //     },
-  //   ];
-  //GET
-  const fetchData = async () => {
+  //DELETE
+  const handleDeleteKoi = async (id) => {
     try {
-      const response = await api.get(apiName);
-      setDatas(response.data);
+      await api.delete(`${apiName}/${id}`);
+      toast.success("Deleteted successfully!!!");
+      fetchKoi();
     } catch (err) {
       toast.error(err);
     }
   };
   //CREATE OR UPDATE
-  const handleSubmit = async (values) => {
+  const handleSubmitKoi = async (Koi) => {
+    if (fileList.length > 0) {
+      const file = fileList[0];
+      console.log(file);
+      const url = await uploadFile(file.originFileObj);
+      Koi.image = url;
+    }
     try {
-      setLoading(true);
-      if (values.id) {
+      setSubmitKoi(true);
+      if (Koi.id) {
         //update
-        await api.put(`${apiName}/${values.id}`, values);
+        const response = await api.put(`${apiName}/${Koi.id}`, Koi);
+        console.log(response);
       } else {
         //create
-        await api.post(apiName, values);
+        const response = await api.post({ apiName }, Koi);
+        console.log(response);
+        console.log("error");
       }
-
-      console.log(values);
-      toast.success("success");
-
-      fetchData();
-      form.resetFields();
-      setShowModal(false);
+      fetchKoi();
+      toast.success("Update successfully!!!");
+      formStand.resetFields();
+      handleClosenModal();
     } catch (err) {
-      toast.error(err);
+      console.log("error");
     } finally {
-      setLoading(false);
+      setSubmitKoi(false);
     }
   };
-  //DELETE
-  const handleDelete = async (id) => {
-    try {
-      await api.delete(`${apiName}/${id}`);
-      toast.success("Delete success");
-      fetchData();
-      form.resetFields();
-    } catch (err) {
-      toast.error(err);
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
     }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
   };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const uploadButton = (
+    <button
+      style={{
+        border: 0,
+        background: "none",
+      }}
+      type="button"
+    >
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </button>
+  );
+
+  // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   return (
     <div>
-      <h1 className="text-center">Management</h1>
-      <Button
-        onClick={() => {
-          setShowModal(true);
-        }}
-      >
-        Add
+      <div className="header text-center p-5 ">
+        <h1 className="header_text">Koi Management</h1>
+      </div>
+      <Button className="add_btn" onClick={handleOpenModal}>
+        Create {name}
       </Button>
-      <Table dataSource={datas} columns={tableColumn}></Table>
       <Modal
-        confirmLoading={loading}
-        open={showModal}
-        onClose={() => {
-          setShowModal(false);
-        }}
+        confirmLoading={submitKoi}
+        title={<span className="Modal_header">{name} INFORMATION</span>}
+        open={openModal}
         onCancel={() => {
-          setShowModal(false);
+          handleClosenModal();
+          formStand.resetFields();
         }}
-        title="add"
-        onOk={form.submit}
+        onOk={formStand.submit}
       >
-        <Form form={form} labelCol={{ span: 24 }} onFinish={handleSubmit}>
+        <Form onFinish={handleSubmitKoi} form={formStand}>
+          <Form.Item hidden label="id" name="id">
+            <Input></Input>
+          </Form.Item>
           {formItems}
         </Form>
       </Modal>
+      {previewImage && (
+        <Image
+          wrapperStyle={{
+            display: "none",
+          }}
+          preview={{
+            visible: previewOpen,
+            onVisibleChange: (visible) => setPreviewOpen(visible),
+            afterOpenChange: (visible) => !visible && setPreviewImage(""),
+          }}
+          src={previewImage}
+        />
+      )}
+      <Table columns={cols} dataSource={KoiFish}></Table>
     </div>
   );
-}
-
+};
 export default CRUDTemplate;
