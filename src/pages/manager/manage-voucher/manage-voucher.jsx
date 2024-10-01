@@ -5,54 +5,30 @@ import { Form, Input } from "antd";
 function ManageVoucher() {
   const columns = [
     {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
+      title: "Expired Date",
+      dataIndex: "expiredDate",
+      key: "expiredDate",
     },
     {
-      title: "Start At",
-      dataIndex: "startAt",
-      key: "startAt",
-    },
-    {
-      title: "End At",
-      dataIndex: "endAt",
-      key: "endAt",
-    },
-    {
-      title: "Create At",
-      dataIndex: "createAt",
-      key: "createAt",
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
     },
   ];
 
   const formItems = (
     <>
       <Form.Item
-        label="ID"
-        rules={[{ required: true, message: "Please Input Voucher's ID" }]}
-        name="id"
+        label="Expired Date"
+        rules={[{ required: true, message: "Please Input Expired Date!" }]}
+        name="expiredDate"
       >
         <Input></Input>
       </Form.Item>
       <Form.Item
-        label="Start At"
-        rules={[{ required: true, message: "Please Input Started Day" }]}
-        name="startAt"
-      >
-        <Input></Input>
-      </Form.Item>
-      <Form.Item
-        label="End At"
-        rules={[{ required: true, message: "Please Input Ended day" }]}
-        name="endAt"
-      >
-        <Input></Input>
-      </Form.Item>
-      <Form.Item
-        label="Create At"
-        rules={[{ required: true, message: "Please Input Created Day" }]}
-        name="createAt"
+        label="Description"
+        rules={[{ required: true, message: "Please Input Description!" }]}
+        name="description"
       >
         <Input></Input>
       </Form.Item>
@@ -63,7 +39,7 @@ function ManageVoucher() {
       <div>
         <h1>Voucher Management</h1>
       </div>
-      <CRUDTemplate columns={columns} formItems={formItems} />
+      <CRUDTemplate columns={columns} formItems={formItems} path="voucher" />
     </div>
   );
 }
