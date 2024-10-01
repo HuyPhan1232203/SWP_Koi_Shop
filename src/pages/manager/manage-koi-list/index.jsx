@@ -213,7 +213,9 @@ const ManagementKoi = () => {
   return (
     <div>
       <div className="header text-center p-5 ">
-        <h1 className="header_text">Koi Management</h1>
+        <h1 className="header_text" style={{ color: "red" }}>
+          Koi Management
+        </h1>
       </div>
       <Button className="add_btn" onClick={handleOpenModal}>
         Create Koi

@@ -62,7 +62,12 @@ function ManageStaff() {
   );
   return (
     <div>
-      <CRUDTemplate columns={columns} formItems={formItems} apiName="authen" />
+      <CRUDTemplate
+        columns={columns}
+        formItems={formItems}
+        apiName="koi"
+        name="Staff"
+      />
     </div>
   );
 }
