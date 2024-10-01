@@ -1,4 +1,4 @@
-  import React, { useState } from "react";
+import React, { useState } from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form, Input } from "antd";
@@ -22,7 +22,7 @@ function LoginPage() {
       const { role, token } = response.data;
       localStorage.setItem("token", token);
       if (role === "MANAGER") {
-        navigate("/dashboard");
+        navigate("/dashboard/koilist");
       }
       if (role === "CUSTOMER") {
         navigate("/");

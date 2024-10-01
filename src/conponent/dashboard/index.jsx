@@ -5,9 +5,12 @@ import {
   ProductOutlined,
   ProfileOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-import { Link, Outlet } from "react-router-dom";
+import { Breadcrumb, Button, Layout, Menu, theme } from "antd";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const { Header, Content, Footer, Sider } = Layout;
+const username = sessionStorage.getItem("username");
+
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -22,11 +25,28 @@ const items = [
   getItem("Staff List", "staff", <IdcardOutlined />),
   getItem("Profile", "", <ProfileOutlined />),
 ];
+
 const Dashboard = () => {
+  const nav = useNavigate();
+  const showName = () => {
+    if (username) {
+      return (
+        <h4 style={{ fontFamily: "serif", color: "red" }}>
+          Author: {username}
+        </h4>
+      );
+    } else {
+      toast.error("no token");
+    }
+  };
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const handleLogOut = () => {
+    sessionStorage.removeItem("username");
+    nav("/");
+  };
   return (
     <Layout
       style={{
@@ -66,6 +86,15 @@ const Dashboard = () => {
               borderRadius: borderRadiusLG,
             }}
           >
+            {showName()}
+            <Button
+              style={{
+                marginLeft: "1300px",
+              }}
+              onClick={handleLogOut}
+            >
+              LogOut
+            </Button>
             <Outlet />
           </div>
         </Content>

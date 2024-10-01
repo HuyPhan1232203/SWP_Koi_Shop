@@ -4,7 +4,6 @@ import "./home.css";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Modal, Popconfirm } from "antd";
 function HomePage() {
-  const nav = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => {
     setOpenModal(true);
