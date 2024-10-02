@@ -7,12 +7,23 @@ import Dashboard from "./src/conponent/dashboard";
 import ManagementKoi from "./src/pages/manager/manage-koi-list";
 import ManageVoucher from "./src/pages/manager/manage-voucher/manage-voucher";
 import ManageStaff from "./src/pages/manager/manage-staff/manage-staff";
+import Introduction from "./src/pages/customer/introduction/introduction";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "",
       element: <HomePage />,
+    },
+    {
+      path: "home",
+      element: <HomePage />,
+      children: [
+        {
+          path: "introduction",
+          element: <Introduction />,
+        },
+      ],
     },
     {
       path: "login",

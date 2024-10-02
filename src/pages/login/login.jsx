@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Authen_template from "../../conponent/authen_template/authen_template";
-import { Button, Form, Input } from "antd";
+import { Button, Form } from "antd";
 import "./login.css";
 // import { useState } from "react";
 import { provider } from "../../config/firebase";
@@ -16,17 +16,19 @@ function LoginPage() {
     try {
       setLoading(true);
       const response = await api.post("login", values);
-      toast.success("Successfully Login!");
       console.log(response.data.username);
       sessionStorage.setItem("username", response.data.username);
       const { role, token } = response.data;
       localStorage.setItem("token", token);
       if (role === "MANAGER") {
         navigate("/dashboard/koilist");
+        navigate(0);
       }
       if (role === "CUSTOMER") {
-        navigate("/");
+        navigate("/home");
+        navigate(0);
       }
+
       setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
