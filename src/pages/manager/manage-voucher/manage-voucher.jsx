@@ -10,32 +10,32 @@ function ManageVoucher() {
       key: "id",
     },
     {
-      title: "discountValue",
+      title: "Discount Value",
       dataIndex: "discountValue",
       key: "discountValue",
     },
     {
-      title: "expiredDate",
+      title: "Expired Date",
       dataIndex: "expiredDate",
       key: "expiredDate",
     },
     {
-      title: "quantity",
+      title: "Quantity",
       dataIndex: "quantity",
       key: "quantity",
     },
     {
-      title: "description",
+      title: "Description",
       dataIndex: "description",
       key: "description",
     },
     {
-      title: "minimumPoints",
+      title: "Minimum Points",
       dataIndex: "minimumPoints",
       key: "minimumPoints",
     },
     {
-      title: "minimumPrice",
+      title: "Minimum Price",
       dataIndex: "minimumPrice",
       key: "minimumPrice",
     },
@@ -59,35 +59,35 @@ function ManageVoucher() {
       </Form.Item>
       <Form.Item
         label="expiredDate"
-        rules={[{ required: true, message: "Please Input expiredDate" }]}
+        rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
       >
         <Input></Input>
       </Form.Item>
       <Form.Item
         label="quantity"
-        rules={[{ required: true, message: "Please Input quantity" }]}
+        rules={[{ required: true, message: "Please Input Quantity" }]}
         name="quantity"
       >
         <InputNumber></InputNumber>
       </Form.Item>
       <Form.Item
         label="description"
-        rules={[{ required: true, message: "Please Input description" }]}
+        rules={[{ required: true, message: "Please Input Description" }]}
         name="description"
       >
         <Input></Input>
       </Form.Item>
       <Form.Item
         label="minimumPoints"
-        rules={[{ required: true, message: "Please Input minimumPoints" }]}
+        rules={[{ required: true, message: "Please Input Minimum Points" }]}
         name="minimumPoints"
       >
         <InputNumber></InputNumber>
       </Form.Item>
       <Form.Item
         label="minimumPrice"
-        rules={[{ required: true, message: "Please Input minimumPrice" }]}
+        rules={[{ required: true, message: "Please Input Minimum Price" }]}
         name="minimumPrice"
       >
         <InputNumber></InputNumber>
