@@ -151,7 +151,7 @@
 }
 .nav_li_koi_elements li{
     width: 170px;
-    padding: 10px 0;
+    padding: 10px 10px;
     border-bottom: 1px solid #B78E75;
     cursor: pointer;
 }
