@@ -91,7 +91,9 @@ function HomePage() {
                     <li>Koi Goshiki</li>
                   </ul>
                 </li>
-                <li className="nav_li">About Us</li>
+                <li className="nav_li">
+                  <Link to="/home/about-us">About Us</Link>
+                </li>
               </ul>
 
               {authenticate(username)}

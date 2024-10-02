@@ -8,6 +8,7 @@ import ManagementKoi from "./src/pages/manager/manage-koi-list";
 import ManageVoucher from "./src/pages/manager/manage-voucher/manage-voucher";
 import ManageStaff from "./src/pages/manager/manage-staff/manage-staff";
 import Introduction from "./src/pages/customer/introduction/introduction";
+import AboutUs from "./src/pages/customer/about-us/about-us";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,6 +19,10 @@ function App() {
         {
           path: "introduction",
           element: <Introduction />,
+        },
+        {
+          path: "about-us",
+          element: <AboutUs />,
         },
       ],
     },

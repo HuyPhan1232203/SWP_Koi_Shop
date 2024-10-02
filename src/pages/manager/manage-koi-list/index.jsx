@@ -163,6 +163,11 @@ const ManagementKoi = () => {
         let link = await uploadFile(file.originFileObj);
         setLinkFile([...linkFile, link]);
       });
+      const file = fileList[0];
+      console.log(file);
+      const url = await uploadFile(file.originFileObj);
+      Koi.image = url;
+      console.log(Koi)
     }
 Koi.path = linkFile;
     try {
