@@ -3,7 +3,6 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form } from "antd";
 import "./login.css";
-// import { useState } from "react";
 import { provider } from "../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -25,7 +24,7 @@ function LoginPage() {
         navigate(0);
       }
       if (role === "CUSTOMER") {
-        navigate("/home");
+        navigate("/");
         navigate(0);
       }
 

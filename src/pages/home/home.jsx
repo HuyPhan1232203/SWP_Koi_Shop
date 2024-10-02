@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./home.css";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { Modal, Popconfirm } from "antd";
@@ -15,8 +15,7 @@ function HomePage() {
   const handleLogOut = () => {
     sessionStorage.removeItem("username");
     handleCloseModal();
-    nav("/home");
-    nav(0);
+    nav("/");
   };
   const username = sessionStorage.getItem("username");
   const authenticate = (username) => {
@@ -77,7 +76,7 @@ function HomePage() {
                   <a href="#">Home</a>
                 </li>
                 <li className="nav_li">
-                  <Link to="/home/introduction">Introduction</Link>
+                  <Link to="/introduction">Introduction</Link>
                 </li>
                 <li className="nav_li nav_li_koi">
                   Koi List
@@ -108,7 +107,9 @@ function HomePage() {
           Are you sure want to log out?
         </Modal>
       </div>
-      <div className="container"></div>
+      <div className="container">
+        <Outlet />
+      </div>
       <div className="footer"></div>
     </div>
   );

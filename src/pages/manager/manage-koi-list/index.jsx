@@ -27,6 +27,7 @@ const ManagementKoi = () => {
     });
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
+  const [linkFile, setLinkFile] = useState([]);
   const [fileList, setFileList] = useState([]);
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
@@ -34,6 +35,7 @@ const ManagementKoi = () => {
   //FETCH
   const fetchKoi = async () => {
     const response = await api.get("koi");
+    console.log(response.data);
     setKoiFish(response.data);
   };
   //USE EFFECT
@@ -52,10 +54,10 @@ const ManagementKoi = () => {
   const cols = [
     {
       title: "Image",
-      dataIndex: "image",
-      key: "image",
-      render: (image) => {
-        return <Image src={image} alt="" width={200} />;
+      dataIndex: "path",
+      key: "path",
+      render: (path) => {
+        return <Image src={path} alt="" width={200} />;
       },
     },
     {
@@ -155,11 +157,14 @@ const ManagementKoi = () => {
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     if (fileList.length > 0) {
-      const file = fileList[0];
-      console.log(file);
-      const url = await uploadFile(file.originFileObj);
-      Koi.image = url;
+      fileList.map(async (file) => {
+        console.log(file);
+        console.log(Koi);
+        let link = await uploadFile(file.originFileObj);
+        setLinkFile([...linkFile, link]);
+      });
     }
+Koi.path = linkFile;
     try {
       setSubmitKoi(true);
       if (Koi.id) {
@@ -310,7 +315,7 @@ const ManagementKoi = () => {
           >
             <InputNumber></InputNumber>
           </Form.Item>
-          <Form.Item label="Image" name="image">
+          <Form.Item label="Image" name="path">
             <Upload
               action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
               listType="picture-card"
