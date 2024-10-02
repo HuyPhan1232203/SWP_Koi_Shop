@@ -73,7 +73,7 @@ function HomePage() {
             <div className="header_nav">
               <ul className="subnav">
                 <li className="nav_li">
-                  <a href="#">Home</a>
+                  <Link to="/">Home</Link>
                 </li>
                 <li className="nav_li">
                   <Link to="/introduction">Introduction</Link>
