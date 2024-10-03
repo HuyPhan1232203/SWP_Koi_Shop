@@ -48,14 +48,13 @@ function HomePage() {
           <div className="authen">
             User | {username}
             <ul className="user_action">
-              <li>
-                <Link
-                  style={{ textDecoration: "none", color: "#fff" }}
-                  to="profile"
-                >
-                  My Profile
-                </Link>
-              </li>
+              <Link
+                style={{ textDecoration: "none", color: "#fff" }}
+                to="profile"
+              >
+                <li>My Profile</li>
+              </Link>
+
               <li>Purchase Order</li>
               <li onClick={handleOpenModal}>LogOut</li>
             </ul>
@@ -98,9 +97,13 @@ function HomePage() {
                     <li>Koi Goshiki</li>
                   </ul>
                 </li>
-                <li className="nav_li">
-                  <Link to="about-us">About Us</Link>
-                </li>
+
+                <Link
+                  to="about-us"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  <li className="nav_li">About Us</li>
+                </Link>
               </ul>
 
               {authenticate(username)}
