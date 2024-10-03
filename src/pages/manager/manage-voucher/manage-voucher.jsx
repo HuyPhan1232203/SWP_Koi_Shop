@@ -44,13 +44,6 @@ function ManageVoucher() {
   const formItems = (
     <>
       <Form.Item
-        label="ID"
-        rules={[{ required: true, message: "Please Input Voucher's ID" }]}
-        name="id"
-      >
-        <Input></Input>
-      </Form.Item>
-      <Form.Item
         label="discountValue"
         rules={[{ required: true, message: "Please Input Discount Value" }]}
         name="discountValue"
