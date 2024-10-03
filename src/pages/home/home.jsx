@@ -92,7 +92,7 @@ function HomePage() {
                   </ul>
                 </li>
                 <li className="nav_li">
-                  <Link to="/home/about-us">About Us</Link>
+                  <Link to="about-us">About Us</Link>
                 </li>
               </ul>
 

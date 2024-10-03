@@ -1,3 +1,53 @@
-.header-about {
-    margin-top: 70px;
+.about-us-section {
+    margin-top: 30px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #EAEAEA;
 }
+
+.image-section {
+    min-width: 300px;
+}
+
+.about-img {
+    width: 400px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.about-us-text {
+    flex: 1;
+    
+}
+
+.header-about-us {
+    margin-left: 80px;
+    margin-top: -100px;
+    font-size: 100px;
+    color: #4D4D4D;
+}
+
+.des-about-us {
+    margin-left: 80px;
+    min-width: 300px;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.des-2-about-us {
+    margin-left: 80px;
+    min-width: 300px;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.about-icon {
+    align-self: flex-end;
+    font-size: 30px;
+    padding: 0 50px;
+    margin-bottom: 150px;
+    cursor: pointer;
+}
+

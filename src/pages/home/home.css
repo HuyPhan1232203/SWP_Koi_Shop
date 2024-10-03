@@ -25,7 +25,7 @@
 .container{
     width: 100%;
     height: 100vh;
-    background-color: rgb(240, 216, 119);
+    /* background-color: rgb(240, 216, 119); */
 }
 .footer{
     height: 200px;
