@@ -9,6 +9,8 @@ import ManageVoucher from "./src/pages/manager/manage-voucher/manage-voucher";
 import ManageStaff from "./src/pages/manager/manage-staff/manage-staff";
 import Introduction from "./src/pages/customer/introduction/introduction";
 import AboutUs from "./src/pages/customer/about-us/about-us";
+import Profile from "./src/pages/user/profile/profile";
+import EditProfile from "./src/pages/user/edit_profile/editProfile";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,12 +26,23 @@ function App() {
           path: "about-us",
           element: <AboutUs />,
         },
+        {
+          path: "profile",
+          element: <Profile />,
+          children: [
+            {
+              path: "edit_profile",
+              element: <EditProfile />,
+            },
+          ],
+        },
       ],
     },
     {
       path: "login",
       element: <LoginPage />,
     },
+
     {
       path: "register",
       element: <RegisterPage />,

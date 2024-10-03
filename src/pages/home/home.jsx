@@ -48,7 +48,14 @@ function HomePage() {
           <div className="authen">
             User | {username}
             <ul className="user_action">
-              <li>My Profile</li>
+              <li>
+                <Link
+                  style={{ textDecoration: "none", color: "#fff" }}
+                  to="profile"
+                >
+                  My Profile
+                </Link>
+              </li>
               <li>Purchase Order</li>
               <li onClick={handleOpenModal}>LogOut</li>
             </ul>

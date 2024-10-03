@@ -1,0 +1,39 @@
+.profile_header{
+    height: 120px;
+}
+.left{
+    background-color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+.right{
+    background-color: #e9e7e7;
+}
+.profile_avatar{
+    background-color: red;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+.profile_name{
+    width: 100%;
+    color: #fff;
+    font-size: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.profile_children{
+    color: #fff;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.profile_children:hover{
+    cursor: pointer;
+    background-color: #ccc;
+    color: #000;
+}
