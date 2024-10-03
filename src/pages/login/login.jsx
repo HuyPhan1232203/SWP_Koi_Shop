@@ -15,8 +15,11 @@ function LoginPage() {
     try {
       setLoading(true);
       const response = await api.post("login", values);
-      console.log(response.data.username);
+      console.log(response.data);
       sessionStorage.setItem("username", response.data.username);
+      sessionStorage.setItem("role", response.data.role);
+      sessionStorage.setItem("id", response.data.id);
+
       const { role, token } = response.data;
       localStorage.setItem("token", token);
       if (role === "MANAGER") {

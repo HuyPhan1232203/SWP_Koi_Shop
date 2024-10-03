@@ -21,6 +21,9 @@
 .edit_field{
     display: flex;
 }
+.edit_field_title{
+    margin-right: 10px;
+}
 .edit_btn{
     font-size: 20px;
     padding: 20px;
