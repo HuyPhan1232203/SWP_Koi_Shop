@@ -19,16 +19,6 @@ import { PlusOutlined } from "@ant-design/icons";
 
 const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   const [KoiFish, setKoiFish] = useState([]);
-  const getBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
-  const [fileList, setFileList] = useState([]);
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -97,12 +87,6 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   };
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
-    if (fileList.length > 0) {
-      const file = fileList[0];
-      console.log(file);
-      const url = await uploadFile(file.originFileObj);
-      Koi.image = url;
-    }
     try {
       setSubmitKoi(true);
       if (Koi.id) {
@@ -112,45 +96,18 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
       } else {
         //create
         const response = await api.post({ apiName }, Koi);
-        console.log(response.data);
+        console.log(response);
       }
       fetchKoi();
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
-      console.log("err");
+      console.log(err.response.data);
     } finally {
       setSubmitKoi(false);
     }
   };
-  const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setPreviewImage(file.url || file.preview);
-    setPreviewOpen(true);
-  };
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-  const uploadButton = (
-    <button
-      style={{
-        border: 0,
-        background: "none",
-      }}
-      type="button"
-    >
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </button>
-  );
-
   // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   return (
     <div>
@@ -179,19 +136,6 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
           {formItems}
         </Form>
       </Modal>
-      {previewImage && (
-        <Image
-          wrapperStyle={{
-            display: "none",
-          }}
-          preview={{
-            visible: previewOpen,
-            onVisibleChange: (visible) => setPreviewOpen(visible),
-            afterOpenChange: (visible) => !visible && setPreviewImage(""),
-          }}
-          src={previewImage}
-        />
-      )}
       <Table columns={cols} dataSource={KoiFish}></Table>
     </div>
   );
