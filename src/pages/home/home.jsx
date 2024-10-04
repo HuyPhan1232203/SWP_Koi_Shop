@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./home.css";
-import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  ArrowRightOutlined,
+  FacebookOutlined,
+  InstagramOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+  YoutubeOutlined,
+} from "@ant-design/icons";
 import { Modal, Popconfirm } from "antd";
 function HomePage() {
   const nav = useNavigate();
@@ -122,7 +132,105 @@ function HomePage() {
       <div className="container">
         <Outlet />
       </div>
-      <div className="footer"></div>
+      <div className="footer">
+        <div className="container-xl">
+          <div className="row mb-5 justify-content-between">
+            <div className="col-md-4 col-lg mb-4">
+              <div className="footer-widget">
+                <div className="heading-footer">
+                  <img
+                    className="logo-footer"
+                    src="/assets/images/koi-logo.png"
+                    alt=""
+                  />
+                </div>
+                <p className="slogan">Swim into Serenity: Find Your Perfect Koi!</p>
+                <ul className="footer-social list-unstyled">
+                  <li>
+                    <a href="">
+                      <span className="social-icon">
+                        <FacebookOutlined />
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <span className="social-icon">
+                        <YoutubeOutlined />
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <span className="social-icon">
+                        <InstagramOutlined />
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-md-4 col-lg-2">
+              <div className="footer-widget">
+                <h2 className="heading-2">Explore</h2>
+                <ul className="list-unstyled">
+                  <li>
+                    <a href="">
+                      <span className="arrow-ion">
+                        <ArrowRightOutlined />
+                      </span>
+                      About us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <span className="arrow-ion">
+                        <ArrowRightOutlined />
+                      </span>
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <span className="arrow-ion">
+                        <ArrowRightOutlined />
+                      </span>
+                      Contact us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-md-4 col-lg">
+              <div className="footer-widget contact-2">
+                <h2 className="heading-2">Buy a Koi?</h2>
+                <div className="contact-section">
+                  <ul className="">
+                    <li>
+                      <span className="contact-icon">
+                        <ShopOutlined />
+                      </span>
+                      <span className="text-contact">123 Le Van Viet</span>
+                    </li>
+                    <li>
+                      <span className="contact-icon">
+                        <PhoneOutlined />
+                      </span>
+                      <span className="text-contact">090909090909</span>
+                    </li>
+                    <li>
+                      <span className="contact-icon">
+                        <MailOutlined />
+                      </span>
+                      <span className="text-contact">abc@gmail.com</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
