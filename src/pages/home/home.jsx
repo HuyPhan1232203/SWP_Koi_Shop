@@ -142,6 +142,7 @@ function HomePage() {
                 </p>
               </div>
             </div>
+            <div>hello</div>
           </div>
         </div>
       )}
