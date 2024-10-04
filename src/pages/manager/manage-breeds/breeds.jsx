@@ -11,8 +11,8 @@ function Breeds() {
     },
     {
       title: "Name",
-      dataIndex: "breedName",
-      key: "breedName",
+      dataIndex: "name",
+      key: "name",
     },
   ];
   const formItems = (
@@ -20,7 +20,7 @@ function Breeds() {
       <Form.Item
         label="Name"
         rules={[{ require: true, message: "please input" }]}
-        name="breedName"
+        name="name"
       >
         <Input></Input>
       </Form.Item>

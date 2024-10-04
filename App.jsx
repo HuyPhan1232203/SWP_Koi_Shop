@@ -13,6 +13,7 @@ import Profile from "./src/pages/user/profile/profile";
 import EditProfile from "./src/pages/user/edit_profile/editProfile";
 import Breeds from "./src/pages/manager/manage-breeds/breeds";
 import ForgotPassword from "./src/pages/forgot-password/forgot";
+import ResetPassword from "./src/pages/reset-password/reset";
 
 function App() {
   const router = createBrowserRouter([
@@ -47,6 +48,10 @@ function App() {
     {
       path: "forgot_password",
       element: <ForgotPassword />,
+    },
+    {
+      path: "reset_password",
+      element: <ResetPassword />,
     },
 
     {
