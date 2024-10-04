@@ -127,6 +127,7 @@ function LoginPage() {
             Register
           </Link>{" "}
         </p>
+        <Link to="">Forgot password?</Link>
       </Form>
     </Authen_template>
   );

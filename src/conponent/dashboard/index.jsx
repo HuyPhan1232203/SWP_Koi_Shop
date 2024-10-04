@@ -23,7 +23,7 @@ const items = [
   getItem("Koi List", "koilist", <ProductOutlined />),
   getItem("Voucher List", "voucher", <ContainerOutlined />),
   getItem("Staff List", "staff", <IdcardOutlined />),
-  getItem("Profile", "", <ProfileOutlined />),
+  getItem("Breeds", "breeds", <ProfileOutlined />),
 ];
 
 const Dashboard = () => {

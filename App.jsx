@@ -11,6 +11,7 @@ import Introduction from "./src/pages/customer/introduction/introduction";
 import AboutUs from "./src/pages/customer/about-us/about-us";
 import Profile from "./src/pages/user/profile/profile";
 import EditProfile from "./src/pages/user/edit_profile/editProfile";
+import Breeds from "./src/pages/manager/manage-breeds/breeds";
 
 function App() {
   const router = createBrowserRouter([
@@ -67,6 +68,10 @@ function App() {
         {
           path: "staff",
           element: <ManageStaff />,
+        },
+        {
+          path: "breeds",
+          element: <Breeds />,
         },
       ],
     },

@@ -112,15 +112,14 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
       } else {
         //create
         const response = await api.post({ apiName }, Koi);
-        console.log(response);
-        console.log("error");
+        console.log(response.data);
       }
       fetchKoi();
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
-      console.log("error");
+      console.log("err");
     } finally {
       setSubmitKoi(false);
     }
