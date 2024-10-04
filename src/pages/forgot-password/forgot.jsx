@@ -11,10 +11,13 @@ function ForgotPassword() {
   const [form] = Form.useForm();
   const handleForgotPassword = async (email) => {
     try {
-      await api.post("forgot-password", email);
+      const response = await api.post("forgot-password", email);
+      console.log(response.data);
       nav("/reset_password");
     } catch (err) {
-      toast.error("err");
+      const errorMessage =
+        err.response?.data || "An error occurred. Please try again.";
+      toast.error(errorMessage);
     }
   };
   return (
