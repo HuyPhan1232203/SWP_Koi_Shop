@@ -16,24 +16,22 @@ function Breeds() {
     },
   ];
   const formItems = (
-    <>
-      <Form.Item
-        label="Name"
-        rules={[{ require: true, message: "please input" }]}
-        name="name"
-      >
-        <Input></Input>
-      </Form.Item>
-    </>
+    <Form.Item
+      label="Name"
+      rules={[{ require: true, message: "please input" }]}
+      name="name"
+    >
+      <Input></Input>
+    </Form.Item>
   );
   return (
     <div>
       <CRUDTemplate
         columns={col}
-        name="Breeds"
-        apiName="breed"
         formItems={formItems}
-      ></CRUDTemplate>
+        apiName="breed"
+        name="Breeds"
+      />
     </div>
   );
 }

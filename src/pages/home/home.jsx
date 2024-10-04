@@ -52,7 +52,12 @@ function HomePage() {
                 className="cart_icon"
                 style={{ fontSize: "20px", color: "#fff", padding: "3px" }}
               />
-              <p>Shopping Cart</p>
+              <Link
+                to="/cart"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                Shopping Cart
+              </Link>
             </Link>
           </div>
           <div className="authen">
@@ -144,7 +149,6 @@ function HomePage() {
                 </p>
               </div>
             </div>
-            <div>hello</div>
           </div>
         </div>
       )}

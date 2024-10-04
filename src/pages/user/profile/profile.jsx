@@ -12,7 +12,10 @@ function Profile() {
         <Layout>
           <div className="row">
             <div className="left col-md-3">
-              <div className="profile_avatar"></div>
+              <img
+                className="profile_avatar"
+                src="/assets/images/user.png"
+              ></img>
               <div className="profile_name text-center">{username}</div>
               <Link
                 to="edit_profile"
