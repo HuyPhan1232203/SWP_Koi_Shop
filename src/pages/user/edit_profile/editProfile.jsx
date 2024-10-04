@@ -6,7 +6,6 @@ import api from "../../../config/axios";
 
 function EditProfile() {
   const username = sessionStorage.getItem("username");
-  const role = sessionStorage.getItem("role");
   const id = sessionStorage.getItem("id");
   const fetchUserInfo = async (id) => {
     if (!id) {
@@ -17,7 +16,7 @@ function EditProfile() {
       const response = await api.get(`account/${id}`);
       console.log(response.data);
     } catch (err) {
-      toast.error(err);
+      toast.error(err.response.data);
     }
   };
   useEffect(() => {
