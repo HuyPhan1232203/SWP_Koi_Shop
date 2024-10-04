@@ -12,7 +12,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { Modal, Popconfirm } from "antd";
+import { Button, Modal, Popconfirm } from "antd";
 function HomePage() {
   const nav = useNavigate();
   const [openModal, setOpenModal] = useState(false);
@@ -138,7 +138,7 @@ function HomePage() {
               <div className="col-md-11 text-center-slider">
                 <h1 className="mb-4">Swim into Serenity: Find Your Perfect Koi!</h1>
                 <p>
-                  <a href="" className="btn-koi-list">Koi List</a>
+                  <Button className="btn-koi-list">Koi List</Button>
                 </p>
               </div>
             </div>

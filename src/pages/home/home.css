@@ -1,4 +1,5 @@
 .headerbar{
+    z-index: 10;
     width: 100%;
     height: 120px;
     position: fixed;
@@ -170,6 +171,7 @@
 }
 
 .homepage-design {
+    z-index: 1;
     margin-top: 70px;
     height: 850px;
     background: url("/public/assets/images/homepage-img-1.png") top center / cover no-repeat ;
@@ -222,11 +224,12 @@
 }
 
 .slider-text p a {
-    color: white;
-    text-decoration: none;
+    
 }
 
 .slider-text .btn-koi-list {
+    color: white;
+    text-decoration: none;
     cursor: pointer;
     background-color: #E35C40;
     border: 1px solid #E35C40;
