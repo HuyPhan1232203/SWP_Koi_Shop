@@ -46,12 +46,12 @@ function LoginPage() {
         credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log(user.displayName);
+        console.log(user);
         sessionStorage.setItem("username", user.displayName);
         console.log(user.email);
         // IdP data available using getAdditionalUserInfo(result)
-        // ...
         navigate("/");
+        // ...
       })
       .catch((error) => {
         // Handle Errors here.
@@ -127,7 +127,9 @@ function LoginPage() {
             Register
           </Link>{" "}
         </p>
-        <Link to="/forgot_password">Forgot password?</Link>
+        <Link to="/forgot_password" style={{ marginLeft: "150px" }}>
+          Forgot password?
+        </Link>
       </Form>
     </Authen_template>
   );
