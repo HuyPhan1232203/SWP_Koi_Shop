@@ -1,21 +1,7 @@
-import {
-  Button,
-  Form,
-  Image,
-  Input,
-  InputNumber,
-  Modal,
-  Popconfirm,
-  Radio,
-  Table,
-  Upload,
-} from "antd";
+import { Button, Form, Input, Modal, Popconfirm, Table } from "antd";
 import { useEffect, useState } from "react";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
-import uploadFile from "../../utils/file";
-import { PlusOutlined } from "@ant-design/icons";
-// import "./ManagementKoi.css";
 
 const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   const [KoiFish, setKoiFish] = useState([]);
@@ -78,24 +64,27 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   //DELETE
   const handleDeleteKoi = async (id) => {
     try {
-      await api.delete(`${apiName}/${id}`);
+      console.log(id);
+      const response = await api.delete(`${apiName}/${id}`);
+      console.log(response);
       toast.success("Deleteted successfully!!!");
       fetchKoi();
     } catch (err) {
-      toast.error(err);
+      toast.error(err.response.data);
     }
   };
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
       setSubmitKoi(true);
+      let response = null;
       if (Koi.id) {
         //update
-        const response = await api.put(`${apiName}/${Koi.id}`, Koi);
+        response = await api.put(`${apiName}/${Koi.id}`, Koi);
         console.log(response);
       } else {
         //create
-        const response = await api.post({ apiName }, Koi);
+        response = await api.post(`${apiName}`, Koi);
         console.log(response);
       }
       fetchKoi();
@@ -103,7 +92,11 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
-      console.log(err.response.data);
+      if (err.response && err.response.data) {
+        toast.error(err.response.data); // Better error handling
+      } else {
+        console.log("An unexpected error occurred", err);
+      }
     } finally {
       setSubmitKoi(false);
     }
@@ -121,7 +114,7 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
       </Button>
       <Modal
         confirmLoading={submitKoi}
-        title={<span className="Modal_header">{name} INFORMATION</span>}
+        title={<span className="Modal_header">{name} Information</span>}
         open={openModal}
         onCancel={() => {
           handleClosenModal();
