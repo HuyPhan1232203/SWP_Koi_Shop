@@ -129,6 +129,22 @@ function HomePage() {
           Are you sure want to log out?
         </Modal>
       </div>
+      {/* Conditional Rendering for Homepage Content */}
+      {location.pathname === "/" && (
+        <div className="homepage-design">
+          <div className="overlay"></div>
+          <div className="container">
+            <div className="row slider-text">
+              <div className="col-md-11 text-center-slider">
+                <h1 className="mb-4">Swim into Serenity: Find Your Perfect Koi!</h1>
+                <p>
+                  <a href="" className="btn-koi-list">Koi List</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="container">
         <Outlet />
       </div>
@@ -176,7 +192,7 @@ function HomePage() {
                 <ul className="list-unstyled">
                   <li>
                     <a href="">
-                      <span className="arrow-ion">
+                      <span className="arrow-icon">
                         <ArrowRightOutlined />
                       </span>
                       About us
@@ -184,7 +200,7 @@ function HomePage() {
                   </li>
                   <li>
                     <a href="">
-                      <span className="arrow-ion">
+                      <span className="arrow-icon">
                         <ArrowRightOutlined />
                       </span>
                       Services
@@ -192,7 +208,7 @@ function HomePage() {
                   </li>
                   <li>
                     <a href="">
-                      <span className="arrow-ion">
+                      <span className="arrow-icon">
                         <ArrowRightOutlined />
                       </span>
                       Contact us
@@ -203,7 +219,7 @@ function HomePage() {
             </div>
             <div className="col-md-4 col-lg">
               <div className="footer-widget contact-2">
-                <h2 className="heading-2">Buy a Koi?</h2>
+                <h2 className="heading-2 buy-koi">Buy a Koi?</h2>
                 <div className="contact-section">
                   <ul className="">
                     <li>
