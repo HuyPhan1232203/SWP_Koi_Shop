@@ -12,6 +12,7 @@ import AboutUs from "./src/pages/customer/about-us/about-us";
 import Profile from "./src/pages/user/profile/profile";
 import EditProfile from "./src/pages/user/edit_profile/editProfile";
 import Breeds from "./src/pages/manager/manage-breeds/breeds";
+import ForgotPassword from "./src/pages/forgot-password/forgot";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +43,10 @@ function App() {
     {
       path: "login",
       element: <LoginPage />,
+    },
+    {
+      path: "forgot_password",
+      element: <ForgotPassword />,
     },
 
     {
