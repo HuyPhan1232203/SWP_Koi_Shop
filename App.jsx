@@ -14,6 +14,7 @@ import EditProfile from "./src/pages/user/edit_profile/editProfile";
 import Breeds from "./src/pages/manager/manage-breeds/breeds";
 import ForgotPassword from "./src/pages/forgot-password/forgot";
 import ResetPassword from "./src/pages/reset-password/reset";
+import Test from "./src/pages/test/test";
 
 function App() {
   const router = createBrowserRouter([
@@ -44,6 +45,10 @@ function App() {
     {
       path: "login",
       element: <LoginPage />,
+    },
+    {
+      path: "test",
+      element: <Test />,
     },
     {
       path: "forgot_password",
