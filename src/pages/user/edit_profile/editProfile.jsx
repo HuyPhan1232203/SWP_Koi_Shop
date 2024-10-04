@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./editProfile.css";
 import { Button, Form, Input } from "antd";
 import { toast } from "react-toastify";
@@ -8,19 +8,26 @@ function EditProfile() {
   const username = sessionStorage.getItem("username");
   const role = sessionStorage.getItem("role");
   const id = sessionStorage.getItem("id");
-  const handleEditProfile = async (value, id) => {
-    if (id === "CUSTOMER") {
-      try {
-        const response = await api.put("account", value);
-        console.log(response);
-      } catch (err) {
-        toast.error(err);
-      }
+  const fetchUserInfo = async (id) => {
+    if (!id) {
+      console.warn("No ID provided for fetching user info");
+      return;
+    }
+    try {
+      const response = await api.get(`account/${id}`);
+      console.log(response.data);
+    } catch (err) {
+      toast.error(err);
     }
   };
+  useEffect(() => {
+    if (id) {
+      fetchUserInfo(id);
+    }
+  }, [id]);
   return (
     <div className="editProfile">
-      <div className="editProfile_title">About</div>
+      <div className="editProfile_title">About{id}</div>
       <div className="edit">
         <div className="edit_field">
           <div className="edit_field_title font">User Name:</div>
