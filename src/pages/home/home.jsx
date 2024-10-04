@@ -136,7 +136,9 @@ function HomePage() {
           <div className="container">
             <div className="row slider-text">
               <div className="col-md-11 text-center-slider">
-                <h1 className="mb-4">Swim into Serenity: Find Your Perfect Koi!</h1>
+                <h1 className="mb-4">
+                  Swim into Serenity: Find Your Perfect Koi!
+                </h1>
                 <p>
                   <Button className="btn-koi-list">Koi List</Button>
                 </p>
@@ -161,7 +163,9 @@ function HomePage() {
                     alt=""
                   />
                 </div>
-                <p className="slogan">Swim into Serenity: Find Your Perfect Koi!</p>
+                <p className="slogan">
+                  Swim into Serenity: Find Your Perfect Koi!
+                </p>
                 <ul className="footer-social list-unstyled">
                   <li>
                     <a href="">
@@ -233,13 +237,20 @@ function HomePage() {
                       <span className="contact-icon">
                         <PhoneOutlined />
                       </span>
-                      <span className="text-contact">090909090909</span>
+                      <a href="tel:0938345312" className="text-contact">
+                        0938345312
+                      </a>
                     </li>
                     <li>
                       <span className="contact-icon">
                         <MailOutlined />
                       </span>
-                      <span className="text-contact">abc@gmail.com</span>
+                      <a
+                        href="mailto:phuocnntse182664@fpt.edu.vn"
+                        className="text-contact"
+                      >
+                        phuocnntse182664@fpt.edu.vn
+                      </a>
                     </li>
                   </ul>
                 </div>
