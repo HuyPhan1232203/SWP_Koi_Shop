@@ -26,6 +26,10 @@ function LoginPage() {
         navigate("/dashboard/koilist");
         navigate(0);
       }
+      if (role === "STAFF") {
+        navigate("/dashboard-staff");
+        navigate(0);
+      }
       if (role === "CUSTOMER") {
         navigate("/");
         navigate(0);

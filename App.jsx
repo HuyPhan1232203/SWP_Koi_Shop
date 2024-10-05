@@ -1,4 +1,8 @@
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import LoginPage from "./src/pages/login/login";
 import RegisterPage from "./src/pages/register/register";
 import HomePage from "./src/pages/home/home";
@@ -18,6 +22,8 @@ import Test from "./src/pages/test/test";
 import Cart from "./src/pages/user/shopping_cart/cart";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import DashboardStaff from "./src/conponent/dashboard-staff/dashboard-staff";
+import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list";
 
 function App() {
   const ProtectRouteAuth = ({ children }) => {
@@ -111,6 +117,17 @@ function App() {
           element: <Breeds />,
         },
       ],
+    },
+
+    {
+      path: "dashboard-staff",
+      element: <DashboardStaff />,
+      children: [
+        {
+          path: "orderlist",
+          element: <ManageOrders />
+        }
+      ]
     },
   ]);
 
