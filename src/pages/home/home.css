@@ -241,6 +241,19 @@
     padding: 14px 26px;
 }
 
+.koi-section {
+    position: relative;
+    z-index: 0;
+    padding: 8em 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.koi-content-center {
+    padding-top: 1.5em;
+    justify-content: center;
+}
+
 .footer{
     padding-top: 40px;
 }
@@ -305,7 +318,7 @@
 .footer-widget ul li {
     margin-bottom: 10px;
     text-decoration: none;
-    color: #white;
+    color: white;
 
 }
 

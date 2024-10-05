@@ -110,6 +110,7 @@ function HomePage() {
                     <li>Koi Doistu</li>
                     <li>Koi Ginrin</li>
                     <li>Koi Goshiki</li>
+                    <li>Koi Asagi</li>
                   </ul>
                 </li>
 
@@ -134,8 +135,8 @@ function HomePage() {
           Are you sure want to log out?
         </Modal>
       </div>
-      {/* Conditional Rendering for Homepage Content */}
       {location.pathname === "/" && (
+        <div className="homepage-section">
         <div className="homepage-design">
           <div className="overlay"></div>
           <div className="container">
@@ -151,6 +152,33 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <div className="koi-section">
+          <div className="container">
+            <div className="row koi-content-center">
+              <div className="col-md-10 koi-center-heading">
+                <span className="sub-heading">Our Kois</span>
+                <h2 className="mb-5">Explore our Kois</h2>
+              </div>
+            </div>
+            <div className="row">
+              <div className="koi-types">
+                <div className="tns-outer">
+                  <div className="tns-nav">
+                    <button type="button" data-nav="0" className="tns-nav-active"></button>
+                    <button type="button" data-nav="1" className="tns-nav-active"></button>
+                    <button type="button" data-nav="2" className="tns-nav-active"></button>
+                    <button type="button" data-nav="3" className="tns-nav-active"></button>
+                  </div>
+                  <div className="tns-visually-hidden">
+                  </div>
+                  <div className="tns-ovh"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
       )}
       <div className="container">
         <Outlet />
