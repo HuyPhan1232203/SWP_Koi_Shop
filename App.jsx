@@ -24,6 +24,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import DashboardStaff from "./src/conponent/dashboard-staff/dashboard-staff";
 import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list";
+import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
 
 function App() {
   const ProtectRouteAuth = ({ children }) => {
@@ -126,6 +127,10 @@ function App() {
         {
           path: "orderlist",
           element: <ManageOrders />
+        },
+        {
+          path: "bloglist",
+          element: <ManageBlog />
         }
       ]
     },
