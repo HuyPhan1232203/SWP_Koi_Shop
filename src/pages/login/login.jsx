@@ -27,7 +27,7 @@ function LoginPage() {
         navigate(0);
       }
       if (role === "STAFF") {
-        navigate("/dashboard-staff");
+        navigate("/dashboard-staff/orderlist");
         navigate(0);
       }
       if (role === "CUSTOMER") {
