@@ -8,14 +8,23 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const hanldeSearch=(value)=>{
+    
+  }
   //FETCH
   const fetchKoi = async () => {
     const response = await api.get(apiName);
     setKoiFish(response.data);
   };
+  const fetchStaff = async () => {
+    const response = await api.get(`role/STAFF`);
+    setKoiFish(response.data);
+  };
+
   //USE EFFECT
   useEffect(() => {
     fetchKoi();
+    fetchStaff();
   }, []);
   //OPEN MODAL
   const handleOpenModal = () => {
@@ -88,6 +97,7 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
         console.log(response);
       }
       fetchKoi();
+      fetchStaff();
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
@@ -109,9 +119,15 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
           {name} Management
         </h1>
       </div>
-      <Button className="add_btn" onClick={handleOpenModal}>
-        Create {name}
-      </Button>
+      <div className="sub_header">
+        <Button className="add_btn" onClick={handleOpenModal}>
+          Create {name}
+        </Button>
+        <Input
+          placeholder="search"
+          style={{ width: "300px", marginLeft: "900px" }}
+        ></Input>
+      </div>
       <Modal
         confirmLoading={submitKoi}
         title={<span className="Modal_header">{name} Information</span>}

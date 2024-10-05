@@ -51,11 +51,7 @@ function ManageStaff() {
         <Input></Input>
       </Form.Item>
 
-      <Form.Item
-        label="password"
-        rules={[{ required: true, message: "Please Input" }]}
-        name="password"
-      >
+      <Form.Item hidden label="password" name="password">
         <Input></Input>
       </Form.Item>
     </>
@@ -65,7 +61,7 @@ function ManageStaff() {
       <CRUDTemplate
         columns={columns}
         formItems={formItems}
-        apiName="koi"
+        apiName="account"
         name="Staff"
       />
     </div>
