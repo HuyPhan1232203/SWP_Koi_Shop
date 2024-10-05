@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import LoginPage from "./src/pages/login/login";
 import RegisterPage from "./src/pages/register/register";
 import HomePage from "./src/pages/home/home";
@@ -16,8 +16,21 @@ import ForgotPassword from "./src/pages/forgot-password/forgot";
 import ResetPassword from "./src/pages/reset-password/reset";
 import Test from "./src/pages/test/test";
 import Cart from "./src/pages/user/shopping_cart/cart";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 function App() {
+  const ProtectRouteAuth = ({ children }) => {
+    const user = useSelector((store) => store.user);
+    console.log(user);
+
+    if (user && user?.role === "ADMIN") {
+      return children;
+    }
+    toast.error("You are not allowed to access this!");
+    return <Navigate to={"/login"} />;
+  };
+
   const router = createBrowserRouter([
     {
       path: "",
@@ -75,7 +88,11 @@ function App() {
 
     {
       path: "dashboard",
-      element: <Dashboard />,
+      element: (
+        <ProtectRouteAuth>
+          <Dashboard />
+        </ProtectRouteAuth>
+      ),
       children: [
         {
           path: "koilist",

@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit"
-import counterReducer from "../../src/redux/feature/conterSlice"
+import counterReducer from "./features/counterSlide"
 
 export const rootReducer = combineReducers({
       counter:counterReducer,
