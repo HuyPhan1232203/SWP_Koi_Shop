@@ -17,7 +17,7 @@ function EditProfile() {
       return;
     }
     try {
-      response = await api.get(`account/{id}?id=${id}`);
+      response = await api.get(`account/${id}`);
       setUsername(response.data.username);
       setEmail(response.data.email);
       setPhone(response.data.phone);

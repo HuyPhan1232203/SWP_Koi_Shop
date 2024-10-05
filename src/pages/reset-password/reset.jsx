@@ -1,15 +1,22 @@
 import React from "react";
 import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../config/axios";
 
 function ResetPassword() {
   const [form] = Form.useForm();
+  const location = useLocation(); // Get current location object (contains the URL)
+
   const handleResetPassword = async (password) => {
     try {
+      console.log(location.search);
+      const params = new URLSearchParams(location.search);
+      const token = params.get("token");
+      localStorage.setItem("token", token);
       await api.post("reset-password", password);
+      toast.success("Success!");
     } catch (err) {
       toast.error("err");
     }
@@ -19,7 +26,11 @@ function ResetPassword() {
       <div className="form_header">
         <h1>Reset Password</h1>
       </div>
-      <Form form={form} className="form_container">
+      <Form
+        form={form}
+        className="form_container"
+        onFinish={handleResetPassword}
+      >
         <Form.Item
           name="password"
           rules={[
