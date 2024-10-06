@@ -28,7 +28,7 @@
   }
 .container{
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     /* background-color: rgb(240, 216, 119); */
 }
 .footer{
@@ -246,12 +246,85 @@
     z-index: 0;
     padding: 8em 0;
     width: 100%;
-    overflow-x: hidden;
 }
 
 .koi-content-center {
     padding-top: 1.5em;
     justify-content: center;
+}
+
+.koi-content-center .text-center {
+    text-align: center;
+}
+
+.koi-center-heading .sub-heading {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+    color: #E35C40;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.koi-center-heading h2 {
+    font-size: 46px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 50px;
+    color: black;
+}
+
+.koi-content {
+    margin-bottom: 20px;
+}
+
+.koi-section .koi-types {
+    width: 33.33333%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.koi-section .koi-item {
+    border: 1px solid #E35C40;
+    text-align: center;
+    position: relative;
+    padding-bottom: 30px;
+    border-radius: 15px;
+}
+
+.koi-section .koi-item img {
+    max-width: 100%;
+    left: 50%;
+    text-align: center;
+    border-bottom: 1px solid #E35C40;
+    border-radius: 15px;
+
+    
+}
+
+.koi-section .koi-item h3 {
+    font-size: 20px;
+    color: #E35C40;
+    text-transform: uppercase;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.koi-section .koi-item Button {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #E35C40;
+    border: 1px solid #E35C40;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    padding: 14px 26px;
 }
 
 .footer{

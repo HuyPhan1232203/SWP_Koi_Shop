@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./home.css";
+import "animate.css";
 import {
   ArrowRightOutlined,
   FacebookOutlined,
@@ -137,48 +138,120 @@ function HomePage() {
       </div>
       {location.pathname === "/" && (
         <div className="homepage-section">
-        <div className="homepage-design">
-          <div className="overlay"></div>
-          <div className="container">
-            <div className="row slider-text">
-              <div className="col-md-11 text-center-slider">
-                <h1 className="mb-4">
-                  Swim into Serenity: Find Your Perfect Koi!
-                </h1>
-                <p>
-                  <Button className="btn-koi-list">Koi List</Button>
-                </p>
+          <div className="homepage-design">
+            <div className="overlay"></div>
+            <div className="container">
+              <div className="row slider-text">
+                <div className="col-md-11 text-center-slider">
+                  <h1 className="mb-4">
+                    Swim into Serenity: Find Your Perfect Koi!
+                  </h1>
+                  <p>
+                    <Button className="btn-koi-list">Koi List</Button>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="koi-section">
-          <div className="container">
-            <div className="row koi-content-center">
-              <div className="col-md-10 koi-center-heading">
-                <span className="sub-heading">Our Kois</span>
-                <h2 className="mb-5">Explore our Kois</h2>
-              </div>
-            </div>
-            <div className="row">
-              <div className="koi-types">
-                <div className="tns-outer">
-                  <div className="tns-nav">
-                    <button type="button" data-nav="0" className="tns-nav-active"></button>
-                    <button type="button" data-nav="1" className="tns-nav-active"></button>
-                    <button type="button" data-nav="2" className="tns-nav-active"></button>
-                    <button type="button" data-nav="3" className="tns-nav-active"></button>
+          <div className="koi-section">
+            <div className="container">
+              <div className="row koi-content-center">
+                <div className="col-md-10 koi-center-heading text-center">
+                  <span className="sub-heading">Our Kois</span>
+                  <h2 className="mb-5">Explore our Kois</h2>
+                </div>
+                {/* Row Koi 1 */}
+                <div className="row koi-content">
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/kohaku.png" alt="" />
+                      <h3>Kohaku</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
                   </div>
-                  <div className="tns-visually-hidden">
+
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/ogon.png" alt="" />
+                      <h3>Ogon</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
                   </div>
-                  <div className="tns-ovh"></div>
+
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/showa.png" alt="" />
+                      <h3>Showa</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
+                  </div>  
+                </div>
+
+                {/* Row Koi 2 */}
+                <div className="row koi-content">
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/tancho.png" alt="" />
+                      <h3>Tancho</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/bekko.png" alt="" />
+                      <h3>Bekko</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/doitsu.png" alt="" />
+                      <h3>Doitsu</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
+                  </div>  
+                </div>
+                {/* Row Koi 3 */}
+                <div className="row koi-content">
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/ginrin.png" alt="" />
+                      <h3>Ginrin</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/goshiki.png" alt="" />
+                      <h3>Goshiki</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4 koi-types">
+                    <div className="koi-item">
+                      <img src="/public/assets/images/asagi.png" alt="" />
+                      <h3>Asagi</h3>
+                      {/* <a className="explore-btn" href="">Explore</a> */}
+                      <Button>Explore</Button>
+                    </div>
+                  </div>  
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
-
       )}
       <div className="container">
         <Outlet />
