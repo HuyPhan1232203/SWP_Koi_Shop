@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./home.css";
 import "animate.css";
@@ -17,6 +17,7 @@ import { Button, Modal, Popconfirm } from "antd";
 function HomePage() {
   const nav = useNavigate();
   const [openModal, setOpenModal] = useState(false);
+  const koiSectionRef = useRef(null); // Create a ref for koi section
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -29,6 +30,12 @@ function HomePage() {
     nav("/");
   };
   const username = sessionStorage.getItem("username");
+
+  const scrollToKoiSection = () => {
+    if (koiSectionRef.current) {
+      koiSectionRef.current.scrollIntoView({ behavior: "smooth"});
+    }
+  };
   const authenticate = (username) => {
     if (username == null) {
       return (
@@ -147,13 +154,13 @@ function HomePage() {
                     Swim into Serenity: Find Your Perfect Koi!
                   </h1>
                   <p>
-                    <Button className="btn-koi-list">Koi List</Button>
+                    <Button onClick={scrollToKoiSection} className="btn-koi-list">Koi List</Button>
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="koi-section">
+          <div className="koi-section" ref={koiSectionRef}>
             <div className="container">
               <div className="row koi-content-center">
                 <div className="col-md-10 koi-center-heading text-center">
