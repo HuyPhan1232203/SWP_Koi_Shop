@@ -83,8 +83,8 @@ const Dashboard = () => {
         components: {
           Menu: {
             darkItemBg: "#E35C40",
-            darkItemSelectedBg: "#fff",
-            darkItemSelectedColor: "#E35C40",
+            darkItemSelectedBg: "#bbb",
+            darkItemSelectedColor: "#fff",
             darkItemColor: "#fff",
           },
           Button: {
