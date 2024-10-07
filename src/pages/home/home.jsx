@@ -33,7 +33,7 @@ function HomePage() {
 
   const scrollToKoiSection = () => {
     if (koiSectionRef.current) {
-      koiSectionRef.current.scrollIntoView({ behavior: "smooth"});
+      koiSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
   const authenticate = (username) => {
@@ -102,7 +102,7 @@ function HomePage() {
             <div className="header_nav">
               <ul className="subnav">
                 <li className="nav_li">
-                  <Link to="/">Home</Link>
+                  <a href="#">Home</a>
                 </li>
                 <li className="nav_li">
                   <Link to="/introduction">Introduction</Link>
@@ -154,7 +154,12 @@ function HomePage() {
                     Swim into Serenity: Find Your Perfect Koi!
                   </h1>
                   <p>
-                    <Button onClick={scrollToKoiSection} className="btn-koi-list">Koi List</Button>
+                    <Button
+                      onClick={scrollToKoiSection}
+                      className="btn-koi-list"
+                    >
+                      Koi List
+                    </Button>
                   </p>
                 </div>
               </div>
@@ -194,7 +199,7 @@ function HomePage() {
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
                     </div>
-                  </div>  
+                  </div>
                 </div>
 
                 {/* Row Koi 2 */}
@@ -224,7 +229,7 @@ function HomePage() {
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
                     </div>
-                  </div>  
+                  </div>
                 </div>
                 {/* Row Koi 3 */}
                 <div className="row koi-content">
@@ -253,7 +258,7 @@ function HomePage() {
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
                     </div>
-                  </div>  
+                  </div>
                 </div>
               </div>
             </div>
