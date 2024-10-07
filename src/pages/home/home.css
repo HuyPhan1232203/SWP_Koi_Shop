@@ -111,7 +111,8 @@
 .authen:hover .user_action{
     display: block;
 }
-.nav_li,.nav_li a{
+
+.nav_li,.nav_elements{
     padding:48px 20px;
     list-style-type: none;
     font-weight: 700;
@@ -158,18 +159,23 @@
     display: none;
     list-style: none;
     padding: 0;
-    background:rgba(255, 255, 255, .85) ;
-    color: #B78E75;
+    background:rgba(255, 255, 255, .95) ;
 }
 .nav_li_koi_elements li:hover{
     background-color: #c3b9b9;
     cursor: pointer;
 }
-.nav_li_koi_elements li{
-    width: 170px;
+.koi_list_link li{
+    width: 200px;
     padding: 10px 10px;
-    border-bottom: 1px solid #B78E75;
     cursor: pointer;
+    border-bottom: 1px solid #B78E75;
+    color: #9d7a63;
+
+}
+.koi_list_link{
+    width: 100%;
+    text-decoration: none;
 }
 
 .homepage-design {

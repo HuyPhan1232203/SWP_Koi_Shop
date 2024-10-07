@@ -105,23 +105,47 @@ function HomePage() {
             <div className="header_nav">
               <ul className="subnav">
                 <li className="nav_li">
-                  <a href="/#">Home</a>
+                  <a className="nav_elements" href="/#">
+                    Home
+                  </a>
                 </li>
                 <li className="nav_li">
-                  <Link to="/introduction">Introduction</Link>
+                  <Link className="nav_elements" to="/introduction">
+                    Introduction
+                  </Link>
                 </li>
                 <li className="nav_li nav_li_koi">
-                  <a href="#koiList">Koi List</a>
+                  <a className="nav_elements" href="/#koiList">
+                    Koi List
+                  </a>
                   <ul className="nav_li_koi_elements">
-                    <li>Koi Kohaku</li>
-                    <li>Koi Ogon</li>
-                    <li>Koi Showa</li>
-                    <li>Koi Tancho</li>
-                    <li>Koi Bekko</li>
-                    <li>Koi Doistu</li>
-                    <li>Koi Ginrin</li>
-                    <li>Koi Goshiki</li>
-                    <li>Koi Asagi</li>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Kohaku</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Ogon</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Showa</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Tancho</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Bekko</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Doistu</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Ginrin</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Goshiki</li>
+                    </Link>
+                    <Link to="koi-list" className="koi_list_link">
+                      <li>Koi Asagi</li>
+                    </Link>
                   </ul>
                 </li>
 

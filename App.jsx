@@ -25,6 +25,7 @@ import DashboardStaff from "./src/conponent/dashboard-staff/dashboard-staff";
 import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list";
 import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
 import { useSelector } from "react-redux";
+import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
 
 function App() {
   // const ProtectRouteAuth = ({ children }) => {
@@ -53,6 +54,10 @@ function App() {
         {
           path: "cart",
           element: <Cart />,
+        },
+        {
+          path: "koi-list",
+          element: <KoiBreedType />,
         },
         {
           path: "profile",
