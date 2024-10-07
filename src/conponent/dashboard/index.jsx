@@ -24,14 +24,14 @@ function getItem(label, key, icon, children) {
     key,
     icon,
     children,
-    label: <Link to={`/dashboard/${key}`}>{label}</Link>,
+    label: <Link style={{color: "#fff"}} to={`/dashboard/${key}`}>{label}</Link>,
   };
 }
 const items = [
-  getItem("Koi List", "koilist", <ProductOutlined />),
-  getItem("Voucher List", "voucher", <ContainerOutlined />),
-  getItem("Staff List", "staff", <IdcardOutlined />),
-  getItem("Breeds", "breeds", <ProfileOutlined />),
+  getItem("Koi List", "koilist", <ProductOutlined style={{color: "#fff"}} />),
+  getItem("Voucher List", "voucher", <ContainerOutlined style={{color: "#fff"}} />),
+  getItem("Staff List", "staff", <IdcardOutlined style={{color: "#fff"}} />),
+  getItem("Breeds", "breeds", <ProfileOutlined style={{color: "#fff"}} />),
 ];
 
 const Dashboard = () => {
