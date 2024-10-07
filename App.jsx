@@ -31,7 +31,7 @@ function App() {
     const user = useSelector((store) => store.user);
     console.log(user);
 
-    if (user && user?.role === "ADMIN") {
+    if (user && user?.role === "CUSTOMER") {
       return children;
     }
     toast.error("You are not allowed to access this!");
@@ -126,13 +126,13 @@ function App() {
       children: [
         {
           path: "orderlist",
-          element: <ManageOrders />
+          element: <ManageOrders />,
         },
         {
           path: "bloglist",
-          element: <ManageBlog />
-        }
-      ]
+          element: <ManageBlog />,
+        },
+      ],
     },
   ]);
 

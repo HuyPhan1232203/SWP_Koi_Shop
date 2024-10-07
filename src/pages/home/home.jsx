@@ -16,8 +16,11 @@ import {
 import { Button, Modal, Popconfirm } from "antd";
 function HomePage() {
   const nav = useNavigate();
+  
   const [openModal, setOpenModal] = useState(false);
+  
   const koiSectionRef = useRef(null); // Create a ref for koi section
+  
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -176,7 +179,7 @@ function HomePage() {
                 <div className="row koi-content">
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/kohaku.png" alt="" />
+                      <img src="/assets/images/kohaku.png" alt="" />
                       <h3>Kohaku</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -185,7 +188,7 @@ function HomePage() {
 
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/ogon.png" alt="" />
+                      <img src="/assets/images/ogon.png" alt="" />
                       <h3>Ogon</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -194,7 +197,7 @@ function HomePage() {
 
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/showa.png" alt="" />
+                      <img src="/assets/images/showa.png" alt="" />
                       <h3>Showa</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -206,7 +209,7 @@ function HomePage() {
                 <div className="row koi-content">
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/tancho.png" alt="" />
+                      <img src="/assets/images/tancho.png" alt="" />
                       <h3>Tancho</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -215,7 +218,7 @@ function HomePage() {
 
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/bekko.png" alt="" />
+                      <img src="/assets/images/bekko.png" alt="" />
                       <h3>Bekko</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -224,7 +227,7 @@ function HomePage() {
 
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/doitsu.png" alt="" />
+                      <img src="/assets/images/doitsu.png" alt="" />
                       <h3>Doitsu</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -235,7 +238,7 @@ function HomePage() {
                 <div className="row koi-content">
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/ginrin.png" alt="" />
+                      <img src="/assets/images/ginrin.png" alt="" />
                       <h3>Ginrin</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -244,7 +247,7 @@ function HomePage() {
 
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/goshiki.png" alt="" />
+                      <img src="/assets/images/goshiki.png" alt="" />
                       <h3>Goshiki</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
@@ -253,7 +256,7 @@ function HomePage() {
 
                   <div className="col-md-4 koi-types">
                     <div className="koi-item">
-                      <img src="/public/assets/images/asagi.png" alt="" />
+                      <img src="/assets/images/asagi.png" alt="" />
                       <h3>Asagi</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
                       <Button>Explore</Button>
