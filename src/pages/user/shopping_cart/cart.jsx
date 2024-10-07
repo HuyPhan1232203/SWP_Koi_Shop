@@ -1,4 +1,3 @@
-import React from "react";
 import "./cart.css";
 import { Table } from "antd";
 function Cart() {

@@ -1,5 +1,6 @@
 import {
   createBrowserRouter,
+  Link,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
@@ -18,18 +19,16 @@ import EditProfile from "./src/pages/user/edit_profile/editProfile";
 import Breeds from "./src/pages/manager/manage-breeds/breeds";
 import ForgotPassword from "./src/pages/forgot-password/forgot";
 import ResetPassword from "./src/pages/reset-password/reset";
-import Test from "./src/pages/test/test";
 import Cart from "./src/pages/user/shopping_cart/cart";
-import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import DashboardStaff from "./src/conponent/dashboard-staff/dashboard-staff";
 import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list";
 import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
-import { ConfigProvider } from "antd";
+import { useSelector } from "react-redux";
 
 function App() {
   // const ProtectRouteAuth = ({ children }) => {
-  //   const user = useSelector((store) => store.user);
+  //   const user = useSelector((store) => store);
   //   console.log(user);
   //   if (user && user?.role === "MANAGER") {
   //     return children;
@@ -72,10 +71,6 @@ function App() {
       element: <LoginPage />,
     },
     {
-      path: "test",
-      element: <Test />,
-    },
-    {
       path: "forgot_password",
       element: <ForgotPassword />,
     },
@@ -96,7 +91,7 @@ function App() {
     {
       path: "dashboard",
       element: (
-        //  (
+        // (
         // <ProtectRouteAuth>
         <Dashboard />
       ),
