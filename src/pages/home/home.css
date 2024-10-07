@@ -174,7 +174,7 @@
 
 .homepage-design {
     height: 850px;
-    background: url("/public/assets/images/homepage-img-1.png") top center / cover no-repeat ;
+    background: url("/assets/images/homepage-img-1.png") top center / cover no-repeat ;
     width: 100%;
     position: relative;
 }
