@@ -3,28 +3,21 @@ import { useEffect, useState } from "react";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 
-const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
+const CRUDTemplate = ({ columns, formItems, apiName, name, role }) => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const hanldeSearch=(value)=>{
-    
-  }
+
   //FETCH
   const fetchKoi = async () => {
     const response = await api.get(apiName);
-    setKoiFish(response.data);
-  };
-  const fetchStaff = async () => {
-    const response = await api.get(`role/STAFF`);
     setKoiFish(response.data);
   };
 
   //USE EFFECT
   useEffect(() => {
     fetchKoi();
-    fetchStaff();
   }, []);
   //OPEN MODAL
   const handleOpenModal = () => {
@@ -97,7 +90,6 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
         console.log(response);
       }
       fetchKoi();
-      fetchStaff();
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();

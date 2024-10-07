@@ -6,15 +6,19 @@ import api from "../../config/axios";
 import { toast } from "react-toastify";
 
 function ForgotPassword() {
+  const [sendEmail, setSendEmail] = useState(false);
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
   const [form] = Form.useForm();
   const handleForgotPassword = async (email) => {
     try {
+      setSendEmail(false);
       setLoading(true);
       const response = await api.post("forgot-password", email);
+
       console.log(response.data);
-      nav("/reset_password");
+      setSendEmail(true);
+      nav("/login");
     } catch (err) {
       const errorMessage =
         err.response?.data || "An error occurred. Please try again.";

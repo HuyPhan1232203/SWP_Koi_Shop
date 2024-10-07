@@ -1,7 +1,47 @@
-import { Form, Input, InputNumber, Radio } from "antd";
-import CRUDTemplate from "../../../conponent/crud-template/crud-template";
-function ManageStaff() {
-  const columns = [
+import { Button, Form, Input, Modal, Popconfirm, Table } from "antd";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import api from "../../../config/axios";
+const ManageStaff = () => {
+  const [KoiFish, setKoiFish] = useState([]);
+  const [formStand] = Form.useForm();
+  const [submitKoi, setSubmitKoi] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [searchValue, setSearchValue] = useState();
+
+  //FETCH
+  const fetchKoi = async () => {
+    const response = await api.get("account/role/STAFF");
+    console.log(response.data);
+    setKoiFish(response.data);
+  };
+  const handleInputChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+  //SEARCH
+  const handleSearchByName = async () => {
+    try {
+      console.log(searchValue);
+      const response = await api.get(`account/name/${searchValue}`);
+      console.log(searchValue);
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+  //USE EFFECT
+  useEffect(() => {
+    fetchKoi();
+  }, []);
+  //OPEN MODAL
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  //CLOSE MODEL
+  const handleClosenModal = () => {
+    setOpenModal(false);
+  };
+  //COLUMNS
+  const cols = [
     {
       title: "id",
       dataIndex: "id",
@@ -22,50 +62,138 @@ function ManageStaff() {
       dataIndex: "phone",
       key: "phone",
     },
+    {
+      title: "Action",
+      dataIndex: "id",
+      key: "id",
+      render: (id, koi) => {
+        return (
+          <div style={{ display: "flex" }}>
+            <Button
+              type="primary"
+              onClick={() => {
+                setOpenModal(true);
+                formStand.setFieldsValue(koi);
+              }}
+            >
+              Edit
+            </Button>
+
+            <Popconfirm
+              onConfirm={() => {
+                handleDeleteKoi(id);
+              }}
+              title="Delete"
+              description="Are you sure"
+            >
+              <Button type="primary" danger>
+                Delete
+              </Button>
+            </Popconfirm>
+          </div>
+        );
+      },
+    },
   ];
+  //DELETE
+  const handleDeleteKoi = async (id) => {
+    try {
+      await api.delete(`account/${id}`);
+      toast.success("Deleteted successfully!!!");
+      fetchKoi();
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+  //CREATE OR UPDATE
+  const handleSubmitKoi = async (Koi) => {
+    try {
+      Koi.password = "dsaasd";
+      Koi.role = "STAFF";
+      setSubmitKoi(true);
+      if (Koi.id) {
+        //update
+        const response = await api.put(`account/${Koi.id}`, Koi);
+        console.log(response);
+      } else {
+        //create
+        const response = await api.post("register", Koi);
+        console.log(response);
+      }
+      fetchKoi();
+      toast.success("Update successfully!!!");
+      formStand.resetFields();
+      handleClosenModal();
+    } catch (err) {
+      console.log(err.response.data);
+    } finally {
+      setSubmitKoi(false);
+    }
+  };
 
-  const formItems = (
-    <>
-      <Form.Item hidden label="id" name="id">
-        <Input></Input>
-      </Form.Item>
-      <Form.Item
-        label="email"
-        rules={[{ required: true, message: "Please Input" }]}
-        name="email"
-      >
-        <Input></Input>
-      </Form.Item>
-      <Form.Item
-        label="username"
-        rules={[{ required: true, message: "Please Input" }]}
-        name="username"
-      >
-        <Input></Input>
-      </Form.Item>
-      <Form.Item
-        label="phone"
-        rules={[{ required: true, message: "Please Input" }]}
-        name="phone"
-      >
-        <Input></Input>
-      </Form.Item>
-
-      <Form.Item hidden label="password" name="password">
-        <Input></Input>
-      </Form.Item>
-    </>
-  );
+  // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   return (
     <div>
-      <CRUDTemplate
-        columns={columns}
-        formItems={formItems}
-        apiName="account"
-        name="Staff"
-      />
+      <div className="header text-center p-5 ">
+        <h1 className="header_text" style={{ color: "red" }}>
+          Staff Management
+        </h1>
+      </div>
+      <div className="sub_header">
+        <Button className="add_btn" onClick={handleOpenModal}>
+          Create Staff
+        </Button>
+        <Input
+          placeholder="search"
+          style={{ width: "300px", marginLeft: "900px" }}
+          value={searchValue}
+          onChange={handleInputChange}
+        ></Input>
+        <Button onClick={handleSearchByName()}>Search</Button>
+      </div>
+      <Modal
+        confirmLoading={submitKoi}
+        title={<span className="Modal_header">Staff Information</span>}
+        open={openModal}
+        onCancel={() => {
+          handleClosenModal();
+          formStand.resetFields();
+        }}
+        onOk={formStand.submit}
+      >
+        <Form onFinish={handleSubmitKoi} form={formStand}>
+          <Form.Item hidden label="id" name="id">
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            rules={[{ required: true, message: "Please Input" }]}
+            name="email"
+          >
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
+            label="username"
+            rules={[
+              { required: true, message: "Please Input" },
+              // { min: 1000, message: "username cannot lower than 1000" },
+            ]}
+            name="username"
+          >
+            <Input></Input>
+          </Form.Item>
+          <Form.Item
+            label="phone"
+            rules={[{ required: true, message: "Please Input" }]}
+            name="phone"
+          >
+            <Input></Input>
+          </Form.Item>
+        </Form>
+      </Modal>
+
+      <Table columns={cols} dataSource={KoiFish}></Table>
     </div>
   );
-}
-
+};
 export default ManageStaff;
