@@ -49,6 +49,7 @@ const DashboardStaff = () => {
             /* here is your component tokens */
             headerColor: "#E35C40",
             headerSplitColor: "#E35C40",
+            rowHoverBg: "#ECDFDB",
           },
         },
       }}
