@@ -21,9 +21,17 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem("Orders List", "orderlist", <ShoppingOutlined />),
-  getItem("Blog List", "2", <SnippetsOutlined />),
-  getItem("Profile", "3", <ProfileOutlined />),
+  getItem(
+    "Orders List",
+    "orderlist",
+    <ShoppingOutlined style={{ color: "#fff" }} />
+  ),
+  getItem(
+    "Blog List",
+    "bloglist",
+    <SnippetsOutlined style={{ color: "#fff" }} />
+  ),
+  getItem("Profile", "3", <ProfileOutlined style={{ color: "#fff" }} />),
 ];
 const DashboardStaff = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -38,6 +46,11 @@ const DashboardStaff = () => {
           colorText: "#fff",
         },
         components: {
+          Button: {
+            /* here is your component tokens */
+            defaultHoverBorderColor: "#E35C40",
+            defaultHoverColor: "#E35C40",
+          },
           Layout: {
             /* here is your component tokens */
             siderBg: "#E35C40",
