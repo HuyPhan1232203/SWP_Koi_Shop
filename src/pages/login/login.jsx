@@ -8,14 +8,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../config/axios";
 import { GoogleOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/features/userSlice";
 function LoginPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const handleLogin = async (values) => {
     try {
       setLoading(true);
       const response = await api.post("login", values);
       console.log(response.data);
+      dispatch(login(response.data));
       sessionStorage.setItem("username", response.data.username);
       sessionStorage.setItem("role", response.data.role);
       sessionStorage.setItem("id", response.data.id);
@@ -25,23 +29,17 @@ function LoginPage() {
       if (role === "MANAGER") {
         navigate("/dashboard/koilist");
         navigate(0);
-      }
-      if (role === "STAFF") {
-        navigate("/dashboard-staff/orderlist");
-        navigate(0);
-      }
-      if (role === "CUSTOMER") {
+      } else if (role === "CUSTOMER") {
         navigate("/");
         navigate(0);
-      }
-      if (role === "STAFF") {
+      } else if (role === "STAFF") {
         navigate("/dashboard-staff/orderlist");
         navigate(0);
       }
 
       setLoading(false);
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error(err.response);
       setLoading(false);
     }
   };
