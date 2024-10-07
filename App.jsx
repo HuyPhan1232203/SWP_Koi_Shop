@@ -28,7 +28,6 @@ import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
 import { ConfigProvider } from "antd";
 
 function App() {
-  
   // const ProtectRouteAuth = ({ children }) => {
   //   const user = useSelector((store) => store.user);
   //   console.log(user);
@@ -96,11 +95,13 @@ function App() {
 
     {
       path: "dashboard",
-      element: ( <Dashboard />
+      element: (
+        //  (
         // <ProtectRouteAuth>
-        //   <Dashboard />
-        // </ProtectRouteAuth>
+        <Dashboard />
       ),
+      // </ProtectRouteAuth>
+      // ),
       children: [
         {
           path: "koilist",
@@ -138,7 +139,6 @@ function App() {
   ]);
 
   return <RouterProvider router={router} />;
-
 }
 
 export default App;

@@ -21,9 +21,13 @@ const ManageStaff = () => {
   //SEARCH
   const handleSearchByName = async () => {
     try {
-      console.log(searchValue);
-      const response = await api.get(`account/name/${searchValue}`);
-      console.log(searchValue);
+      let response = null;
+      if (searchValue) {
+        response = await api.get(`account/name/${searchValue}`);
+      } else {
+        response = await api.get("account/role/STAFF");
+      }
+      setKoiFish(response.data);
     } catch (err) {
       toast.error(err);
     }

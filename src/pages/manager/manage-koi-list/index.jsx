@@ -7,6 +7,7 @@ import {
   Modal,
   Popconfirm,
   Radio,
+  Select,
   Table,
   Upload,
 } from "antd";
@@ -14,19 +15,46 @@ import {
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
+import { Option } from "antd/es/mentions";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
+  const [submitBreed, setSubmitBreed] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   //FETCH
   const fetchKoi = async () => {
-    const response = await api.get("koi");
-    setKoiFish(response.data);
+    try {
+      const response = await api.get("koi?page=0&size=5");
+      console.log(response.data.content);
+      setKoiFish(response.data.content);
+      const response1 = await api.get("koi?page=1&size=5");
+      const array = [...response.data.content, ...response1.data.content];
+      console.log(array);
+      setKoiFish(array);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  };
+  const handleBreedNameLoop = () => {
+    for (let i = 0; i < submitBreed.length; i++) {
+      const element = submitBreed[i].name;
+      console.log(element);
+    }
+  };
+  const fetchBreed = async () => {
+    try {
+      const response = await api.get("breed");
+      setSubmitBreed(response.data);
+      console.log(response.data);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   };
   //USE EFFECT
   useEffect(() => {
     fetchKoi();
+    fetchBreed();
   }, []);
   //OPEN MODAL
   const handleOpenModal = () => {
@@ -83,8 +111,8 @@ const ManagementKoi = () => {
     },
     {
       title: "breed",
-      dataIndex: "breed",
-      key: "breed",
+      dataIndex: "breedName",
+      key: "breedName",
     },
 
     {
@@ -151,7 +179,7 @@ const ManagementKoi = () => {
       } else {
         //create
         const response = await api.post("koi", Koi);
-        console.log(response);
+        console.log(Koi);
       }
       fetchKoi();
       toast.success("Update successfully!!!");
@@ -230,12 +258,10 @@ const ManagementKoi = () => {
           >
             <Input></Input>
           </Form.Item>
-          <Form.Item
-            label="breed"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="breed"
-          >
-            <Input></Input>
+          <Form.Item label="breedName" name="breedId">
+            <Select>
+              <Option value="3">KoiVN</Option>
+            </Select>
           </Form.Item>
           <Form.Item
             label="description"
