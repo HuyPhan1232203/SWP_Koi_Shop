@@ -46,6 +46,12 @@ const DashboardStaff = () => {
           colorText: "#fff",
         },
         components: {
+          Menu: {
+            darkItemBg: "#E35C40",
+            darkItemSelectedBg: "#fff",
+            darkItemSelectedColor: "#E35C40",
+            darkItemColor: "#fff",
+          },
           Button: {
             /* here is your component tokens */
             defaultHoverBorderColor: "#E35C40",

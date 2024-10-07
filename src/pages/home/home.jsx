@@ -323,7 +323,7 @@ function HomePage() {
                       <span className="arrow-icon">
                         <ArrowRightOutlined />
                       </span>
-                      <div>About us</div>
+                      About us
                     </a>
                   </li>
                   <li>

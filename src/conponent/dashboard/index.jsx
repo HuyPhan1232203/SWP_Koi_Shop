@@ -24,14 +24,18 @@ function getItem(label, key, icon, children) {
     key,
     icon,
     children,
-    label: <Link style={{color: "#fff"}} to={`/dashboard/${key}`}>{label}</Link>,
+    label: <Link to={`/dashboard/${key}`}>{label}</Link>,
   };
 }
 const items = [
-  getItem("Koi List", "koilist", <ProductOutlined style={{color: "#fff"}} />),
-  getItem("Voucher List", "voucher", <ContainerOutlined style={{color: "#fff"}} />),
-  getItem("Staff List", "staff", <IdcardOutlined style={{color: "#fff"}} />),
-  getItem("Breeds", "breeds", <ProfileOutlined style={{color: "#fff"}} />),
+  getItem("Koi List", "koilist", <ProductOutlined style={{ color: "#fff" }} />),
+  getItem(
+    "Voucher List",
+    "voucher",
+    <ContainerOutlined style={{ color: "#fff" }} />
+  ),
+  getItem("Staff List", "staff", <IdcardOutlined style={{ color: "#fff" }} />),
+  getItem("Breeds", "breeds", <ProfileOutlined style={{ color: "#fff" }} />),
 ];
 
 const Dashboard = () => {
@@ -77,6 +81,12 @@ const Dashboard = () => {
           colorLink: "#fff",
         },
         components: {
+          Menu: {
+            darkItemBg: "#E35C40",
+            darkItemSelectedBg: "#fff",
+            darkItemSelectedColor: "#E35C40",
+            darkItemColor: "#fff",
+          },
           Button: {
             /* here is your component tokens */
             defaultHoverBorderColor: "#E35C40",
@@ -110,7 +120,7 @@ const Dashboard = () => {
         >
           <div className="demo-logo-vertical" />
           <Menu
-            theme="#E35C40"
+            theme="dark"
             defaultSelectedKeys={["1"]}
             mode="inline"
             items={items}
