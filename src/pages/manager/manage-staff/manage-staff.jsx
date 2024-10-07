@@ -135,7 +135,7 @@ const ManageStaff = () => {
   return (
     <div>
       <div className="header text-center p-5 ">
-        <h1 className="header_text" style={{ color: "red" }}>
+        <h1 className="header_text" style={{ color: "#E35C40" }}>
           Staff Management
         </h1>
       </div>

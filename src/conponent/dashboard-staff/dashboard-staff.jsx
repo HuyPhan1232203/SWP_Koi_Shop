@@ -9,7 +9,7 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Breadcrumb, ConfigProvider, Layout, Menu, theme } from "antd";
 import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -31,64 +31,88 @@ const DashboardStaff = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout
-      style={{
-        minHeight: "100vh",
+    <ConfigProvider
+      theme={{
+        token: {
+          /* here is your global tokens */
+          colorText: "#fff",
+        },
+        components: {
+          Layout: {
+            /* here is your component tokens */
+            siderBg: "#E35C40",
+            triggerBg: "#fff",
+            triggerColor: "#E35C40",
+            lightTriggerColor: "#fff",
+          },
+          Table: {
+            /* here is your component tokens */
+            headerColor: "#E35C40",
+            headerSplitColor: "#E35C40",
+          },
+        },
       }}
     >
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
+      <Layout
+        style={{
+          minHeight: "100vh",
+        }}
       >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-        />
-      </Sider>
-      <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
-        <Content
-          style={{
-            margin: "0 16px",
-          }}
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
         >
-          <Breadcrumb
+          <div className="demo-logo-vertical" />
+          <Menu
+            className="menu-staff"
+            theme="#E35C40"
+            defaultSelectedKeys={["1"]}
+            mode="inline"
+            items={items}
+          />
+        </Sider>
+        <Layout>
+          <Header
             style={{
-              margin: "16px 0",
-            }}
-          >
-            <Breadcrumb.Item></Breadcrumb.Item>
-            <Breadcrumb.Item></Breadcrumb.Item>
-          </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
+              padding: 0,
               background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+            }}
+          />
+          <Content
+            style={{
+              margin: "0 16px",
             }}
           >
-            <Outlet />
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
+            <Breadcrumb
+              style={{
+                margin: "16px 0",
+              }}
+            >
+              <Breadcrumb.Item></Breadcrumb.Item>
+              <Breadcrumb.Item></Breadcrumb.Item>
+            </Breadcrumb>
+            <div
+              style={{
+                padding: 24,
+                minHeight: 360,
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
+              }}
+            >
+              <Outlet />
+            </div>
+          </Content>
+          <Footer
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          </Footer>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   );
 };
 export default DashboardStaff;

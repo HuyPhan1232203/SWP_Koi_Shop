@@ -25,17 +25,19 @@ import { toast } from "react-toastify";
 import DashboardStaff from "./src/conponent/dashboard-staff/dashboard-staff";
 import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list";
 import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
+import { ConfigProvider } from "antd";
 
 function App() {
-  const ProtectRouteAuth = ({ children }) => {
-    const user = useSelector((store) => store.user);
-    console.log(user);
-    if (user && user?.role === "MANAGER") {
-      return children;
-    }
-    toast.error("You are not allowed to access this!");
-    return <Navigate to={"/login"} />;
-  };
+  
+  // const ProtectRouteAuth = ({ children }) => {
+  //   const user = useSelector((store) => store.user);
+  //   console.log(user);
+  //   if (user && user?.role === "MANAGER") {
+  //     return children;
+  //   }
+  //   toast.error("You are not allowed to access this!");
+  //   return <Navigate to={"/login"} />;
+  // };
 
   const router = createBrowserRouter([
     {
@@ -94,10 +96,10 @@ function App() {
 
     {
       path: "dashboard",
-      element: (
-        <ProtectRouteAuth>
-          <Dashboard />
-        </ProtectRouteAuth>
+      element: ( <Dashboard />
+        // <ProtectRouteAuth>
+        //   <Dashboard />
+        // </ProtectRouteAuth>
       ),
       children: [
         {
@@ -136,6 +138,7 @@ function App() {
   ]);
 
   return <RouterProvider router={router} />;
+
 }
 
 export default App;

@@ -5,7 +5,15 @@ import {
   ProductOutlined,
   ProfileOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Button, Input, Layout, Menu, theme } from "antd";
+import {
+  Breadcrumb,
+  Button,
+  ConfigProvider,
+  Input,
+  Layout,
+  Menu,
+  theme,
+} from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const { Header, Content, Footer, Sider } = Layout;
@@ -32,7 +40,19 @@ const Dashboard = () => {
   const showName = () => {
     if (username) {
       return (
-        <h4 style={{ fontFamily: "serif", color: "red" }}>
+        <h4
+          style={{
+            fontFamily: "serif",
+            color: "#fff",
+            border: "1px solid #E35C40",
+            backgroundColor: "#E35C40",
+            borderRadius: "10px",
+            paddingBottom: "10px",
+            paddingTop: "10px",
+            width: "300px",
+            textAlign: "center",
+          }}
+        >
           Author: {username}
         </h4>
       );
@@ -49,65 +69,95 @@ const Dashboard = () => {
     nav("/");
   };
   return (
-    <Layout
-      style={{
-        minHeight: "100vh",
+    <ConfigProvider
+      theme={{
+        token: {
+          /* here is your global tokens */
+          colorText: "black",
+          colorLink: "#fff",
+        },
+        components: {
+          Button: {
+            /* here is your component tokens */
+            defaultHoverBorderColor: "#E35C40",
+            defaultHoverColor: "#E35C40",
+          },
+          Layout: {
+            /* here is your component tokens */
+            siderBg: "#E35C40",
+            triggerBg: "#fff",
+            triggerColor: "#E35C40",
+            lightTriggerColor: "#fff",
+          },
+          Table: {
+            /* here is your component tokens */
+            headerColor: "#E35C40",
+            headerSplitColor: "#E35C40",
+            rowHoverBg: "#ECDFDB",
+          },
+        },
       }}
     >
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
+      <Layout
+        style={{
+          minHeight: "100vh",
+        }}
       >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-        />
-      </Sider>
-      <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-          }}
-        />
-        <Content
-          style={{
-            margin: "0 16px",
-          }}
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
         >
-          <div
+          <div className="demo-logo-vertical" />
+          <Menu
+            theme="#E35C40"
+            defaultSelectedKeys={["1"]}
+            mode="inline"
+            items={items}
+          />
+        </Sider>
+        <Layout>
+          <Header
             style={{
-              padding: 24,
-              minHeight: 360,
+              padding: 0,
               background: colorBgContainer,
-              borderRadius: borderRadiusLG,
+            }}
+          />
+          <Content
+            style={{
+              margin: "0 16px",
             }}
           >
-            {showName()}
-            <Button
+            <div
               style={{
-                marginLeft: "1300px",
+                padding: 24,
+                minHeight: 360,
+                background: colorBgContainer,
+                borderRadius: borderRadiusLG,
               }}
-              onClick={handleLogOut}
             >
-              LogOut
-            </Button>
-            <Outlet />
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
+              {showName()}
+              <Button
+                style={{
+                  marginLeft: "1300px",
+                }}
+                onClick={handleLogOut}
+              >
+                LogOut
+              </Button>
+              <Outlet />
+            </div>
+          </Content>
+          <Footer
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          </Footer>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   );
 };
 export default Dashboard;
