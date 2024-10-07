@@ -30,8 +30,7 @@ function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
     console.log(user);
-
-    if (user && user?.role === "ADMIN") {
+    if (user && user?.role === "MANAGER") {
       return children;
     }
     toast.error("You are not allowed to access this!");
