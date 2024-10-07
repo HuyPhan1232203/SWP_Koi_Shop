@@ -16,11 +16,11 @@ import {
 import { Button, Modal, Popconfirm } from "antd";
 function HomePage() {
   const nav = useNavigate();
-  
+
   const [openModal, setOpenModal] = useState(false);
-  
+
   const koiSectionRef = useRef(null); // Create a ref for koi section
-  
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -111,7 +111,7 @@ function HomePage() {
                   <Link to="/introduction">Introduction</Link>
                 </li>
                 <li className="nav_li nav_li_koi">
-                  Koi List
+                  <a href="#koiList">Koi List</a>
                   <ul className="nav_li_koi_elements">
                     <li>Koi Kohaku</li>
                     <li>Koi Ogon</li>
@@ -162,7 +162,9 @@ function HomePage() {
                       onClick={scrollToKoiSection}
                       className="btn-koi-list"
                     >
-                      Koi List
+                      <a style={{ textDecoration: "none" }} href="#koiList">
+                        Koi List
+                      </a>
                     </Button>
                   </p>
                 </div>
@@ -171,7 +173,7 @@ function HomePage() {
           </div>
           <div className="koi-section" ref={koiSectionRef}>
             <div className="container">
-              <div className="row koi-content-center">
+              <div className="row koi-content-center" id="koiList">
                 <div className="col-md-10 koi-center-heading text-center">
                   <span className="sub-heading">Our Kois</span>
                   <h2 className="mb-5">Explore our Kois</h2>

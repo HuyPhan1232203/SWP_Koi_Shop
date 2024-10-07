@@ -34,6 +34,10 @@ function LoginPage() {
         navigate("/");
         navigate(0);
       }
+      if (role === "STAFF") {
+        navigate("/dashboard-staff/orderlist");
+        navigate(0);
+      }
 
       setLoading(false);
     } catch (err) {
