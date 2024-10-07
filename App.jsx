@@ -31,7 +31,7 @@ function App() {
     const user = useSelector((store) => store.user);
     console.log(user);
 
-    if (user && user?.role === "CUSTOMER") {
+    if (user && user?.role === "ADMIN") {
       return children;
     }
     toast.error("You are not allowed to access this!");
