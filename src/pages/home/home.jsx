@@ -105,7 +105,7 @@ function HomePage() {
             <div className="header_nav">
               <ul className="subnav">
                 <li className="nav_li">
-                  <a href="#">Home</a>
+                  <a href="/#">Home</a>
                 </li>
                 <li className="nav_li">
                   <Link to="/introduction">Introduction</Link>
@@ -126,6 +126,7 @@ function HomePage() {
                 </li>
 
                 <Link
+                  id="About"
                   to="about-us"
                   style={{ textDecoration: "none", color: "white" }}
                 >
@@ -320,7 +321,7 @@ function HomePage() {
                       <span className="arrow-icon">
                         <ArrowRightOutlined />
                       </span>
-                      About us
+                      <div>About us</div>
                     </a>
                   </li>
                   <li>
