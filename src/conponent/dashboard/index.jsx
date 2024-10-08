@@ -119,7 +119,7 @@ const Dashboard = () => {
             labelColor: "#fff",
           },
           Modal: {
-            contentBg: "#FE7A36",
+            contentBg: "#3652AD",
           },
           Input: {
             colorBgContainer: "#E9F6FF",
