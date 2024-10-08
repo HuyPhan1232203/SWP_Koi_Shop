@@ -93,6 +93,7 @@ const Dashboard = () => {
             defaultHoverColor: "#E35C40",
             defaultBorderColor: "#3652AD",
             defaultColor: "#3652AD",
+            defaultBg: "#E9F6FF"
           },
           Layout: {
             /* here is your component tokens */
