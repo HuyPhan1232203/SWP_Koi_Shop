@@ -1,6 +1,4 @@
-.koi_list{
-    height: 100vh;
-}
+
 .product{
     width: calc(100% / 5 - 20px);
     img{
@@ -21,4 +19,8 @@
     display: flex;
     flex-wrap: wrap;
 
+}
+.changer_btn{
+    display: flex;
+    
 }

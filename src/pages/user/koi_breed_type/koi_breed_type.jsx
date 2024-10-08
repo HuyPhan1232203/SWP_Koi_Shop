@@ -7,24 +7,38 @@ import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
-
-  const fetchProduct = async () => {
+  const breedId = sessionStorage.getItem("breedId");
+  const fetchProduct = async (breed) => {
+    if (!breed) return; // Check if breedId exists before making the API call
     try {
-      const response = await api.get("koi?page=0&size=10");
-      setKoiList(response.data.content);
+      const response = await api.get(`koi?breedId=${breed}&page=0&size=10`);
+      setKoiList(response.data); // Set the koi list data in the state
       console.log(koiList);
     } catch (err) {
       toast.error("fetch error");
     }
   };
   useEffect(() => {
-    fetchProduct();
-  }, []);
+    fetchProduct(breedId);
+  }, [breedId]);
+  //BULK KOI
+  const handleFetchKoiLot=()=>{
+    
+  }
+  // const checkChangeBreed = (breedIDstate) => {
+  //   if(breedIDstate!=breedId)
+  // };
   return (
-    <div className="koi_list">
-      {koiList.map((product) => (
-        <Product product={product} />
-      ))}
+    <div className="koi_breed_fetch">
+      <div className="changer_btn">
+        <Button className="koilot">Bulk Koi Fish</Button>
+        <Button className="koi">Single Koi Fish</Button>
+      </div>
+      <div className="koi_list">
+        {koiList.map((product) => (
+          <Product product={product} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -47,4 +61,5 @@ const Product = (product) => {
     </div>
   );
 };
+export const fetchProduct = KoiBreedType.fetchProduct;
 export default KoiBreedType;

@@ -11,8 +11,9 @@ const ManageStaff = () => {
 
   //FETCH
   const fetchKoi = async () => {
-    const response = await api.get("account/role/STAFF");
+    const response = await api.get("account?role=STAFF");
     console.log(response.data);
+    console.log("ada");
     setKoiFish(response.data);
   };
   const handleInputChange = (e) => {
@@ -72,7 +73,13 @@ const ManageStaff = () => {
       key: "id",
       render: (id, koi) => {
         return (
-          <div style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              width: "150px",
+              justifyContent: "space-around",
+            }}
+          >
             <Button
               type="primary"
               onClick={() => {

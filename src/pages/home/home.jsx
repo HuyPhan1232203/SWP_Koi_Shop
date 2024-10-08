@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./home.css";
 import "animate.css";
@@ -14,13 +14,15 @@ import {
   YoutubeOutlined,
 } from "@ant-design/icons";
 import { Button, Modal, Popconfirm } from "antd";
+import api from "../../config/axios";
+import { toast } from "react-toastify";
+import { fetchProduct } from "../user/koi_breed_type/koi_breed_type";
 function HomePage() {
   const nav = useNavigate();
 
   const [openModal, setOpenModal] = useState(false);
-
+  const [breed, setBreed] = useState([]);
   const koiSectionRef = useRef(null); // Create a ref for koi section
-
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -33,7 +35,35 @@ function HomePage() {
     nav("/");
   };
   const username = sessionStorage.getItem("username");
-
+  const fetchBreed = async () => {
+    try {
+      const response = await api.get("breed");
+      setBreed(response.data);
+      console.log(breed);
+    } catch (err) {
+      toast.error("fetch breed");
+    }
+  };
+  //SHOW LIST BREED
+  const breeds = (breed) => {
+    return (
+      <Link
+        to="koi-list"
+        className="koi_list_link"
+        onClick={() => {
+          console.log(breed.id);
+          sessionStorage.setItem("breedId", breed.id);
+          fetchProduct();
+        }}
+      >
+        <li key={breed.id}>{breed.name}</li>
+      </Link>
+    );
+  };
+  //USE EFFECT
+  useEffect(() => {
+    fetchBreed();
+  }, []);
   const scrollToKoiSection = () => {
     if (koiSectionRef.current) {
       koiSectionRef.current.scrollIntoView({ behavior: "smooth" });
@@ -105,9 +135,9 @@ function HomePage() {
             <div className="header_nav">
               <ul className="subnav">
                 <li className="nav_li">
-                  <a className="nav_elements" href="/#">
+                  <Link className="nav_elements" to="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav_li">
                   <Link className="nav_elements" to="/introduction">
@@ -115,37 +145,16 @@ function HomePage() {
                   </Link>
                 </li>
                 <li className="nav_li nav_li_koi">
-                  <a className="nav_elements" href="/#koiList">
+                  <a className="nav_elements" href="#koiList">
                     Koi List
                   </a>
                   <ul className="nav_li_koi_elements">
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Kohaku</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Ogon</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Showa</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Tancho</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Bekko</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Doistu</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Ginrin</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Goshiki</li>
-                    </Link>
-                    <Link to="koi-list" className="koi_list_link">
-                      <li>Koi Asagi</li>
-                    </Link>
+                    {/* <Link
+                      className="koi_list_link"
+                      onClick={() => console.log(breed.id)}
+                    > */}
+                    {breed.map((breed) => breeds(breed))}
+                    {/* </Link> */}
                   </ul>
                 </li>
 
@@ -175,7 +184,7 @@ function HomePage() {
         <div className="homepage-section">
           <div className="homepage-design">
             <div className="overlay"></div>
-            <div className="container">
+            <div>
               <div className="row slider-text">
                 <div className="col-md-11 text-center-slider">
                   <h1 className="mb-4">

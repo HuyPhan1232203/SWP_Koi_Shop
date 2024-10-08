@@ -36,7 +36,13 @@ const CRUDTemplate = ({ columns, formItems, apiName, name, role }) => {
       key: "id",
       render: (id, koi) => {
         return (
-          <div style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              width: "150px",
+              justifyContent: "space-around",
+            }}
+          >
             <Button
               type="primary"
               onClick={() => {

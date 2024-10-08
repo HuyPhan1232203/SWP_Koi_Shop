@@ -25,12 +25,8 @@ const ManagementKoi = () => {
   //FETCH
   const fetchKoi = async () => {
     try {
-      const response = await api.get("koi?page=0&size=5");
+      const response = await api.get("koi?page=0&size=20");
       setKoiFish(response.data.content);
-      const response1 = await api.get("koi?page=1&size=5");
-      const array = [...response.data.content, ...response1.data.content];
-      console.log(array);
-      setKoiFish(array);
     } catch (err) {
       toast.error(err.response.data);
     }
@@ -124,7 +120,13 @@ const ManagementKoi = () => {
       key: "id",
       render: (id, koi) => {
         return (
-          <div style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              width: "150px",
+              justifyContent: "space-around",
+            }}
+          >
             <Button
               type="primary"
               onClick={() => {
