@@ -1,3 +1,24 @@
 .koi_list{
     height: 100vh;
 }
+.product{
+    width: calc(100% / 5 - 20px);
+    img{
+        width: 100%;
+        height: 200px;
+        border-radius: 20px;
+        padding: 5px;
+    }
+    margin: 10px;
+    padding: 10px;
+    border: 1px #E35C40 solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.koi_list{
+    display: flex;
+    flex-wrap: wrap;
+
+}

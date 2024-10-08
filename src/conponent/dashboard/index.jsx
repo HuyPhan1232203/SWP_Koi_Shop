@@ -16,9 +16,10 @@ import {
 } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/features/userSlice";
 const { Header, Content, Footer, Sider } = Layout;
 const username = sessionStorage.getItem("username");
-
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -40,6 +41,7 @@ const items = [
 
 const Dashboard = () => {
   const nav = useNavigate();
+  const dispatch = useDispatch();
 
   const showName = () => {
     if (username) {
@@ -70,6 +72,7 @@ const Dashboard = () => {
   } = theme.useToken();
   const handleLogOut = () => {
     sessionStorage.removeItem("username");
+    dispatch(logout());
     nav("/");
   };
   return (

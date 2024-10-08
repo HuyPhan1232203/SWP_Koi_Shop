@@ -26,7 +26,6 @@ const ManagementKoi = () => {
   const fetchKoi = async () => {
     try {
       const response = await api.get("koi?page=0&size=5");
-      console.log(response.data.content);
       setKoiFish(response.data.content);
       const response1 = await api.get("koi?page=1&size=5");
       const array = [...response.data.content, ...response1.data.content];
@@ -34,12 +33,6 @@ const ManagementKoi = () => {
       setKoiFish(array);
     } catch (err) {
       toast.error(err.response.data);
-    }
-  };
-  const handleBreedNameLoop = () => {
-    for (let i = 0; i < submitBreed.length; i++) {
-      const element = submitBreed[i].name;
-      console.log(element);
     }
   };
   const fetchBreed = async () => {
@@ -191,7 +184,7 @@ const ManagementKoi = () => {
       setSubmitKoi(false);
     }
   };
-
+  //SHOW BREED LIST
   // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
   return (
     <div>
@@ -260,7 +253,11 @@ const ManagementKoi = () => {
           </Form.Item>
           <Form.Item label="breedName" name="breedId">
             <Select>
-              <Option value="3">KoiVN</Option>
+              {submitBreed.map((breed) => (
+                <Select.Option key={breed.name} breed={breed} value={breed.id}>
+                  {breed.name}
+                </Select.Option>
+              ))}
             </Select>
           </Form.Item>
           <Form.Item
@@ -293,7 +290,6 @@ const ManagementKoi = () => {
           </Form.Item>
         </Form>
       </Modal>
-
       <Table columns={cols} dataSource={KoiFish}></Table>
     </div>
   );
