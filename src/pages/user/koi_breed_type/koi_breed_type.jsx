@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
 import { useDispatch } from "react-redux";
 import { Button } from "antd";
@@ -22,12 +22,7 @@ function KoiBreedType() {
     fetchProduct(breedId);
   }, [breedId]);
   //BULK KOI
-  const handleFetchKoiLot=()=>{
-    
-  }
-  // const checkChangeBreed = (breedIDstate) => {
-  //   if(breedIDstate!=breedId)
-  // };
+  const handleFetchKoiLot = () => {};
   return (
     <div className="koi_breed_fetch">
       <div className="changer_btn">
@@ -36,17 +31,18 @@ function KoiBreedType() {
       </div>
       <div className="koi_list">
         {koiList.map((product) => (
-          <Product product={product} />
+          // eslint-disable-next-line react/jsx-key
+          <Product products={product} />
         ))}
       </div>
     </div>
   );
 }
-const Product = (product) => {
-  // const dispatch = useDispatch();
-  // const handleAddToCart = () => {
-  //   dispatch(addProduct(product));
-  // };
+const Product = (products) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addProduct(products));
+  };
   return (
     <div className="product">
       <img
@@ -54,12 +50,13 @@ const Product = (product) => {
         src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"
         alt=""
       />
-      <p className="product_name">name:{product.name}</p>
-      <p className="product_name">price:{product.price}</p>
-      <p className="product_name">size:{product.size}</p>
-      <Button>Add</Button>
+      <p className="product_name">name:{products.name}</p>
+      <p className="product_name">price:{products.price}</p>
+      <p className="product_name">size:{products.size}</p>
+      <Button onClick={handleAddToCart}>Add to cart</Button>
     </div>
   );
 };
+// eslint-disable-next-line react-refresh/only-export-components
 export const fetchProduct = KoiBreedType.fetchProduct;
 export default KoiBreedType;
