@@ -28,15 +28,15 @@ import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
 import Test from "./src/pages/test/test";
 function App() {
-  const ProtectRouteAuth = ({ children }) => {
-    const user = useSelector((store) => store.user);
-    console.log(user);
-    if (user && user?.role === "MANAGER") {
-      return children;
-    }
-    toast.error("You are not allowed to access this!");
-    return <Navigate to={"/login"} />;
-  };
+  // const ProtectRouteAuth = ({ children }) => {
+  //   const user = useSelector((store) => store.user);
+  //   console.log(user);
+  //   if (user && user?.role === "MANAGER") {
+  //     return children;
+  //   }
+  //   toast.error("You are not allowed to access this!");
+  //   return <Navigate to={"/login"} />;
+  // };
 
   const router = createBrowserRouter([
     {
@@ -100,9 +100,9 @@ function App() {
     {
       path: "dashboard",
       element: (
-        <ProtectRouteAuth>
+        // <ProtectRouteAuth>
           <Dashboard />
-        </ProtectRouteAuth>
+        // </ProtectRouteAuth>
       ),
       children: [
         {

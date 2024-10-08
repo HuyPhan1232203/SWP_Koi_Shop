@@ -47,9 +47,9 @@ const Dashboard = () => {
         <h4
           style={{
             fontFamily: "serif",
-            color: "#fff",
-            border: "1px solid #E35C40",
-            backgroundColor: "#E35C40",
+            color: "#3652AD",
+            border: "1px solid #3652AD",
+            // backgroundColor: "#E35C40",
             borderRadius: "10px",
             paddingBottom: "10px",
             paddingTop: "10px",
@@ -77,13 +77,13 @@ const Dashboard = () => {
       theme={{
         token: {
           /* here is your global tokens */
-          colorText: "black",
+          // colorText: "#fff",
           colorLink: "#fff",
         },
         components: {
           Menu: {
-            darkItemBg: "#E35C40",
-            darkItemSelectedBg: "#bbb",
+            darkItemBg: "#FE7A36",
+            darkItemSelectedBg: "#3652AD",
             darkItemSelectedColor: "#fff",
             darkItemColor: "#fff",
           },
@@ -91,20 +91,31 @@ const Dashboard = () => {
             /* here is your component tokens */
             defaultHoverBorderColor: "#E35C40",
             defaultHoverColor: "#E35C40",
+            defaultBorderColor: "#3652AD",
+            defaultColor: "#3652AD",
           },
           Layout: {
             /* here is your component tokens */
-            siderBg: "#E35C40",
-            triggerBg: "#fff",
-            triggerColor: "#E35C40",
+            siderBg: "#FE7A36",
+            triggerBg: "#3652AD",
+            triggerColor: "#FE7A36",
             lightTriggerColor: "#fff",
           },
           Table: {
             /* here is your component tokens */
-            headerColor: "#E35C40",
+            headerColor: "#fff",
             headerSplitColor: "#E35C40",
-            rowHoverBg: "#ECDFDB",
+            rowHoverBg: "#280274",
+            colorBgContainer: "#3652AD",
+            bodySortBg: "#E9F6FF",
+            colorText: "#fff",
           },
+          Form : {
+            labelColor: "#fff"
+          },
+          Modal: {
+            contentBg: "#FE7A36"
+          }
         },
       }}
     >
@@ -130,19 +141,20 @@ const Dashboard = () => {
           <Header
             style={{
               padding: 0,
-              background: colorBgContainer,
+              background: "#E9F6FF",
             }}
           />
           <Content
             style={{
               margin: "0 16px",
+              backgroundColor: "#E9F6FF"
             }}
           >
             <div
               style={{
                 padding: 24,
                 minHeight: 360,
-                background: colorBgContainer,
+                background: "#E9F6FF",
                 borderRadius: borderRadiusLG,
               }}
             >
