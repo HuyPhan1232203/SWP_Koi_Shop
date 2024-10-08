@@ -135,7 +135,7 @@ const ManageStaff = () => {
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
-    } catch (err) {
+    } catch (err) { 
       console.log(err.response.data);
     } finally {
       setSubmitKoi(false);
@@ -155,8 +155,8 @@ const ManageStaff = () => {
           Create Staff
         </Button>
         <Input
-          placeholder="search"
-          style={{ width: "300px", marginLeft: "900px" }}
+          placeholder="Search"
+          style={{ width: "300px", marginLeft: "580px" }}
           value={searchValue}
           onChange={handleInputChange}
         ></Input>

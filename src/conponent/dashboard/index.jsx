@@ -37,6 +37,7 @@ const items = [
   ),
   getItem("Staff List", "staff", <IdcardOutlined style={{ color: "#fff" }} />),
   getItem("Breeds", "breeds", <ProfileOutlined style={{ color: "#fff" }} />),
+  getItem("Koi Lot", "koilot", <ProfileOutlined style={{ color: "#fff" }} />),
 ];
 
 const Dashboard = () => {
@@ -96,7 +97,7 @@ const Dashboard = () => {
             defaultHoverColor: "#E35C40",
             defaultBorderColor: "#3652AD",
             defaultColor: "#3652AD",
-            defaultBg: "#E9F6FF"
+            defaultBg: "#E9F6FF",
           },
           Layout: {
             /* here is your component tokens */
@@ -114,12 +115,17 @@ const Dashboard = () => {
             bodySortBg: "#E9F6FF",
             colorText: "#fff",
           },
-          Form : {
-            labelColor: "#fff"
+          Form: {
+            labelColor: "#fff",
           },
           Modal: {
-            contentBg: "#FE7A36"
-          }
+            contentBg: "#FE7A36",
+          },
+          Input: {
+            colorBgContainer: "#E9F6FF",
+            activeBorderColor: "#3652AD",
+            hoverBorderColor: "#3652AD"
+          },
         },
       }}
     >
@@ -151,7 +157,7 @@ const Dashboard = () => {
           <Content
             style={{
               margin: "0 16px",
-              backgroundColor: "#E9F6FF"
+              backgroundColor: "#E9F6FF",
             }}
           >
             <div
@@ -165,7 +171,7 @@ const Dashboard = () => {
               {showName()}
               <Button
                 style={{
-                  marginLeft: "1300px",
+                  marginLeft: "1050px",
                 }}
                 onClick={handleLogOut}
               >
