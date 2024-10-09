@@ -22,11 +22,22 @@ function KoiBreedType() {
     fetchProduct(breedId);
   }, [breedId]);
   //BULK KOI
-  const handleFetchKoiLot = () => {};
+  const handleFetchKoiLot = async (breed) => {
+    if (!breed) return; // Check if breedId exists before making the API call
+    try {
+      const response = await api.get(`koilot/by-breed/${breed}`);
+      setKoiList(response.data); // Set the koi list data in the state
+      console.log(koiList);
+    } catch (err) {
+      toast.error("fetch error");
+    }
+  };
   return (
     <div className="koi_breed_fetch">
       <div className="changer_btn">
-        <Button className="koilot">Bulk Koi Fish</Button>
+        <Button onClick={handleFetchKoiLot} className="koilot">
+          Bulk Koi Fish
+        </Button>
         <Button className="koi">Single Koi Fish</Button>
       </div>
       <div className="koi_list">

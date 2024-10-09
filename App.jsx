@@ -7,7 +7,6 @@ import {
 import LoginPage from "./src/pages/login/login";
 import RegisterPage from "./src/pages/register/register";
 import HomePage from "./src/pages/home/home";
-import KoiManagement from "./src/KoiManagement";
 import Dashboard from "./src/conponent/dashboard";
 import ManagementKoi from "./src/pages/manager/manage-koi-list";
 import ManageVoucher from "./src/pages/manager/manage-voucher/manage-voucher";
@@ -89,10 +88,6 @@ function App() {
     {
       path: "register",
       element: <RegisterPage />,
-    },
-    {
-      path: "koiManager",
-      element: <KoiManagement />,
     },
     {
       path: "test",

@@ -1,7 +1,6 @@
 import {
   Button,
   Form,
-  Image,
   Input,
   InputNumber,
   Modal,
@@ -9,12 +8,12 @@ import {
   Radio,
   Select,
   Table,
-  Upload,
 } from "antd";
 // import "./ManagementKoi.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
+import { Option } from "antd/es/mentions";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
@@ -26,6 +25,7 @@ const ManagementKoi = () => {
     try {
       const response = await api.get("koilot?page=0&size=20");
       setKoiFish(response.data.content);
+      console.log(response.data.content);
     } catch (err) {
       toast.error(err.response.data);
     }
@@ -54,14 +54,6 @@ const ManagementKoi = () => {
   };
   //COLUMNS
   const cols = [
-    // {
-    //   title: "Image",
-    //   dataIndex: "image",
-    //   key: "image",
-    //   render: (image) => {
-    //     return <Image src={image} alt="" width={200} />;
-    //   },
-    // },
     {
       title: "id",
       dataIndex: "id",
@@ -98,9 +90,15 @@ const ManagementKoi = () => {
       key: "size",
     },
     {
-      title: "breed",
-      dataIndex: "breedName",
-      key: "breedName",
+      title: "breedId",
+      dataIndex: "breeds",
+      key: "breeds",
+      render: (e) => {
+        console.log(e);
+        return e.map((item) => {
+          return <div key={item.id}>{item.name || "null"}</div>;
+        });
+      },
     },
 
     {
@@ -174,11 +172,11 @@ const ManagementKoi = () => {
       if (Koi.id) {
         //update
         const response = await api.put(`koilot/${Koi.id}`, Koi);
-        console.log(response);
+        // console.log(response);
       } else {
         //create
         const response = await api.post("koilot", Koi);
-        console.log(Koi);
+        // console.log(Koi);
       }
       fetchKoi();
       toast.success("Update successfully!!!");
@@ -233,6 +231,13 @@ const ManagementKoi = () => {
           >
             <Input></Input>
           </Form.Item>
+          {/* <Form.Item>
+            <Checkbox.Group
+              options={plainOptions}
+              defaultValue={["Apple"]}
+              onChange={onChange}
+            />
+          </Form.Item> */}
           <Form.Item
             label="vendor"
             rules={[{ required: true, message: "Please Input" }]}
@@ -258,14 +263,15 @@ const ManagementKoi = () => {
             <Input></Input>
           </Form.Item>
           <Form.Item label="breedName" name="breedId">
-            <Select>
+            <Select mode="multiple">
               {submitBreed.map((breed) => (
-                <Select.Option key={breed.name} breed={breed} value={breed.id}>
+                <Option key={breed.name} breed={breed} value={breed.id}>
                   {breed.name}
-                </Select.Option>
+                </Option>
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             label="description"
             rules={[{ required: true, message: "Please Input" }]}
