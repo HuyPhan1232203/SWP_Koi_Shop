@@ -59,9 +59,9 @@ const Product = ({ products }) => {
         src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"
         alt=""
       />
-      <p className="product_name">name:{products.name}</p>
-      <p className="product_name">price:{products.price}</p>
-      <p className="product_name">size:{products.size}</p>
+      <p className="product_name">Name: {products.name}</p>
+      <p className="product_name">Price: {products.price}</p>
+      <p className="product_name">Size: {products.size}</p>
       <Button onClick={handleAddToCart}>Add to cart</Button>
     </div>
   );
