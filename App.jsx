@@ -28,6 +28,7 @@ import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
 import Test from "./src/pages/test/test";
 import ManageKoiLot from "./src/pages/manager/manage-koi-lot/manage-koi-lot";
+import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -140,6 +141,10 @@ function App() {
         {
           path: "bloglist",
           element: <ManageBlog />,
+        },
+        {
+          path: "profile",
+          element: <ManageProfile />,
         },
       ],
     },

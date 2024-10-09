@@ -14,7 +14,7 @@ function ManageBlog() {
       key: "description",
     },
   ];
-  return <CRUDTemplate columns={columns} />;
+  return <CRUDTemplate columns={columns} name="Blog" />;
 }
 
 export default ManageBlog;

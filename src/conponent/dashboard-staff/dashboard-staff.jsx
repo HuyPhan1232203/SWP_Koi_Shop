@@ -10,14 +10,18 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, ConfigProvider, Layout, Menu, theme } from "antd";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
     key,
     icon,
     children,
-    label,
+    label: (
+      <Link to={`/dashboard-staff/${key}`}>
+        {label}
+      </Link>
+    ),
   };
 }
 const items = [
@@ -31,7 +35,7 @@ const items = [
     "bloglist",
     <SnippetsOutlined style={{ color: "#fff" }} />
   ),
-  getItem("Profile", "3", <ProfileOutlined style={{ color: "#fff" }} />),
+  getItem("Profile", "profile", <ProfileOutlined style={{ color: "#fff" }} />),
 ];
 const DashboardStaff = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -47,28 +51,50 @@ const DashboardStaff = () => {
         },
         components: {
           Menu: {
-            darkItemBg: "#E35C40",
-            darkItemSelectedBg: "#fff",
-            darkItemSelectedColor: "#E35C40",
+            darkItemBg: "#FE7A36",
+            darkItemSelectedBg: "#3652AD",
+            darkItemSelectedColor: "#fff",
             darkItemColor: "#fff",
           },
           Button: {
             /* here is your component tokens */
             defaultHoverBorderColor: "#E35C40",
             defaultHoverColor: "#E35C40",
+            defaultBorderColor: "#3652AD",
+            defaultColor: "#3652AD",
+            defaultBg: "#E9F6FF",
           },
           Layout: {
             /* here is your component tokens */
-            siderBg: "#E35C40",
-            triggerBg: "#fff",
-            triggerColor: "#E35C40",
+            siderBg: "#FE7A36",
+            triggerBg: "#3652AD",
+            triggerColor: "#FE7A36",
             lightTriggerColor: "#fff",
           },
           Table: {
             /* here is your component tokens */
-            headerColor: "#E35C40",
+            headerColor: "#fff",
             headerSplitColor: "#E35C40",
-            rowHoverBg: "#ECDFDB",
+            rowHoverBg: "#280274",
+            colorBgContainer: "#3652AD",
+            bodySortBg: "#E9F6FF",
+            colorText: "#fff",
+          },
+          Form: {
+            labelColor: "#fff",
+          },
+          Modal: {
+            contentBg: "#3652AD",
+            headerBg: "#3652AD",
+            titleColor: "#FE7A36",
+          },
+          Input: {
+            colorBgContainer: "#E9F6FF",
+            activeBorderColor: "#3652AD",
+            hoverBorderColor: "#3652AD"
+          },
+          Radio: {
+            colorText: "#fff",
           },
         },
       }}
@@ -86,7 +112,7 @@ const DashboardStaff = () => {
           <div className="demo-logo-vertical" />
           <Menu
             className="menu-staff"
-            theme="#E35C40"
+            theme="dark"
             defaultSelectedKeys={["1"]}
             mode="inline"
             items={items}
@@ -96,12 +122,13 @@ const DashboardStaff = () => {
           <Header
             style={{
               padding: 0,
-              background: colorBgContainer,
+              background: "#E9F6FF",
             }}
           />
           <Content
             style={{
               margin: "0 16px",
+              backgroundColor: "#E9F6FF",
             }}
           >
             <Breadcrumb
@@ -116,7 +143,7 @@ const DashboardStaff = () => {
               style={{
                 padding: 24,
                 minHeight: 360,
-                background: colorBgContainer,
+                background: "#E9F6FF",
                 borderRadius: borderRadiusLG,
               }}
             >
