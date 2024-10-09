@@ -35,9 +35,7 @@ function KoiBreedType() {
   return (
     <div className="koi_breed_fetch">
       <div className="changer_btn">
-        <Button onClick={handleFetchKoiLot} className="koilot">
-          Bulk Koi Fish
-        </Button>
+        <Button className="koilot">Bulk Koi Fish</Button>
         <Button className="koi">Single Koi Fish</Button>
       </div>
       <div className="koi_list">
