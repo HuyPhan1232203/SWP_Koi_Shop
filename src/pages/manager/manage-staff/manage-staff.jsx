@@ -173,7 +173,7 @@ const ManageStaff = () => {
         onOk={formStand.submit}
       >
         <Form
-          labelCol={{ span: 4 }}
+          labelCol={{ span: 5 }}
           onFinish={handleSubmitKoi}
           form={formStand}
         >
