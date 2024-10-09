@@ -129,7 +129,11 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
         </Button>
         <Input
           placeholder="Search"
-          style={{ width: "300px", marginLeft: "580px" }}
+          style={{
+            width: "300px",
+            marginLeft: "580px",
+            border: "1px #3550AA solid",
+          }}
         ></Input>
       </div>
       <Modal

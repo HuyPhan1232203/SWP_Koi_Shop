@@ -52,7 +52,6 @@ const Dashboard = () => {
             fontFamily: "serif",
             color: "#3652AD",
             border: "1px solid #3652AD",
-            // backgroundColor: "#E35C40",
             borderRadius: "10px",
             paddingBottom: "10px",
             paddingTop: "10px",
@@ -126,7 +125,7 @@ const Dashboard = () => {
           Input: {
             colorBgContainer: "#E9F6FF",
             activeBorderColor: "#3652AD",
-            hoverBorderColor: "#3652AD"
+            hoverBorderColor: "#3652AD",
           },
           Radio: {
             colorText: "#FE7A36",
@@ -189,9 +188,7 @@ const Dashboard = () => {
             style={{
               textAlign: "center",
             }}
-          >
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
-          </Footer>
+          ></Footer>
         </Layout>
       </Layout>
     </ConfigProvider>

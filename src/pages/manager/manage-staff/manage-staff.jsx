@@ -156,7 +156,11 @@ const ManageStaff = () => {
         </Button>
         <Input
           placeholder="Search"
-          style={{ width: "300px", marginLeft: "580px" }}
+          style={{
+            width: "300px",
+            marginLeft: "580px",
+            border: "1px #3550AA solid",
+          }}
           value={searchValue}
           onChange={handleInputChange}
         ></Input>
