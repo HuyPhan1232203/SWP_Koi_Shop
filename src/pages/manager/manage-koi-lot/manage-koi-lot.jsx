@@ -96,7 +96,7 @@ const ManagementKoi = () => {
       render: (e) => {
         console.log(e);
         return e.map((item) => {
-          return <div key={item.id}>{item.name || "null"}</div>;
+          return <div key={item}>{item || "null"}</div>;
         });
       },
     },

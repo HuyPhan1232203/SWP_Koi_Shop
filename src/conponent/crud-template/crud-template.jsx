@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 
-const CRUDTemplate = ({ columns, formItems, apiName, name, role }) => {
+const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
@@ -12,6 +12,7 @@ const CRUDTemplate = ({ columns, formItems, apiName, name, role }) => {
   //FETCH
   const fetchKoi = async () => {
     const response = await api.get(apiName);
+    console.log(response.data);
     setKoiFish(response.data);
   };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, InputNumber } from "antd";
+import { DatePicker, Form, Input, InputNumber } from "antd";
 import CRUDTemplate from "../../../conponent/crud-template/crud-template";
 
 function ManageVoucher() {
@@ -57,9 +57,9 @@ function ManageVoucher() {
         rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
       >
-        <Input></Input>
+        <DatePicker />
       </Form.Item>
-      
+
       <Form.Item
         labelCol={{ span: 7 }}
         label="Description"

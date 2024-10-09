@@ -25,7 +25,7 @@ function KoiBreedType() {
   const handleFetchKoiLot = async (breed) => {
     if (!breed) return; // Check if breedId exists before making the API call
     try {
-      const response = await api.get(`koilot/by-breed/${breed}`);
+      const response = await api.get(`koilot?page=0&size=20&breedId=${breed}`);
       setKoiList(response.data); // Set the koi list data in the state
       console.log(koiList);
     } catch (err) {
@@ -40,7 +40,6 @@ function KoiBreedType() {
       </div>
       <div className="koi_list">
         {koiList.map((product) => (
-          // eslint-disable-next-line react/jsx-key
           <Product products={product} key={product.id} />
         ))}
       </div>
