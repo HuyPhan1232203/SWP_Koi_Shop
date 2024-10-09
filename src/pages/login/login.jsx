@@ -39,7 +39,7 @@ function LoginPage() {
 
       setLoading(false);
     } catch (err) {
-      toast.error(err.response);
+      toast.error(err.response.data);
       setLoading(false);
     }
   };
