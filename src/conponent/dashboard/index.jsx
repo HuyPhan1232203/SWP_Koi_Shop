@@ -120,11 +120,16 @@ const Dashboard = () => {
           },
           Modal: {
             contentBg: "#3652AD",
+            headerBg: "#3652AD",
+            titleColor: "#FE7A36",
           },
           Input: {
             colorBgContainer: "#E9F6FF",
             activeBorderColor: "#3652AD",
             hoverBorderColor: "#3652AD"
+          },
+          Radio: {
+            colorText: "#fff",
           },
         },
       }}
