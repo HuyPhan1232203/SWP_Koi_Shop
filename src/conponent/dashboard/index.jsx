@@ -116,11 +116,11 @@ const Dashboard = () => {
             colorText: "#fff",
           },
           Form: {
-            labelColor: "#fff",
+            labelColor: "#FE7A36",
           },
           Modal: {
-            contentBg: "#3652AD",
-            headerBg: "#3652AD",
+            contentBg: "#E9F6FF",
+            headerBg: "#E9F6FF",
             titleColor: "#FE7A36",
           },
           Input: {
@@ -129,7 +129,7 @@ const Dashboard = () => {
             hoverBorderColor: "#3652AD"
           },
           Radio: {
-            colorText: "#fff",
+            colorText: "#FE7A36",
           },
         },
       }}

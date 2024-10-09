@@ -5,7 +5,7 @@ import { Form, Input, message } from "antd";
 function Breeds() {
   const col = [
     {
-      title: "id",
+      title: "Id",
       dataIndex: "id",
       key: "id",
     },
@@ -18,7 +18,7 @@ function Breeds() {
   const formItems = (
     <Form.Item
       label="Name"
-      rules={[{ require: true, message: "please input" }]}
+      rules={[{ require: true, message: "Please Input" }]}
       name="name"
     >
       <Input></Input>

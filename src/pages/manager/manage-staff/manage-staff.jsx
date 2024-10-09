@@ -48,22 +48,22 @@ const ManageStaff = () => {
   //COLUMNS
   const cols = [
     {
-      title: "id",
+      title: "ID",
       dataIndex: "id",
       key: "id",
     },
     {
-      title: "email",
+      title: "Email",
       dataIndex: "email",
       key: "email",
     },
     {
-      title: "username",
+      title: "Username",
       dataIndex: "username",
       key: "username",
     },
     {
-      title: "phone",
+      title: "Phone",
       dataIndex: "phone",
       key: "phone",
     },
@@ -135,7 +135,7 @@ const ManageStaff = () => {
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
-    } catch (err) { 
+    } catch (err) {
       console.log(err.response.data);
     } finally {
       setSubmitKoi(false);
@@ -172,7 +172,11 @@ const ManageStaff = () => {
         }}
         onOk={formStand.submit}
       >
-        <Form onFinish={handleSubmitKoi} form={formStand}>
+        <Form
+          labelCol={{ span: 4 }}
+          onFinish={handleSubmitKoi}
+          form={formStand}
+        >
           <Form.Item hidden label="id" name="id">
             <Input></Input>
           </Form.Item>
@@ -184,7 +188,7 @@ const ManageStaff = () => {
             <Input></Input>
           </Form.Item>
           <Form.Item
-            label="username"
+            label="Username"
             rules={[
               { required: true, message: "Please Input" },
               // { min: 1000, message: "username cannot lower than 1000" },
@@ -194,7 +198,7 @@ const ManageStaff = () => {
             <Input></Input>
           </Form.Item>
           <Form.Item
-            label="phone"
+            label="Phone"
             rules={[{ required: true, message: "Please Input" }]}
             name="phone"
           >

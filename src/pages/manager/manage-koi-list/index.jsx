@@ -64,7 +64,7 @@ const ManagementKoi = () => {
     //   },
     // },
     {
-      title: "id",
+      title: "ID",
       dataIndex: "id",
       key: "id",
     },
@@ -74,43 +74,43 @@ const ManagementKoi = () => {
       key: "name",
     },
     {
-      title: "price",
+      title: "Price",
       dataIndex: "price",
       key: "price",
     },
     {
-      title: "vendor",
+      title: "Vendor",
       dataIndex: "vendor",
       key: "vendor",
     },
     {
-      title: "gender",
+      title: "Gender",
       dataIndex: "gender",
       key: "gender",
     },
     {
-      title: "bornYear",
+      title: "Born Year",
       dataIndex: "bornYear",
       key: "bornYear",
     },
     {
-      title: "size",
+      title: "Size",
       dataIndex: "size",
       key: "size",
     },
     {
-      title: "breed",
+      title: "Breed",
       dataIndex: "breedName",
       key: "breedName",
     },
 
     {
-      title: "origin",
+      title: "Origin",
       dataIndex: "origin",
       key: "origin",
     },
     {
-      title: "description",
+      title: "Description",
       dataIndex: "description",
       key: "description",
     },
@@ -208,8 +208,12 @@ const ManagementKoi = () => {
         }}
         onOk={formStand.submit}
       >
-        <Form onFinish={handleSubmitKoi} form={formStand}>
-          <Form.Item hidden label="id" name="id">
+        <Form
+          labelCol={{ span: 5 }}
+          onFinish={handleSubmitKoi}
+          form={formStand}
+        >
+          <Form.Item hidden label="ID" name="id">
             <Input></Input>
           </Form.Item>
           <Form.Item
@@ -220,7 +224,7 @@ const ManagementKoi = () => {
             <Input></Input>
           </Form.Item>
           <Form.Item
-            label="price"
+            label="Price"
             rules={[
               { required: true, message: "Please Input" },
               // { min: 1000, message: "Price cannot lower than 1000" },
@@ -230,30 +234,20 @@ const ManagementKoi = () => {
             <Input></Input>
           </Form.Item>
           <Form.Item
-            label="vendor"
+            label="Vendor"
             rules={[{ required: true, message: "Please Input" }]}
             name="vendor"
           >
             <Input></Input>
           </Form.Item>
           <Form.Item
-            label="gender"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="gender"
-          >
-            <Radio.Group name="radiogroup">
-              <Radio value="Male">Male</Radio>
-              <Radio value="Female">Female</Radio>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            label="bornYear"
+            label="Born Year"
             rules={[{ required: true, message: "Please Input" }]}
             name="bornYear"
           >
             <Input></Input>
           </Form.Item>
-          <Form.Item label="breedName" name="breedId">
+          <Form.Item label="Breed Name" name="breedId">
             <Select>
               {submitBreed.map((breed) => (
                 <Select.Option key={breed.name} breed={breed} value={breed.id}>
@@ -263,7 +257,7 @@ const ManagementKoi = () => {
             </Select>
           </Form.Item>
           <Form.Item
-            label="description"
+            label="Description"
             rules={[{ required: true, message: "Please Input" }]}
             name="description"
           >
@@ -271,14 +265,24 @@ const ManagementKoi = () => {
           </Form.Item>
 
           <Form.Item
-            label="origin"
+            label="Origin"
             rules={[{ required: true, message: "Please Input" }]}
             name="origin"
           >
             <Input></Input>
           </Form.Item>
           <Form.Item
-            label="size"
+            label="Gender"
+            rules={[{ required: true, message: "Please Input" }]}
+            name="gender"
+          >
+            <Radio.Group name="radiogroup">
+              <Radio value="Male">Male</Radio>
+              <Radio value="Female">Female</Radio>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item
+            label="Size"
             rules={[
               { required: true, message: "Please Input" },
               {

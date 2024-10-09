@@ -55,7 +55,7 @@ const ManagementKoi = () => {
   //COLUMNS
   const cols = [
     {
-      title: "id",
+      title: "Id",
       dataIndex: "id",
       key: "id",
     },
@@ -65,32 +65,32 @@ const ManagementKoi = () => {
       key: "name",
     },
     {
-      title: "price",
+      title: "Price",
       dataIndex: "price",
       key: "price",
     },
     {
-      title: "vendor",
+      title: "Vendor",
       dataIndex: "vendor",
       key: "vendor",
     },
     {
-      title: "gender",
+      title: "Gender",
       dataIndex: "gender",
       key: "gender",
     },
     {
-      title: "bornYear",
+      title: "Born Year",
       dataIndex: "bornYear",
       key: "bornYear",
     },
     {
-      title: "size",
+      title: "Size",
       dataIndex: "size",
       key: "size",
     },
     {
-      title: "breedId",
+      title: "Breed Id",
       dataIndex: "breeds",
       key: "breeds",
       render: (e) => {

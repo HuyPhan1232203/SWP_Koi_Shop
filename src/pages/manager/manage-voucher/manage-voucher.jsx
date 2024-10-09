@@ -44,42 +44,49 @@ function ManageVoucher() {
   const formItems = (
     <>
       <Form.Item
-        label="discountValue"
+        labelCol={{ span: 7 }}
+        label="Discount Value"
         rules={[{ required: true, message: "Please Input Discount Value" }]}
         name="discountValue"
       >
         <Input></Input>
       </Form.Item>
       <Form.Item
-        label="expiredDate"
+        labelCol={{ span: 7 }}
+        label="Expired Date"
         rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
       >
         <Input></Input>
       </Form.Item>
+      
       <Form.Item
-        label="quantity"
-        rules={[{ required: true, message: "Please Input Quantity" }]}
-        name="quantity"
-      >
-        <InputNumber></InputNumber>
-      </Form.Item>
-      <Form.Item
-        label="description"
+        labelCol={{ span: 7 }}
+        label="Description"
         rules={[{ required: true, message: "Please Input Description" }]}
         name="description"
       >
         <Input></Input>
       </Form.Item>
       <Form.Item
-        label="minimumPoints"
+        labelCol={{ span: 7 }}
+        label="Quantity"
+        rules={[{ required: true, message: "Please Input Quantity" }]}
+        name="quantity"
+      >
+        <InputNumber></InputNumber>
+      </Form.Item>
+      <Form.Item
+        labelCol={{ span: 7 }}
+        label="Minimum Points"
         rules={[{ required: true, message: "Please Input Minimum Points" }]}
         name="minimumPoints"
       >
         <InputNumber></InputNumber>
       </Form.Item>
       <Form.Item
-        label="minimumPrice"
+        labelCol={{ span: 7 }}
+        label="Minimum Price"
         rules={[{ required: true, message: "Please Input Minimum Price" }]}
         name="minimumPrice"
       >
