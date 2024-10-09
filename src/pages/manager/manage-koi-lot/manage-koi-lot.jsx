@@ -194,15 +194,15 @@ const ManagementKoi = () => {
     <div>
       <div className="header text-center p-5 ">
         <h1 className="header_text" style={{ color: "#FE7A36" }}>
-          Koi Management
+          Koi-Lot Management
         </h1>
       </div>
       <Button className="add_btn" onClick={handleOpenModal}>
-        Create Koi
+        Create Koi Lot
       </Button>
       <Modal
         confirmLoading={submitKoi}
-        title={<span className="Modal_header">KOI INFORMATION</span>}
+        title={<span className="Modal_header">KOI LOT INFORMATION</span>}
         open={openModal}
         onCancel={() => {
           handleClosenModal();

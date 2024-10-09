@@ -2,6 +2,7 @@ import { Button, Form, Input, Modal, Popconfirm, Table } from "antd";
 import { useEffect, useState } from "react";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
+import uploadFile from "../../utils/file";
 
 const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   const [KoiFish, setKoiFish] = useState([]);
@@ -85,7 +86,11 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
+      console.log(Koi);
       setSubmitKoi(true);
+      //convert Object to string img
+      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      console.log(Koi.imageUrl);
       let response = null;
       if (Koi.id) {
         //update

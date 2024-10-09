@@ -75,7 +75,7 @@ function Breeds() {
       >
         <Input></Input>
       </Form.Item>
-      <Form.Item label="image" name="image">
+      <Form.Item label="imageUrl" name="imageUrl">
         <Upload
           action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
           listType="picture-card"
