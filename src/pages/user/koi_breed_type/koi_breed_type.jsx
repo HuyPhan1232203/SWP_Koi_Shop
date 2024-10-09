@@ -43,13 +43,13 @@ function KoiBreedType() {
       <div className="koi_list">
         {koiList.map((product) => (
           // eslint-disable-next-line react/jsx-key
-          <Product products={product} />
+          <Product products={product} key={product.id} />
         ))}
       </div>
     </div>
   );
 }
-const Product = (products) => {
+const Product = ({ products }) => {
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     dispatch(addProduct(products));
