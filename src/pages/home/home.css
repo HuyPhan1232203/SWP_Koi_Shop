@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Qwitcher+Grypen:wght@400;700&display=swap');
+*{
+    font-family: "IBM Plex Mono", monospace;
+}
 .headerbar{
     z-index: 1;
     width: 100%;
@@ -13,6 +17,7 @@
     /* background-color: #E35C40; */
     /* background-color: white; */
     border: 1px #ccc solid;
+    
 }
 
 .logo-container {
@@ -35,7 +40,7 @@
     height: 340px;
     /* background-color: #7A191F; */
     /* background-color: #B78E75; */
-    background-color: #E35C40;
+    /* background-color: #E35C40; */
 
 }
 .header{
@@ -46,7 +51,6 @@
     text-transform: uppercase;
     color: #000;
     /* color: black; */
-    font-family: serif;
     width: 200px;
 }
 .header_nav{
@@ -77,8 +81,8 @@
     cursor: pointer;
 }
 .user_action{
-    background-color: #c3b9b9;
-    width: 150px;
+    background-color: #ccc;
+    width: 200px;
     list-style: none;
 }
 .user_action{
@@ -123,7 +127,7 @@
 }
 
 .nav_li:hover{
-    background-color: #c3b9b9;
+    background-color: #ccc;
     cursor: pointer;
 }
 .cart{
