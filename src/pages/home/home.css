@@ -9,9 +9,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     /* background-color: #B78E75; */
-    /* background-color: #7A191F; */
-    background-color: #E35C40;
+    background-color: #ccc;
+    /* background-color: #E35C40; */
     /* background-color: white; */
+    border: 1px #ccc solid;
 }
 
 .logo-container {
@@ -43,7 +44,7 @@
 .header_title{
     font-weight: 700;
     text-transform: uppercase;
-    color: #fff;
+    color: #000;
     /* color: black; */
     font-family: serif;
     width: 200px;
@@ -68,7 +69,7 @@
 }
 .authen{
     text-decoration: none;
-    color: #fff;
+    color: #000;
     /* color: black; */
     position: relative;
 }
@@ -115,7 +116,7 @@
     padding:48px 20px;
     list-style-type: none;
     font-weight: 700;
-    color: #fff;
+    color: #000;
     /* color: black; */
     text-decoration: none;
     text-transform: uppercase;
@@ -176,12 +177,16 @@
     width: 100%;
     text-decoration: none;
 }
-
+.homepage-section{
+    margin-top: 50px;
+    
+}
 .homepage-design {
-    height: 850px;
+    height: 600px;
     background: url("/assets/images/homepage-img-1.png") top center / cover no-repeat ;
     width: 100%;
     position: relative;
+    border-radius: 30px;
 }
 
 .homepage-design .overlay {
@@ -334,6 +339,8 @@
 
 .footer{
     padding-top: 40px;
+    background-color: #fff;
+    border: 1px #ccc solid;
 }
 
 .container-xl {
@@ -362,7 +369,7 @@
 }
 
 .footer-social .social-icon {
-    color: white;
+    color: #000;
     margin-left: 50px;
 }
 
@@ -382,7 +389,7 @@
 }
 
 .list-unstyled a {
-    color: white;
+    color: #000;
 
 }
 
@@ -396,13 +403,13 @@
 .footer-widget ul li {
     margin-bottom: 10px;
     text-decoration: none;
-    color: white;
+    color: #000;
 
 }
 
 .arrow-icon {
     font-size: 14px;
-    color: white;
+    color: #000;
     margin-right: 5px;
 }
 
@@ -414,11 +421,11 @@
 }
 
 .contact-section .contact-icon {
-    color: white;
+    color: #000;
 }
 
 .contact-section .text-contact {
-    color: white;
+    color: #000;
 
     margin-left: 24px;
     font-size: 15px;

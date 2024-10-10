@@ -47,28 +47,22 @@ function EditProfile() {
           <div className="edit_field_title font">User Name:</div>
           <div className="edit_field-parameter font">{usernames}</div>
         </div>
-        <Button type="primary" className="edit_btn">
-          Edit
-        </Button>
       </div>
       <div className="edit">
         <div className="edit_field">
           <div className="edit_field_title font">Email:</div>
           <div className="edit_field-parameter font">{email}</div>
         </div>
-        <Button type="primary" className="edit_btn">
-          Edit
-        </Button>
       </div>
       <div className="edit">
         <div className="edit_field">
           <div className="edit_field_title font">Phone:</div>
           <div className="edit_field-parameter font">{phone}</div>
         </div>
-        <Button type="primary" className="edit_btn">
-          Edit
-        </Button>
       </div>
+      <Button type="primary" className="edit_btn">
+        Edit
+      </Button>
     </div>
   );
 }

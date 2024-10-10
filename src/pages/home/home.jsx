@@ -91,11 +91,11 @@ function HomePage() {
             <Link className="cart" to="/">
               <ShoppingCartOutlined
                 className="cart_icon"
-                style={{ fontSize: "20px", color: "#fff", padding: "3px" }}
+                style={{ fontSize: "20px", color: "#000", padding: "3px" }}
               />
               <Link
                 to="/cart"
-                style={{ textDecoration: "none", color: "white" }}
+                style={{ textDecoration: "none", color: "#000" }}
               >
                 Shopping Cart
               </Link>
@@ -105,7 +105,7 @@ function HomePage() {
             User | {username}
             <ul className="user_action">
               <Link
-                style={{ textDecoration: "none", color: "#fff" }}
+                style={{ textDecoration: "none", color: "#000" }}
                 to="profile"
               >
                 <li>My Profile</li>
@@ -181,7 +181,7 @@ function HomePage() {
         </Modal>
       </div>
       {location.pathname === "/" && (
-        <div className="homepage-section">
+        <div className="homepage-section container">
           <div className="homepage-design">
             <div className="overlay"></div>
             <div>
