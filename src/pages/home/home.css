@@ -287,7 +287,12 @@
 .koi-content {
     margin-bottom: 20px;
 }
-
+.koi-types{
+    margin-top: 30px;
+}
+.koi_fetch_breed{
+    width: 80%;
+}
 .koi-section .koi-types {
     width: 33.33333%;
     float: left;

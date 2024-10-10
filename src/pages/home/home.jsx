@@ -120,6 +120,19 @@ function HomePage() {
       );
     }
   };
+  const showKoiBreed = () => {
+    return breed?.map((breedItem) => {
+      return (
+        <div key={breedItem.id} className="koi-types">
+          <div className="koi-item">
+            <img src={breedItem.imageUrl} alt="" />
+            <h3>{breedItem.name}</h3>
+            <Button>Explore</Button>
+          </div>
+        </div>
+      );
+    });
+  };
   return (
     <div className="homepage">
       <div className="header">
@@ -213,156 +226,7 @@ function HomePage() {
                   <h2 className="mb-5">Explore our Kois</h2>
                 </div>
                 {/* Row Koi 1 */}
-                <div className="row koi-content">
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/kohaku.png" alt="" />
-                      <h3>Kohaku</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "1"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/ogon.png" alt="" />
-                      <h3>Ogon</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "2"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/showa.png" alt="" />
-                      <h3>Showa</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "3"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Row Koi 2 */}
-                <div className="row koi-content">
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/tancho.png" alt="" />
-                      <h3>Tancho</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "4"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/bekko.png" alt="" />
-                      <h3>Bekko</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "5"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/doitsu.png" alt="" />
-                      <h3>Doitsu</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "6"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                {/* Row Koi 3 */}
-                <div className="row koi-content">
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/ginrin.png" alt="" />
-                      <h3>Ginrin</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "7"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/goshiki.png" alt="" />
-                      <h3>Goshiki</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "8"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="col-md-4 koi-types">
-                    <div className="koi-item">
-                      <img src="/assets/images/asagi.png" alt="" />
-                      <h3>Asagi</h3>
-                      {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button
-                        onClick={() => {
-                          sessionStorage.setItem("breedId", "9"); // Replace "kohakuId" with the actual ID for Kohaku
-                          nav("/koi-list"); // Navigate to the koi list page
-                        }}
-                      >
-                        Explore
-                      </Button>
-                    </div>
-                  </div>
-                </div>
+                <div className="koi_fetch_breed">{showKoiBreed()}</div>
               </div>
             </div>
           </div>
