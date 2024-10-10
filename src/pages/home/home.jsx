@@ -125,6 +125,7 @@ function HomePage() {
       );
     }
   };
+
   const showKoiBreed = () => {
     return breed?.map((breedItem) => {
       return (
@@ -132,7 +133,14 @@ function HomePage() {
           <div className="koi-item">
             <img src={breedItem.imageUrl} alt="" />
             <h3>{breedItem.name}</h3>
-            <Button>Explore</Button>
+            <Button
+              onClick={() => {
+                sessionStorage.setItem("breedId", breedItem.id);
+                nav("/koi-list");
+              }}
+            >
+              Explore
+            </Button>
           </div>
         </div>
       );
