@@ -242,11 +242,11 @@
 }
 
 .slider-text .btn-koi-list {
-    color: white;
+    color: #000;
     text-decoration: none;
     cursor: pointer;
-    background-color: #E35C40;
-    border: 1px solid #E35C40;
+    background-color: #fff;
+    border: 1px solid #fff;
     border-radius: 4px;
     font-size: 12px;
     text-transform: uppercase;
@@ -275,7 +275,7 @@
     font-size: 16px;
     display: block;
     margin-bottom: 5px;
-    color: #E35C40;
+    color: #000;
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -307,7 +307,7 @@
 }
 
 .koi-section .koi-item {
-    border: 1px solid #E35C40;
+    border: 1px solid #000;
     text-align: center;
     position: relative;
     padding-bottom: 30px;
@@ -318,7 +318,7 @@
     max-width: 100%;
     left: 50%;
     text-align: center;
-    border-bottom: 1px solid #E35C40;
+    border-bottom: 1px solid #000;
     border-radius: 15px;
 
     
@@ -326,7 +326,7 @@
 
 .koi-section .koi-item h3 {
     font-size: 20px;
-    color: #E35C40;
+    color: #000;
     text-transform: uppercase;
     padding-top: 20px;
     margin-bottom: 20px;
@@ -336,8 +336,8 @@
     color: white;
     text-decoration: none;
     cursor: pointer;
-    background-color: #E35C40;
-    border: 1px solid #E35C40;
+    background-color: #000;
+    border: 1px solid #000;
     border-radius: 4px;
     font-size: 12px;
     text-transform: uppercase;
