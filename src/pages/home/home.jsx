@@ -13,7 +13,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { Button, Modal, Popconfirm } from "antd";
+import { Badge, Button, Modal, Popconfirm } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { fetchProduct } from "../user/koi_breed_type/koi_breed_type";
@@ -21,6 +21,9 @@ import { useSelector } from "react-redux";
 function HomePage() {
   const nav = useNavigate();
   const userData = useSelector((store) => store.user);
+
+  const cart = useSelector((store) => store.cart);
+
   const [openModal, setOpenModal] = useState(false);
   const [breed, setBreed] = useState([]);
   const koiSectionRef = useRef(null); // Create a ref for koi section
@@ -88,20 +91,6 @@ function HomePage() {
     } else {
       return (
         <div className="authenticate">
-          <div>
-            <Link className="cart" to="/">
-              <ShoppingCartOutlined
-                className="cart_icon"
-                style={{ fontSize: "20px", color: "#000", padding: "3px" }}
-              />
-              <Link
-                to="/cart"
-                style={{ textDecoration: "none", color: "#000" }}
-              >
-                Shopping Cart
-              </Link>
-            </Link>
-          </div>
           <div className="authen">
             User | {userData.username}
             <ul className="user_action">
@@ -115,6 +104,22 @@ function HomePage() {
               <li>Purchase Order</li>
               <li onClick={handleOpenModal}>LogOut</li>
             </ul>
+          </div>
+          <div>
+            <Link className="cart" to="/cart">
+              <Badge count={cart.length}>
+                <ShoppingCartOutlined
+                  className="cart_icon"
+                  style={{ fontSize: "20px", color: "#000", padding: "3px" }}
+                />
+              </Badge>
+              {/* <Link
+                to="/cart"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                Shopping Cart
+              </Link> */}
+            </Link>
           </div>
         </div>
       );
