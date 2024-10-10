@@ -57,7 +57,20 @@ const Product = ({ products }) => {
       />
       <p className="product_name">Name: {products.name}</p>
       <p className="product_name">Size: {products.size}</p>
-      <p className="product_name">Breeds: {products.size}</p>
+      <p className="product_name" style={{ display: "flex" }}>
+        Breeds:
+        <div
+          style={{
+            display: "flex",
+            // justifyContent: "space-around",
+            width: "100%",
+          }}
+        >
+          {products.breeds.map((breedItem) => {
+            return <div key={breedItem}>, {breedItem.name} </div>;
+          })}
+        </div>
+      </p>
       <p className="product_name">Price: {products.price}</p>
       <Button onClick={handleAddToCart}>Add to cart</Button>
     </div>
