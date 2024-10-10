@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearAll } from "../../../redux/features/cartSlice";
 import api from "../../../config/axios";
-import { render } from "@testing-library/react";
 
 function Cart() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
