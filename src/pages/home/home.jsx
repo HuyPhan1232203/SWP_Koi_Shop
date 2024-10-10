@@ -213,8 +213,8 @@ function HomePage() {
             <div className="overlay"></div>
             <div>
               <div className="row slider-text">
-                <div className="col-md-11 text-center-slider">
-                  <h1 className="mb-4">
+                <div className="col-md-11 text-center-slider ">
+                  <h1 className="mb-4 ">
                     Swim into Serenity: Find Your Perfect Koi!
                   </h1>
                   <p>
