@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
@@ -43,6 +43,7 @@ function KoiBreedType() {
   );
 }
 const Product = ({ products }) => {
+  var breedItems = [];
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     dispatch(addProduct(products));
@@ -55,8 +56,9 @@ const Product = ({ products }) => {
         alt=""
       />
       <p className="product_name">Name: {products.name}</p>
-      <p className="product_name">Price: {products.price}</p>
       <p className="product_name">Size: {products.size}</p>
+      <p className="product_name">Breeds: {products.size}</p>
+      <p className="product_name">Price: {products.price}</p>
       <Button onClick={handleAddToCart}>Add to cart</Button>
     </div>
   );
