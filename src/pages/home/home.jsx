@@ -218,7 +218,14 @@ function HomePage() {
                       <img src="/assets/images/kohaku.png" alt="" />
                       <h3>Kohaku</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "1"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
 
@@ -227,7 +234,14 @@ function HomePage() {
                       <img src="/assets/images/ogon.png" alt="" />
                       <h3>Ogon</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "2"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
 
@@ -236,7 +250,14 @@ function HomePage() {
                       <img src="/assets/images/showa.png" alt="" />
                       <h3>Showa</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "3"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -248,7 +269,14 @@ function HomePage() {
                       <img src="/assets/images/tancho.png" alt="" />
                       <h3>Tancho</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "4"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
 
@@ -257,7 +285,14 @@ function HomePage() {
                       <img src="/assets/images/bekko.png" alt="" />
                       <h3>Bekko</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "5"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
 
@@ -266,7 +301,14 @@ function HomePage() {
                       <img src="/assets/images/doitsu.png" alt="" />
                       <h3>Doitsu</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "6"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -277,7 +319,14 @@ function HomePage() {
                       <img src="/assets/images/ginrin.png" alt="" />
                       <h3>Ginrin</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "7"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
 
@@ -286,7 +335,14 @@ function HomePage() {
                       <img src="/assets/images/goshiki.png" alt="" />
                       <h3>Goshiki</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "8"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
 
@@ -295,7 +351,14 @@ function HomePage() {
                       <img src="/assets/images/asagi.png" alt="" />
                       <h3>Asagi</h3>
                       {/* <a className="explore-btn" href="">Explore</a> */}
-                      <Button>Explore</Button>
+                      <Button
+                        onClick={() => {
+                          sessionStorage.setItem("breedId", "9"); // Replace "kohakuId" with the actual ID for Kohaku
+                          nav("/koi-list"); // Navigate to the koi list page
+                        }}
+                      >
+                        Explore
+                      </Button>
                     </div>
                   </div>
                 </div>
