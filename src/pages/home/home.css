@@ -191,6 +191,8 @@
     width: 100%;
     position: relative;
     border-radius: 30px;
+    box-shadow:2px 1px 7px 4px #9d9c9c;
+
 }
 
 .homepage-design .overlay {
