@@ -99,9 +99,20 @@ const ManagementKoi = () => {
       key: "size",
     },
     {
+      title: "quantity",
+      dataIndex: "quantity",
+      key: "quantity",
+    },
+    {
       title: "Breed",
-      dataIndex: "breedName",
-      key: "breedName",
+      dataIndex: "breeds",
+      key: "breeds",
+      render: (breed) => {
+        console.log(breed);
+        return breed.map((item) => {
+          return <div key={item}>{item || "null"}</div>;
+        });
+      },
     },
 
     {
@@ -247,8 +258,15 @@ const ManagementKoi = () => {
           >
             <Input></Input>
           </Form.Item>
+          <Form.Item
+            label="Quantity"
+            rules={[{ required: true, message: "Please Input" }]}
+            name="quantity"
+          >
+            <InputNumber></InputNumber>
+          </Form.Item>
           <Form.Item label="Breed Name" name="breedId">
-            <Select>
+            <Select mode="multiple">
               {submitBreed.map((breed) => (
                 <Select.Option key={breed.name} breed={breed} value={breed.id}>
                   {breed.name}
