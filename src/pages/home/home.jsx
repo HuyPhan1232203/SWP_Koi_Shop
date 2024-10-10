@@ -17,9 +17,10 @@ import { Button, Modal, Popconfirm } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { fetchProduct } from "../user/koi_breed_type/koi_breed_type";
+import { useSelector } from "react-redux";
 function HomePage() {
   const nav = useNavigate();
-
+  const userData = useSelector((store) => store.user);
   const [openModal, setOpenModal] = useState(false);
   const [breed, setBreed] = useState([]);
   const koiSectionRef = useRef(null); // Create a ref for koi section
@@ -102,7 +103,7 @@ function HomePage() {
             </Link>
           </div>
           <div className="authen">
-            User | {username}
+            User | {userData.username}
             <ul className="user_action">
               <Link
                 style={{ textDecoration: "none", color: "#000" }}

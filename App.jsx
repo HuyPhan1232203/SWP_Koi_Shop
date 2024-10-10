@@ -96,9 +96,9 @@ function App() {
     {
       path: "dashboard",
       element: (
-        // <ProtectRouteAuth>
-        // </ProtectRouteAuth>
-        <Dashboard />
+        <ProtectRouteAuth>
+          <Dashboard />
+        </ProtectRouteAuth>
       ),
       children: [
         {
