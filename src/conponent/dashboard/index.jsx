@@ -37,7 +37,6 @@ const items = [
   ),
   getItem("Staff List", "staff", <IdcardOutlined style={{ color: "#fff" }} />),
   getItem("Breeds", "breeds", <ProfileOutlined style={{ color: "#fff" }} />),
-  getItem("Koi Lot", "koilot", <ProfileOutlined style={{ color: "#fff" }} />),
 ];
 
 const Dashboard = () => {

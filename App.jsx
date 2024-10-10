@@ -26,7 +26,6 @@ import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
 import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
 import Test from "./src/pages/test/test";
-import ManageKoiLot from "./src/pages/manager/manage-koi-lot/manage-koi-lot";
 import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
@@ -117,10 +116,6 @@ function App() {
         {
           path: "breeds",
           element: <Breeds />,
-        },
-        {
-          path: "koilot",
-          element: <ManageKoiLot />,
         },
       ],
     },
