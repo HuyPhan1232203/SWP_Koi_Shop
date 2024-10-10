@@ -99,7 +99,7 @@ const ManagementKoi = () => {
       key: "size",
     },
     {
-      title: "quantity",
+      title: "Quantity",
       dataIndex: "quantity",
       key: "quantity",
     },
