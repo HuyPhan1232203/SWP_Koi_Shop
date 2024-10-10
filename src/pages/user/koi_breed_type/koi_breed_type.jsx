@@ -61,7 +61,9 @@ const Product = ({ products }) => {
         </div>
       </p>
       <p className="product_name">Price: {products.price}</p>
-      <Button onClick={handleAddToCart}>Add to cart</Button>
+      <Button onClick={handleAddToCart} className="Add_btn">
+        <span className="Add_btn_value">Add to cart</span>
+      </Button>
     </div>
   );
 };

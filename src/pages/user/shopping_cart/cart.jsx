@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import api from "../../../config/axios";
+import { DeleteOutlined } from "@ant-design/icons";
 
 function Cart() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -42,8 +43,9 @@ function Cart() {
             onClick={() => {
               handleDeleteKoi(id);
             }}
+            style={{ padding: "0 5px" }}
           >
-            x
+            <DeleteOutlined />
           </Button>
         );
       },
@@ -118,7 +120,6 @@ function Cart() {
           dataSource={data}
         ></Table>
         <Button onClick={() => dispatch(clearAll())}>Clear All</Button>
-        <Button onClick={handleBuy}>Buy</Button>
       </div>
       <div className="order_bill">
         <h3 className="order_bill_header">Sumary</h3>
