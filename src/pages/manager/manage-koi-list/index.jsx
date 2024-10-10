@@ -15,12 +15,17 @@ import {
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
+import uploadFile from "../../../utils/file";
+import { PlusOutlined } from "@ant-design/icons";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
   const [submitBreed, setSubmitBreed] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [fileList, setFileList] = useState([]);
   //FETCH
   const fetchKoi = async () => {
     try {
@@ -52,20 +57,53 @@ const ManagementKoi = () => {
   const handleClosenModal = () => {
     setOpenModal(false);
   };
+  const getBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    setPreviewImage(file.url || file.preview);
+    setPreviewOpen(true);
+  };
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const uploadButton = (
+    <button
+      style={{
+        border: 0,
+        background: "none",
+      }}
+      type="button"
+    >
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </button>
+  );
   //COLUMNS
   const cols = [
-    // {
-    //   title: "Image",
-    //   dataIndex: "image",
-    //   key: "image",
-    //   render: (image) => {
-    //     return <Image src={image} alt="" width={200} />;
-    //   },
-    // },
     {
       title: "ID",
       dataIndex: "id",
       key: "id",
+    },
+    {
+      title: "Image",
+      dataIndex: "images",
+      key: "images",
+      render: (image) => {
+        return <Image src={image} width={200}></Image>;
+      },
     },
     {
       title: "Name",
@@ -124,6 +162,7 @@ const ManagementKoi = () => {
       dataIndex: "description",
       key: "description",
     },
+
     {
       title: "Action",
       dataIndex: "id",
@@ -176,22 +215,26 @@ const ManagementKoi = () => {
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
+      // console.log(Koi);
       setSubmitKoi(true);
+      //convert Object to string img
+      console.log(Koi.imageUrl);
+      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+
+      let response = null;
       if (Koi.id) {
         //update
-        const response = await api.put(`koi/${Koi.id}`, Koi);
-        console.log(response);
+        await api.put(`koi/${Koi.id}`, Koi);
       } else {
         //create
-        const response = await api.post("koi", Koi);
-        console.log(Koi);
+        await api.post(`koi`, Koi);
       }
       fetchKoi();
       toast.success("Update successfully!!!");
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
-      console.log("error");
+      toast.error("err");
     } finally {
       setSubmitKoi(false);
     }
@@ -311,8 +354,32 @@ const ManagementKoi = () => {
           >
             <InputNumber></InputNumber>
           </Form.Item>
+          <Form.Item label="imageUrl" name="imageUrl">
+            <Upload
+              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+              listType="picture-card"
+              fileList={fileList}
+              onPreview={handlePreview}
+              onChange={handleChange}
+            >
+              {fileList.length >= 8 ? null : uploadButton}
+            </Upload>
+          </Form.Item>
         </Form>
       </Modal>
+      {previewImage && (
+        <Image
+          wrapperStyle={{
+            display: "none",
+          }}
+          preview={{
+            visible: previewOpen,
+            onVisibleChange: (visible) => setPreviewOpen(visible),
+            afterOpenChange: (visible) => !visible && setPreviewImage(""),
+          }}
+          src={previewImage}
+        />
+      )}
       <Table columns={cols} dataSource={KoiFish}></Table>
     </div>
   );
