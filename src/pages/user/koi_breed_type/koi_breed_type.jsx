@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
@@ -21,17 +21,7 @@ function KoiBreedType() {
   useEffect(() => {
     fetchProduct(breedId);
   }, [breedId]);
-  //BULK KOI
-  const handleFetchKoiLot = async (breed) => {
-    if (!breed) return; // Check if breedId exists before making the API call
-    try {
-      const response = await api.get(`koilot?page=0&size=20&breedId=${breed}`);
-      setKoiList(response.data); // Set the koi list data in the state
-      console.log(koiList);
-    } catch (err) {
-      toast.error("fetch error");
-    }
-  };
+
   return (
     <div className="koi_breed_fetch">
       <div className="koi_list">
@@ -43,7 +33,6 @@ function KoiBreedType() {
   );
 }
 const Product = ({ products }) => {
-  var breedItems = [];
   const dispatch = useDispatch();
   const handleAddToCart = () => {
     dispatch(addProduct(products));

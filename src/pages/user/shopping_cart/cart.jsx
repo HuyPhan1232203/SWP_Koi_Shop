@@ -3,20 +3,20 @@ import "./cart.css";
 import { Button, Form, Input, Popconfirm, Select, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { clearAll } from "../../../redux/features/cartSlice";
+import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import api from "../../../config/axios";
 
 function Cart() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-
   const onSelectChange = (newSelectedRowKeys) => {
-    // console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
   const data = useSelector((store) => store.cart);
   const dispatch = useDispatch();
   const handleDeleteKoi = (id) => {
     try {
+      const product = data.filter((koi) => koi.id === id);
+      dispatch(removeProduct(product));
     } catch (err) {
       toast.error(err);
     }
@@ -33,9 +33,16 @@ function Cart() {
 
     {
       title: "Action",
-      render: (id, koi) => {
+      dataIndex: "id",
+      render: (id) => {
         return (
-          <Button type="primary" danger>
+          <Button
+            type="primary"
+            danger
+            onClick={() => {
+              handleDeleteKoi(id);
+            }}
+          >
             x
           </Button>
         );
@@ -90,7 +97,7 @@ function Cart() {
 
       const detail = selectedItems.map((koi) => ({
         koiId: koi.id,
-        quantity: koi.quantity,
+        price: koi.price,
       }));
       const response = await api.post("order", { detail });
       console.log(response);

@@ -238,7 +238,6 @@ function HomePage() {
                   <span className="sub-heading">Our Kois</span>
                   <h2 className="mb-5">Explore our Kois</h2>
                 </div>
-                {/* Row Koi 1 */}
                 <div className="koi_fetch_breed">{showKoiBreed()}</div>
               </div>
             </div>
