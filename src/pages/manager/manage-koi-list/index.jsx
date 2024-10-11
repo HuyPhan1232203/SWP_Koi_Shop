@@ -99,10 +99,10 @@ const ManagementKoi = () => {
     },
     {
       title: "Image",
-      dataIndex: "images",
-      key: "images",
-      render: (image) => {
-        return <Image src={image} width={200}></Image>;
+      dataIndex: "imageUrl",
+      key: "imageUrl",
+      render: (imageUrl) => {
+        return <Image src={imageUrl} alt="" width={200} />;
       },
     },
     {
@@ -145,7 +145,6 @@ const ManagementKoi = () => {
       dataIndex: "breeds",
       key: "breeds",
       render: (breed) => {
-        console.log(breed);
         return breed.map((item) => {
           return <div key={item}>{item || "null"}</div>;
         });
@@ -215,12 +214,11 @@ const ManagementKoi = () => {
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
-      // console.log(Koi);
+      console.log(Koi);
       setSubmitKoi(true);
       //convert Object to string img
-      console.log(Koi.imageUrl);
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-
+      console.log(Koi.imageUrl);
       let response = null;
       if (Koi.id) {
         //update

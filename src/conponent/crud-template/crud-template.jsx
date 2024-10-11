@@ -86,11 +86,6 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
-      console.log(Koi);
-      setSubmitKoi(true);
-      //convert Object to string img
-      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      console.log(Koi.imageUrl);
       let response = null;
       if (Koi.id) {
         //update
