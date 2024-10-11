@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { storeKoi } from "../../../redux/features/koiSlice";
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
   const breedId = sessionStorage.getItem("breedId");
@@ -37,13 +39,26 @@ const Product = ({ products }) => {
   const handleAddToCart = () => {
     dispatch(addProduct(products));
   };
+
   return (
     <div className="product">
-      <img
-        className="product_img"
-        src="https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b"
-        alt=""
-      />
+      <Link
+        onClick={() => {
+          try {
+            dispatch(storeKoi(products));
+          } catch (err) {
+            console.log("err");
+          }
+        }}
+        to="/koi-detail"
+        style={{ textDecoration: "none", color: "#000" }}
+      >
+        <img
+          className="product_img"
+          src={products.images}
+          alt={products.name}
+        />
+      </Link>
       <p className="product_name">Name: {products.name}</p>
       <p className="product_name">Size: {products.size}</p>
       <p className="product_name" style={{ display: "flex" }}>

@@ -8,7 +8,7 @@ import {
 
 function AboutUs() {
   return (
-    <div className="about-us-section">
+    <div className="about-us-section ">
       <div className="image-section">
         <img
           className="about-img"

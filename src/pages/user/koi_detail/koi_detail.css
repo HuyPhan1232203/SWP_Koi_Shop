@@ -1,0 +1,52 @@
+.KoiDetail{
+    margin: 50px 0;
+    /* box-shadow:2px 1px 7px 4px #ccc;
+    padding: 50px; */
+}
+.koi-detail{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:0 80px;
+}
+.koi-detail_name{
+
+}
+
+.koi-detail_gender{
+
+}
+
+.koi-detail_price{
+    color: green;
+}
+
+.koi-detail_origin{
+
+}
+
+.koi-detail_vendor{
+
+}
+
+.koi-detail_size{
+
+}
+
+.koi-detail_description{
+
+}
+
+.koi-detail_button{
+    margin-top: 30px;
+    padding: 30px;
+    background-color: #000;
+    color: #fff;
+    border:none;
+}
+.koi-detail_button:hover{
+    background-color: #aaa;
+    color: #000;
+}
+
