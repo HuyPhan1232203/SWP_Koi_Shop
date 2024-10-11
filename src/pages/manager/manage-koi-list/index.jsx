@@ -99,8 +99,8 @@ const ManagementKoi = () => {
     },
     {
       title: "Image",
-      dataIndex: "imageUrl",
-      key: "imageUrl",
+      dataIndex: "images",
+      key: "images",
       render: (imageUrl) => {
         return <Image src={imageUrl} alt="" width={200} />;
       },

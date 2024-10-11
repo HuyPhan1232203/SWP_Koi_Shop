@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./cart.css";
-import { Button, Form, Input, Popconfirm, Select, Table } from "antd";
+import { Button, Form, Image, Input, Popconfirm, Select, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import api from "../../../config/axios";
 import { DeleteOutlined } from "@ant-design/icons";
+import { render } from "@testing-library/react";
 
 function Cart() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -19,10 +20,17 @@ function Cart() {
       const product = data.filter((koi) => koi.id === id);
       dispatch(removeProduct(product));
     } catch (err) {
-      toast.error(err);
+      toast.error("err");
     }
   };
   const col = [
+    {
+      title: "image",
+      dataIndex: "images",
+      render: (img) => {
+        return <Image src={img} width={100}></Image>;
+      },
+    },
     {
       title: "Koi Fish",
       dataIndex: "name",
@@ -135,7 +143,7 @@ function Cart() {
             <Input placeholder="Enter your voucher code"></Input>
           </Form.Item>
           <Form.Item label="Total Price"></Form.Item>
-          <Button>Check Out</Button>
+          <Button onClick={handleBuy}>Check Out</Button>
         </Form>
       </div>
     </div>
