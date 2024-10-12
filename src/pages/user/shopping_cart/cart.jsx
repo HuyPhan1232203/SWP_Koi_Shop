@@ -7,6 +7,7 @@ import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import api from "../../../config/axios";
 import { DeleteOutlined } from "@ant-design/icons";
 import { render } from "@testing-library/react";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -143,7 +144,11 @@ function Cart() {
             <Input placeholder="Enter your voucher code"></Input>
           </Form.Item>
           <Form.Item label="Total Price"></Form.Item>
-          <Button onClick={handleBuy}>Check Out</Button>
+          <Button>
+            <Link to="/check-out" style={{ textDecoration: "none" }}>
+              Check Out
+            </Link>
+          </Button>
         </Form>
       </div>
     </div>

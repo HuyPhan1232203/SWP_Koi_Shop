@@ -25,9 +25,9 @@ import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list
 import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
 import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
-// import Test from "./src/pages/test/test";
 import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile";
 import KoiDetail from "./src/pages/user/koi_detail/koi_detail";
+import CheckOut from "./src/pages/user/check_out/check_out";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -65,6 +65,10 @@ function App() {
           element: <KoiDetail />,
         },
         {
+          path: "check-out",
+          element: <CheckOut />,
+        },
+        {
           path: "profile",
           element: <Profile />,
           children: [
@@ -93,11 +97,6 @@ function App() {
       path: "register",
       element: <RegisterPage />,
     },
-
-    // {
-    //   path: "test",
-    //   element: <Test />,
-    // },
 
     {
       path: "dashboard",

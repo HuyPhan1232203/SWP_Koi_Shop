@@ -77,7 +77,7 @@
     cursor: pointer;
 }
 .user_action{
-    background-color: #ccc;
+    background-color: #ddd;
     width: 200px;
     list-style: none;
 }
@@ -93,9 +93,9 @@
     content: "";
     border-width: 15px 18px;
     border-style: solid;
-    border-color: transparent transparent #c3b9b9 transparent;
+    border-color: transparent transparent #ddd transparent;
     position: absolute;
-    left: 10px;
+    left:100px;
     top: -29px;
     cursor: pointer;
 }
@@ -106,7 +106,7 @@
     
 } */
 .user_action li:hover{
-    background-color: #b9b0b0;
+    background-color: #eee;
 }
 .authen:hover .user_action{
     display: block;
