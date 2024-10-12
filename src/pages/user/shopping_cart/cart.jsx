@@ -42,7 +42,7 @@ function Cart() {
     },
 
     {
-      title: "Action",
+      title: "Delete",
       dataIndex: "id",
       render: (id) => {
         return (

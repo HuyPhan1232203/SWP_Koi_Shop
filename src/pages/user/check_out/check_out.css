@@ -1,0 +1,21 @@
+.CheckOut{
+    margin: 80px 0;
+}
+.sumary{
+    height: 100vh;
+    padding: 20px;
+}
+.userInfo{
+    border: 1px #000 solid;
+
+}
+.userInfo_input{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+.userInfo_input_field{
+    width: calc(50% - 20px);
+    
+}
