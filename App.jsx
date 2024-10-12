@@ -25,7 +25,7 @@ import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list
 import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
 import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
-import Test from "./src/pages/test/test";
+// import Test from "./src/pages/test/test";
 import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile";
 import KoiDetail from "./src/pages/user/koi_detail/koi_detail";
 function App() {
@@ -94,10 +94,10 @@ function App() {
       element: <RegisterPage />,
     },
 
-    {
-      path: "test",
-      element: <Test />,
-    },
+    // {
+    //   path: "test",
+    //   element: <Test />,
+    // },
 
     {
       path: "dashboard",
