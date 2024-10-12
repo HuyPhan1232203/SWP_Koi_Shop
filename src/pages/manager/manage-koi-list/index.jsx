@@ -26,6 +26,7 @@ const ManagementKoi = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [fileListImg, setFileListImg] = useState([]);
   //FETCH
   const fetchKoi = async () => {
     try {
@@ -72,6 +73,12 @@ const ManagementKoi = () => {
     setPreviewOpen(true);
   };
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChangeList = ({ fileList: newFileList }) => {
+    const formattedList = newFileList.map(file => ({
+      image: file.url || file.preview // Use the URL or preview if available
+    }));
+    setFileListImg(formattedList);
+  };
   const uploadButton = (
     <button
       style={{
@@ -219,7 +226,6 @@ const ManagementKoi = () => {
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       console.log(Koi.imageUrl);
-      let response = null;
       if (Koi.id) {
         //update
         await api.put(`koi/${Koi.id}`, Koi);
@@ -352,6 +358,19 @@ const ManagementKoi = () => {
           >
             <InputNumber></InputNumber>
           </Form.Item>
+
+          {/* <Form.Item label="imagesList" name="imagesList">
+            <Upload
+              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+              listType="picture-card"
+              fileList={fileListImg}
+              onPreview={handlePreview}
+              onChange={handleChangeList}
+            >
+              {fileListImg.length >= 8 ? null : uploadButton}
+            </Upload>
+          </Form.Item> */}
+
           <Form.Item label="imageUrl" name="imageUrl">
             <Upload
               action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"

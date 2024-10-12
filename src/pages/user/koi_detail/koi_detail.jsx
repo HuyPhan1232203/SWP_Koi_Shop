@@ -1,10 +1,22 @@
 import { Button, Image } from "antd";
 import React from "react";
 import "./koi_detail.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../../../redux/features/cartSlice";
+import { useNavigate } from "react-router-dom";
 function KoiDetail() {
   const koiDetail = useSelector((store) => store.koi);
+  const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  const nav = useNavigate();
   console.log(koiDetail);
+  const handleAddToCart = () => {
+    if (user) {
+      dispatch(addProduct(koiDetail));
+    } else {
+      nav("/login");
+    }
+  };
   return (
     <div className="KoiDetail row">
       <div className="col-md-6">
@@ -23,7 +35,9 @@ function KoiDetail() {
         <h3 className="koi-detail_description">
           description: {koiDetail.description}
         </h3>
-        <button className="koi-detail_button">Add to cart</button>
+        <button className="koi-detail_button" onClick={handleAddToCart}>
+          Add to cart
+        </button>
       </div>
     </div>
   );

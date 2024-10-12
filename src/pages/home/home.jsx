@@ -17,7 +17,8 @@ import { Badge, Button, Modal, Popconfirm } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { fetchProduct } from "../user/koi_breed_type/koi_breed_type";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/features/userSlice";
 function HomePage() {
   const nav = useNavigate();
   const userData = useSelector((store) => store.user);
@@ -26,6 +27,7 @@ function HomePage() {
 
   const [openModal, setOpenModal] = useState(false);
   const [breed, setBreed] = useState([]);
+  const dispatch = useDispatch();
   const koiSectionRef = useRef(null); // Create a ref for koi section
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -35,6 +37,7 @@ function HomePage() {
   };
   const handleLogOut = () => {
     sessionStorage.removeItem("username");
+    dispatch(logout());
     handleCloseModal();
     nav("/");
   };

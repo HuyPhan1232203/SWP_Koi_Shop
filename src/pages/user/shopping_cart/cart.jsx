@@ -17,8 +17,8 @@ function Cart() {
   const dispatch = useDispatch();
   const handleDeleteKoi = (id) => {
     try {
-      const product = data.filter((koi) => koi.id === id);
-      dispatch(removeProduct(product));
+      console.log(id);
+      dispatch(removeProduct(id));
     } catch (err) {
       toast.error("err");
     }
@@ -28,7 +28,7 @@ function Cart() {
       title: "image",
       dataIndex: "images",
       render: (img) => {
-        return <Image src={img} width={100}></Image>;
+        return <Image src={img} width={100} height={70}></Image>;
       },
     },
     {
@@ -149,5 +149,5 @@ function Cart() {
     </div>
   );
 }
-
+// eslint-disable-next-line react-refresh/only-export-components
 export default Cart;

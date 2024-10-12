@@ -5,7 +5,7 @@ import { Button } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { storeKoi } from "../../../redux/features/koiSlice";
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
@@ -35,9 +35,16 @@ function KoiBreedType() {
   );
 }
 const Product = ({ products }) => {
+  const user = useSelector((store) => store.user);
+  const nav = useNavigate();
   const dispatch = useDispatch();
   const handleAddToCart = () => {
-    dispatch(addProduct(products));
+    console.log(user);
+    if (user) {
+      dispatch(addProduct(products));
+    } else {
+      nav("/login");
+    }
   };
 
   return (
