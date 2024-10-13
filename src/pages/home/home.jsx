@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 import { fetchProduct } from "../user/koi_breed_type/koi_breed_type";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/features/userSlice";
+import { clearAll } from "../../redux/features/cartSlice";
 function HomePage() {
   const nav = useNavigate();
   const userData = useSelector((store) => store.user);
@@ -38,6 +39,7 @@ function HomePage() {
   const handleLogOut = () => {
     sessionStorage.removeItem("username");
     dispatch(logout());
+    dispatch(clearAll());
     handleCloseModal();
     nav("/");
   };
