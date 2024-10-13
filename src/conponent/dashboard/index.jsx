@@ -5,21 +5,13 @@ import {
   ProductOutlined,
   ProfileOutlined,
 } from "@ant-design/icons";
-import {
-  Breadcrumb,
-  Button,
-  ConfigProvider,
-  Input,
-  Layout,
-  Menu,
-  theme,
-} from "antd";
+import { Button, ConfigProvider, Layout, Menu, theme } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/features/userSlice";
 const { Header, Content, Footer, Sider } = Layout;
-const username = sessionStorage.getItem("username");
+
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -42,9 +34,9 @@ const items = [
 const Dashboard = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
-
+  const user = useSelector((store) => store.user);
   const showName = () => {
-    if (username) {
+    if (user) {
       return (
         <h4
           style={{
@@ -58,7 +50,7 @@ const Dashboard = () => {
             textAlign: "center",
           }}
         >
-          Author: {username}
+          Author: {user.username}
         </h4>
       );
     } else {

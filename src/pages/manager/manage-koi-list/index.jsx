@@ -26,7 +26,6 @@ const ManagementKoi = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
-  const [fileListImg, setFileListImg] = useState([]);
   //FETCH
   const fetchKoi = async () => {
     try {
@@ -73,12 +72,7 @@ const ManagementKoi = () => {
     setPreviewOpen(true);
   };
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-  const handleChangeList = ({ fileList: newFileList }) => {
-    const formattedList = newFileList.map(file => ({
-      image: file.url || file.preview // Use the URL or preview if available
-    }));
-    setFileListImg(formattedList);
-  };
+
   const uploadButton = (
     <button
       style={{

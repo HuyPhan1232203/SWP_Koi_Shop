@@ -13,7 +13,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Modal, Popconfirm } from "antd";
+import { Badge, Button, Modal } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { fetchProduct } from "../user/koi_breed_type/koi_breed_type";
@@ -183,12 +183,8 @@ function HomePage() {
                     Koi List
                   </a>
                   <ul className="nav_li_koi_elements">
-                    {/* <Link
-                      className="koi_list_link"
-                      onClick={() => console.log(breed.id)}
-                    > */}
                     {breed.map((breed) => breeds(breed))}
-                    {/* </Link> */}
+                    {/* {console.log(breed)} */}
                   </ul>
                 </li>
 
