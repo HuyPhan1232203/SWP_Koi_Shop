@@ -88,6 +88,8 @@
     position: absolute;
     padding: 0;
     margin-top: 10px;
+    box-shadow:1px 1px 1px 1px #ccc;
+
 }
 .user_action::before{
     content: "";

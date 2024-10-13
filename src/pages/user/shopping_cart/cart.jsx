@@ -112,15 +112,10 @@ function Cart() {
       selectedItems.map((item) => {
         dispatch(addSelectedItem(item));
       });
-      console.log(itemSelected);
       const detail = selectedItems.map((koi) => ({
         koiId: koi.id,
         price: koi.price,
       }));
-      const response = await api.post("order", { detail });
-      console.log(response);
-      // dispatch(clearAll());
-      toast.success("success");
     } catch (err) {
       toast.error("Failed");
     }
