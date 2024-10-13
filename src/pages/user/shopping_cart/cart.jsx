@@ -1,15 +1,19 @@
 import { useState } from "react";
 import "./cart.css";
-import { Button, Form, Image, Input, Popconfirm, Select, Table } from "antd";
+import { Button, Form, Image, Input, Select, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import api from "../../../config/axios";
 import { DeleteOutlined } from "@ant-design/icons";
-import { render } from "@testing-library/react";
 import { Link } from "react-router-dom";
+import {
+  addSelectedItem,
+  clearAllSelectedItem,
+} from "../../../redux/features/selectedItemsSlice";
 
 function Cart() {
+  const itemSelected = useSelector((store) => store.selectedItems);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
@@ -101,11 +105,14 @@ function Cart() {
 
   const handleBuy = async () => {
     try {
+      dispatch(clearAllSelectedItem());
       const selectedItems = data.filter((koi) =>
         selectedRowKeys.includes(koi.id)
       );
-      console.log(selectedItems);
-
+      selectedItems.map((item) => {
+        dispatch(addSelectedItem(item));
+      });
+      console.log(itemSelected);
       const detail = selectedItems.map((koi) => ({
         koiId: koi.id,
         price: koi.price,
@@ -145,7 +152,11 @@ function Cart() {
           </Form.Item>
           <Form.Item label="Total Price"></Form.Item>
           <Button>
-            <Link to="/check-out" style={{ textDecoration: "none" }}>
+            <Link
+              onClick={handleBuy}
+              to="/check-out"
+              style={{ textDecoration: "none" }}
+            >
               Check Out
             </Link>
           </Button>
