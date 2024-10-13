@@ -89,7 +89,7 @@
     padding: 0;
     margin-top: 10px;
 }
-.user_action::after{
+.user_action::before{
     content: "";
     border-width: 15px 18px;
     border-style: solid;
@@ -98,6 +98,14 @@
     left:100px;
     top: -29px;
     cursor: pointer;
+}
+.user_action::after{
+    content:"";
+    border-style: solid;
+    border-width: 15px 100px;
+    position: absolute;
+    top:-20px;
+    border-color: transparent;
 }
 .user_action li{
     padding: 10px;
