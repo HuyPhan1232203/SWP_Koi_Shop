@@ -169,18 +169,18 @@
     display: none;
     list-style: none;
     padding: 0;
-    background:rgba(255, 255, 255, .95) ;
+    background:rgba(237, 235, 235, 0.85) ;
 }
 .nav_li_koi_elements li:hover{
-    background-color: #c3b9b9;
+    background-color: #aaa;
     cursor: pointer;
 }
 .koi_list_link li{
     width: 200px;
     padding: 10px 10px;
     cursor: pointer;
-    border-bottom: 1px solid #B78E75;
-    color: #9d7a63;
+    border-bottom: 1px solid #ccc;
+    color: #545252;
 
 }
 .koi_list_link{
