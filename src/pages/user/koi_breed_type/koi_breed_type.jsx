@@ -78,7 +78,11 @@ const Product = ({ products }) => {
           }}
         >
           {products.breeds.map((breedItem) => {
-            return <div key={breedItem}>, {breedItem.name} </div>;
+            return (
+              <div key={breedItem} style={{ marginRight: "10px" }}>
+                {breedItem.name}
+              </div>
+            );
           })}
         </div>
       </p>
