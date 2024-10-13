@@ -13,7 +13,6 @@ import {
 } from "../../../redux/features/selectedItemsSlice";
 
 function Cart() {
-  const itemSelected = useSelector((store) => store.selectedItems);
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
@@ -102,7 +101,14 @@ function Cart() {
       },
     ],
   };
-
+  const handleShowItemsName = () => {
+    const selectedItems = data.filter((koi) =>
+      selectedRowKeys.includes(koi.id)
+    );
+    selectedItems.map((item) => {
+      <div>{item.name}</div>;
+    });
+  };
   const handleBuy = async () => {
     try {
       dispatch(clearAllSelectedItem());
@@ -112,10 +118,6 @@ function Cart() {
       selectedItems.map((item) => {
         dispatch(addSelectedItem(item));
       });
-      const detail = selectedItems.map((koi) => ({
-        koiId: koi.id,
-        price: koi.price,
-      }));
     } catch (err) {
       toast.error("Failed");
     }
@@ -135,26 +137,16 @@ function Cart() {
       <div className="order_bill">
         <h3 className="order_bill_header">Sumary</h3>
         <Form labelCol={{ span: 24 }}>
-          <Form.Item label="Items: "></Form.Item>
-          <Form.Item label="Shipping: ">
-            <Select>
-              <Select.Option>Standard Delivery</Select.Option>
-              <Select.Option>Expert Delivery</Select.Option>
-            </Select>
-          </Form.Item>
-          <Form.Item label="Voucher">
-            <Input placeholder="Enter your voucher code"></Input>
-          </Form.Item>
+          <Form.Item label="Items: ">{handleShowItemsName()}</Form.Item>
+
           <Form.Item label="Total Price"></Form.Item>
-          <Button>
-            <Link
-              onClick={handleBuy}
-              to="/check-out"
-              style={{ textDecoration: "none" }}
-            >
-              Check Out
-            </Link>
-          </Button>
+          <Link
+            onClick={handleBuy}
+            to="/check-out"
+            style={{ textDecoration: "none" }}
+          >
+            <Button>Check Out</Button>
+          </Link>
         </Form>
       </div>
     </div>

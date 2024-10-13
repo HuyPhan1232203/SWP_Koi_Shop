@@ -209,6 +209,7 @@ function CheckOut() {
           </div>
         </div>
         <div className="sumary_cart_items">
+          <h6>Items:</h6>
           {cartItems.map((item) => {
             return (
               <div key={item.id} className="item">

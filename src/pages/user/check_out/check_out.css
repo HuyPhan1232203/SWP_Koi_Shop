@@ -1,13 +1,14 @@
 .CheckOut{
     margin: 80px 0;
+    background-color: #ddd;
 }
 .sumary{
     height: 100vh;
     padding: 50px;
 }
 .userInfo{
-    border: 1px #000 solid;
-
+    border: 1px #ccc solid;
+    background-color: #fff;
 }
 .userInfo h1{
     padding:20px 40px 0px 60px;
