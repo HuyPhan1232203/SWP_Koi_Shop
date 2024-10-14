@@ -29,6 +29,7 @@ import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile
 import KoiDetail from "./src/pages/user/koi_detail/koi_detail";
 import CheckOut from "./src/pages/user/check_out/check_out";
 import PurchaseOrder from "./src/pages/user/purchase_order/purchase_order";
+import ManageStaffJob from "./src/pages/manager/manage-staff-job/manage-staff-job";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -114,6 +115,10 @@ function App() {
         {
           path: "koilist",
           element: <ManagementKoi />,
+        },
+        {
+          path: "manage-staff-job",
+          element: <ManageStaffJob />,
         },
         {
           path: "voucher",

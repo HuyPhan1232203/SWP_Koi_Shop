@@ -29,6 +29,11 @@ const items = [
   ),
   getItem("Staff List", "staff", <IdcardOutlined style={{ color: "#fff" }} />),
   getItem("Breeds", "breeds", <ProfileOutlined style={{ color: "#fff" }} />),
+  getItem(
+    "Staff Job",
+    "manage-staff-job",
+    <ProfileOutlined style={{ color: "#fff" }} />
+  ),
 ];
 
 const Dashboard = () => {
