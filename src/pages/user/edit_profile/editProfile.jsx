@@ -3,10 +3,12 @@ import "./editProfile.css";
 import { Button, Form, Input, Modal } from "antd";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../redux/features/userSlice";
 
 function EditProfile() {
   const userInfo = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState(false);
   const [defaultVal, setDefaultVal] = useState();
   const [defaultField, setDefaultField] = useState();
@@ -16,9 +18,12 @@ function EditProfile() {
     try {
       console.log(value.email);
       const response = await api.put(`account/${userInfo.id}`, value);
+      dispatch(login(response.data));
       console.log(response.data);
     } catch (err) {
       toast.error(err.response.data);
+    } finally {
+      setOpenModal(false);
     }
   };
   return (
@@ -35,12 +40,15 @@ function EditProfile() {
           <Form.Item
             initialValue={defaultVal}
             label={`Current ${defaultField}`}
-            name="username"
+            name={defaultField}
           >
             <Input defaultValue={defaultVal}></Input>
           </Form.Item>
           <Form.Item initialValue={userInfo.id} name="id">
             <Input defaultValue={userInfo.id} hidden></Input>
+          </Form.Item>
+          <Form.Item initialValue={userInfo.username} name="username">
+            <Input defaultValue={userInfo.username} hidden></Input>
           </Form.Item>
           <Form.Item initialValue={userInfo.role} name="role">
             <Input defaultValue={userInfo.role} hidden></Input>
@@ -54,8 +62,8 @@ function EditProfile() {
           <Form.Item initialValue={userInfo.address} name="address">
             <Input hidden></Input>
           </Form.Item>
-          <Form.Item label={`New ${defaultField}`} name="username">
-            <Input></Input>
+          <Form.Item label={`New ${defaultField}`} name={defaultField}>
+            <Input defaultValue={defaultField}></Input>
           </Form.Item>
         </Form>
       </Modal>
@@ -71,7 +79,7 @@ function EditProfile() {
           onClick={() => {
             setOpenModal(true);
             setDefaultVal(userInfo.username);
-            setDefaultField("Username");
+            setDefaultField("username");
           }}
         >
           Edit
@@ -88,7 +96,7 @@ function EditProfile() {
           onClick={() => {
             setOpenModal(true);
             setDefaultVal(userInfo.email);
-            setDefaultField("Email");
+            setDefaultField("email");
           }}
         >
           Edit
@@ -105,7 +113,24 @@ function EditProfile() {
           onClick={() => {
             setOpenModal(true);
             setDefaultVal(userInfo.phone);
-            setDefaultField("Phone");
+            setDefaultField("phone");
+          }}
+        >
+          Edit
+        </Button>
+      </div>
+      <div className="edit">
+        <div className="edit_field">
+          <div className="edit_field_title font">Address:</div>
+          <div className="edit_field-parameter font">{userInfo.address}</div>
+        </div>
+        <Button
+          type="primary"
+          className="edit_btn"
+          onClick={() => {
+            setOpenModal(true);
+            setDefaultVal(userInfo.address);
+            setDefaultField("address");
           }}
         >
           Edit

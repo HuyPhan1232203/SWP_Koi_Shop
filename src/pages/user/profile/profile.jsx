@@ -2,9 +2,10 @@ import React from "react";
 import "./profile.css";
 import { Layout } from "antd";
 import { Link, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Profile() {
-  const username = sessionStorage.getItem("username");
+  const username = useSelector((store) => store.user);
   return (
     <div className="profile">
       <div className="profile_header"></div>
@@ -16,7 +17,9 @@ function Profile() {
                 className="profile_avatar"
                 src="/assets/images/user.png"
               ></img>
-              <div className="profile_name text-center">{username}</div>
+              <div className="profile_name text-center">
+                {username.username}
+              </div>
               <Link
                 to="edit_profile"
                 style={{ width: "100%", textDecoration: "none" }}
