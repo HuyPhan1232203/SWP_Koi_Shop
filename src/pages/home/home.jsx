@@ -179,8 +179,8 @@ function HomePage() {
                   </Link>
                 </li>
                 <li className="nav_li">
-                  <Link className="nav_elements" to="/introduction">
-                    Introduction
+                  <Link className="nav_elements" to="/deposit">
+                    Deposit
                   </Link>
                 </li>
                 <li className="nav_li nav_li_koi">

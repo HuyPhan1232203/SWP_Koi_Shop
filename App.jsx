@@ -1,6 +1,5 @@
 import {
   createBrowserRouter,
-  Link,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
@@ -11,7 +10,7 @@ import Dashboard from "./src/conponent/dashboard";
 import ManagementKoi from "./src/pages/manager/manage-koi-list";
 import ManageVoucher from "./src/pages/manager/manage-voucher/manage-voucher";
 import ManageStaff from "./src/pages/manager/manage-staff/manage-staff";
-import Introduction from "./src/pages/customer/introduction/introduction";
+import Deposit from "./src/pages/customer/deposit/deposit";
 import AboutUs from "./src/pages/customer/about-us/about-us";
 import Profile from "./src/pages/user/profile/profile";
 import EditProfile from "./src/pages/user/edit_profile/editProfile";
@@ -27,9 +26,11 @@ import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
 import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile";
 import KoiDetail from "./src/pages/user/koi_detail/koi_detail";
-import CheckOut from "./src/pages/user/check_out/check_out";
 import PurchaseOrder from "./src/pages/user/purchase_order/purchase_order";
 import ManageStaffJob from "./src/pages/manager/manage-staff-job/manage-staff-job";
+import CheckOut from "./src/pages/user/check_out/check_out";
+import CheckOutNormal from "./src/pages/user/check_out/check_out-normal";
+import CheckOutDeposit from "./src/pages/user/check_out/check_out-deposit";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -47,8 +48,8 @@ function App() {
       element: <HomePage />,
       children: [
         {
-          path: "introduction",
-          element: <Introduction />,
+          path: "deposit",
+          element: <Deposit />,
         },
         {
           path: "about-us",
@@ -69,6 +70,16 @@ function App() {
         {
           path: "check-out",
           element: <CheckOut />,
+          children: [
+            {
+              path: "",
+              element: <CheckOutNormal />,
+            },
+            {
+              path: "check-out_deposit",
+              element: <CheckOutDeposit />,
+            },
+          ],
         },
         {
           path: "purchase-order",
