@@ -79,7 +79,10 @@ const Product = ({ products }) => {
         >
           {products.breeds.map((breedItem) => {
             return (
-              <div key={breedItem} style={{ marginRight: "10px" }}>
+              <div
+                key={breedItem}
+                style={{ marginRight: "10px", fontWeight: "700" }}
+              >
                 {breedItem.name}
               </div>
             );

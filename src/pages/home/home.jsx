@@ -107,8 +107,13 @@ function HomePage() {
               >
                 <li>My Profile</li>
               </Link>
+              <Link
+                style={{ textDecoration: "none", color: "#000" }}
+                to="purchase-order"
+              >
+                <li>Purchase Order</li>
+              </Link>
 
-              <li>Purchase Order</li>
               <li onClick={handleOpenModal}>LogOut</li>
             </ul>
           </div>
