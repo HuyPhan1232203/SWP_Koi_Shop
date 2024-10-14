@@ -260,7 +260,7 @@ const ManagementKoi = () => {
         onOk={formStand.submit}
       >
         <Form
-          labelCol={{ span: 5 }}
+          labelCol={{ span: 6 }}
           onFinish={handleSubmitKoi}
           form={formStand}
         >
