@@ -16,13 +16,15 @@ function CheckOut() {
     try {
       const selectedItems = cartItems;
       const detail = selectedItems.map((item) => ({
-        KoiId: item.id,
+        koiId: item.id,
         price: item.price,
       }));
       console.log({ detail });
-      //   const response = await api.post("order", { detail });
+      const response = await api.post("order", { detail });
+      console.log(response.data);
+      window.open(response.data, "_blank", "noopener,noreferrer");
     } catch (err) {
-      toast;
+      toast.error("err");
     }
   };
   return (
