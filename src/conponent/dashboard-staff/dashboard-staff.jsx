@@ -9,19 +9,18 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, ConfigProvider, Layout, Menu, theme } from "antd";
-import { Link, Outlet } from "react-router-dom";
+import { Breadcrumb, Button, ConfigProvider, Layout, Menu, theme } from "antd";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { logout } from "../../redux/features/userSlice";
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
     key,
     icon,
     children,
-    label: (
-      <Link to={`/dashboard-staff/${key}`}>
-        {label}
-      </Link>
-    ),
+    label: <Link to={`/dashboard-staff/${key}`}>{label}</Link>,
   };
 }
 const items = [
@@ -38,6 +37,36 @@ const items = [
   getItem("Profile", "profile", <ProfileOutlined style={{ color: "#fff" }} />),
 ];
 const DashboardStaff = () => {
+  const nav = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.user);
+  const showName = () => {
+    if (user) {
+      return (
+        <h4
+          style={{
+            fontFamily: "serif",
+            color: "#3652AD",
+            border: "1px solid #3652AD",
+            borderRadius: "10px",
+            paddingBottom: "10px",
+            paddingTop: "10px",
+            width: "300px",
+            textAlign: "center",
+          }}
+        >
+          Author: {user.username}
+        </h4>
+      );
+    } else {
+      toast.error("no token");
+    }
+  };
+  const handleLogOut = () => {
+    sessionStorage.removeItem("username");
+    dispatch(logout());
+    nav("/");
+  };
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -91,7 +120,7 @@ const DashboardStaff = () => {
           Input: {
             colorBgContainer: "#E9F6FF",
             activeBorderColor: "#3652AD",
-            hoverBorderColor: "#3652AD"
+            hoverBorderColor: "#3652AD",
           },
           Radio: {
             colorText: "#fff",
@@ -147,6 +176,15 @@ const DashboardStaff = () => {
                 borderRadius: borderRadiusLG,
               }}
             >
+              {showName()}
+              <Button
+                style={{
+                  marginLeft: "1050px",
+                }}
+                onClick={handleLogOut}
+              >
+                LogOut
+              </Button>
               <Outlet />
             </div>
           </Content>
