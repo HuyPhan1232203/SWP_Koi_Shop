@@ -104,6 +104,7 @@ function CheckOutNormal() {
       <div className="address">
         <div className="row">
           <Form.Item
+            initialValue={userInfo.address}
             name="address"
             rules={[
               {

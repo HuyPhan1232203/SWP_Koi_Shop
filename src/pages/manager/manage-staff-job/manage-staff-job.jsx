@@ -9,6 +9,9 @@ function ManageStaffJob() {
     const response = await api.get("order");
     setOrderList(response.data);
   };
+  const handleAsignStaff=()=>{
+    
+  }
   const fetchStaff = async () => {
     const response = await api.get("account?role=STAFF");
     setStaffList(response.data);
