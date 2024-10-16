@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/features/userSlice";
 import { clearAll } from "../../redux/features/cartSlice";
 import { clearAllSelectedItem } from "../../redux/features/selectedItemsSlice";
+import { storeBreedId } from "../../redux/features/breedIdSlice";
 function HomePage() {
   const nav = useNavigate();
   const userData = useSelector((store) => store.user);
@@ -63,8 +64,8 @@ function HomePage() {
         className="koi_list_link"
         onClick={() => {
           console.log(breed.id);
-          sessionStorage.setItem("breedId", breed.id);
-          fetchProduct();
+          dispatch(storeBreedId(breed.id));
+          // fetchProduct();
         }}
       >
         <li key={breed.id}>{breed.name}</li>

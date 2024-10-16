@@ -30,6 +30,7 @@ const ManagementKoi = () => {
   const fetchKoi = async () => {
     try {
       const response = await api.get("koi?page=0&size=20");
+      console.log(response);
       setKoiFish(response.data.content);
     } catch (err) {
       toast.error(err.response.data);

@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { storeKoi } from "../../../redux/features/koiSlice";
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
-  const breedId = sessionStorage.getItem("breedId");
+  const breedId = useSelector((store) => store.breedId);
   const fetchProduct = async (breed) => {
     if (!breed) return; // Check if breedId exists before making the API call
     try {
@@ -23,12 +23,12 @@ function KoiBreedType() {
   useEffect(() => {
     fetchProduct(breedId);
   }, [breedId]);
-
+  console.log(koiList);
   return (
     <div className="koi_breed_fetch">
       <div className="koi_list">
-        {koiList.map((product) => (
-          <Product products={product} key={product.id} />
+        {koiList.map((item) => (
+          <Product products={item} key={item.id} />
         ))}
       </div>
     </div>
@@ -62,12 +62,12 @@ const Product = ({ products }) => {
       >
         <img
           className="product_img"
-          src={products.images}
-          alt={products.name}
+          src={products?.images}
+          alt={products?.name}
         />
       </Link>
-      <p className="product_name">Name: {products.name}</p>
-      <p className="product_name">Size: {products.size}</p>
+      <p className="product_name">Name: {products?.name}</p>
+      <p className="product_name">Size: {products?.size}</p>
       <p className="product_name" style={{ display: "flex" }}>
         Breeds:
         <div
@@ -77,7 +77,7 @@ const Product = ({ products }) => {
             width: "100%",
           }}
         >
-          {products.breeds.map((breedItem) => {
+          {products?.breeds?.map((breedItem) => {
             return (
               <div
                 key={breedItem}
