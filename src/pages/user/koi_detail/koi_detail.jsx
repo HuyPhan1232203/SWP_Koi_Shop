@@ -1,14 +1,20 @@
 import { Button, ConfigProvider, Image, Input, Rate, Tabs } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./koi_detail.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
+import { toast } from "react-toastify";
+import api from "../../../config/axios";
 function KoiDetail() {
   const { TextArea } = Input;
+  const [submitFeedback, setSubmitFeedback] = useState([]);
+  const [rating, setRating] = useState(0);
+  const [content, setContent] = useState("");
   const koiDetail = useSelector((store) => store.koi);
   const user = useSelector((store) => store.user);
+  const shopId = 1;
   const dispatch = useDispatch();
   const nav = useNavigate();
   console.log(koiDetail);
@@ -24,17 +30,74 @@ function KoiDetail() {
     console.log(key);
   };
 
+  const fetchFeedback = async () => {
+    try {
+      const response = await api.get("feedback");
+      console.log(response.data);
+      setSubmitFeedback(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchFeedback();
+  }, []);
+
+  const handleSubmitFeedback = async () => {
+    const feedback = { content, rating, shopId };
+    try {
+      const response = await api.post(`feedback`, feedback);
+      console.log("Feedback content:", content);
+      console.log("Feedback rating:", rating);
+      setSubmitFeedback((prevFeedback) => [...prevFeedback, response.data]);
+      toast.success("Post Successfully!");
+      setContent("");
+      setRating(0);
+    } catch (err) {
+      console.error("Error posting feedback:", err);
+      toast.error(err.response?.data || "Failed to post feedback");
+    }
+  };
+
   const items = [
     {
       key: "1",
       label: "Feedback",
-      children: <div>
-        <TextArea name="content" placeholder="Enter your feedback" rows={4} style={{width: "800px"}}></TextArea>
+      children: (
         <div>
-        <Rate name="rating"/>
+          <TextArea
+            name="content"
+            placeholder="Enter your feedback"
+            rows={4}
+            style={{ width: "800px" }}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></TextArea>
+          <div>
+            <Rate
+              name="rating"
+              value={rating}
+              onChange={(value) => setRating(value)}
+            />
+          </div>
+          <Button onClick={handleSubmitFeedback} type="primary">
+            Post
+          </Button>
+          <div>
+            {submitFeedback.length > 0 ? (
+              submitFeedback.map((feedback) => (
+                <div key={feedback.id || feedback.content}>
+                  <p>{feedback.content}</p>
+                  <Rate disabled value={feedback.rating} />
+                </div>
+              ))
+            ) : (
+              <p>No feedback yet. Be the first to post!</p>
+            )}
+          </div>
         </div>
-        <Button type="primary">Post</Button>
-      </div>,
+      ),
     },
     {
       key: "2",
