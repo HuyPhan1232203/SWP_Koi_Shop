@@ -74,11 +74,11 @@ const ConsignmentOnline = () => {
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
-      console.log(Koi);
-      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      console.log(Koi.imageUrl);
-      await api.post(`koi`, Koi);
-      toast.success("Update successfully!!!");
+      // console.log(Koi);
+      // Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      // console.log(Koi.imageUrl);
+      // await api.post(`koi`, Koi);
+      // toast.success("Update successfully!!!");
       // formStand.resetFields();
       nav("check-consign");
     } catch (err) {

@@ -72,12 +72,12 @@ function ConsignmentOffline() {
   const nav = useNavigate();
   const handleSubmitKoi = async (Koi) => {
     try {
-      console.log(Koi);
-      //convert Object to string img
-      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      console.log(Koi.imageUrl);
-      const response = await api.post("koi", Koi);
-      console.log(response.data);
+      // console.log(Koi);
+      // //convert Object to string img
+      // Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      // console.log(Koi.imageUrl);
+      // const response = await api.post("koi", Koi);
+      // console.log(response.data);
       nav("check-consign");
     } catch (err) {
       toast.error("err");
