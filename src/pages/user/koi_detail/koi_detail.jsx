@@ -26,12 +26,12 @@ function KoiDetail() {
     {
       key: "1",
       label: "Feedback",
-      children: "Content of Tab Pane 1",
+      children: <div>Content of Tab Pane 1</div>,
     },
     {
       key: "2",
       label: "Certificate",
-      children: "Content of Tab Pane 2",
+      children: <div>Content of Tab Pane 2</div>,
     },
   ];
   return (
