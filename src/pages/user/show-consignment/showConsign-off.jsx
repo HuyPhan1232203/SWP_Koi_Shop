@@ -1,7 +1,19 @@
-import { DatePicker, Form, Input, Radio } from "antd";
-import React from "react";
+import { Button, DatePicker, Form, Input, Radio } from "antd";
+import React, { useEffect, useState } from "react";
+import api from "../../../config/axios";
+import TextArea from "antd/es/input/TextArea";
 
 function ShowConsignOff() {
+  const [careType, setCareType] = useState([]);
+  //FETCH
+  const fetchCareType = async () => {
+    const response = await api.get("caretypes");
+    console.log(response.data);
+    setCareType(response.data);
+  };
+  useEffect(() => {
+    fetchCareType();
+  }, []);
   return (
     <div>
       <Form>
@@ -25,26 +37,29 @@ function ShowConsignOff() {
                 message: "Please Input",
               },
             ]}
-            label="Shipping"
+            label="Care type:"
           >
             <Radio.Group name="radiogroup" className="radio_delivery">
-              <Radio value="Standard" className="delivery">
-                <div className="delivery_item ">Standard Delivery</div>
-                <small>3-4 days via Fedex</small>
-              </Radio>
-              <Radio value="Express" className="delivery">
-                <div className="delivery_item ">Express Delivery</div>
-                <small>1-2 days via post</small>
-              </Radio>
-              <Radio value="Self" className="delivery">
-                <div className="delivery_item ">Self Pickup</div>
-                <small>Come to our shop</small>
-              </Radio>
+              {careType.map((item) => {
+                return (
+                  <Radio
+                    key={item.careTypeId}
+                    value={item.careTypeId}
+                    className="delivery"
+                  >
+                    <div className="delivery_item ">{item.careTypeName}</div>
+                    <small>${item.costPerDay}/day</small>
+                  </Radio>
+                );
+              })}
             </Radio.Group>
           </Form.Item>
+          <Form.Item label="Description:">
+            <TextArea></TextArea>
+          </Form.Item>
         </div>
-        
       </Form>
+      <Button>Continue</Button>
     </div>
   );
 }
