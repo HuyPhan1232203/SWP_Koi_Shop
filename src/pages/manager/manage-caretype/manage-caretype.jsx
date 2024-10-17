@@ -66,6 +66,11 @@ function ManageCareType() {
 
   const cols = [
     {
+      title: "ID",
+      dataIndex: "careTypeId",
+      key: "careTypeId",
+    },
+    {
       title: "Care Type",
       dataIndex: "careTypeName",
       key: "careTypeName",
@@ -77,9 +82,9 @@ function ManageCareType() {
     },
     {
       title: "Action",
-      dataIndex: "id",
-      key: "id",
-      render: (id, caretypes) => {
+      dataIndex: "careTypeId",
+      key: "careTypeId",
+      render: (careTypeId, caretypes) => {
         return (
           <div
             style={{
@@ -100,7 +105,7 @@ function ManageCareType() {
 
             <Popconfirm
               onConfirm={() => {
-                handleDeleteCareType(id);
+                handleDeleteCareType(careTypeId);
               }}
               title="Delete"
               description="Are you sure"
