@@ -16,6 +16,7 @@ function CheckOut() {
       }
     });
   };
+  const total = cartItems.reduce((total, item) => total + item.price, 0);
   return (
     <div className="CheckOut row">
       <div className="col-md-8 userInfo">
@@ -34,7 +35,10 @@ function CheckOut() {
       <div className="col-md-4 sumary">
         <h3>Summary</h3>
         <div className="summary_price">
-          <p>Total price: </p>
+          <p style={{ display: "flex" }}>
+            Estimated price:
+            <p style={{ color: "green" }}>${total} </p>
+          </p>
           <p>Discount: </p>
           <p>Shipping cost: </p>
         </div>

@@ -31,6 +31,7 @@ import ManageStaffJob from "./src/pages/manager/manage-staff-job/manage-staff-jo
 import CheckOut from "./src/pages/user/check_out/check_out";
 import CheckOutNormal from "./src/pages/user/check_out/check_out-normal";
 import CheckOutDeposit from "./src/pages/user/check_out/check_out-deposit";
+import History from "./src/pages/user/purchase-history/history";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -92,6 +93,10 @@ function App() {
             {
               path: "edit_profile",
               element: <EditProfile />,
+            },
+            {
+              path: "order-history",
+              element: <History />,
             },
           ],
         },

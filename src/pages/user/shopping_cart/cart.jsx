@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./cart.css";
 import { Button, Form, Image, Input, Select, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,7 @@ import {
 
 function Cart() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [itemChosen, setItemChosen] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
   };
@@ -101,14 +102,17 @@ function Cart() {
       },
     ],
   };
+  const selectedItems = data.filter((koi) => selectedRowKeys.includes(koi.id));
   const handleShowItemsName = () => {
-    const selectedItems = data.filter((koi) =>
-      selectedRowKeys.includes(koi.id)
-    );
+    console.log(selectedItems);
     selectedItems.map((item) => {
-      <div>{item.name}</div>;
+      return <div key={item.id}>{setItemChosen(item)}</div>;
     });
   };
+  // useEffect(() => {
+  //   handleShowItemsName();
+  // }, [selectedItems]);
+  var total = selectedItems.reduce((acc, item) => acc + item.price, 0);
   const handleBuy = async () => {
     try {
       dispatch(clearAllSelectedItem());
@@ -137,9 +141,19 @@ function Cart() {
       <div className="order_bill">
         <h3 className="order_bill_header">Sumary</h3>
         <Form labelCol={{ span: 24 }}>
-          <Form.Item label="Items: ">{handleShowItemsName()}</Form.Item>
+          <Form.Item label={"Items :"}>
+            {selectedItems.map((item) => {
+              return (
+                <div style={{ fontWeight: "500" }} key={item.id}>
+                  +{item.name}
+                </div>
+              );
+            })}
+          </Form.Item>
 
-          <Form.Item label="Total Price"></Form.Item>
+          <Form.Item label="Total Price">
+            <div style={{ color: "green" }}>${total}</div>
+          </Form.Item>
           <Link
             onClick={handleBuy}
             to="/check-out"

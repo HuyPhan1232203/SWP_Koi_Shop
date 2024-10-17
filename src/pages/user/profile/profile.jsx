@@ -26,7 +26,13 @@ function Profile() {
               >
                 <div className="profile_children">Edit Profile</div>
               </Link>
-              <div className="profile_children">Purchase History</div>
+              <Link
+                to="order-history"
+                style={{ width: "100%", textDecoration: "none" }}
+              >
+                <div className="profile_children">Purchase History</div>
+              </Link>
+
               <div className="profile_children">Log Out</div>
             </div>
             <div className="right col-md-9">
