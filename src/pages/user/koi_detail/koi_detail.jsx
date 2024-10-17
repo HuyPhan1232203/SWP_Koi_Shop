@@ -45,6 +45,10 @@ function KoiDetail() {
   }, []);
 
   const handleSubmitFeedback = async () => {
+    if (!content.trim()) {
+      toast.error("Please enter feedback before posting.");
+      return;
+    }
     const feedback = { content, rating, shopId };
     try {
       const response = await api.post(`feedback`, feedback);
