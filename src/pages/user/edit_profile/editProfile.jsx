@@ -42,24 +42,24 @@ function EditProfile() {
             label={`Current ${defaultField}`}
             name={defaultField}
           >
-            <Input defaultValue={defaultVal}></Input>
+            <Input defaultValue={defaultVal} disabled></Input>
           </Form.Item>
-          <Form.Item initialValue={userInfo.id} name="id">
+          <Form.Item initialValue={userInfo.id} hidden name="id">
             <Input defaultValue={userInfo.id} hidden></Input>
           </Form.Item>
-          <Form.Item initialValue={userInfo.username} name="username">
+          <Form.Item initialValue={userInfo.username} hidden name="username">
             <Input defaultValue={userInfo.username} hidden></Input>
           </Form.Item>
-          <Form.Item initialValue={userInfo.role} name="role">
+          <Form.Item initialValue={userInfo.role} hidden name="role">
             <Input defaultValue={userInfo.role} hidden></Input>
           </Form.Item>
-          <Form.Item initialValue={userInfo.phone} name="phone">
+          <Form.Item initialValue={userInfo.phone} hidden name="phone">
             <Input defaultValue={userInfo.phone} hidden></Input>
           </Form.Item>
-          <Form.Item initialValue={userInfo.email} name="email">
+          <Form.Item initialValue={userInfo.email} hidden name="email">
             <Input defaultValue={userInfo.email} hidden></Input>
           </Form.Item>
-          <Form.Item initialValue={userInfo.address} name="address">
+          <Form.Item initialValue={userInfo.address} hidden name="address">
             <Input hidden></Input>
           </Form.Item>
           <Form.Item label={`New ${defaultField}`} name={defaultField}>
