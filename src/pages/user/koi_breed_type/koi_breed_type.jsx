@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "antd";
+import { Button, Pagination } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
@@ -32,6 +32,7 @@ function KoiBreedType() {
           <Product products={item} key={item.id} />
         ))}
       </div>
+      <Pagination defaultCurrent={1} total={50}></Pagination>
     </div>
   );
 }
@@ -115,6 +116,7 @@ const Product = ({ products }) => {
         <span className="Add_btn_value">Add to cart</span>
       </Button>
     </div>
+    
   );
 };
 // eslint-disable-next-line react-refresh/only-export-components

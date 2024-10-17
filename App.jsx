@@ -38,6 +38,7 @@ import ConsignmentOnline from "./src/pages/customer/deposit/consignment-online";
 import ConsignmentOffline from "./src/pages/customer/deposit/consignment-offline";
 import ShowConsignOff from "./src/pages/user/show-consignment/showConsign-off";
 import ShowConsignOnl from "./src/pages/user/show-consignment/showConsign-online";
+import ManageCareType from "./src/pages/manager/manage-caretype/manage-caretype";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -183,6 +184,10 @@ function App() {
         {
           path: "certificate",
           element: <ManageCertificate />,
+        },
+        {
+          path: "caretype",
+          element: <ManageCareType />,
         },
       ],
     },

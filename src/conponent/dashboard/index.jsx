@@ -35,6 +35,7 @@ const items = [
     <ProfileOutlined style={{ color: "#fff" }} />
   ),
   getItem("Certificate", "certificate", <ProfileOutlined style={{ color: "#fff" }} />),
+  getItem("Care Type", "caretype", <ProfileOutlined style={{ color: "#fff" }} />),
 
 ];
 
