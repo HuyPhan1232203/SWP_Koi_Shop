@@ -36,6 +36,8 @@ import Consignment from "./src/pages/customer/deposit/consignment";
 import CheckOutConsignment from "./src/pages/user/check_out/check_out-deposit";
 import ConsignmentOnline from "./src/pages/customer/deposit/consignment-online";
 import ConsignmentOffline from "./src/pages/customer/deposit/consignment-offline";
+import ShowConsignOff from "./src/pages/user/show-consignment/showConsign-off";
+import ShowConsignOnl from "./src/pages/user/show-consignment/showConsign-online";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -59,10 +61,22 @@ function App() {
             {
               path: "online",
               element: <ConsignmentOnline />,
+              children: [
+                {
+                  path: "check-consign",
+                  element: <ShowConsignOnl />,
+                },
+              ],
             },
             {
               path: "",
               element: <ConsignmentOffline />,
+              children: [
+                {
+                  path: "check-consign",
+                  element: <ShowConsignOff />,
+                },
+              ],
             },
           ],
         },

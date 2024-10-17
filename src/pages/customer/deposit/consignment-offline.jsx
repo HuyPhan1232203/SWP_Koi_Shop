@@ -13,6 +13,7 @@ import {
   Upload,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function ConsignmentOffline() {
   const [formStand] = Form.useForm();
@@ -68,6 +69,7 @@ function ConsignmentOffline() {
   useEffect(() => {
     fetchBreed();
   }, []);
+  const nav = useNavigate();
   const handleSubmitKoi = async (Koi) => {
     try {
       console.log(Koi);
@@ -76,13 +78,14 @@ function ConsignmentOffline() {
       console.log(Koi.imageUrl);
       const response = await api.post("koi", Koi);
       console.log(response.data);
+      nav("check-consign");
     } catch (err) {
       toast.error("err");
     }
   };
   return (
-    <div className="Intro_body row">
-      <div className="Intro_body-form col-md-6">
+    <div className="Consign_body row">
+      <div className="Consign_body-form col-md-6">
         <Form
           labelCol={{ span: 6 }}
           onFinish={handleSubmitKoi}
@@ -172,6 +175,9 @@ function ConsignmentOffline() {
             src={previewImage}
           />
         )}
+      </div>
+      <div className="Consign_body-show_consign col-md-6">
+        <Outlet />
       </div>
     </div>
   );

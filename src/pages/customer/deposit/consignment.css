@@ -1,7 +1,19 @@
 .Introduction{
     height: 100vh;
+
 }
 .Intro_header{
     width: 100vw;
     height: 120px;
+}
+.Consign_body-show_consign{
+
+}
+.Consign_body-form{
+
+}
+.Consign_body{
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow:2px 1px 7px 4px #ccc;
 }
