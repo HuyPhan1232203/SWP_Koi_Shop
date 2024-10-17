@@ -34,6 +34,8 @@ import Success from "./src/pages/user/successPage/success";
 import ManageCertificate from "./src/pages/manager/manage-certificate/manage-certificate";
 import Consignment from "./src/pages/customer/deposit/consignment";
 import CheckOutConsignment from "./src/pages/user/check_out/check_out-deposit";
+import ConsignmentOnline from "./src/pages/customer/deposit/consignment-online";
+import ConsignmentOffline from "./src/pages/customer/deposit/consignment-offline";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -53,6 +55,16 @@ function App() {
         {
           path: "consignment",
           element: <Consignment />,
+          children: [
+            {
+              path: "online",
+              element: <ConsignmentOnline />,
+            },
+            {
+              path: "",
+              element: <ConsignmentOffline />,
+            },
+          ],
         },
         {
           path: "about-us",

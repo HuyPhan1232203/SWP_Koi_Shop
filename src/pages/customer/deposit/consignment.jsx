@@ -1,207 +1,40 @@
-import React, { useEffect, useState } from "react";
 import "./consignment.css";
-import {
-  Button,
-  Form,
-  Image,
-  Input,
-  InputNumber,
-  Radio,
-  Select,
-  Upload,
-} from "antd";
-import uploadFile from "../../../utils/file";
-import { toast } from "react-toastify";
-import api from "../../../config/axios";
-import { PlusOutlined } from "@ant-design/icons";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Consignment() {
-  const [formStand] = Form.useForm();
-  const [KoiFish, setKoiFish] = useState([]);
-  const [fileList, setFileList] = useState([]);
-  const [submitBreed, setSubmitBreed] = useState([]);
-  const [submitKoi, setSubmitKoi] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-  //FETCH
-  const fetchBreed = async () => {
-    try {
-      const response = await api.get("breed");
-      setSubmitBreed(response.data);
-      console.log(response.data);
-    } catch (err) {
-      toast.error(err.response.data);
-    }
-  };
-  const fetchKoi = async () => {
-    try {
-      const response = await api.get("koi?page=0&size=20");
-      setKoiFish(response.data.content);
-    } catch (err) {
-      toast.error(err.response.data);
-    }
-  };
-  const getBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setPreviewImage(file.url || file.preview);
-    setPreviewOpen(true);
-  };
-  const uploadButton = (
-    <button
-      style={{
-        border: 0,
-        background: "none",
-      }}
-      type="button"
-    >
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </button>
-  );
-  //USE EFFECT
-  useEffect(() => {
-    fetchBreed();
-  }, []);
-  //SUBMIT
-  const handleSubmitKoi = async (Koi) => {
-    try {
-      console.log(Koi);
-      setSubmitKoi(true);
-      //convert Object to string img
-      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      console.log(Koi.imageUrl);
-      if (Koi.id) {
-        //update
-        await api.put(`koi/${Koi.id}`, Koi);
+  const nav = useNavigate();
+  const handleConsignment = () => {
+    const check = document.getElementById("depositCheckbox");
+    check.addEventListener("change", function () {
+      if (this.checked) {
+        nav("online");
       } else {
-        //create
-        await api.post(`koi`, Koi);
+        nav("");
       }
-      fetchKoi();
-      toast.success("Update successfully!!!");
-      formStand.resetFields();
-    } catch (err) {
-      toast.error("err");
-    } finally {
-      setSubmitKoi(false);
-    }
+    });
   };
+  //SUBMIT
+
   return (
     <div className="Introduction">
       <h1 className="Intro_header">Deposit Koi</h1>
-      <div className="Intro_body row">
-        <div className="Intro_body-form col-md-6">
-          <Form
-            labelCol={{ span: 6 }}
-            onFinish={handleSubmitKoi}
-            form={formStand}
-          >
-            <Form.Item label="Born Year" name="bornYear">
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              label="Quantity"
-              rules={[{ required: true, message: "Please Input" }]}
-              name="quantity"
-            >
-              <InputNumber></InputNumber>
-            </Form.Item>
-            <Form.Item label="Breed Name" name="breedId">
-              <Select mode="multiple">
-                {submitBreed.map((breed) => (
-                  <Select.Option
-                    key={breed.name}
-                    breed={breed}
-                    value={breed.id}
-                  >
-                    {breed.name}
-                  </Select.Option>
-                ))}
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Description"
-              rules={[{ required: true, message: "Please Input" }]}
-              name="description"
-            >
-              <Input></Input>
-            </Form.Item>
-
-            <Form.Item
-              label="Origin"
-              rules={[{ required: true, message: "Please Input" }]}
-              name="origin"
-            >
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              label="Gender"
-              rules={[{ required: true, message: "Please Input" }]}
-              name="gender"
-            >
-              <Radio.Group name="radiogroup">
-                <Radio value="Male">Male</Radio>
-                <Radio value="Female">Female</Radio>
-              </Radio.Group>
-            </Form.Item>
-            <Form.Item
-              label="Size"
-              rules={[
-                { required: true, message: "Please Input" },
-                {
-                  type: "number",
-                  message: "Invalid Input",
-                },
-              ]}
-              name="size"
-            >
-              <InputNumber></InputNumber>
-            </Form.Item>
-
-            <Form.Item label="imageUrl" name="imageUrl">
-              <Upload
-                action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-                listType="picture-card"
-                fileList={fileList}
-                onPreview={handlePreview}
-                onChange={handleChange}
-              >
-                {fileList.length >= 8 ? null : uploadButton}
-              </Upload>
-            </Form.Item>
-            <Button>Deposit</Button>
-          </Form>
-          {previewImage && (
-            <Image
-              wrapperStyle={{
-                display: "none",
-              }}
-              preview={{
-                visible: previewOpen,
-                onVisibleChange: (visible) => setPreviewOpen(visible),
-                afterOpenChange: (visible) => !visible && setPreviewImage(""),
-              }}
-              src={previewImage}
-            />
-          )}
-        </div>
+      <div
+        style={{
+          display: "flex",
+          width: "50%",
+          justifyContent: "space-between",
+          borderBottom: "1px #ccc solid",
+          marginBottom: "30px",
+          paddingBottom: "20px",
+        }}
+      >
+        <p style={{ fontWeight: "600" }}>Consigned to the farm for sale</p>
+        <label className="switch" onClick={handleConsignment}>
+          <input type="checkbox" id="depositCheckbox" />
+          <span className="slider round"></span>
+        </label>
       </div>
+      <Outlet />
     </div>
   );
 }
