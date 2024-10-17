@@ -54,6 +54,16 @@ function ManageCareType() {
     }
   };
 
+  const handleDeleteCareType = async (id) => {
+    try {
+      await api.delete(`caretypes/${id}`);
+      toast.success("Deleteted successfully!!!");
+      fetchCareType();
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+
   const cols = [
     {
       title: "Care Type",
@@ -90,7 +100,7 @@ function ManageCareType() {
 
             <Popconfirm
               onConfirm={() => {
-                handleDeleteKoi(id);
+                handleDeleteCareType(id);
               }}
               title="Delete"
               description="Are you sure"
