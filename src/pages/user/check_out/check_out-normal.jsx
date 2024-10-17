@@ -20,7 +20,8 @@ function CheckOutNormal() {
       console.log({ detail });
       const response = await api.post("order", { detail });
       console.log(response.data);
-      window.open(response.data, "_blank", "noopener,noreferrer");
+      // window.open(response.data, "_blank", "noopener,noreferrer");
+      window.open(response.data);
     } catch (err) {
       toast.error("err");
     }
@@ -182,11 +183,7 @@ function CheckOutNormal() {
           <TextArea rows={4}></TextArea>
         </Form.Item>
       </div>
-      <Button htmlType="submit">
-        <Link to="https://sandbox.vnpayment.vn/paymentv2/Transaction/PaymentMethod.html?token=00851c9415c146a9a457f93c85e3992e">
-          Continue
-        </Link>
-      </Button>
+      <Button htmlType="submit">Continue</Button>
     </Form>
   );
 }
