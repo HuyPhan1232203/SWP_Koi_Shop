@@ -10,7 +10,7 @@ function CheckOut() {
     const check = document.getElementById("depositCheckbox");
     check.addEventListener("change", function () {
       if (this.checked) {
-        nav("check-out_deposit");
+        nav("check-out-consignment");
       } else {
         nav("/check-out");
       }

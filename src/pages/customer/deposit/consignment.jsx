@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./deposit.css";
+import "./consignment.css";
 import {
   Button,
   Form,
@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 import api from "../../../config/axios";
 import { PlusOutlined } from "@ant-design/icons";
 
-function Deposit() {
+function Consignment() {
   const [formStand] = Form.useForm();
   const [KoiFish, setKoiFish] = useState([]);
   const [fileList, setFileList] = useState([]);
@@ -112,38 +112,7 @@ function Deposit() {
             onFinish={handleSubmitKoi}
             form={formStand}
           >
-            <Form.Item hidden label="ID" name="id">
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              label="Name"
-              rules={[{ required: true, message: "Please Input" }]}
-              name="name"
-            >
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              label="Price"
-              rules={[
-                { required: true, message: "Please Input" },
-                // { min: 1000, message: "Price cannot lower than 1000" },
-              ]}
-              name="price"
-            >
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              label="Vendor"
-              rules={[{ required: true, message: "Please Input" }]}
-              name="vendor"
-            >
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              label="Born Year"
-              rules={[{ required: true, message: "Please Input" }]}
-              name="bornYear"
-            >
+            <Form.Item label="Born Year" name="bornYear">
               <Input></Input>
             </Form.Item>
             <Form.Item
@@ -237,4 +206,4 @@ function Deposit() {
   );
 }
 
-export default Deposit;
+export default Consignment;

@@ -5,7 +5,7 @@ import api from "../../../config/axios";
 import { toast } from "react-toastify";
 import TextArea from "antd/es/input/TextArea";
 
-function CheckOutDeposit() {
+function CheckOutConsignment() {
   const userInfo = useSelector((store) => store.user);
   const cartItems = useSelector((store) => store.selectedItems);
   const handelSubmitOrder = async () => {
@@ -79,4 +79,4 @@ function CheckOutDeposit() {
   );
 }
 
-export default CheckOutDeposit;
+export default CheckOutConsignment;

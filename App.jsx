@@ -10,7 +10,6 @@ import Dashboard from "./src/conponent/dashboard";
 import ManagementKoi from "./src/pages/manager/manage-koi-list";
 import ManageVoucher from "./src/pages/manager/manage-voucher/manage-voucher";
 import ManageStaff from "./src/pages/manager/manage-staff/manage-staff";
-import Deposit from "./src/pages/customer/deposit/deposit";
 import AboutUs from "./src/pages/customer/about-us/about-us";
 import Profile from "./src/pages/user/profile/profile";
 import EditProfile from "./src/pages/user/edit_profile/editProfile";
@@ -30,10 +29,11 @@ import PurchaseOrder from "./src/pages/user/purchase_order/purchase_order";
 import ManageStaffJob from "./src/pages/manager/manage-staff-job/manage-staff-job";
 import CheckOut from "./src/pages/user/check_out/check_out";
 import CheckOutNormal from "./src/pages/user/check_out/check_out-normal";
-import CheckOutDeposit from "./src/pages/user/check_out/check_out-deposit";
 import History from "./src/pages/user/purchase-history/history";
 import Success from "./src/pages/user/successPage/success";
 import ManageCertificate from "./src/pages/manager/manage-certificate/manage-certificate";
+import Consignment from "./src/pages/customer/deposit/consignment";
+import CheckOutConsignment from "./src/pages/user/check_out/check_out-deposit";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -51,8 +51,8 @@ function App() {
       element: <HomePage />,
       children: [
         {
-          path: "deposit",
-          element: <Deposit />,
+          path: "consignment",
+          element: <Consignment />,
         },
         {
           path: "about-us",
@@ -79,8 +79,8 @@ function App() {
               element: <CheckOutNormal />,
             },
             {
-              path: "check-out_deposit",
-              element: <CheckOutDeposit />,
+              path: "check-out-consignment",
+              element: <CheckOutConsignment />,
             },
           ],
         },

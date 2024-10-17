@@ -31,7 +31,7 @@ function KoiDetail() {
     {
       key: "2",
       label: "Certificate",
-      children:"Content of Tab Pane 2"
+      children: "Content of Tab Pane 2",
     },
   ];
   return (
