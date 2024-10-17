@@ -33,6 +33,7 @@ import CheckOutNormal from "./src/pages/user/check_out/check_out-normal";
 import CheckOutDeposit from "./src/pages/user/check_out/check_out-deposit";
 import History from "./src/pages/user/purchase-history/history";
 import Success from "./src/pages/user/successPage/success";
+import ManageCertificate from "./src/pages/manager/manage-certificate/manage-certificate";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -152,6 +153,10 @@ function App() {
         {
           path: "breeds",
           element: <Breeds />,
+        },
+        {
+          path: "certificate",
+          element: <ManageCertificate />,
         },
       ],
     },

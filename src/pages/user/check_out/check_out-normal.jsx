@@ -3,6 +3,7 @@ import TextArea from "antd/es/input/TextArea";
 import { useSelector } from "react-redux";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function CheckOutNormal() {
   const userInfo = useSelector((store) => store.user);
@@ -181,7 +182,11 @@ function CheckOutNormal() {
           <TextArea rows={4}></TextArea>
         </Form.Item>
       </div>
-      <Button htmlType="submit">Continue</Button>
+      <Button htmlType="submit">
+        <Link to="https://sandbox.vnpayment.vn/paymentv2/Transaction/PaymentMethod.html?token=00851c9415c146a9a457f93c85e3992e">
+          Continue
+        </Link>
+      </Button>
     </Form>
   );
 }

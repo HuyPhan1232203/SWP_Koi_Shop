@@ -34,6 +34,8 @@ const items = [
     "manage-staff-job",
     <ProfileOutlined style={{ color: "#fff" }} />
   ),
+  getItem("Certificate", "certificate", <ProfileOutlined style={{ color: "#fff" }} />),
+
 ];
 
 const Dashboard = () => {
