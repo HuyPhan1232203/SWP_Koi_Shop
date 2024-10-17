@@ -7,6 +7,7 @@ import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { storeKoi } from "../../../redux/features/koiSlice";
+
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
   const breedId = useSelector((store) => store.breedId);
@@ -35,18 +36,34 @@ function KoiBreedType() {
   );
 }
 const Product = ({ products }) => {
+  const [isDisable, setIsDisable] = useState(false);
   const user = useSelector((store) => store.user);
+  const items = useSelector((store) => store.cart);
   const nav = useNavigate();
   const dispatch = useDispatch();
+  console.log(products);
+  const checkExist = () => {
+    const exists = items.some(
+      (item) => String(item.id) === String(products.id)
+    );
+    if (exists) {
+      setIsDisable(true);
+    }
+  };
+
+  useEffect(() => {
+    checkExist();
+  }, [items]);
   const handleAddToCart = () => {
-    console.log(user);
     if (user) {
       dispatch(addProduct(products));
+      // if (items.filter((item) => item.id === products.id)) {
+      //   setIsDisable(true);
+      // }
     } else {
       nav("/login");
     }
   };
-
   return (
     <div className="product">
       <Link
@@ -90,7 +107,11 @@ const Product = ({ products }) => {
         </div>
       </p>
       <p className="product_name">Price: {products.price}</p>
-      <Button onClick={handleAddToCart} className="Add_btn">
+      <Button
+        onClick={handleAddToCart}
+        className="Add_btn"
+        disabled={isDisable}
+      >
         <span className="Add_btn_value">Add to cart</span>
       </Button>
     </div>

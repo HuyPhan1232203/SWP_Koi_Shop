@@ -50,10 +50,9 @@ function LoginPage() {
         // The signed-in user info.
         const user = result.user;
         console.log(user);
-        sessionStorage.setItem("username", user.displayName);
         console.log(user.email);
         // IdP data available using getAdditionalUserInfo(result)
-        navigate("/");
+        // navigate("/");
         // ...
       })
       .catch((error) => {
