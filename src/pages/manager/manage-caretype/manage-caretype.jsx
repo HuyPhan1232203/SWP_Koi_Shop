@@ -79,7 +79,7 @@ function ManageCareType() {
       title: "Action",
       dataIndex: "id",
       key: "id",
-      render: (id, koi) => {
+      render: (id, caretypes) => {
         return (
           <div
             style={{
@@ -92,7 +92,7 @@ function ManageCareType() {
               type="primary"
               onClick={() => {
                 setOpenModal(true);
-                form.setFieldsValue(koi);
+                form.setFieldsValue(caretypes);
               }}
             >
               Edit
