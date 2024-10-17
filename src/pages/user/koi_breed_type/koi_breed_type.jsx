@@ -10,14 +10,11 @@ import { storeKoi } from "../../../redux/features/koiSlice";
 
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(12);
   const breedId = useSelector((store) => store.breedId);
   const fetchProduct = async (breed) => {
     if (!breed) return; // Check if breedId exists before making the API call
     try {
-      // const response = await api.get(`koi?breedId=${breed}&page=0&size=10`);
-      const response = await api.get(`koi?breedId=${breed}`);
+      const response = await api.get(`koi?breedId=${breed}&page=0&size=10`);
       setKoiList(response.data); // Set the koi list data in the state
       console.log(koiList);
     } catch (err) {
@@ -28,24 +25,14 @@ function KoiBreedType() {
     fetchProduct(breedId);
   }, [breedId]);
   console.log(koiList);
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const currentKoiList = koiList.slice(startIndex, endIndex);
   return (
     <div className="koi_breed_fetch">
       <div className="koi_list">
-        {currentKoiList.map((item) => (
+        {koiList.map((item) => (
           <Product products={item} key={item.id} />
         ))}
       </div>
-      <Pagination
-        className="page"
-        current={currentPage}
-        pageSize={pageSize}
-        total={koiList.length}
-        onChange={(page) => setCurrentPage(page)}
-      ></Pagination>
+      <Pagination className="page" defaultCurrent={1} total={50}></Pagination>
     </div>
   );
 }
@@ -129,6 +116,7 @@ const Product = ({ products }) => {
         <span className="Add_btn_value">Add to cart</span>
       </Button>
     </div>
+    
   );
 };
 // eslint-disable-next-line react-refresh/only-export-components
