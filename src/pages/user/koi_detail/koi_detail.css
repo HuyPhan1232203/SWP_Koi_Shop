@@ -50,3 +50,15 @@
     color: #000;
 }
 
+.post-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.post-btn:hover {
+    background-color: #aaa;
+    color: #000;
+}
+

@@ -85,9 +85,9 @@ function KoiDetail() {
               onChange={(value) => setRating(value)}
             />
           </div>
-          <Button onClick={handleSubmitFeedback} type="primary">
+          <button className="post-btn" onClick={handleSubmitFeedback}>
             Post
-          </Button>
+          </button>
           <div>
             {submitFeedback.length > 0 ? (
               submitFeedback.map((feedback) => (
