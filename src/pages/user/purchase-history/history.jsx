@@ -23,6 +23,18 @@ function History() {
       dataIndex: "total",
       key: "total",
     },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (status) => {
+        if (status === "PENDING") {
+          return <div style={{ color: "red" }}>{status}</div>;
+        } else {
+          return <div style={{ color: "green" }}>{status}</div>;
+        }
+      },
+    },
   ];
   return (
     <div>
