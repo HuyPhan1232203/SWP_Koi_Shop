@@ -86,6 +86,7 @@ function ConsignmentOffline() {
   return (
     <div className="Consign_body row">
       <div className="Consign_body-form col-md-6">
+        <h2>Show us your Koi</h2>
         <Form
           labelCol={{ span: 6 }}
           onFinish={handleSubmitKoi}
