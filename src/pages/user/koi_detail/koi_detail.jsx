@@ -1,10 +1,12 @@
-import { Button, ConfigProvider, Image, Tabs } from "antd";
+import { Button, ConfigProvider, Image, Input, Rate, Tabs } from "antd";
 import React from "react";
 import "./koi_detail.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
+import TextArea from "antd/es/input/TextArea";
 function KoiDetail() {
+  const { TextArea } = Input;
   const koiDetail = useSelector((store) => store.koi);
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -26,7 +28,13 @@ function KoiDetail() {
     {
       key: "1",
       label: "Feedback",
-      children: <div>Content of Tab Pane 1</div>,
+      children: <div>
+        <TextArea name="content" placeholder="Enter your feedback" rows={4} style={{width: "800px"}}></TextArea>
+        <div>
+        <Rate name="rating"/>
+        </div>
+        <Button type="primary">Post</Button>
+      </div>,
     },
     {
       key: "2",
