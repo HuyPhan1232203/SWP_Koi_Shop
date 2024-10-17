@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Pagination } from "antd";
+import { Button, ConfigProvider, Layout, Pagination } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
@@ -43,7 +43,7 @@ function KoiBreedType() {
         ))}
       </div>
       <Pagination
-      className="page"
+        className="page"
         current={currentPage}
         pageSize={pageSize}
         total={koiList.length}

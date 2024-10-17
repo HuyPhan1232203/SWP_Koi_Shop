@@ -30,6 +30,12 @@
     .page {
         display: flex;
         justify-content: center;
+        border: #000;
+    }
+    .page .ant-pagination-item-active {
+        background-color: #000;
+        border-color: #000;
+        color: #fff;
     }
 }
 .product:hover{
