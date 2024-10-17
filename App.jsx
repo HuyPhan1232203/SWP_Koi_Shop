@@ -32,6 +32,7 @@ import CheckOut from "./src/pages/user/check_out/check_out";
 import CheckOutNormal from "./src/pages/user/check_out/check_out-normal";
 import CheckOutDeposit from "./src/pages/user/check_out/check_out-deposit";
 import History from "./src/pages/user/purchase-history/history";
+import Success from "./src/pages/user/successPage/success";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -109,6 +110,10 @@ function App() {
     {
       path: "forgot_password",
       element: <ForgotPassword />,
+    },
+    {
+      path: "successful",
+      element: <Success />,
     },
     {
       path: "reset_password",

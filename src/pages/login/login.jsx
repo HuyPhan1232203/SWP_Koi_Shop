@@ -43,20 +43,22 @@ function LoginPage() {
   const handleLoginWithEmail = () => {
     const auth = getAuth();
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then(async (result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         credential.accessToken;
         // The signed-in user info.
         const user = result.user;
         console.log(user);
-        console.log(user.email);
+        console.log(user.accessToken);
+        await api.post("login-google", credential.accessToken);
         // IdP data available using getAdditionalUserInfo(result)
         // navigate("/");
         // ...
       })
       .catch((error) => {
         // Handle Errors here.
+        toast.error("err");
         error.code;
         error.message;
         // The email of the user's account used.
