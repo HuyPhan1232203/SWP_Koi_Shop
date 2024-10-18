@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import api from "../../../config/axios";
 import uploadFile from "../../../utils/file";
 import { PlusOutlined } from "@ant-design/icons";
+import { render } from "@testing-library/react";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
@@ -49,6 +50,11 @@ const ManagementKoi = () => {
   useEffect(() => {
     fetchKoi();
     fetchBreed();
+    console.log(
+      KoiFish.map((koi) => {
+        console.log(koi.certificate);
+      })
+    );
   }, []);
   //OPEN MODAL
   const handleOpenModal = () => {
@@ -163,7 +169,14 @@ const ManagementKoi = () => {
       dataIndex: "description",
       key: "description",
     },
-
+    // {
+    //   title: "certificate",
+    //   dataIndex: "certificate.imageUrl",
+    //   key: "certificate.imageUrl",
+    //   render: (img) => {
+    //     return <Image src={img} width={200}></Image>;
+    //   },
+    // },
     {
       title: "Action",
       dataIndex: "id",

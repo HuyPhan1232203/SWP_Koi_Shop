@@ -139,7 +139,7 @@ function App() {
       path: "forgot_password",
       element: <ForgotPassword />,
     },
-    
+
     {
       path: "reset_password",
       element: <ResetPassword />,

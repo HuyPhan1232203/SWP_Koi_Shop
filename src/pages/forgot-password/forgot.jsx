@@ -15,7 +15,6 @@ function ForgotPassword() {
       setSendEmail(false);
       setLoading(true);
       const response = await api.post("forgot-password", email);
-
       console.log(response.data);
       setSendEmail(true);
       nav("/login");
