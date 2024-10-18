@@ -17,6 +17,7 @@ function Success() {
   const postOrderID = async () => {
     try {
       const response = await api.post(`/order/transaction?orderID=${orderID}`);
+      console.log("Transaction saved:", response.data);
     } catch (err) {
       console.log(err);
     }
@@ -29,7 +30,12 @@ function Success() {
       // Failed
       // nav("/failed");
     }
-  }, []);
+  }, [vnp_TransactionStatus]);
+
+  const handleHomePageClick = async () => {
+    await postOrderID(); // Ensure the order is saved before navigating
+    nav("/"); // Navigate to home page
+  };
 
   return (
     <div className="success-section">
@@ -42,11 +48,11 @@ function Success() {
         ></img>
         <p>Payment Successful</p>
         <p className="sub-text">
-          "Order number: 2017182818828182881 Cloud server configuration takes
-          1-5 minutes, please wait.
+          Order number: {orderID} Cloud server configuration takes 1-5 minutes,
+          please wait.
         </p>
         <Link to="/">
-          <button>Go To Home Page</button>
+          <button onClick={handleHomePageClick}>Go To Home Page</button>
         </Link>
       </div>
     </div>
