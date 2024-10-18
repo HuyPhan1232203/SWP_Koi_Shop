@@ -15,9 +15,37 @@ function ShowConsignOff() {
     setCareType(response.data);
   };
   const handleCheckOut = async (Koi) => {
-    Koi.type = "OFFLINE";
+    // Koi.type = "OFFLINE";
     console.log(Koi);
-    const response = await api.post("consignment/", Koi);
+    const response = await api.post("consignment/", {
+      type: "OFFLINE",
+      address: Koi.address,
+      startDate: Koi.startDate,
+      endDate: Koi.endDate,
+      description: Koi.description,
+      careTypeId: Koi.careTypeId,
+      consignmentDetailRequests: [
+        {
+          koiRequest: {
+            gender:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.gender,
+            bornYear:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.bornYear,
+            size: Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.size,
+            breedId:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.breedId,
+            origin:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.origin,
+            description:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.description,
+            quantity:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.quantity,
+            imageUrl:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.imageUrl,
+          },
+        },
+      ],
+    });
     console.log(response.data);
   };
   useEffect(() => {
