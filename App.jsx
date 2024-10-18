@@ -39,6 +39,7 @@ import ConsignmentOffline from "./src/pages/customer/deposit/consignment-offline
 import ShowConsignOff from "./src/pages/user/show-consignment/showConsign-off";
 import ShowConsignOnl from "./src/pages/user/show-consignment/showConsign-online";
 import ManageCareType from "./src/pages/manager/manage-caretype/manage-caretype";
+import FailedPage from "./src/pages/failed-page/failed";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -152,6 +153,10 @@ function App() {
     {
       path: "successful",
       element: <Success />,
+    },
+    {
+      path: "failed",
+      element: <FailedPage />,
     },
 
     {

@@ -14,4 +14,4 @@ export default useGetParams;
 
 // how to use
 // const getParams = useGetParams();
-// const myParam = getParams("id");
+// const myParam = getParams("id"); 
