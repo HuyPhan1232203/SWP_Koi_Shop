@@ -16,7 +16,6 @@ import {
 import { Badge, Button, Modal } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
-import { fetchProduct } from "../user/koi_breed_type/koi_breed_type";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/features/userSlice";
 import { clearAll } from "../../redux/features/cartSlice";
@@ -46,7 +45,7 @@ function HomePage() {
     handleCloseModal();
     nav("/");
   };
-  const username = sessionStorage.getItem("username");
+
   const fetchBreed = async () => {
     try {
       const response = await api.get("breed");
@@ -75,14 +74,15 @@ function HomePage() {
   //USE EFFECT
   useEffect(() => {
     fetchBreed();
+    authenticate(userData);
   }, []);
   const scrollToKoiSection = () => {
     if (koiSectionRef.current) {
       koiSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const authenticate = (username) => {
-    if (username == null) {
+  const authenticate = (userData) => {
+    if (userData == null) {
       return (
         <div className="authenticate">
           <div className="authen_choice">
@@ -110,9 +110,9 @@ function HomePage() {
               </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
-                to="purchase-order"
+                to="consign-tracking"
               >
-                <li>Purchase Order</li>
+                <li>My Consignment</li>
               </Link>
 
               <li onClick={handleOpenModal}>LogOut</li>
@@ -203,7 +203,7 @@ function HomePage() {
                 </Link>
               </ul>
 
-              {authenticate(username)}
+              {authenticate(userData)}
             </div>
           </div>
         </div>

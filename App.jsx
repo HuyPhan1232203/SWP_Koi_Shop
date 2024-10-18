@@ -25,7 +25,6 @@ import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
 import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile";
 import KoiDetail from "./src/pages/user/koi_detail/koi_detail";
-import PurchaseOrder from "./src/pages/user/purchase_order/purchase_order";
 import ManageStaffJob from "./src/pages/manager/manage-staff-job/manage-staff-job";
 import CheckOut from "./src/pages/user/check_out/check_out";
 import CheckOutNormal from "./src/pages/user/check_out/check_out-normal";
@@ -40,6 +39,7 @@ import ShowConsignOff from "./src/pages/user/show-consignment/showConsign-off";
 import ShowConsignOnl from "./src/pages/user/show-consignment/showConsign-online";
 import ManageCareType from "./src/pages/manager/manage-caretype/manage-caretype";
 import FailedPage from "./src/pages/failed-page/failed";
+import ConsignTracking from "./src/pages/user/consign_tracking/consign_tracking";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -113,8 +113,8 @@ function App() {
           ],
         },
         {
-          path: "purchase-order",
-          element: <PurchaseOrder />,
+          path: "consign-tracking",
+          element: <ConsignTracking />,
         },
         {
           path: "profile",

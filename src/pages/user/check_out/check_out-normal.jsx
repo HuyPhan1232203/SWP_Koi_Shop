@@ -20,7 +20,7 @@ function CheckOutNormal() {
       console.log({ detail });
       const response = await api.post("order", { detail });
       console.log(response.data);
-      window.open(response.data, "_blank", "noopener,noreferrer");
+      window.open(response.data, "_self");
       // window.open(response.data);
     } catch (err) {
       toast.error("err");
