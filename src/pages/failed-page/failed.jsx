@@ -12,7 +12,7 @@ function FailedPage() {
       <div className="failed-text">
         <img className="failed-img" src="https://cdn2.iconfinder.com/data/icons/e-commerce-535/64/Payment_failed-1024.png"></img>
         <p>Something went wrong with your payment</p>
-        <p className="sub-text">"Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.</p>
+        <p className="sub-text">Order number: {orderID} Cloud server configuration takes 1-5 minutes, please wait.</p>
         <Link to="/check-out">
         <button>Check Out Again</button>
         </Link>
