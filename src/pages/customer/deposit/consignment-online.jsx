@@ -15,6 +15,8 @@ import api from "../../../config/axios";
 import uploadFile from "../../../utils/file";
 import { PlusOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { storeKoi } from "../../../redux/features/koiSlice";
 const ConsignmentOnline = () => {
   const [formStand] = Form.useForm();
   const [submitBreed, setSubmitBreed] = useState([]);
@@ -36,6 +38,7 @@ const ConsignmentOnline = () => {
     fetchBreed();
   }, []);
 
+
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -51,6 +54,7 @@ const ConsignmentOnline = () => {
     setPreviewOpen(true);
   };
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+
 
   const uploadButton = (
     <button
@@ -72,18 +76,18 @@ const ConsignmentOnline = () => {
   );
   const nav = useNavigate();
   //CREATE OR UPDATE
+  const dispatch =useDispatch();
   const handleSubmitKoi = async (Koi) => {
-    try {
-      // console.log(Koi);
-      // Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      // console.log(Koi.imageUrl);
-      // await api.post(`koi`, Koi);
-      // toast.success("Update successfully!!!");
-      // formStand.resetFields();
-      nav("check-consign");
-    } catch (err) {
-      toast.error("err");
-    }
+      try {
+        //convert Object to string img
+        Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+        console.log(Koi.imageUrl);
+        dispatch(storeKoi(Koi));
+        console.log(Koi);
+        nav("check-consign");
+      } catch (err) {
+        toast.error("err");
+      }
   };
   return (
     <div className="Consign_body row">
@@ -129,6 +133,7 @@ const ConsignmentOnline = () => {
             <Input></Input>
           </Form.Item>
 
+
           <Form.Item label="Breed Name" name="breedId">
             <Select mode="multiple">
               {submitBreed.map((breed) => (
@@ -145,6 +150,7 @@ const ConsignmentOnline = () => {
           >
             <Input></Input>
           </Form.Item>
+
 
           <Form.Item
             label="Origin"
@@ -183,19 +189,6 @@ const ConsignmentOnline = () => {
           >
             <InputNumber></InputNumber>
           </Form.Item>
-
-          {/* <Form.Item label="imagesList" name="imagesList">
-            <Upload
-              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-              listType="picture-card"
-              fileList={fileListImg}
-              onPreview={handlePreview}
-              onChange={handleChangeList}
-            >
-              {fileListImg.length >= 8 ? null : uploadButton}
-            </Upload>
-          </Form.Item> */}
-
           <Form.Item label="Image" name="imageUrl">
             <Upload
               action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
@@ -207,11 +200,14 @@ const ConsignmentOnline = () => {
               {fileList.length >= 8 ? null : uploadButton}
             </Upload>
           </Form.Item>
+          <Button className="con-btn" onClick={formStand.submit}>
+          Consign
+        </Button>
         </Form>
         {previewImage && (
           <Image
             wrapperStyle={{
-              display: "none",
+              display: "none",  
             }}
             preview={{
               visible: previewOpen,
@@ -221,9 +217,7 @@ const ConsignmentOnline = () => {
             src={previewImage}
           />
         )}
-        <Button className="con-btn" onClick={formStand.submit}>
-          Consign
-        </Button>
+       
       </div>
       <div className="Consign_body-show_consign col-md-6">
         <Outlet />
@@ -237,3 +231,6 @@ const ConsignmentOnline = () => {
   );
 };
 export default ConsignmentOnline;
+
+
+
