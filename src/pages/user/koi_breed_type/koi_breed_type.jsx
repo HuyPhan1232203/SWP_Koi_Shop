@@ -35,9 +35,6 @@ function KoiBreedType() {
   return (
     <div className="koi_breed_fetch">
       <div className="koi_list">
-        {/* {koiList.map((item) => (
-          <Product products={item} key={item.id} />
-        ))} */}
         {currentKoiList.map((item) => (
           <Product products={item} key={item.id} />
         ))}
@@ -74,9 +71,6 @@ const Product = ({ products }) => {
   const handleAddToCart = () => {
     if (user) {
       dispatch(addProduct(products));
-      // if (items.filter((item) => item.id === products.id)) {
-      //   setIsDisable(true);
-      // }
     } else {
       nav("/login");
     }
@@ -92,7 +86,10 @@ const Product = ({ products }) => {
           }
         }}
         to="/koi-detail"
-        style={{ textDecoration: "none", color: "#000" }}
+        style={{
+          textDecoration: "none",
+          color: "#000",
+        }}
       >
         <img
           className="product_img"
@@ -102,28 +99,31 @@ const Product = ({ products }) => {
       </Link>
       <p className="product_name">Name: {products?.name}</p>
       <p className="product_name">Size: {products?.size}</p>
-      <p className="product_name" style={{ display: "flex" }}>
-        Breeds:
-        <div
-          style={{
-            display: "flex",
-            // justifyContent: "space-around",
-            width: "100%",
-          }}
-        >
-          {products?.breeds?.map((breedItem) => {
-            return (
-              <div
-                key={breedItem}
-                style={{ marginRight: "10px", fontWeight: "700" }}
-              >
-                {breedItem.name}
-              </div>
-            );
-          })}
-        </div>
-      </p>
-      <p className="product_name">Price: {products.price}</p>
+      <div style={{ height: "100px" }}>
+        <p className="product_name" style={{ display: "flex" }}>
+          Breeds:
+          <div
+            style={{
+              display: "flex",
+              // justifyContent: "space-around",
+              width: "100%",
+              flexWrap: "wrap",
+            }}
+          >
+            {products?.breeds?.map((breedItem) => {
+              return (
+                <div
+                  key={breedItem}
+                  style={{ marginRight: "10px", fontWeight: "700" }}
+                >
+                  {breedItem.name}
+                </div>
+              );
+            })}
+          </div>
+        </p>
+        <p className="product_name">Price: {products.price}</p>
+      </div>
       <Button
         onClick={handleAddToCart}
         className="Add_btn"

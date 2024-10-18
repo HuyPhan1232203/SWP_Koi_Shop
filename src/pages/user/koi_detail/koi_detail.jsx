@@ -1,23 +1,23 @@
 import { Button, ConfigProvider, Image, Input, Rate, Tabs } from "antd";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./koi_detail.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
-import TextArea from "antd/es/input/TextArea";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
 function KoiDetail() {
   const { TextArea } = Input;
   const [submitFeedback, setSubmitFeedback] = useState([]);
+  const [isDisable, setIsDisable] = useState(false);
   const [rating, setRating] = useState(0);
   const [content, setContent] = useState("");
   const koiDetail = useSelector((store) => store.koi);
   const user = useSelector((store) => store.user);
+  const cart = useSelector((store) => store.cart);
   const shopId = 1;
   const dispatch = useDispatch();
   const nav = useNavigate();
-  console.log(koiDetail);
   const handleAddToCart = () => {
     if (user) {
       dispatch(addProduct(koiDetail));
@@ -25,7 +25,18 @@ function KoiDetail() {
       nav("/login");
     }
   };
-
+  const checkExist = () => {
+    console.log(koiDetail);
+    const exists = cart.some(
+      (item) => String(item.id) === String(koiDetail.id)
+    );
+    if (exists) {
+      setIsDisable(true);
+    }
+  };
+  useEffect(() => {
+    checkExist();
+  }, [cart]);
   const onChange = (key) => {
     console.log(key);
   };
@@ -128,7 +139,12 @@ function KoiDetail() {
           <h3 className="koi-detail_description">
             description: {koiDetail.description}
           </h3>
-          <button className="koi-detail_button" onClick={handleAddToCart}>
+          <button
+            id="btn"
+            className="koi-detail_button"
+            onClick={handleAddToCart}
+            disabled={isDisable}
+          >
             Add to cart
           </button>
         </div>
@@ -140,7 +156,7 @@ function KoiDetail() {
               /* here is your component tokens */
               inkBarColor: "#000",
               itemSelectedColor: "#000",
-              itemHoverColor: "#aaa"
+              itemHoverColor: "#aaa",
             },
           },
         }}

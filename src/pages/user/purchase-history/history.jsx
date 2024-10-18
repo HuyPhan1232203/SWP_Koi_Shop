@@ -38,7 +38,11 @@ function History() {
   ];
   return (
     <div>
-      <Table columns={columns} dataSource={orderList}></Table>
+      <Table
+        columns={columns}
+        dataSource={orderList}
+        pagination={{ pageSize: 7 }}
+      ></Table>
     </div>
   );
 }

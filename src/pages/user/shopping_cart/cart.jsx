@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import api from "../../../config/axios";
 import { DeleteOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   addSelectedItem,
   clearAllSelectedItem,
@@ -113,17 +113,24 @@ function Cart() {
   //   handleShowItemsName();
   // }, [selectedItems]);
   var total = selectedItems.reduce((acc, item) => acc + item.price, 0);
+  const nav = useNavigate();
   const handleBuy = async () => {
-    try {
-      dispatch(clearAllSelectedItem());
-      const selectedItems = data.filter((koi) =>
-        selectedRowKeys.includes(koi.id)
-      );
-      selectedItems.map((item) => {
-        dispatch(addSelectedItem(item));
-      });
-    } catch (err) {
-      toast.error("Failed");
+    console.log(itemChosen.length);
+    if (itemChosen.length > 0) {
+      try {
+        dispatch(clearAllSelectedItem());
+        const selectedItems = data.filter((koi) =>
+          selectedRowKeys.includes(koi.id)
+        );
+        selectedItems.map((item) => {
+          dispatch(addSelectedItem(item));
+        });
+        nav("/check-out");
+      } catch (err) {
+        toast.error("Failed");
+      }
+    } else {
+      return <h1>nothing</h1>;
     }
   };
   return (
@@ -156,7 +163,7 @@ function Cart() {
           </Form.Item>
           <Link
             onClick={handleBuy}
-            to="/check-out"
+            // to="/check-out"
             style={{ textDecoration: "none" }}
           >
             <Button>Check Out</Button>

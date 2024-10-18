@@ -49,7 +49,14 @@
     background-color: #aaa;
     color: #000;
 }
-
+.koi-detail_button:disabled{
+    color: #000;
+    background-color: #aaa;
+    
+}
+.koi-detail_button:disabled:hover{
+    cursor: not-allowed;
+}
 .post-btn {
     background-color: #000;
     color: #fff;

@@ -18,7 +18,6 @@ function CheckOutConsignment() {
       console.log({ detail });
       const response = await api.post("order", { detail });
       console.log(response.data);
-      window.open(response.data, "_blank", "noopener,noreferrer");
     } catch (err) {
       toast.error("err");
     }
