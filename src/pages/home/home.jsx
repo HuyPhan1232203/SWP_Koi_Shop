@@ -164,7 +164,7 @@ function HomePage() {
       <div className="header">
         <div className="headerbar">
           <div className="logo-container">
-            <a href="#">
+            <a href="/">
               <img
                 src="/assets/images/koi-logo.png"
                 alt="Logo"
