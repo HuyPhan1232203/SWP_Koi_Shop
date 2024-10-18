@@ -139,10 +139,7 @@ function App() {
       path: "forgot_password",
       element: <ForgotPassword />,
     },
-    {
-      path: "successful",
-      element: <Success />,
-    },
+    
     {
       path: "reset_password",
       element: <ResetPassword />,
@@ -151,6 +148,10 @@ function App() {
     {
       path: "register",
       element: <RegisterPage />,
+    },
+    {
+      path: "successful",
+      element: <Success />,
     },
 
     {

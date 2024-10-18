@@ -1,9 +1,9 @@
 import { Button, Result } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useGetParams from "../../hooks/useGetParam";
 
-function Success() {
+function  Success() {
   const nav = useNavigate();
 
   const params = useGetParams();
@@ -25,7 +25,7 @@ function Success() {
       postOrderID();
     } else {
       // Failed
-      nav("/");
+      // nav("/");
     }
   }, []);
 
