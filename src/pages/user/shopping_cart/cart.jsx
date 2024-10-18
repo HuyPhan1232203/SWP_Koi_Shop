@@ -14,7 +14,6 @@ import {
 
 function Cart() {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const [itemChosen, setItemChosen] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
   };
@@ -103,25 +102,15 @@ function Cart() {
     ],
   };
   const selectedItems = data.filter((koi) => selectedRowKeys.includes(koi.id));
-  const handleShowItemsName = () => {
-    console.log(selectedItems);
-    selectedItems.map((item) => {
-      return <div key={item.id}>{setItemChosen(item)}</div>;
-    });
-  };
-  // useEffect(() => {
-  //   handleShowItemsName();
-  // }, [selectedItems]);
   var total = selectedItems.reduce((acc, item) => acc + item.price, 0);
   const nav = useNavigate();
   const handleBuy = async () => {
-    console.log(itemChosen.length);
-    if (itemChosen.length > 0) {
+    dispatch(clearAllSelectedItem());
+    const selectedItems = data.filter((koi) =>
+      selectedRowKeys.includes(koi.id)
+    );
+    if (selectedItems.length > 0) {
       try {
-        dispatch(clearAllSelectedItem());
-        const selectedItems = data.filter((koi) =>
-          selectedRowKeys.includes(koi.id)
-        );
         selectedItems.map((item) => {
           dispatch(addSelectedItem(item));
         });
@@ -129,8 +118,6 @@ function Cart() {
       } catch (err) {
         toast.error("Failed");
       }
-    } else {
-      return <h1>nothing</h1>;
     }
   };
   return (
