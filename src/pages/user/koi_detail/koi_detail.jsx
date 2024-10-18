@@ -50,7 +50,6 @@ function KoiDetail() {
       console.error(err);
     }
   };
-
   useEffect(() => {
     fetchFeedback();
   }, []);
@@ -117,7 +116,11 @@ function KoiDetail() {
     {
       key: "2",
       label: "Certificate",
-      children: <div>Content of Tab Pane 2</div>,
+      children: (
+        <div className="certificate">
+          <Image src={koiDetail.certificate.imageUrl} width={500} alt="" />
+        </div>
+      ),
     },
   ];
   return (
