@@ -1,11 +1,11 @@
-
 .success-section {
     display: grid;
     justify-content: center;
     margin-top: 50px;
 }
 
-.success-section h2, .success-section p {
+.success-section h2,
+.success-section p {
     text-align: center;
 }
 
@@ -15,9 +15,12 @@
     height: 500px;
     width: 500px;
     justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.success-img{
+.success-img {
     width: 100px;
     margin-top: 80px;
 }
