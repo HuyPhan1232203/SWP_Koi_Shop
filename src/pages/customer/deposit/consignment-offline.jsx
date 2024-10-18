@@ -14,6 +14,8 @@ import {
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { storeKoi } from "../../../redux/features/koiSlice";
 
 function ConsignmentOffline() {
   const [formStand] = Form.useForm();
@@ -70,14 +72,15 @@ function ConsignmentOffline() {
     fetchBreed();
   }, []);
   const nav = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmitKoi = async (Koi) => {
     try {
-      // console.log(Koi);
-      // //convert Object to string img
-      // Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      // console.log(Koi.imageUrl);
-      // const response = await api.post("koi", Koi);
-      // console.log(response.data);
+      console.log(Koi);
+      //convert Object to string img
+      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      console.log(Koi.imageUrl);
+      dispatch(storeKoi(Koi));
+      console.log(Koi);
       nav("check-consign");
     } catch (err) {
       toast.error("err");
@@ -95,7 +98,7 @@ function ConsignmentOffline() {
           <Form.Item label="Born Year" name="bornYear">
             <Input></Input>
           </Form.Item>
-          
+
           <Form.Item label="Breed Name" name="breedId">
             <Select mode="multiple">
               {submitBreed.map((breed) => (
@@ -162,7 +165,9 @@ function ConsignmentOffline() {
               {fileList.length >= 8 ? null : uploadButton}
             </Upload>
           </Form.Item>
-          <Button className="con-btn" onClick={formStand.submit}>Deposit</Button>
+          <Button className="con-btn" onClick={formStand.submit}>
+            Deposit
+          </Button>
         </Form>
         {previewImage && (
           <Image

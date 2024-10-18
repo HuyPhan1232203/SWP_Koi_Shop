@@ -2,24 +2,39 @@ import { Button, DatePicker, Form, Input, Radio } from "antd";
 import React, { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import TextArea from "antd/es/input/TextArea";
+import { useSelector } from "react-redux";
 
 function ShowConsignOff() {
+  const [form] = Form.useForm();
   const [careType, setCareType] = useState([]);
+  const KoiSubmit = useSelector((store) => store.koi);
   //FETCH
   const fetchCareType = async () => {
     const response = await api.get("caretypes");
     console.log(response.data);
     setCareType(response.data);
   };
+  const handleCheckOut = async (Koi) => {
+    Koi.type = "OFFLINE";
+    console.log(Koi);
+    const response = await api.post("consignment/", Koi);
+    console.log(response.data);
+  };
   useEffect(() => {
     fetchCareType();
   }, []);
   return (
     <div>
-      <Form>
+      <Form form={form} onFinish={handleCheckOut}>
         <Form.Item label="Address" name="address">
           <Input></Input>
         </Form.Item>
+        <Form.Item
+          initialValue={[{ koiRequest: { KoiSubmit } }]}
+          label="Address"
+          name="consignmentDetailRequests"
+          hidden
+        ></Form.Item>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <Form.Item label="Start date" name="startDate">
             <DatePicker />
@@ -30,7 +45,7 @@ function ShowConsignOff() {
         </div>
         <div className="shipping">
           <Form.Item
-            name="ship"
+            name="careTypeId"
             rules={[
               {
                 required: true,
@@ -54,12 +69,12 @@ function ShowConsignOff() {
               })}
             </Radio.Group>
           </Form.Item>
-          <Form.Item label="Description:">
+          <Form.Item label="Description:" name="description">
             <TextArea></TextArea>
           </Form.Item>
         </div>
+        <Button htmlType="submit">Continue</Button>
       </Form>
-      <Button>Continue</Button>
     </div>
   );
 }
