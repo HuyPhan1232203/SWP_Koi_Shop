@@ -37,7 +37,7 @@ function  Success() {
       <div className="success-text">
         <img className="success-img" src="https://icons.veryicon.com/png/o/miscellaneous/collect-and-receive-cash/successful-payment-3.png"></img>
         <p>Payment Successful</p>
-        <p>"Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.</p>
+        <p className="sub-text">"Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait.</p>
         <Link to="/">
         <button>Go To Home Page</button>
         </Link>

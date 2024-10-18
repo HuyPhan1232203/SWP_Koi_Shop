@@ -1,15 +1,15 @@
 
-.success-section {
+.failed-section {
     display: grid;
     justify-content: center;
     margin-top: 50px;
 }
 
-.success-section h2, .success-section p {
+.failed-section h2, .failed-section p {
     text-align: center;
 }
 
-.success-text {
+.failed-text {
     border: 1px solid #ccc;
     border-radius: 5px;
     height: 500px;
@@ -17,21 +17,20 @@
     justify-items: center;
 }
 
-.success-img{
+.failed-img{
     width: 100px;
     margin-top: 80px;
 }
 
-.success-text p {
+.failed-text p {
     text-align: center;
 }
 
 .sub-text {
     opacity: 0.6;
-
 }
 
-.success-text button {
+.failed-text button {
     margin-top: 20px;
     height: 50px;
     width: 450px;
@@ -41,7 +40,7 @@
     border: none;
 }
 
-.success-text button:hover {
+.failed-text button:hover {
     background-color: #aaa;
     color: #000;
 }
