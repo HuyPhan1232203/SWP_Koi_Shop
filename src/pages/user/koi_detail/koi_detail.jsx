@@ -133,10 +133,22 @@ function KoiDetail() {
           </button>
         </div>
       </div>
-
-      <div className="certificate-session">
-        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-      </div>
+      <ConfigProvider
+        theme={{
+          components: {
+            Tabs: {
+              /* here is your component tokens */
+              inkBarColor: "#000",
+              itemSelectedColor: "#000",
+              itemHoverColor: "#aaa"
+            },
+          },
+        }}
+      >
+        <div className="certificate-session">
+          <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        </div>
+      </ConfigProvider>
     </div>
   );
 }

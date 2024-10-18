@@ -17,7 +17,7 @@ function Consignment() {
 
   return (
     <div className="Introduction">
-      <h1 className="Intro_header">Deposit Koi</h1>
+      <h1 className="Intro_header">DEPOSIT KOI</h1>
       <div
         style={{
           display: "flex",

@@ -4,6 +4,7 @@
 }
 .Intro_header{
     width: 100vw;
+    
 }
 .Consign_body-show_consign{
 
@@ -11,8 +12,33 @@
 .Consign_body-form{
 
 }
+
+.Consign_body-form h2 {
+    margin-left: 180px;
+}
 .Consign_body{
     border-radius: 20px;
     padding: 40px;
     box-shadow:2px 1px 7px 4px #ccc;
+}
+
+.koi-pic {
+    background: cover no-repeat;
+    width: 500px;
+    margin-left: 100px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.koi-pic-2 {
+    background: cover no-repeat;
+    width: 520px;
+    height: 700px;
+    margin-left: 90px;
+    border-radius: 20px;
+    margin-top: 35px;
+}
+
+.con-btn {
+    margin-left: 300px;
 }

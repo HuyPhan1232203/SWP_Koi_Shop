@@ -86,7 +86,7 @@ function ConsignmentOffline() {
   return (
     <div className="Consign_body row">
       <div className="Consign_body-form col-md-6">
-        <h2>Show us your Koi</h2>
+        <h2>Show Us Your Koi</h2>
         <Form
           labelCol={{ span: 6 }}
           onFinish={handleSubmitKoi}
@@ -95,13 +95,7 @@ function ConsignmentOffline() {
           <Form.Item label="Born Year" name="bornYear">
             <Input></Input>
           </Form.Item>
-          <Form.Item
-            label="Quantity"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="quantity"
-          >
-            <InputNumber></InputNumber>
-          </Form.Item>
+          
           <Form.Item label="Breed Name" name="breedId">
             <Select mode="multiple">
               {submitBreed.map((breed) => (
@@ -137,6 +131,13 @@ function ConsignmentOffline() {
             </Radio.Group>
           </Form.Item>
           <Form.Item
+            label="Quantity"
+            rules={[{ required: true, message: "Please Input" }]}
+            name="quantity"
+          >
+            <InputNumber></InputNumber>
+          </Form.Item>
+          <Form.Item
             label="Size"
             rules={[
               { required: true, message: "Please Input" },
@@ -150,7 +151,7 @@ function ConsignmentOffline() {
             <InputNumber></InputNumber>
           </Form.Item>
 
-          <Form.Item label="imageUrl" name="imageUrl">
+          <Form.Item label="Image" name="imageUrl">
             <Upload
               action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
               listType="picture-card"
@@ -161,7 +162,7 @@ function ConsignmentOffline() {
               {fileList.length >= 8 ? null : uploadButton}
             </Upload>
           </Form.Item>
-          <Button onClick={formStand.submit}>Deposit</Button>
+          <Button className="con-btn" onClick={formStand.submit}>Deposit</Button>
         </Form>
         {previewImage && (
           <Image
@@ -179,6 +180,7 @@ function ConsignmentOffline() {
       </div>
       <div className="Consign_body-show_consign col-md-6">
         <Outlet />
+        <img src="./assets/images/koi-1.avif" className="koi-pic"></img>
       </div>
     </div>
   );
