@@ -28,14 +28,9 @@ function Success() {
       postOrderID();
     } else {
       // Failed
-      // nav("/failed");
+      nav("/failed");
     }
   }, [vnp_TransactionStatus]);
-
-  const handleHomePageClick = async () => {
-    await postOrderID(); // Ensure the order is saved before navigating
-    nav("/"); // Navigate to home page
-  };
 
   return (
     <div className="success-section">
@@ -52,7 +47,7 @@ function Success() {
           please wait.
         </p>
         <Link to="/">
-          <button onClick={handleHomePageClick}>Go To Home Page</button>
+          <button>Go To Home Page</button>
         </Link>
       </div>
     </div>
