@@ -10,15 +10,12 @@ function ShowConsignOnl() {
   const user = useSelector((store) => store.user);
   const KoiSubmit = useSelector((store) => store.koi);
   const handleSubmitConsign = async (Koi) => {
-    Koi.type="ONLINE";
     console.log(Koi);
-    const response = await api.post("consignment/",{
-      type: "OFFLINE",
-      // address: Koi.address,
+    const response = await api.post("consignment/", {
+      type: "ONLINE",
       startDate: Koi.startDate,
-      // endDate: Koi.endDate,
       description: Koi.description,
-      careTypeId: 1,
+      careTypeId: 3,
       consignmentDetailRequests: [
         {
           koiRequest: {
@@ -64,7 +61,7 @@ function ShowConsignOnl() {
         <Form.Item label="Description:" name="description">
           <TextArea></TextArea>
         </Form.Item>
-      <Button onClick={form.submit}>Continue</Button>
+        <Button onClick={form.submit}>Continue</Button>
       </Form>
     </div>
   );

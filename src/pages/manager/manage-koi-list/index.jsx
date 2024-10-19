@@ -26,6 +26,7 @@ const ManagementKoi = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [fileListArray, setFileListArray] = useState([]);
   //FETCH
   const fetchKoi = async () => {
     try {
@@ -78,6 +79,7 @@ const ManagementKoi = () => {
     setPreviewOpen(true);
   };
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChangeList = ({ fileList: newFileList }) => setFileListArray(newFileList);
 
   const uploadButton = (
     <button
@@ -226,19 +228,27 @@ const ManagementKoi = () => {
     }
   };
   //CREATE OR UPDATE
+
   const handleSubmitKoi = async (Koi) => {
     try {
-      console.log(Koi);
+      // Koi.imagesList = [
+      //   {
+      //     image: "string"
+      //   }
+      // ]
       setSubmitKoi(true);
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      console.log(Koi.imageUrl);
+      Koi.imagesList = await Promise.all(Koi.imagesList.fileList.map(async (img) => await uploadFile(img.originFileObj)))
+
+      console.log(Koi);
       if (Koi.id) {
         //update
         await api.put(`koi/${Koi.id}`, Koi);
       } else {
         //create
         await api.post(`koi`, Koi);
+        console.log(Koi.imagesList)
       }
       fetchKoi();
       toast.success("Update successfully!!!");
@@ -385,6 +395,18 @@ const ManagementKoi = () => {
               fileList={fileList}
               onPreview={handlePreview}
               onChange={handleChange}
+            >
+              {fileList.length >= 8 ? null : uploadButton}
+            </Upload>
+          </Form.Item>
+
+          <Form.Item label="imagesList" name="imagesList">
+            <Upload
+              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+              listType="picture-card"
+              fileList={fileListArray}
+              onPreview={handlePreview}
+              onChange={handleChangeList}
             >
               {fileList.length >= 8 ? null : uploadButton}
             </Upload>
