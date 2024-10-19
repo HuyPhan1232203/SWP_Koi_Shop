@@ -1,9 +1,9 @@
 import { Button, Form, Input } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
-import api from "../../../config/axios";
 import { toast } from "react-toastify";
 import TextArea from "antd/es/input/TextArea";
+import api from "../../../config/axios";
 
 function CheckOutConsignment() {
   const userInfo = useSelector((store) => store.user);
@@ -18,12 +18,18 @@ function CheckOutConsignment() {
       console.log({ detail });
       const response = await api.post("order", { detail });
       console.log(response.data);
+      window.open(response.data, "_self");
+      // window.open(response.data);
     } catch (err) {
       toast.error("err");
     }
   };
   return (
-    <Form labelCol={{ span: 24 }} className="userInfo_input">
+    <Form
+      labelCol={{ span: 24 }}
+      className="userInfo_input"
+      onFinish={handelSubmitOrder}
+    >
       <div className="user_info_contain">
         <Form.Item
           initialValue={userInfo.username}
