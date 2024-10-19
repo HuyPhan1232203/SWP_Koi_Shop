@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Image, Input, Rate, Tabs } from "antd";
+import { ConfigProvider, Image, Input, Rate, Tabs } from "antd";
 import { useEffect, useState } from "react";
 import "./koi_detail.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -117,8 +117,8 @@ function KoiDetail() {
       key: "2",
       label: "Certificate",
       children: (
-        <div className="certificate">
-          <Image src={koiDetail.certificate.imageUrl} width={500} alt="" />
+        <div className="certificate" style={{ height: "800px" }}>
+          <Image src={koiDetail.certificate.imageUrl} width={500} style={{ height: "100%" }} alt="" />
         </div>
       ),
     },
