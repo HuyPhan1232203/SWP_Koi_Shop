@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
 import uploadFile from "../../../utils/file";
+import TextArea from "antd/es/input/TextArea";
 import { PlusOutlined } from "@ant-design/icons";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
@@ -355,7 +356,7 @@ const ManagementKoi = () => {
             rules={[{ required: true, message: "Please Input" }]}
             name="description"
           >
-            <Input></Input>
+            <TextArea></TextArea>
           </Form.Item>
 
           <Form.Item
