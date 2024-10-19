@@ -82,6 +82,7 @@ function HomePage() {
     }
   };
   const authenticate = (userData) => {
+    console.log(userData);
     if (userData == null) {
       return (
         <div className="authenticate">
