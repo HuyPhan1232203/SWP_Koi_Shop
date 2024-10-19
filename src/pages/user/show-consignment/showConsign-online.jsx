@@ -15,7 +15,7 @@ function ShowConsignOnl() {
       type: "ONLINE",
       startDate: Koi.startDate,
       description: Koi.description,
-      careTypeId: 3,
+      careTypeId: 1,
       consignmentDetailRequests: [
         {
           koiRequest: {

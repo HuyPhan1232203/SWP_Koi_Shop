@@ -20,10 +20,6 @@ function LoginPage() {
       const response = await api.post("login", values);
       console.log(response.data);
       dispatch(login(response.data));
-      sessionStorage.setItem("username", response.data.username);
-      sessionStorage.setItem("role", response.data.role);
-      sessionStorage.setItem("id", response.data.id);
-
       const { role, token } = response.data;
       localStorage.setItem("token", token);
       if (role === "MANAGER") {
@@ -50,9 +46,17 @@ function LoginPage() {
         // The signed-in user info.
         const user = result.user;
         console.log(user);
-        console.log(user.accessToken);
-        await api.post("login-google", credential.accessToken);
+        const response = await api.post("login-google", { token: user.accessToken });
         // IdP data available using getAdditionalUserInfo(result)
+        const userInfo = {
+          address: null,
+          email: user.email,
+          phone: user.phoneNumber,
+          role: "CUSTOMER",
+          username: user.displayName
+        }
+        console.log(response)
+        // dispatch(login(userInfo))
         // navigate("/");
         // ...
       })

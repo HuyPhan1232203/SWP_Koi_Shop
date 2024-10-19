@@ -115,6 +115,14 @@ const ManagementKoi = () => {
       },
     },
     {
+      title: "SubImage",
+      dataIndex: "imagesList",
+      key: "imagesList",
+      render: (imageUrl) => {
+        return imageUrl.map((img) => { return <Image key={img} src={img} width={100} height={150} ></Image> })
+      },
+    },
+    {
       title: "Name",
       dataIndex: "name",
       key: "name",
@@ -175,7 +183,7 @@ const ManagementKoi = () => {
       dataIndex: "certificate",
       key: "certificate",
       render: (img) => {
-        return <Image src={img} width={200}></Image>;
+        return <Image src={img} width={200} ></Image>;
       },
     },
     {
@@ -239,7 +247,12 @@ const ManagementKoi = () => {
       setSubmitKoi(true);
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      Koi.imagesList = await Promise.all(Koi.imagesList.fileList.map(async (img) => await uploadFile(img.originFileObj)))
+      Koi.imagesList = await Promise.all(Koi.imagesList.fileList.map(async (img) => {
+        const url = await uploadFile(img.originFileObj)
+        return {
+          image: url
+        }
+      }))
 
       console.log(Koi);
       if (Koi.id) {
@@ -375,19 +388,6 @@ const ManagementKoi = () => {
           >
             <InputNumber></InputNumber>
           </Form.Item>
-
-          {/* <Form.Item label="imagesList" name="imagesList">
-            <Upload
-              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-              listType="picture-card"
-              fileList={fileListImg}
-              onPreview={handlePreview}
-              onChange={handleChangeList}
-            >
-              {fileListImg.length >= 8 ? null : uploadButton}
-            </Upload>
-          </Form.Item> */}
-
           <Form.Item label="imageUrl" name="imageUrl">
             <Upload
               action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
