@@ -22,3 +22,12 @@ Button {
     margin:80px 0;
     box-shadow:2px 1px 7px 4px #ccc;
 }
+
+.clear-btn {
+    margin-left: 30px;
+}
+
+.delete-btn {
+    margin-left: 13px;
+    margin-bottom: 10px;
+}

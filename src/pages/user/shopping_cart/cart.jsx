@@ -50,6 +50,7 @@ function Cart() {
       render: (id) => {
         return (
           <Button
+          className="delete-btn"
             type="primary"
             danger
             onClick={() => {
@@ -57,7 +58,7 @@ function Cart() {
             }}
             style={{ padding: "0 5px" }}
           >
-            <DeleteOutlined />
+            <DeleteOutlined className="delete-icon"/>
           </Button>
         );
       },
@@ -130,7 +131,7 @@ function Cart() {
           columns={col}
           dataSource={data}
         ></Table>
-        <Button onClick={() => dispatch(clearAll())}>Clear All</Button>
+        <Button className="clear-btn" onClick={() => dispatch(clearAll())}>Clear All</Button>
       </div>
       <div className="order_bill">
         <h3 className="order_bill_header">Sumary</h3>
