@@ -1,7 +1,9 @@
 import { Button, Result } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import "./failed.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useGetParams from "../hooks/useGetParam";
+import api from "../../config/axios";
 
 function FailedPage() {
   const nav = useNavigate();
