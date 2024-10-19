@@ -310,12 +310,12 @@ function HomePage() {
                     </a>
                   </li>
                   <li>
-                    <a href="">
+                    <Link to="/consignment">
                       <span className="arrow-icon">
                         <ArrowRightOutlined />
                       </span>
                       Services
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a href="">
