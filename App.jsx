@@ -40,6 +40,7 @@ import ShowConsignOnl from "./src/pages/user/show-consignment/showConsign-online
 import ManageCareType from "./src/pages/manager/manage-caretype/manage-caretype";
 import FailedPage from "./src/pages/failed-page/failed";
 import ConsignTracking from "./src/pages/user/consign_tracking/consign_tracking";
+import SuccessPageForConsign from "./src/pages/user/successPage/success-consign";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -157,6 +158,10 @@ function App() {
     {
       path: "failed",
       element: <FailedPage />,
+    },
+    {
+      path: "successful-consign",
+      element: <SuccessPageForConsign />,
     },
 
     {

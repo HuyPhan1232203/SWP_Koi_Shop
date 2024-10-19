@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import TextArea from "antd/es/input/TextArea";
 import { useSelector } from "react-redux";
+import "./showConsign-off.css";
 
 function ShowConsignOff() {
   const [form] = Form.useForm();
@@ -47,14 +48,22 @@ function ShowConsignOff() {
       ],
     });
     console.log(response.data);
+    window.open(response.data);
   };
+  
   useEffect(() => {
     fetchCareType();
   }, []);
   return (
-    <div>
-      <Form form={form} onFinish={handleCheckOut}>
-        <Form.Item label="Address" name="address">
+    <div className="form-off">
+      <h2>More Info</h2>
+      <Form
+        className="more-info-form"
+        form={form}
+        onFinish={handleCheckOut}
+        labelCol={{ span: 24 }}
+      >
+        <Form.Item className="address-form" label="Address" name="address">
           <Input></Input>
         </Form.Item>
         <Form.Item
@@ -64,15 +73,21 @@ function ShowConsignOff() {
           hidden
         ></Form.Item>
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <Form.Item label="Start date" name="startDate">
-            <DatePicker />
+          <Form.Item
+            labelCol={{ span: 9 }}
+            className="date-form"
+            label="Start date"
+            name="startDate"
+          >
+            <DatePicker className="date-form-2" />
           </Form.Item>
-          <Form.Item label="End date" name="endDate">
+          <Form.Item labelCol={{ span: 9 }} label="End date" name="endDate">
             <DatePicker />
           </Form.Item>
         </div>
         <div className="shipping">
           <Form.Item
+            className="care-form"
             name="careTypeId"
             rules={[
               {
@@ -97,11 +112,17 @@ function ShowConsignOff() {
               })}
             </Radio.Group>
           </Form.Item>
-          <Form.Item label="Description:" name="description">
+          <Form.Item
+            className="care-form"
+            label="Description:"
+            name="description"
+          >
             <TextArea></TextArea>
           </Form.Item>
         </div>
-        <Button htmlType="submit">Continue</Button>
+        <Button className="info-btn" htmlType="submit">
+          Continue
+        </Button>
       </Form>
     </div>
   );

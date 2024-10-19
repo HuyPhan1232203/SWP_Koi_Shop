@@ -90,8 +90,8 @@ function ConsignmentOffline() {
     <div className="Consign_body row">
       <div className="Consign_body-form col-md-6">
         <h2>Show Us Your Koi</h2>
-        <Form
-          labelCol={{ span: 6 }}
+        <Form className="form-depo"
+          labelCol={{ span: 9 }}
           onFinish={handleSubmitKoi}
           form={formStand}
         >
@@ -185,7 +185,7 @@ function ConsignmentOffline() {
       </div>
       <div className="Consign_body-show_consign col-md-6">
         <Outlet />
-        <img src="./assets/images/koi-1.avif" className="koi-pic"></img>
+        {/* <img src="./assets/images/koi-1.avif" className="koi-pic"></img> */}
       </div>
     </div>
   );

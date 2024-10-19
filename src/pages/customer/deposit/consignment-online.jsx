@@ -221,11 +221,11 @@ const ConsignmentOnline = () => {
       </div>
       <div className="Consign_body-show_consign col-md-6">
         <Outlet />
-        <img
+        {/* <img
           src="/assets/images/koi-2.avif"
           className="koi-pic-2"
           alt="Koi Fish"
-        />
+        /> */}
       </div>
     </div>
   );

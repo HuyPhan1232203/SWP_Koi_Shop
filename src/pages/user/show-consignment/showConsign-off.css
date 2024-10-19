@@ -1,0 +1,35 @@
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.form-off {
+
+}
+
+.date-form {
+    margin-left: 50px;
+}
+
+.date-form-2 {
+    margin-left: 5px;
+}
+
+.care-form {
+    margin-left: 15px;
+}
+
+.info-btn {
+    margin-left: 240px;
+    width: 80px;
+}
+
+.more-info-form {
+    display: grid;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.address-form {
+    margin-left: 55px;
+}

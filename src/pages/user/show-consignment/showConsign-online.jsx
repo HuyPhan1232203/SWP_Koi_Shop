@@ -47,7 +47,7 @@ function ShowConsignOnl() {
 
 
   return (
-    <div>
+    <div className="form-deposit">
       <Form form={form} onFinish={handleSubmitConsign}>
         <Form.Item label="Start date" name="startDate">
           <DatePicker />

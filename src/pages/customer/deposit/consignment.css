@@ -13,8 +13,15 @@
 
 }
 
+.form-depo {
+    display: grid;
+    justify-content: center;
+    margin-top: 50px;
+}
+
 .Consign_body-form h2 {
-    margin-left: 180px;
+    display: flex;
+    justify-content: center;
 }
 .Consign_body{
     border-radius: 20px;
@@ -40,5 +47,6 @@
 }
 
 .con-btn {
-    margin-left: 300px;
+    margin-left: 100px;
+    width: 80px;
 }
