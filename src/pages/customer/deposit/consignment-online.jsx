@@ -17,13 +17,15 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeKoi } from "../../../redux/features/koiSlice";
-import "./consignment.css"
+import "./consignment.css";
+import { CSSTransition } from "react-transition-group";
 const ConsignmentOnline = () => {
   const [formStand] = Form.useForm();
   const [submitBreed, setSubmitBreed] = useState([]);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
+  const [showForm, setShowForm] = useState(true);
   //FETCH
   const fetchBreed = async () => {
     try {
@@ -38,7 +40,6 @@ const ConsignmentOnline = () => {
   useEffect(() => {
     fetchBreed();
   }, []);
-
 
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -55,7 +56,6 @@ const ConsignmentOnline = () => {
     setPreviewOpen(true);
   };
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-
 
   const uploadButton = (
     <button
@@ -84,6 +84,7 @@ const ConsignmentOnline = () => {
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       console.log(Koi.imageUrl);
       dispatch(storeKoi(Koi));
+      setShowForm(false);
       console.log(Koi);
       nav("check-consign");
     } catch (err) {
@@ -91,11 +92,19 @@ const ConsignmentOnline = () => {
     }
   };
   return (
-    <div className="Consign_body row">
-      <div className="Consign_body-form col-md-6">
+    <div className="Consign_body">
+      <CSSTransition
+        in={showForm}
+        timeout={500}
+        classNames="slide"
+        unmountOnExit
+      >
+
+      <div className="Consign_body-form">
         <h2>Show Us Your Koi</h2>
-        <Form className="form-depo"
-          labelCol={{ span: 9 }}
+        <Form
+          className="form-depo"
+          labelCol={{ span: 6 }}
           onFinish={handleSubmitKoi}
           form={formStand}
         >
@@ -134,7 +143,6 @@ const ConsignmentOnline = () => {
             <Input></Input>
           </Form.Item>
 
-
           <Form.Item label="Breed Name" name="breedId">
             <Select mode="multiple">
               {submitBreed.map((breed) => (
@@ -151,7 +159,6 @@ const ConsignmentOnline = () => {
           >
             <Input></Input>
           </Form.Item>
-
 
           <Form.Item
             label="Origin"
@@ -218,20 +225,21 @@ const ConsignmentOnline = () => {
             src={previewImage}
           />
         )}
+      </div>
+      </CSSTransition>
 
-      </div>
-      <div className="Consign_body-show_consign col-md-6">
+      <CSSTransition
+      in={!showForm}
+      timeout={500}
+      classNames="slide"
+      unmountOnExit
+      onExited={() => nav("check-consign")} // Navigate to the next page after transition
+    >
+      <div className="Consign_body-show_consign">
         <Outlet />
-        {/* <img
-          src="/assets/images/koi-2.avif"
-          className="koi-pic-2"
-          alt="Koi Fish"
-        /> */}
       </div>
+      </CSSTransition>
     </div>
   );
 };
 export default ConsignmentOnline;
-
-
-

@@ -6,6 +6,10 @@ h2 {
 .form-deposit {}
 
 .more-info {
+    /* display: grid;
+    justify-content: center; */
+    margin-left: 330px;
+    margin-right: 330px;
     margin-top: 50px;
 }
 
@@ -13,4 +17,9 @@ h2 {
     box-shadow: 2px 1px 7px 4px #ccc;
     height: 100%;
     padding: 20px;
+}
+
+.info-button {
+    width: 80px;
+    margin-left: 210px;
 }

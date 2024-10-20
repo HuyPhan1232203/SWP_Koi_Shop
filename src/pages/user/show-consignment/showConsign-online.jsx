@@ -52,7 +52,7 @@ function ShowConsignOnl() {
   return (
     <div className="form-deposit">
       <h2>More Info</h2>
-      <Form className="more-info" form={form} onFinish={handleSubmitConsign}>
+      <Form labelCol={{span: 24}} className="more-info" form={form} onFinish={handleSubmitConsign}>
         <Form.Item label="Start date" name="startDate">
           <DatePicker />
         </Form.Item>
@@ -65,7 +65,7 @@ function ShowConsignOnl() {
         <Form.Item label="Description:" name="description">
           <TextArea></TextArea>
         </Form.Item>
-        <Button className="info-btn" onClick={form.submit}>Continue</Button>
+        <Button className="info-button" onClick={form.submit}>Continue</Button>
       </Form>
     </div>
   );
