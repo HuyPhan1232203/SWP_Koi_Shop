@@ -50,8 +50,8 @@
 }
 
 .koi-detail_button:disabled {
-    color: #000;
-    background-color: #aaa;
+    color: #aaa;
+    background-color: #ddd;
 
 }
 
