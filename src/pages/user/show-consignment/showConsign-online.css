@@ -3,10 +3,14 @@ h2 {
     justify-content: center;
 }
 
-.form-deposit {
-
-}
+.form-deposit {}
 
 .more-info {
     margin-top: 50px;
+}
+
+.form-deposit {
+    box-shadow: 2px 1px 7px 4px #ccc;
+    height: 100%;
+    padding: 20px;
 }

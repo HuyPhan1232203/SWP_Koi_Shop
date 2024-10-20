@@ -1,32 +1,32 @@
-.Introduction{
+.Introduction {
     height: 100%;
     margin: 50px 0;
 }
-.Intro_header{
+
+.Intro_header {
     width: 100vw;
-    
-}
-.Consign_body-show_consign{
-
-}
-.Consign_body-form{
 
 }
 
-.form-depo {
-    display: grid;
-    justify-content: center;
-    margin-top: 50px;
+.form-depo {}
+
+.Consign_body-form {
+    box-shadow: 2px 1px 7px 4px #ccc;
+    padding: 20px;
+    padding-right: 60px;
+    background-color: #ddd;
 }
+
+
 
 .Consign_body-form h2 {
     display: flex;
     justify-content: center;
 }
-.Consign_body{
+
+.Consign_body {
     border-radius: 20px;
     padding: 40px;
-    box-shadow:2px 1px 7px 4px #ccc;
 }
 
 .koi-pic {

@@ -183,7 +183,7 @@ function ConsignmentOffline() {
           />
         )}
       </div>
-      <div className="Consign_body-show_consign col-md-6">
+      <div className="Consign_body-show_consign col-md-6" >
         <Outlet />
         {/* <img src="./assets/images/koi-1.avif" className="koi-pic"></img> */}
       </div>

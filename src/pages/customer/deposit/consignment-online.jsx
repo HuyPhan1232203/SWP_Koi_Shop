@@ -77,18 +77,18 @@ const ConsignmentOnline = () => {
   );
   const nav = useNavigate();
   //CREATE OR UPDATE
-  const dispatch =useDispatch();
+  const dispatch = useDispatch();
   const handleSubmitKoi = async (Koi) => {
-      try {
-        //convert Object to string img
-        Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-        console.log(Koi.imageUrl);
-        dispatch(storeKoi(Koi));
-        console.log(Koi);
-        nav("check-consign");
-      } catch (err) {
-        toast.error("err");
-      }
+    try {
+      //convert Object to string img
+      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      console.log(Koi.imageUrl);
+      dispatch(storeKoi(Koi));
+      console.log(Koi);
+      nav("check-consign");
+    } catch (err) {
+      toast.error("err");
+    }
   };
   return (
     <div className="Consign_body row">
@@ -202,13 +202,13 @@ const ConsignmentOnline = () => {
             </Upload>
           </Form.Item>
           <Button className="con-btn" onClick={formStand.submit}>
-          Consign
-        </Button>
+            Consign
+          </Button>
         </Form>
         {previewImage && (
           <Image
             wrapperStyle={{
-              display: "none",  
+              display: "none",
             }}
             preview={{
               visible: previewOpen,
@@ -218,7 +218,7 @@ const ConsignmentOnline = () => {
             src={previewImage}
           />
         )}
-       
+
       </div>
       <div className="Consign_body-show_consign col-md-6">
         <Outlet />

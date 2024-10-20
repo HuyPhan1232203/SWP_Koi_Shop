@@ -29,3 +29,9 @@ h2 {
 .address-form {
     margin-left: 55px;
 }
+
+.form-off {
+    box-shadow: 2px 1px 7px 4px #ccc;
+    height: 100%;
+    padding: 20px;
+}

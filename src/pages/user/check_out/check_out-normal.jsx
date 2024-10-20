@@ -15,7 +15,6 @@ function CheckOutNormal() {
       const selectedItems = cartItems;
       const detail = selectedItems.map((item) => ({
         koiId: item.id,
-        price: item.price,
       }));
       console.log({ detail });
       const response = await api.post("order", { detail });
