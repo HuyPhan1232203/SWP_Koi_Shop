@@ -13,7 +13,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Modal } from "antd";
+import { Badge, Button, Modal, Rate } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -81,6 +81,20 @@ function HomePage() {
       koiSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const [submitFeedback, setSubmitFeedback] = useState([]);
+  const fetchFeedback = async () => {
+    try {
+      const response = await api.get("feedback");
+      console.log(response.data);
+      setSubmitFeedback(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    fetchFeedback();
+  }, []);
+
   const authenticate = (userData) => {
     console.log(userData);
     if (userData == null) {
@@ -252,6 +266,30 @@ function HomePage() {
               </div>
             </div>
           </div>
+          {submitFeedback.length > 0 ? (
+            submitFeedback.map((feedback) => (
+              <div key={feedback.id || feedback.content} className="feedback">
+                <div className="user-img">
+                  <img src="/assets/images/user.png" width={60} alt="" />
+                </div>
+                <div style={{ lineHeight: "30px" }}>
+                  <div
+                    style={{
+                      paddingRight: "50px",
+                      color: "#007ACC",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {feedback.username}
+                  </div>
+                  <div>{feedback.content}</div>
+                  <Rate disabled value={feedback.rating} />
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>No feedback yet. Be the first to post!</p>
+          )}
         </div>
       )}
       <div className="container">

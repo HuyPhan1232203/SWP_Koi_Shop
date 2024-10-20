@@ -13,7 +13,16 @@
     border-bottom: 4px #ccc double;
     
 }
-
+.feedback{
+    /* border: 1px #ccc solid; */
+    /* margin: 10px 0; */
+    padding: 20px 20px;
+    display: flex;
+    
+}
+.user-img{
+    padding-right: 30px;
+}
 .logo-container {
     width: 100%;
     display: flex; /* Use flexbox for horizontal alignment */
