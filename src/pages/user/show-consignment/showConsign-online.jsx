@@ -44,6 +44,7 @@ function ShowConsignOnl() {
       ],
     });
     console.log(response.data);
+    window.open(response.data);
   };
 
 
