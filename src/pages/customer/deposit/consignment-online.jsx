@@ -17,6 +17,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeKoi } from "../../../redux/features/koiSlice";
+import "./consignment.css"
 const ConsignmentOnline = () => {
   const [formStand] = Form.useForm();
   const [submitBreed, setSubmitBreed] = useState([]);
@@ -93,8 +94,8 @@ const ConsignmentOnline = () => {
     <div className="Consign_body row">
       <div className="Consign_body-form col-md-6">
         <h2>Show Us Your Koi</h2>
-        <Form
-          labelCol={{ span: 6 }}
+        <Form className="form-depo"
+          labelCol={{ span: 9 }}
           onFinish={handleSubmitKoi}
           form={formStand}
         >

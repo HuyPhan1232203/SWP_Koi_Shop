@@ -3,6 +3,7 @@ import TextArea from "antd/es/input/TextArea";
 import React, { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import { useSelector } from "react-redux";
+import "./showConsign-online.css";
 
 
 function ShowConsignOnl() {
@@ -48,7 +49,8 @@ function ShowConsignOnl() {
 
   return (
     <div className="form-deposit">
-      <Form form={form} onFinish={handleSubmitConsign}>
+      <h2>More Info</h2>
+      <Form className="more-info" form={form} onFinish={handleSubmitConsign}>
         <Form.Item label="Start date" name="startDate">
           <DatePicker />
         </Form.Item>
@@ -61,7 +63,7 @@ function ShowConsignOnl() {
         <Form.Item label="Description:" name="description">
           <TextArea></TextArea>
         </Form.Item>
-        <Button onClick={form.submit}>Continue</Button>
+        <Button className="info-btn" onClick={form.submit}>Continue</Button>
       </Form>
     </div>
   );
