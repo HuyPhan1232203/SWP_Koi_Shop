@@ -1,0 +1,46 @@
+.koi_detail {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    align-items: center;
+    padding: 20px;
+    margin:0;
+}
+.history{
+    height: 100px;
+    overflowY:auto
+}
+.koi_detail img{
+    object-fit: contain;
+
+}
+.order {
+    border: 1px solid #ccc;
+    background-color: #faf6f6;
+    margin: 10px 0;
+}
+.buttons{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 600px;
+}
+.buttons Button{
+    margin-left: 10px;
+}
+.buttons:first-child{
+    background-color: #ccc;
+}
+.koiPrice{
+    color: green;
+}
+.total{
+    padding-top: 10px;
+    margin-left: 600px;
+    font-size: 20px;
+    display: flex;
+}
+.bton{
+    background-color: #000;
+    color: #fff;
+}
