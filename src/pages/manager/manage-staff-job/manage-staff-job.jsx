@@ -1,26 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { Button, Select, Table } from "antd";
 import api from "../../../config/axios";
+import { toast } from "react-toastify";
 
 function ManageStaffJob() {
   const [orderList, setOrderList] = useState([]);
   const [staffList, setStaffList] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const fetchOrder = async () => {
     const response = await api.get("order");
     setOrderList(response.data);
   };
-  const handleAsignStaff=()=>{
-    
-  }
+  const handleAsignStaff = async () => {
+    try {
+      const response = await api.put(
+        `order/assign-staff?orderId=${selectedOrder}&staffId=${selectedStaffId}`
+      );
+      console.log(response.data);
+    } catch (err) {
+      toast.error(err);
+    }
+  };
   const fetchStaff = async () => {
     const response = await api.get("account?role=STAFF");
     setStaffList(response.data);
-    console.log(staffList);
   };
   useEffect(() => {
     fetchOrder();
     fetchStaff();
   }, []);
+  const [selectedStaffId, setSelectedStaffId] = useState(null);
+  const handleSelectStaff = (value) => {
+    console.log(value);
+    setSelectedStaffId(value); // Store selected staff ID
+  };
   const cols = [
     {
       title: "OrderId",
@@ -32,10 +45,16 @@ function ManageStaffJob() {
       key: "id",
       render: () => {
         return (
-          <Select style={{ width: "200px" }}>
+          <Select
+            style={{ width: "200px" }}
+            onChange={handleSelectStaff}
+            value={selectedStaffId}
+          >
             {staffList.map((staff) => {
               return (
-                <Select.Option key={staff.id}>{staff.username}</Select.Option>
+                <Select.Option key={staff.id} value={staff.id}>
+                  {staff.username}
+                </Select.Option>
               );
             })}
           </Select>
@@ -55,7 +74,16 @@ function ManageStaffJob() {
               justifyContent: "space-around",
             }}
           >
-            <Button type="primary">Save</Button>
+            <Button
+              type="primary"
+              onClick={() => {
+                setSelectedOrder(id);
+                console.log(id);
+                handleAsignStaff();
+              }}
+            >
+              Save
+            </Button>
           </div>
         );
       },
