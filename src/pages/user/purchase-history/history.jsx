@@ -44,7 +44,7 @@ function History() {
   return (
     <div className="history" style={{ height: "500px", overflowY: "auto" }}>
       <p style={{ fontSize: "50px" }}>Order History</p>
-      {orderList.map((order) => {
+      {[...orderList].reverse().map((order) => {
         return (
           <div key={order.id} className="order">
             <div className="status">
