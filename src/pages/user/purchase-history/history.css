@@ -12,6 +12,13 @@
     object-fit: contain;
 
 }
+.status{
+    display: flex;
+    justify-content: space-between;
+    padding:10px 30px;
+    background-color: #fff;
+    border-bottom: 1px #ccc solid;
+}
 .order {
     border: 1px solid #ccc;
     background-color: #faf6f6;

@@ -1,9 +1,13 @@
-import { Button } from "antd";
+import { Button, Form, Input, Modal, Rate } from "antd";
 import { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import "./history.css";
+import TextArea from "antd/es/input/TextArea";
+import { toast } from "react-toastify";
 function History() {
   const [orderList, setOrderList] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [form] = Form.useForm();
   const fetchOrder = async () => {
     const response = await api.get("order/customer");
     setOrderList(response.data);
@@ -12,11 +16,45 @@ function History() {
   useEffect(() => {
     fetchOrder();
   }, []);
+  const handleRating = async (feedback) => {
+    try {
+      const response = api.post(`feedback/on-orders?id=4`, feedback);
+      console.log(response.data);
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+  const handleShowStatus = (string) => {
+    if (string === "PENDING") {
+      return (
+        <div style={{ display: "flex" }}>
+          Status:
+          <div style={{ color: "red" }}>{string}</div>
+        </div>
+      );
+    } else {
+      return (
+        <div style={{ display: "flex" }}>
+          Status:jhvjh
+          <div style={{ color: "green" }}>{string}</div>
+        </div>
+      );
+    }
+  };
   return (
     <div className="history" style={{ height: "500px", overflowY: "auto" }}>
+      <p style={{ fontSize: "50px" }}>Order History</p>
       {orderList.map((order) => {
         return (
           <div key={order.id} className="order">
+            <div className="status">
+              <div>{order.date}</div>
+              <div
+                style={{ borderLeft: "1px #ccc solid", paddingLeft: "10px" }}
+              >
+                {handleShowStatus(order.status)}
+              </div>
+            </div>
             {order.orderDetails.map((koi) => (
               <div key={koi.id} className="koi_detail row">
                 <img
@@ -42,9 +80,49 @@ function History() {
               Total: <p style={{ color: "green" }}>${order.total}</p>
             </div>
             <div className="buttons">
-              <Button className="bton">Rating</Button>
+              <Button
+                className="bton"
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              >
+                Rating
+              </Button>
               <Button>Connect to seller</Button>
             </div>
+            <Modal
+              open={openModal}
+              title="Rating"
+              onCancel={() => {
+                setOpenModal(false);
+                form.resetFields();
+              }}
+              onOk={form.submit}
+            >
+              <Form form={form} onFinish={handleRating}>
+                <Form.Item
+                  label="Rate"
+                  name="rating"
+                  rules={[
+                    { required: true, message: "please rate before submit" },
+                  ]}
+                >
+                  <Rate></Rate>
+                </Form.Item>
+                <Form.Item
+                  label="Feedback"
+                  name="content"
+                  rules={[
+                    {
+                      required: true,
+                      message: "please write something before submit",
+                    },
+                  ]}
+                >
+                  <TextArea></TextArea>
+                </Form.Item>
+              </Form>
+            </Modal>
           </div>
         );
       })}
