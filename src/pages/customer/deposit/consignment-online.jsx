@@ -84,7 +84,7 @@ const ConsignmentOnline = () => {
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       console.log(Koi.imageUrl);
       dispatch(storeKoi(Koi));
-      setShowForm(false);
+      setShowForm(false);   // đóng sau khi nhấn nút Consign
       console.log(Koi);
       nav("check-consign");
     } catch (err) {
