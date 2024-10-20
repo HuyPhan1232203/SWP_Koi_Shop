@@ -10,7 +10,9 @@
 
 .form-depo {
     /* margin-right: 200px; */
+    margin-right: 100px;
     margin-top: 50px;
+    margin-left: 20px;
 }
 
 .Consign_body-form {
@@ -29,23 +31,24 @@
 .koi-pic {
     background: cover no-repeat;
     width: 500px;
+    height: 650px;
     margin-left: 100px;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 60px;
 }
 
 .koi-pic-2 {
     background: cover no-repeat;
-    width: 520px;
-    height: 700px;
+    width: 500px;
     margin-left: 90px;
     border-radius: 20px;
-    margin-top: 35px;
+    margin-top: 70px;
 }
 
 .con-btn {
     width: 80px;
     margin-left: 600px;
+    margin-left: 230px;
 }
 
 .slide-enter {

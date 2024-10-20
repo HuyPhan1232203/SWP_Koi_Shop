@@ -239,7 +239,7 @@ const ConsignmentOnline = () => {
             }}
           >
             <img
-              src="/assets/images/koi-1.avif"
+              src="/assets/images/koi-2.avif"
               width={700}
               className="koi-pic"
             ></img>

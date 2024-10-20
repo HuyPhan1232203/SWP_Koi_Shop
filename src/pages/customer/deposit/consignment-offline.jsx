@@ -102,7 +102,7 @@ function ConsignmentOffline() {
             <h2>Show Us Your Koi</h2>
             <Form
               className="form-depo"
-              labelCol={{ span: 6 }}
+              labelCol={{ span: 8 }}
               onFinish={handleSubmitKoi}
               form={formStand}
             >
@@ -207,9 +207,9 @@ function ConsignmentOffline() {
             }}
           >
             <img
-              src="/assets/images/koi-2.avif"
+              src="/assets/images/koi-1.avif"
               width={700}
-              className="koi-pic"
+              className="koi-pic-2"
             ></img>
           </div>
         </div>
