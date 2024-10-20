@@ -8,21 +8,18 @@
 
 }
 
-.form-depo {}
+.form-depo {
+    margin-right: 200px;
+    margin-top: 50px;
+}
 
 .Consign_body-form {
     box-shadow: 2px 1px 7px 4px #ccc;
     padding: 20px;
-    padding-right: 60px;
+    /* padding-right: 60px;     */
     background-color: #ddd;
 }
 
-
-
-.Consign_body-form h2 {
-    display: flex;
-    justify-content: center;
-}
 
 .Consign_body {
     border-radius: 20px;
@@ -47,6 +44,26 @@
 }
 
 .con-btn {
-    margin-left: 100px;
     width: 80px;
+    margin-left: 530px;
 }
+
+.slide-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .slide-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 500ms, transform 500ms;
+  }
+  .slide-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .slide-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 500ms, transform 500ms;
+  }
+  

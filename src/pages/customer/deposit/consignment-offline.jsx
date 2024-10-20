@@ -16,6 +16,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeKoi } from "../../../redux/features/koiSlice";
+import { CSSTransition } from "react-transition-group";
 
 function ConsignmentOffline() {
   const [formStand] = Form.useForm();
@@ -23,6 +24,7 @@ function ConsignmentOffline() {
   const [submitBreed, setSubmitBreed] = useState([]);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
+  const [showForm, setShowForm] = useState(true);
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
   //FETCH
   const fetchBreed = async () => {
@@ -80,6 +82,7 @@ function ConsignmentOffline() {
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       console.log(Koi.imageUrl);
       dispatch(storeKoi(Koi));
+      setShowForm(false);
       console.log(Koi);
       nav("check-consign");
     } catch (err) {
@@ -87,11 +90,17 @@ function ConsignmentOffline() {
     }
   };
   return (
-    <div className="Consign_body row">
-      <div className="Consign_body-form col-md-6">
+    <div className="Consign_body">
+      <CSSTransition
+      in={showForm}
+      timeout={500}
+      classNames="slide"
+      unmountOnExit
+      >
+        <div className="Consign_body-form">
         <h2>Show Us Your Koi</h2>
         <Form className="form-depo"
-          labelCol={{ span: 9 }}
+          labelCol={{ span: 6 }}
           onFinish={handleSubmitKoi}
           form={formStand}
         >
@@ -183,10 +192,21 @@ function ConsignmentOffline() {
           />
         )}
       </div>
-      <div className="Consign_body-show_consign col-md-6" >
+      </CSSTransition>
+
+      <CSSTransition
+        in={!showForm}
+        timeout={500}
+        classNames="slide"
+        unmountOnExit
+        onExited={() => nav("check-consign")} // Navigate to the next page after transition
+      >
+      <div className="Consign_body-show_consign" >
         <Outlet />
-        {/* <img src="./assets/images/koi-1.avif" className="koi-pic"></img> */}
       </div>
+
+      </CSSTransition>
+      
     </div>
   );
 }
