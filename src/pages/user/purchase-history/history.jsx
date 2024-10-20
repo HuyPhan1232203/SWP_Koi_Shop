@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal, Rate } from "antd";
+import { Button, Form, Modal, Rate } from "antd";
 import { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import "./history.css";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 function History() {
   const [orderList, setOrderList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const [form] = Form.useForm();
   const fetchOrder = async () => {
     const response = await api.get("order/customer");
@@ -17,11 +18,32 @@ function History() {
     fetchOrder();
   }, []);
   const handleRating = async (feedback) => {
+    console.log(selectedOrder);
     try {
-      const response = api.post(`feedback/on-orders?id=4`, feedback);
+      const response = api.post(`feedback?id=${selectedOrder}`, feedback);
       console.log(response.data);
     } catch (err) {
       toast.error(err);
+    } finally {
+      setOpenModal(false);
+      fetchOrder();
+      form.resetFields();
+    }
+  };
+  const handleShowButton = (order) => {
+    if (order.feedback?.content == null) {
+      console.log("show");
+      return (
+        <Button
+          className="bton"
+          onClick={() => {
+            setOpenModal(true);
+            setSelectedOrder(order.id);
+          }}
+        >
+          Rating
+        </Button>
+      );
     }
   };
   const handleShowStatus = (string) => {
@@ -76,18 +98,17 @@ function History() {
                 <div className="col-md-2 koiPrice">${koi.price}</div>
               </div>
             ))}
-            <div className="total">
-              Total: <p style={{ color: "green" }}>${order.total}</p>
+            <div style={{ display: "flex" }}>
+              <div style={{ marginLeft: "30px" }}>
+                <div>{order.feedback?.content}</div>
+                <Rate value={order.feedback?.rating} disabled></Rate>
+              </div>
+              <div className="total">
+                Total: <p style={{ color: "green" }}>${order.total}</p>
+              </div>
             </div>
             <div className="buttons">
-              <Button
-                className="bton"
-                onClick={() => {
-                  setOpenModal(true);
-                }}
-              >
-                Rating
-              </Button>
+              {handleShowButton(order)}
               <Button>Connect to seller</Button>
             </div>
             <Modal
