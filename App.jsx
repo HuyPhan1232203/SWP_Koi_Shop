@@ -41,6 +41,9 @@ import ManageCareType from "./src/pages/manager/manage-caretype/manage-caretype"
 import FailedPage from "./src/pages/failed-page/failed";
 import ConsignTracking from "./src/pages/user/consign_tracking/consign_tracking";
 import SuccessPageForConsign from "./src/pages/user/successPage/success-consign";
+import CheckConsignOnl from "./src/pages/user/check_consignedKoi/check_consignedKoi-on";
+import Care from "./src/pages/user/check_consignedKoi/check_consignedKoi-care/care";
+import Sell from "./src/pages/user/check_consignedKoi/check_consignedKoi-sell/sell";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -128,6 +131,20 @@ function App() {
             {
               path: "order-history",
               element: <History />,
+            },
+            {
+              path: "consign-history",
+              element: <CheckConsignOnl />,
+              children: [
+                {
+                  path: "",
+                  element: <Sell />,
+                },
+                {
+                  path: "care",
+                  element: <Care />,
+                },
+              ],
             },
           ],
         },
