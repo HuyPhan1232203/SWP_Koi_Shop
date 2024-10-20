@@ -7,10 +7,7 @@
     padding: 20px;
     margin:0;
 }
-.history{
-    height: 100px;
-    overflowY:auto
-}
+
 .koi_detail img{
     object-fit: contain;
 
