@@ -99,145 +99,164 @@ const ConsignmentOnline = () => {
         classNames="slide"
         unmountOnExit
       >
-
-      <div className="Consign_body-form">
-        <h2>Show Us Your Koi</h2>
-        <Form
-          className="form-depo"
-          labelCol={{ span: 6 }}
-          onFinish={handleSubmitKoi}
-          form={formStand}
-        >
-          <Form.Item hidden label="ID" name="id">
-            <Input></Input>
-          </Form.Item>
-          <Form.Item
-            label="Name"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="name"
-          >
-            <Input></Input>
-          </Form.Item>
-          <Form.Item
-            label="Price"
-            rules={[
-              { required: true, message: "Please Input" },
-              // { min: 1000, message: "Price cannot lower than 1000" },
-            ]}
-            name="price"
-          >
-            <Input></Input>
-          </Form.Item>
-          <Form.Item
-            label="Vendor"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="vendor"
-          >
-            <Input></Input>
-          </Form.Item>
-          <Form.Item
-            label="Born Year"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="bornYear"
-          >
-            <Input></Input>
-          </Form.Item>
-
-          <Form.Item label="Breed Name" name="breedId">
-            <Select mode="multiple">
-              {submitBreed.map((breed) => (
-                <Select.Option key={breed.name} breed={breed} value={breed.id}>
-                  {breed.name}
-                </Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label="Description"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="description"
-          >
-            <Input></Input>
-          </Form.Item>
-
-          <Form.Item
-            label="Origin"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="origin"
-          >
-            <Input></Input>
-          </Form.Item>
-          <Form.Item
-            label="Gender"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="gender"
-          >
-            <Radio.Group name="radiogroup">
-              <Radio value="Male">Male</Radio>
-              <Radio value="Female">Female</Radio>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            label="Quantity"
-            rules={[{ required: true, message: "Please Input" }]}
-            name="quantity"
-          >
-            <InputNumber></InputNumber>
-          </Form.Item>
-          <Form.Item
-            label="Size"
-            rules={[
-              { required: true, message: "Please Input" },
-              {
-                type: "number",
-                message: "Invalid Input",
-              },
-            ]}
-            name="size"
-          >
-            <InputNumber></InputNumber>
-          </Form.Item>
-          <Form.Item label="Image" name="imageUrl">
-            <Upload
-              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-              listType="picture-card"
-              fileList={fileList}
-              onPreview={handlePreview}
-              onChange={handleChange}
+        <div className="Consign_body-form row">
+          <div className="col-md-6">
+            <h2>Show Us Your Koi</h2>
+            <Form
+              className="form-depo"
+              labelCol={{ span: 6 }}
+              onFinish={handleSubmitKoi}
+              form={formStand}
             >
-              {fileList.length >= 8 ? null : uploadButton}
-            </Upload>
-          </Form.Item>
-          <Button className="con-btn" onClick={formStand.submit}>
-            Consign
-          </Button>
-        </Form>
-        {previewImage && (
-          <Image
-            wrapperStyle={{
-              display: "none",
+              <Form.Item hidden label="ID" name="id">
+                <Input></Input>
+              </Form.Item>
+              <Form.Item
+                label="Name"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="name"
+              >
+                <Input></Input>
+              </Form.Item>
+              <Form.Item
+                label="Price"
+                rules={[
+                  { required: true, message: "Please Input" },
+                  // { min: 1000, message: "Price cannot lower than 1000" },
+                ]}
+                name="price"
+              >
+                <Input></Input>
+              </Form.Item>
+              <Form.Item
+                label="Vendor"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="vendor"
+              >
+                <Input></Input>
+              </Form.Item>
+              <Form.Item
+                label="Born Year"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="bornYear"
+              >
+                <Input></Input>
+              </Form.Item>
+
+              <Form.Item label="Breed Name" name="breedId">
+                <Select mode="multiple">
+                  {submitBreed.map((breed) => (
+                    <Select.Option
+                      key={breed.name}
+                      breed={breed}
+                      value={breed.id}
+                    >
+                      {breed.name}
+                    </Select.Option>
+                  ))}
+                </Select>
+              </Form.Item>
+              <Form.Item
+                label="Description"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="description"
+              >
+                <Input></Input>
+              </Form.Item>
+
+              <Form.Item
+                label="Origin"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="origin"
+              >
+                <Input></Input>
+              </Form.Item>
+              <Form.Item
+                label="Gender"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="gender"
+              >
+                <Radio.Group name="radiogroup">
+                  <Radio value="Male">Male</Radio>
+                  <Radio value="Female">Female</Radio>
+                </Radio.Group>
+              </Form.Item>
+              <Form.Item
+                label="Quantity"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="quantity"
+              >
+                <InputNumber></InputNumber>
+              </Form.Item>
+              <Form.Item
+                label="Size"
+                rules={[
+                  { required: true, message: "Please Input" },
+                  {
+                    type: "number",
+                    message: "Invalid Input",
+                  },
+                ]}
+                name="size"
+              >
+                <InputNumber></InputNumber>
+              </Form.Item>
+              <Form.Item label="Image" name="imageUrl">
+                <Upload
+                  action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                  listType="picture-card"
+                  fileList={fileList}
+                  onPreview={handlePreview}
+                  onChange={handleChange}
+                >
+                  {fileList.length >= 8 ? null : uploadButton}
+                </Upload>
+              </Form.Item>
+              <Button className="con-btn" onClick={formStand.submit}>
+                Consign
+              </Button>
+            </Form>
+            {previewImage && (
+              <Image
+                wrapperStyle={{
+                  display: "none",
+                }}
+                preview={{
+                  visible: previewOpen,
+                  onVisibleChange: (visible) => setPreviewOpen(visible),
+                  afterOpenChange: (visible) => !visible && setPreviewImage(""),
+                }}
+                src={previewImage}
+              />
+            )}
+          </div>
+          <div
+            className="col-md-6"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "flex-start",
             }}
-            preview={{
-              visible: previewOpen,
-              onVisibleChange: (visible) => setPreviewOpen(visible),
-              afterOpenChange: (visible) => !visible && setPreviewImage(""),
-            }}
-            src={previewImage}
-          />
-        )}
-      </div>
+          >
+            <img
+              src="/assets/images/koi-1.avif"
+              width={700}
+              className="koi-pic"
+            ></img>
+          </div>
+        </div>
       </CSSTransition>
 
       <CSSTransition
-      in={!showForm}
-      timeout={500}
-      classNames="slide"
-      unmountOnExit
-      onExited={() => nav("check-consign")} // Navigate to the next page after transition
-    >
-      <div className="Consign_body-show_consign">
-        <Outlet />
-      </div>
+        in={!showForm}
+        timeout={500}
+        classNames="slide"
+        unmountOnExit
+        onExited={() => nav("check-consign")} // Navigate to the next page after transition
+      >
+        <div className="Consign_body-show_consign">
+          <Outlet />
+        </div>
       </CSSTransition>
     </div>
   );
