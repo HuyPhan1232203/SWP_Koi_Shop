@@ -10,7 +10,7 @@ function History() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [form] = Form.useForm();
   const fetchOrder = async () => {
-    const response = await api.get("order/customer");
+    const response = await api.get("order/my-orders");
     setOrderList(response.data);
     console.log(orderList);
   };
