@@ -131,7 +131,7 @@
     display: block;
 }
 
-.nav_li,.nav_elements{
+.nav_elements{
     padding:48px 20px;
     list-style-type: none;
     font-weight: 700;
@@ -141,10 +141,22 @@
     text-transform: uppercase;
 }
 
-.nav_li:hover{
+.nav_li {
+    padding: 10px 20px; 
+    list-style-type: none;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block; 
+}
+
+.nav_li:hover {
     background-color: #ccc;
     cursor: pointer;
+    border-radius: 10px;
 }
+
 .cart{
     display: flex;
     align-items: center;
