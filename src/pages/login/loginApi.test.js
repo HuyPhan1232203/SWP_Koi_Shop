@@ -14,8 +14,8 @@ const options = {
 
 // Sample login data - replace with valid credentials for testing
 const loginData = JSON.stringify({
-  email: 'vy123@gmail.com', // Change to a valid email for your tests
-  password: '123456',   // Change to a valid password for your tests
+  email: 'huy@gmail.com', // Change to a valid email for your tests
+  password: 'string',   // Change to a valid password for your tests
 });
 
 // Function to test the login API

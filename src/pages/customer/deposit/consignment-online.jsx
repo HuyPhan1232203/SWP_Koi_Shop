@@ -19,6 +19,7 @@ import { useDispatch } from "react-redux";
 import { storeKoi } from "../../../redux/features/koiSlice";
 import "./consignment.css";
 import { CSSTransition } from "react-transition-group";
+import TextArea from "antd/es/input/TextArea";
 const ConsignmentOnline = () => {
   const [formStand] = Form.useForm();
   const [submitBreed, setSubmitBreed] = useState([]);
@@ -26,6 +27,7 @@ const ConsignmentOnline = () => {
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
   const [showForm, setShowForm] = useState(true);
+  const [fileListArray, setFileListArray] = useState([]);
   //FETCH
   const fetchBreed = async () => {
     try {
@@ -56,6 +58,8 @@ const ConsignmentOnline = () => {
     setPreviewOpen(true);
   };
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChangeList = ({ fileList: newFileList }) =>
+    setFileListArray(newFileList);
 
   const uploadButton = (
     <button
@@ -82,13 +86,21 @@ const ConsignmentOnline = () => {
     try {
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      console.log(Koi.imageUrl);
+      Koi.imagesList = await Promise.all(
+        Koi.imagesList.fileList.map(async (img) => {
+          const url = await uploadFile(img.originFileObj);
+          return {
+            image: url,
+          };
+        })
+      );
+      console.log(Koi);
       dispatch(storeKoi(Koi));
-      setShowForm(false);   // đóng sau khi nhấn nút Consign
+      setShowForm(false); // đóng sau khi nhấn nút Consign
       console.log(Koi);
       nav("check-consign");
     } catch (err) {
-      toast.error("err");
+      toast.error(err);
     }
   };
   return (
@@ -142,7 +154,13 @@ const ConsignmentOnline = () => {
               >
                 <Input></Input>
               </Form.Item>
-
+              <Form.Item
+                label="Quantity"
+                rules={[{ required: true, message: "Please Input" }]}
+                name="quantity"
+              >
+                <InputNumber></InputNumber>
+              </Form.Item>
               <Form.Item label="Breed Name" name="breedId">
                 <Select mode="multiple">
                   {submitBreed.map((breed) => (
@@ -161,7 +179,7 @@ const ConsignmentOnline = () => {
                 rules={[{ required: true, message: "Please Input" }]}
                 name="description"
               >
-                <Input></Input>
+                <TextArea></TextArea>
               </Form.Item>
 
               <Form.Item
@@ -182,13 +200,6 @@ const ConsignmentOnline = () => {
                 </Radio.Group>
               </Form.Item>
               <Form.Item
-                label="Quantity"
-                rules={[{ required: true, message: "Please Input" }]}
-                name="quantity"
-              >
-                <InputNumber></InputNumber>
-              </Form.Item>
-              <Form.Item
                 label="Size"
                 rules={[
                   { required: true, message: "Please Input" },
@@ -201,13 +212,25 @@ const ConsignmentOnline = () => {
               >
                 <InputNumber></InputNumber>
               </Form.Item>
-              <Form.Item label="Image" name="imageUrl">
+              <Form.Item label="imageUrl" name="imageUrl">
                 <Upload
                   action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
                   listType="picture-card"
                   fileList={fileList}
                   onPreview={handlePreview}
                   onChange={handleChange}
+                >
+                  {fileList.length >= 8 ? null : uploadButton}
+                </Upload>
+              </Form.Item>
+
+              <Form.Item label="imagesList" name="imagesList">
+                <Upload
+                  action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                  listType="picture-card"
+                  fileList={fileListArray}
+                  onPreview={handlePreview}
+                  onChange={handleChangeList}
                 >
                   {fileList.length >= 8 ? null : uploadButton}
                 </Upload>
