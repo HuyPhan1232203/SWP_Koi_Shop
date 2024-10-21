@@ -131,7 +131,6 @@ function HomePage() {
               >
                 <li>My Consignment</li>
               </Link>
-
               <li onClick={handleOpenModal}>LogOut</li>
             </ul>
           </div>
@@ -143,12 +142,6 @@ function HomePage() {
                   style={{ fontSize: "20px", color: "#000", padding: "3px" }}
                 />
               </Badge>
-              {/* <Link
-                to="/cart"
-                style={{ textDecoration: "none", color: "#000" }}
-              >
-                Shopping Cart
-              </Link> */}
             </Link>
           </div>
         </div>

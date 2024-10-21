@@ -1,12 +1,94 @@
-import { DatePicker, Form, Input, InputNumber } from "antd";
-import CRUDTemplate from "../../../conponent/crud-template/crud-template";
-
+import {
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Modal,
+  Popconfirm,
+  Table,
+} from "antd";
+import api from "../../../config/axios";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 function ManageVoucher() {
+  const [KoiFish, setKoiFish] = useState([]);
+  const [formStand] = Form.useForm();
+  const [submitKoi, setSubmitKoi] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+
+  //FETCH
+  const fetchKoi = async () => {
+    const response = await api.get("voucher");
+    console.log(response.data);
+    setKoiFish(response.data);
+  };
+
+  //USE EFFECT
+  useEffect(() => {
+    fetchKoi();
+  }, []);
+  //OPEN MODAL
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  //CLOSE MODEL
+  const handleClosenModal = () => {
+    setOpenModal(false);
+  };
+  //CREATE OR UPDATE
+  const handleSubmitKoi = async (Koi) => {
+    try {
+      let response = null;
+      if (Koi.id) {
+        //update
+        response = await api.put(`voucher/${Koi.id}`, Koi);
+        console.log(response);
+      } else {
+        //create
+        response = await api.post(`voucher`, Koi);
+        console.log(response);
+      }
+      fetchKoi();
+      toast.success("Update successfully!!!");
+      formStand.resetFields();
+      handleClosenModal();
+    } catch (err) {
+      if (err.response && err.response.data) {
+        toast.error(err.response.data); // Better error handling
+      } else {
+        console.log("An unexpected error occurred", err);
+      }
+    } finally {
+      setSubmitKoi(false);
+    }
+  };
+  const handleDeleteKoi = async (id) => {
+    try {
+      console.log(id);
+      const response = await api.delete(`voucher/${id}`);
+      console.log(response);
+      toast.success("Deleteted successfully!!!");
+      fetchKoi();
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  };
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
       key: "id",
+    },
+    {
+      title: "Code",
+      dataIndex: "code",
+      key: "code",
+    },
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
     },
     {
       title: "Discount Value",
@@ -24,19 +106,42 @@ function ManageVoucher() {
       key: "quantity",
     },
     {
-      title: "Description",
-      dataIndex: "description",
-      key: "description",
-    },
-    {
-      title: "Minimum Points",
-      dataIndex: "minimumPoints",
-      key: "minimumPoints",
-    },
-    {
-      title: "Minimum Price",
-      dataIndex: "minimumPrice",
-      key: "minimumPrice",
+      title: "Action",
+      dataIndex: "id",
+      key: "id",
+      render: (id, koi) => {
+        return (
+          <div
+            style={{
+              display: "flex",
+              width: "150px",
+              justifyContent: "space-around",
+            }}
+          >
+            <Button
+              type="primary"
+              onClick={() => {
+                setOpenModal(true);
+                formStand.setFieldsValue(koi);
+              }}
+            >
+              Edit
+            </Button>
+
+            <Popconfirm
+              onConfirm={() => {
+                handleDeleteKoi(id);
+              }}
+              title="Delete"
+              description="Are you sure"
+            >
+              <Button type="primary" danger>
+                Delete
+              </Button>
+            </Popconfirm>
+          </div>
+        );
+      },
     },
   ];
 
@@ -56,14 +161,23 @@ function ManageVoucher() {
         rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
       >
-        <DatePicker />
+        <Input></Input>
+        {/* <DatePicker /> */}
       </Form.Item>
 
       <Form.Item
         labelCol={{ span: 7 }}
-        label="Description"
-        rules={[{ required: true, message: "Please Input Description" }]}
-        name="description"
+        label="Name"
+        rules={[{ required: true, message: "Please Input Name" }]}
+        name="name"
+      >
+        <Input></Input>
+      </Form.Item>
+      <Form.Item
+        labelCol={{ span: 7 }}
+        label="Code"
+        rules={[{ required: true, message: "Please Input Code" }]}
+        name="code"
       >
         <Input></Input>
       </Form.Item>
@@ -75,32 +189,46 @@ function ManageVoucher() {
       >
         <InputNumber></InputNumber>
       </Form.Item>
-      <Form.Item
-        labelCol={{ span: 7 }}
-        label="Minimum Points"
-        rules={[{ required: true, message: "Please Input Minimum Points" }]}
-        name="minimumPoints"
-      >
-        <InputNumber></InputNumber>
-      </Form.Item>
-      <Form.Item
-        labelCol={{ span: 7 }}
-        label="Minimum Price"
-        rules={[{ required: true, message: "Please Input Minimum Price" }]}
-        name="minimumPrice"
-      >
-        <InputNumber></InputNumber>
-      </Form.Item>
     </>
   );
   return (
     <div>
-      <CRUDTemplate
-        columns={columns}
-        formItems={formItems}
-        apiName="voucher"
-        name="Voucher"
-      />
+      <div className="header text-center p-5 ">
+        <h1 className="header_text" style={{ color: "#E35C40" }}>
+          {name} Management
+        </h1>
+      </div>
+      <div className="sub_header">
+        <Button className="add_btn" onClick={handleOpenModal}>
+          Create {name}
+        </Button>
+        <Input
+          placeholder="Search"
+          style={{
+            width: "300px",
+            marginLeft: "580px",
+            border: "1px #3550AA solid",
+          }}
+        ></Input>
+      </div>
+      <Modal
+        confirmLoading={submitKoi}
+        title={<span className="Modal_header">{name} Information</span>}
+        open={openModal}
+        onCancel={() => {
+          handleClosenModal();
+          formStand.resetFields();
+        }}
+        onOk={formStand.submit}
+      >
+        <Form onFinish={handleSubmitKoi} form={formStand}>
+          <Form.Item hidden label="id" name="id">
+            <Input></Input>
+          </Form.Item>
+          {formItems}
+        </Form>
+      </Modal>
+      <Table columns={columns} dataSource={KoiFish}></Table>
     </div>
   );
 }

@@ -52,7 +52,7 @@ function LoginPage() {
         // IdP data available using getAdditionalUserInfo(result)
         console.log(response.data);
         dispatch(login(response.data));
-        // navigate("/");
+        navigate("/");
         // ...
       })
       .catch((error) => {
