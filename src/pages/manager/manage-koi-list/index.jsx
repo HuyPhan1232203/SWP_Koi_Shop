@@ -31,7 +31,7 @@ const ManagementKoi = () => {
   //FETCH
   const fetchKoi = async () => {
     try {
-      const response = await api.get("koi?page=0&size=20");
+      const response = await api.get("koi/manager?page=0&size=100");
       console.log(response);
       setKoiFish(response.data.content);
     } catch (err) {
@@ -80,7 +80,8 @@ const ManagementKoi = () => {
     setPreviewOpen(true);
   };
   const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-  const handleChangeList = ({ fileList: newFileList }) => setFileListArray(newFileList);
+  const handleChangeList = ({ fileList: newFileList }) =>
+    setFileListArray(newFileList);
 
   const uploadButton = (
     <button
@@ -112,7 +113,7 @@ const ManagementKoi = () => {
       dataIndex: "images",
       key: "images",
       render: (imageUrl) => {
-        return <Image src={imageUrl} alt="" width={200} />;
+        return <Image src={imageUrl} alt="" width={100} height={100} />;
       },
     },
     {
@@ -120,7 +121,47 @@ const ManagementKoi = () => {
       dataIndex: "imagesList",
       key: "imagesList",
       render: (imageUrl) => {
-        return imageUrl.map((img) => { return <Image key={img} src={img} width={100} height={150} ></Image> })
+        return imageUrl.map((img) => {
+          return <Image key={img} src={img} width={60} height={60}></Image>;
+        });
+      },
+    },
+    {
+      title: "Sold",
+      dataIndex: "sold",
+      key: "sold",
+      render: (sold) => {
+        if (sold === true) {
+          return (
+            <div
+              style={{
+                backgroundColor: "red",
+                fontWeight: "600",
+                border: "1px red solid",
+                padding: "5px",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              SOLD
+            </div>
+          );
+        } else if (sold === false) {
+          return (
+            <div
+              style={{
+                backgroundColor: "green",
+                fontWeight: "600",
+                border: "1px green solid",
+                padding: "5px",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              ON SELL
+            </div>
+          );
+        }
       },
     },
     {
@@ -184,7 +225,7 @@ const ManagementKoi = () => {
       dataIndex: "certificate",
       key: "certificate",
       render: (img) => {
-        return <Image src={img} width={200} ></Image>;
+        return <Image src={img} width={100} height={100}></Image>;
       },
     },
     {
@@ -248,12 +289,14 @@ const ManagementKoi = () => {
       setSubmitKoi(true);
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
-      Koi.imagesList = await Promise.all(Koi.imagesList.fileList.map(async (img) => {
-        const url = await uploadFile(img.originFileObj)
-        return {
-          image: url
-        }
-      }))
+      Koi.imagesList = await Promise.all(
+        Koi.imagesList.fileList.map(async (img) => {
+          const url = await uploadFile(img.originFileObj);
+          return {
+            image: url,
+          };
+        })
+      );
 
       console.log(Koi);
       if (Koi.id) {
@@ -262,7 +305,7 @@ const ManagementKoi = () => {
       } else {
         //create
         await api.post(`koi`, Koi);
-        console.log(Koi.imagesList)
+        console.log(Koi.imagesList);
       }
       fetchKoi();
       toast.success("Update successfully!!!");

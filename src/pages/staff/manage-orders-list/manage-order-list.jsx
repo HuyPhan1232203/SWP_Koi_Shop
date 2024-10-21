@@ -9,7 +9,7 @@ function ManageOrders() {
   const [orderList, setOrderList] = useState([]);
   const fetchOrder = async () => {
     try {
-      const res = await api.get("order");
+      const res = await api.get("order/my-orders");
       console.log(res.data);
       setOrderList(res.data);
     } catch (err) {

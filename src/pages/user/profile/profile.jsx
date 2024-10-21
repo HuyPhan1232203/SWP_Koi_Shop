@@ -39,7 +39,10 @@ function Profile() {
                 <div className="profile_children">Consign History</div>
               </Link>
             </div>
-            <div className="right col-md-9">
+            <div
+              className="right col-md-9"
+              style={{ height: "500px", overflowY: "auto" }}
+            >
               <Outlet />
             </div>
           </div>

@@ -46,17 +46,12 @@ function LoginPage() {
         // The signed-in user info.
         const user = result.user;
         console.log(user);
-        const response = await api.post("login-google", { token: user.accessToken });
+        const response = await api.post("login-google", {
+          token: user.accessToken,
+        });
         // IdP data available using getAdditionalUserInfo(result)
-        const userInfo = {
-          address: null,
-          email: user.email,
-          phone: user.phoneNumber,
-          role: "CUSTOMER",
-          username: user.displayName
-        }
-        console.log(response)
-        // dispatch(login(userInfo))
+        console.log(response.data);
+        dispatch(login(response.data));
         // navigate("/");
         // ...
       })

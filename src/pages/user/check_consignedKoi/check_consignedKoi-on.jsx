@@ -13,7 +13,9 @@ function CheckConsignOnl() {
       <Link to="care">
         <Button>Care</Button>
       </Link>
-      <Outlet></Outlet>
+      <div className="check_consign">
+        <Outlet />
+      </div>
     </div>
   );
 }

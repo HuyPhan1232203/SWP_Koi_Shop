@@ -43,6 +43,11 @@ function ShowConsignOff() {
               Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.quantity,
             imageUrl:
               Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.imageUrl,
+            imagesList: [
+              {
+                image: "string",
+              },
+            ],
           },
         },
       ],
@@ -50,7 +55,7 @@ function ShowConsignOff() {
     console.log(response.data);
     window.open(response.data);
   };
-  
+
   useEffect(() => {
     fetchCareType();
   }, []);

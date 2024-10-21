@@ -18,7 +18,7 @@ function Sell() {
   }, []);
   return (
     <div>
-      {koiList.map((koi) => {
+      {[...koiList].reverse().map((koi) => {
         return (
           <div className="koi" key={koi.id}>
             <div className="koi-1 row">

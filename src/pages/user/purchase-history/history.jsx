@@ -50,27 +50,33 @@ function History() {
     if (string === "PENDING") {
       return (
         <div style={{ display: "flex" }}>
-          Status:
-          <div style={{ color: "red" }}>{string}</div>
+          <div style={{ color: "red", fontSize: "20px" }}>{string}</div>
         </div>
       );
     } else {
       return (
         <div style={{ display: "flex" }}>
-          Status:jhvjh
-          <div style={{ color: "green" }}>{string}</div>
+          <div style={{ color: "green", fontSize: "20px" }}>{string}</div>
         </div>
       );
     }
   };
+  const StartDateDisplay = (startDate) => {
+    const formattedDate = new Date(startDate).toLocaleString();
+    return (
+      <div>
+        <div>{formattedDate}</div>
+      </div>
+    );
+  };
   return (
-    <div className="history" style={{ height: "500px", overflowY: "auto" }}>
+    <div className="history">
       <p style={{ fontSize: "50px" }}>Order History</p>
       {[...orderList].reverse().map((order) => {
         return (
           <div key={order.id} className="order">
             <div className="status">
-              <div>{order.date}</div>
+              {StartDateDisplay(order.date)}
               <div
                 style={{ borderLeft: "1px #ccc solid", paddingLeft: "10px" }}
               >
