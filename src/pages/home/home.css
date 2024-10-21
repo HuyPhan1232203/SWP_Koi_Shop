@@ -10,7 +10,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #fff;
-    border-bottom: 4px #ccc double;
+    /* border-bottom: 4px #ccc double; */
+    border-bottom: 2px #ccc solid;
     
 }
 .feedback{
@@ -184,7 +185,7 @@
     display: block;
 }
 .nav_li_koi_elements{
-    margin-top: 48px;
+    margin-top: 15px;
     margin-left: -20px;
     position: absolute;
     display: none;
@@ -204,6 +205,12 @@
     color: #545252;
 
 }
+
+.arrow-down-icon {
+    font-size: 10px;
+    line-height: 0;
+}
+
 .koi_list_link{
     width: 100%;
     text-decoration: none;

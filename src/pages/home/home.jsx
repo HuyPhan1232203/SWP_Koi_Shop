@@ -4,6 +4,7 @@ import "./home.css";
 import "animate.css";
 import {
   ArrowRightOutlined,
+  DownOutlined,
   FacebookOutlined,
   InstagramOutlined,
   MailOutlined,
@@ -202,7 +203,7 @@ function HomePage() {
                 </li>
                 <li className="nav_li nav_li_koi">
                   <a className="nav_elements" href="#koiList">
-                    Koi List
+                    Koi List <span className="arrow-down-icon"><DownOutlined /></span>
                   </a>
                   <ul className="nav_li_koi_elements">
                     {breed.map((breed) => breeds(breed))}
