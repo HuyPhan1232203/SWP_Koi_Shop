@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useGetParams from "../../hooks/useGetParam";
 import api from "../../../config/axios";
 import { Link, useNavigate } from "react-router-dom";
+import "./success.css";
 
 function SuccessPageForConsign() {
   const nav = useNavigate();
