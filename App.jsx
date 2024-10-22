@@ -44,6 +44,7 @@ import SuccessPageForConsign from "./src/pages/user/successPage/success-consign"
 import CheckConsignOnl from "./src/pages/user/check_consignedKoi/check_consignedKoi-on";
 import Care from "./src/pages/user/check_consignedKoi/check_consignedKoi-care/care";
 import Sell from "./src/pages/user/check_consignedKoi/check_consignedKoi-sell/sell";
+import SuccessConsignmentPage from "./src/pages/user/successPage/success-consignment";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -179,6 +180,10 @@ function App() {
     {
       path: "successful-consign",
       element: <SuccessPageForConsign />,
+    },
+    {
+      path: "successful-consignment",  // Success page cho check-out-consignment
+      element: <SuccessConsignmentPage />,
     },
 
     {

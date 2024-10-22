@@ -4,38 +4,37 @@ import api from "../../../config/axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./success.css";
 
+// Successpage cho check-out-consignment
 
-function SuccessPageForConsign() {
+function SuccessConsignmentPage() {
   const nav = useNavigate();
 
   const params = useGetParams();
-  const orderID = params("orderID");
-  const transID = params("consignmentID");
+  const Orderid = params("Orderid");
+  const Consignmentid = params("Consignmentid");
   const vnp_TransactionStatus = params("vnp_TransactionStatus");
-  console.log("orderID: ", orderID);
-  console.log("consignmentID: ", transID);
+  console.log("Orderid: ", Orderid);
+  console.log("Consignmentid: ", Consignmentid);
   console.log("vnp_TransactionStatus: ", vnp_TransactionStatus);
 
   const postOrderID = async () => {
     try {
       const response = await api.post(
-        `/consignment/transactions?consignmentID=${consignmentID}`
+        `/consignmentOrder/transaction?Orderid=${Orderid}&Consignmentid=${Consignmentid}`
       );
-      console.log("Transaction saved:", response.data);
+      console.log("Transaction saved: ", response.data);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    if (vnp_TransactionStatus === "00") {
+    if (vnp_TransactionStatus === 0) {
       postOrderID();
     } else {
-      // Failed
-      nav("/failed");
+      // nav("/failed");
     }
-  }, [vnp_TransactionStatus]);
-
+  }, []);
   return (
     <div className="success-section">
       <h2>KOI SHOP</h2>
@@ -47,7 +46,7 @@ function SuccessPageForConsign() {
         ></img>
         <p>Payment Successful</p>
         <p className="sub-text">
-          Consign number: {consignmentID} Cloud server configuration takes 1-5 minutes,
+          Order number: {Orderid} Cloud server configuration takes 1-5 minutes,
           please wait.
         </p>
         <Link to="/">
@@ -58,4 +57,4 @@ function SuccessPageForConsign() {
   );
 }
 
-export default SuccessPageForConsign;
+export default SuccessConsignmentPage;
