@@ -36,6 +36,14 @@ function ManageVoucher() {
   const handleClosenModal = () => {
     setOpenModal(false);
   };
+  const StartDateDisplay = (startDate) => {
+    const formattedDate = new Date(startDate).toLocaleString();
+    return (
+      <div>
+        <div>{formattedDate}</div>
+      </div>
+    );
+  };
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
@@ -99,6 +107,9 @@ function ManageVoucher() {
       title: "Expired Date",
       dataIndex: "expiredDate",
       key: "expiredDate",
+      render: (expiredDate) => {
+        return StartDateDisplay(expiredDate);
+      },
     },
     {
       title: "Quantity",
