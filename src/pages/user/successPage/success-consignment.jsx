@@ -32,7 +32,7 @@ function SuccessConsignmentPage() {
     if (vnp_TransactionStatus === 0) {
       postOrderID();
     } else {
-      // nav("/failed");
+      nav("/failed");
     }
   }, []);
   return (
