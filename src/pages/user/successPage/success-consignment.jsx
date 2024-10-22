@@ -29,7 +29,7 @@ function SuccessConsignmentPage() {
   };
 
   useEffect(() => {
-    if (vnp_TransactionStatus === 0) {
+    if (vnp_TransactionStatus === "00") {
       postOrderID();
     } else {
       nav("/failed");
