@@ -14,7 +14,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Modal, Rate } from "antd";
+import { Badge, Button, Carousel, Modal, Rate } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -196,7 +196,10 @@ function HomePage() {
                 </li>
                 <li className="nav_li nav_li_koi">
                   <a className="nav_elements" href="#koiList">
-                    Koi List <span className="arrow-down-icon"><DownOutlined /></span>
+                    Koi List{" "}
+                    <span className="arrow-down-icon">
+                      <DownOutlined />
+                    </span>
                   </a>
                   <ul className="nav_li_koi_elements">
                     {breed.map((breed) => breeds(breed))}
@@ -228,28 +231,131 @@ function HomePage() {
       </div>
       {location.pathname === "/" && (
         <div className="homepage-section container">
-          <div className="homepage-design">
-            <div className="overlay"></div>
+          <Carousel autoplay>
             <div>
-              <div className="row slider-text">
-                <div className="col-md-11 text-center-slider ">
-                  <h1 className="mb-4 ">
-                    Swim into Serenity: Find Your Perfect Koi!
-                  </h1>
-                  <p>
-                    <Button
-                      onClick={scrollToKoiSection}
-                      className="btn-koi-list"
-                    >
-                      <a style={{ textDecoration: "none" }} href="#koiList">
-                        Koi List
-                      </a>
-                    </Button>
-                  </p>
+              <h3>
+                <div
+                  className="homepage-design"
+                  style={{
+                    background: "url('/assets/images/homepage-img-2.png')",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  <div className="overlay"></div>
+                  <div>
+                    <div className="row slider-text">
+                      <div className="col-md-11 text-center-slider ">
+                        <h1 className="mb-4 ">
+                          Swim into Serenity: Find Your Perfect Koi!
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </h3>
             </div>
-          </div>
+            <div>
+              <h3>
+                <h3>
+                  <div
+                    className="homepage-design"
+                    style={{
+                      background: "url('/assets/images/homepage-img-4.jpg')",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <div className="overlay"></div>
+                    <div>
+                      <div className="row slider-text">
+                        <div className="col-md-11 text-center-slider ">
+                          <h1 className="mb-4 ">
+                            Swim into Serenity: Find Your Perfect Koi!
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </h3>
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <h3>
+                  <div
+                    className="homepage-design"
+                    style={{
+                      background: "url('/assets/images/homepage-img-7.jpg')",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <div className="overlay"></div>
+                    <div>
+                      <div className="row slider-text">
+                        <div className="col-md-11 text-center-slider ">
+                          <h1 className="mb-4 ">
+                            Swim into Serenity: Find Your Perfect Koi!
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </h3>
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <h3>
+                  <div
+                    className="homepage-design"
+                    style={{
+                      background: "url('/assets/images/homepage-img-5.webp')",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <div className="overlay"></div>
+                    <div>
+                      <div className="row slider-text">
+                        <div className="col-md-11 text-center-slider ">
+                          <h1 className="mb-4 ">
+                            Swim into Serenity: Find Your Perfect Koi!
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </h3>
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <h3>
+                  <div
+                    className="homepage-design"
+                    style={{
+                      background: "url('/assets/images/homepage-img-6.jpg')",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <div className="overlay"></div>
+                    <div>
+                      <div className="row slider-text">
+                        <div className="col-md-11 text-center-slider ">
+                          <h1 className="mb-4 ">
+                            Swim into Serenity: Find Your Perfect Koi!
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </h3>
+              </h3>
+            </div>
+          </Carousel>
           <div className="koi-section" ref={koiSectionRef}>
             <div className="container">
               <div className="row koi-content-center" id="koiList">
