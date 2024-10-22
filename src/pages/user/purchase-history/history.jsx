@@ -22,6 +22,7 @@ function History() {
     try {
       const response = api.post(`feedback?id=${selectedOrder}`, feedback);
       console.log(response.data);
+      fetchOrder();
     } catch (err) {
       toast.error(err);
     } finally {

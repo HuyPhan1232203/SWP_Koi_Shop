@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import CRUDTemplate from "../../../conponent/crud-template/crud-template";
-import { Button, Form, Popconfirm, Table } from "antd";
-import Input from "antd/es/input/Input";
-import { Tab } from "bootstrap";
+import { Button, Form, Popconfirm, Select, Table } from "antd";
 import api from "../../../config/axios";
+import { toast } from "react-toastify";
 
 function ManageOrders() {
   const [orderList, setOrderList] = useState([]);
+  const [selectedStatus, setSelectedStatus] = useState({}); // Track staff assignments by order ID
+  //FETCH
   const fetchOrder = async () => {
     try {
       const res = await api.get("order/my-orders");
@@ -16,19 +16,30 @@ function ManageOrders() {
       console.log(err);
     }
   };
+  //UPDATE
+  const handleEditOrderStatus = async (id) => {
+    const status = String(selectedStatus.value);
+    try {
+      const res = await api.put(`order/${id}/status?newStatus=${status}`);
+      console.log(res.data);
+      fetchOrder();
+    } catch (err) {
+      toast.error(err);
+    }
+  };
   useEffect(() => {
     fetchOrder();
   }, []);
   const columns = [
     {
-      title: "ID",
+      title: "Order id",
       dataIndex: "id",
       key: "id",
     },
     {
-      title: "Customer ID",
-      dataIndex: "customerId",
-      key: "customerId",
+      title: "Date",
+      dataIndex: "date",
+      key: "date",
     },
     {
       title: "Voucher ID",
@@ -36,9 +47,50 @@ function ManageOrders() {
       key: "voucherId",
     },
     {
-      title: "Shipping Address",
-      dataIndex: "shippingAddress",
-      key: "shippingAddress",
+      title: "Price",
+      dataIndex: "finalAmount",
+      key: "finalAmount",
+    },
+
+    {
+      title: "Current Status",
+      dataIndex: "status",
+      key: "status",
+    },
+    {
+      title: "Update Status",
+      dataIndex: "id",
+      key: "id",
+      render: () => (
+        <Select
+          style={{ width: "200px", color: "#000" }}
+          onChange={(value) =>
+            setSelectedStatus((prev) => ({ ...prev, value }))
+          }
+        >
+          <Select.Option style={{ color: "#000" }} value="PENDING">
+            PENDING
+          </Select.Option>
+          <Select.Option style={{ color: "#000" }} value="CONFIRMED">
+            CONFIRMED
+          </Select.Option>
+          <Select.Option style={{ color: "#000" }} value="PAID">
+            PAID
+          </Select.Option>
+          <Select.Option style={{ color: "#000" }} value="CANCELLED">
+            CANCELLED
+          </Select.Option>
+          <Select.Option style={{ color: "#000" }} value="DECLINED">
+            DECLINED
+          </Select.Option>
+          <Select.Option style={{ color: "#000" }} value="SHIPPED">
+            SHIPPED
+          </Select.Option>
+          <Select.Option style={{ color: "#000" }} value="COMPLETED">
+            COMPLETED
+          </Select.Option>
+        </Select>
+      ),
     },
     {
       title: "Action",
@@ -46,11 +98,13 @@ function ManageOrders() {
       key: "id",
       render: (id) => (
         <>
-          <Button>Confirm</Button>
-
-          <Popconfirm title="Deny order" description="Deny this order?">
-            <Button danger>Deny</Button>
-          </Popconfirm>
+          <Button
+            onClick={() => {
+              handleEditOrderStatus(id);
+            }}
+          >
+            Confirm
+          </Button>
         </>
       ),
     },

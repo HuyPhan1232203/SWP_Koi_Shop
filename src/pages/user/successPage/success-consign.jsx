@@ -9,13 +9,17 @@ function SuccessPageForConsign() {
 
   const params = useGetParams();
   const orderID = params("orderID");
+  const transID = params("consignmentID");
   const vnp_TransactionStatus = params("vnp_TransactionStatus");
   console.log("orderID: ", orderID);
+  console.log("consignmentID: ", transID);
   console.log("vnp_TransactionStatus: ", vnp_TransactionStatus);
 
   const postOrderID = async () => {
     try {
-      const response = await api.post(`/consignment/transactions?orderID=${orderID}`);
+      const response = await api.post(
+        `/consignment/transactions?orderID=${orderID}`
+      );
       console.log("Transaction saved:", response.data);
     } catch (err) {
       console.log(err);

@@ -56,6 +56,19 @@ function ManageStaffJob() {
       key: "id",
     },
     {
+      title: "Staff ID",
+      dataIndex: "staffId",
+      key: "staffId",
+      render: (staffId) => {
+        return staffList.map((staff) => {
+          if (staff.id === staffId) {
+            console.log(staff);
+            return <div key={staff.id}>{staff.username}</div>;
+          }
+        });
+      },
+    },
+    {
       title: "Staff",
       dataIndex: "id",
       key: "staff",
