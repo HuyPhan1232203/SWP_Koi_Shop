@@ -1,13 +1,18 @@
 import "./check_out.css";
-import { Image, Input } from "antd";
+import { Button, Image, Input } from "antd";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { Outlet, useNavigate } from "react-router-dom";
+import api from "../../../config/axios";
+import { toast } from "react-toastify";
 function CheckOut() {
+  const [promoCode, setPromoCode] = useState("");
   const nav = useNavigate();
   const cartItems = useSelector((store) => store.selectedItems);
   const handleCheckDeposit = () => {
     const check = document.getElementById("depositCheckbox");
+
     check.addEventListener("change", function () {
       if (this.checked) {
         nav("check-out-consignment");
@@ -15,6 +20,22 @@ function CheckOut() {
         nav("/check-out");
       }
     });
+  };
+  const details = useSelector((store) => store.checkout);
+  const handelSubmitOrder = async () => {
+    try {
+      console.log(details);
+      const val = {
+        detail: details,
+        voucherCode: promoCode,
+      };
+      console.log({ val });
+      const response = await api.post("order", val);
+      console.log(response.data);
+      window.open(response.data);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   };
   const total = cartItems.reduce((total, item) => total + item.price, 0);
   return (
@@ -50,8 +71,17 @@ function CheckOut() {
               className="sumary_totalPrice_input col-md-8"
               name=""
               placeholder="Promo code"
+              onChange={(e) => setPromoCode(e.target.value)} // Update state on input change
+              value={promoCode}
             />
-            <button className="sumary_totalPrice_btn col-md-4">Apply</button>
+            <button
+              className="sumary_totalPrice_btn col-md-4"
+              onClick={() => {
+                console.log(promoCode);
+              }}
+            >
+              Apply
+            </button>
           </div>
         </div>
         <div className="sumary_cart_items">
@@ -77,6 +107,7 @@ function CheckOut() {
             );
           })}
         </div>
+        <Button onClick={handelSubmitOrder}>Purchase</Button>
       </div>
     </div>
   );
