@@ -18,7 +18,7 @@ function SuccessPageForConsign() {
   const postOrderID = async () => {
     try {
       const response = await api.post(
-        `/consignment/transactions?orderID=${orderID}`
+        `/consignment/transactions?consignmentID=${consignmentID}`
       );
       console.log("Transaction saved:", response.data);
     } catch (err) {
