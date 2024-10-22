@@ -8,11 +8,11 @@ import api from "../../../config/axios";
 import { toast } from "react-toastify";
 function CheckOut() {
   const [promoCode, setPromoCode] = useState("");
+  const [voucherList, setVoucherList] = useState([]);
   const nav = useNavigate();
   const cartItems = useSelector((store) => store.selectedItems);
   const handleCheckDeposit = () => {
     const check = document.getElementById("depositCheckbox");
-
     check.addEventListener("change", function () {
       if (this.checked) {
         nav("check-out-consignment");
@@ -21,6 +21,16 @@ function CheckOut() {
       }
     });
   };
+  const fetchVoucher = async () => {
+    try {
+      const res = await api.get("voucher");
+      console.log(res);
+      setVoucherList(res.data);
+    } catch (err) {
+      toast.error(err.res.data);
+    }
+  };
+
   const details = useSelector((store) => store.checkout);
   const handelSubmitOrder = async () => {
     try {
@@ -38,6 +48,7 @@ function CheckOut() {
     }
   };
   const total = cartItems.reduce((total, item) => total + item.price, 0);
+  var finalPrice = total;
   return (
     <div className="CheckOut row">
       <div className="col-md-8 userInfo">
@@ -53,18 +64,29 @@ function CheckOut() {
           <Outlet />
         </div>
       </div>
-      <div className="col-md-4 sumary">
+      <div className="col-md-4 sumary" id="side" style={{ display: "none" }}>
         <h3>Summary</h3>
         <div className="summary_price">
           <p style={{ display: "flex" }}>
             Estimated price:
-            <p style={{ color: "green" }}>${total} </p>
+            <p style={{ color: "green" }}>{total} VNĐ</p>
           </p>
-          <p>Discount: </p>
-          <p>Shipping cost: </p>
+          <p style={{ display: "flex" }}>
+            Discount:
+            {voucherList.map((voucher) => {
+              if (voucher.code === promoCode) {
+                {
+                  finalPrice = (finalPrice * voucher.discountValue) / 100;
+                }
+                return <div key={voucher.code}>{voucher.discountValue}% </div>;
+              }
+            })}
+          </p>
         </div>
         <div className="sumary_totalPrice">
-          <p>Total Price:</p>
+          <p style={{ fontWeight: "600", fontSize: "20px" }}>
+            Total Price: {finalPrice} VNĐ{" "}
+          </p>
           <div className="row" style={{ padding: " 0px 14px" }}>
             <Input
               type="text"
@@ -78,6 +100,7 @@ function CheckOut() {
               className="sumary_totalPrice_btn col-md-4"
               onClick={() => {
                 console.log(promoCode);
+                fetchVoucher();
               }}
             >
               Apply

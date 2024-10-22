@@ -5,6 +5,7 @@ import api from "../../../config/axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { storeProduct } from "../../../redux/features/checkoutcart";
+import { useEffect } from "react";
 
 function CheckOutNormal() {
   const dispatch = useDispatch();
@@ -13,6 +14,13 @@ function CheckOutNormal() {
   const nav = useNavigate();
   console.log(cartItems);
   console.log(userInfo);
+  const handleShowSide = () => {
+    const btn = document.getElementById("continue");
+    const side = document.getElementById("side");
+    btn.addEventListener("click", () => {
+      side.style.display = "block";
+    });
+  };
   const handelSubmitOrder = async () => {
     try {
       const selectedItems = cartItems;
@@ -30,7 +38,10 @@ function CheckOutNormal() {
       <Form
         labelCol={{ span: 24 }}
         className="userInfo_input"
-        onFinish={handelSubmitOrder}
+        onFinish={() => {
+          handleShowSide();
+          handelSubmitOrder();
+        }}
       >
         <div className="user_info_contain">
           <Form.Item
@@ -183,9 +194,10 @@ function CheckOutNormal() {
             <TextArea rows={4}></TextArea>
           </Form.Item>
         </div>
-        <Button htmlType="submit">Continue</Button>
+        <Button htmlType="submit" id="continue">
+          Continue
+        </Button>
       </Form>
-      <div></div>
     </div>
   );
 }

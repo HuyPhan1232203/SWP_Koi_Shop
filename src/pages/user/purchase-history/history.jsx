@@ -111,7 +111,7 @@ function History() {
                 <Rate value={order.feedback?.rating} disabled></Rate>
               </div>
               <div className="total">
-                Total: <p style={{ color: "green" }}>${order.total}</p>
+                Total: <p style={{ color: "green" }}>${order.finalAmount}</p>
               </div>
             </div>
             <div className="buttons">
