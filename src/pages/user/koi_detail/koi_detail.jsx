@@ -39,22 +39,6 @@ function KoiDetail() {
     console.log(key);
   };
 
-  const items = [
-    {
-      key: "2",
-      label: "Certificate",
-      children: (
-        <div className="certificate" style={{ height: "800px" }}>
-          <Image
-            src={koiDetail.certificate.imageUrl}
-            width={500}
-            style={{ height: "100%" }}
-            alt=""
-          />
-        </div>
-      ),
-    },
-  ];
   return (
     <div className="koi-item">
       <div className="KoiDetail row">
@@ -96,22 +80,6 @@ function KoiDetail() {
           </button>
         </div>
       </div>
-      <ConfigProvider
-        theme={{
-          components: {
-            Tabs: {
-              /* here is your component tokens */
-              inkBarColor: "#000",
-              itemSelectedColor: "#000",
-              itemHoverColor: "#aaa",
-            },
-          },
-        }}
-      >
-        <div className="certificate-session">
-          <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-        </div>
-      </ConfigProvider>
     </div>
   );
 }

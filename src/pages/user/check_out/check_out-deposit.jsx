@@ -30,11 +30,11 @@ function CheckOutConsignment() {
     console.log(value);
     try {
       const selectedItems = cartItems;
-      const detail = selectedItems.map((item) => ({
+      const details = selectedItems.map((item) => ({
         koiId: item.id,
       }));
       const values = {
-        detail: detail,
+        detail: details,
         describe: value.description,
         endDate: value.endDate,
         careTypeId: value.careTypeId,

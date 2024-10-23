@@ -49,17 +49,24 @@ function CheckOut() {
           detail: details,
         };
       }
-      console.log(val.detail[0]);
+      console.log(val.detail.detail);
 
       if (details.careTypeId) {
-        response = await api.post("consignmentOrder", val);
+        console.log(details.careTypeId);
+        response = await api.post("consignmentOrder", val.detail);
+        console.log(response.data);
+        val.detail.detail.map((value) => {
+          dispatch(removeProduct(value?.koiId));
+        });
       } else {
         response = await api.post("order", val);
+        console.log(response.data);
+        val.detail.map((value) => {
+          dispatch(removeProduct(value?.koiId));
+        });
       }
+
       console.log(response.data);
-      val.detail.map((value) => {
-        dispatch(removeProduct(value?.koiId));
-      });
       window.open(response.data);
       nav(0);
     } catch (err) {

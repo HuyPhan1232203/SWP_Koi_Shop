@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, ConfigProvider, Layout, Pagination } from "antd";
+import {
+  Button,
+  ConfigProvider,
+  Form,
+  Layout,
+  Modal,
+  Pagination,
+  Select,
+} from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
@@ -13,6 +21,7 @@ function KoiBreedType() {
   const breedId = useSelector((store) => store.breedId);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(8);
+  const [isOpen, setIsOpen] = useState(false);
   const fetchProduct = async (breed) => {
     if (!breed) return; // Check if breedId exists before making the API call
     try {
@@ -26,13 +35,22 @@ function KoiBreedType() {
   useEffect(() => {
     fetchProduct(breedId);
   }, [breedId]);
-  console.log(koiList);
-
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const currentKoiList = koiList.slice(startIndex, endIndex);
+  const [form] = Form.useForm();
+  const handleCompare = (value) => {
+    console.log(value);
+  };
   return (
     <div className="koi_breed_fetch">
+      <Button
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
+        Compare
+      </Button>
       <div className="koi_list">
         {currentKoiList.map((item) => (
           <Product products={item} key={item.id} />
@@ -45,6 +63,39 @@ function KoiBreedType() {
         total={koiList.length}
         onChange={(page) => setCurrentPage(page)}
       />
+      <Modal
+        open={isOpen}
+        className="form_handle"
+        onCancel={() => {
+          setIsOpen(false);
+        }}
+        onOk={form.submit}
+      >
+        <Form form={form} onFinish={handleCompare}>
+          <Form.Item
+            label="Item 1 "
+            name="a"
+            rules={[{ required: true, message: "please choose" }]}
+          >
+            <Select>
+              {koiList.map((koi) => {
+                return <Select.Option key={koi.id}>{koi.name}</Select.Option>;
+              })}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Item 2 "
+            name="b"
+            rules={[{ required: true, message: "please choose" }]}
+          >
+            <Select>
+              {koiList.map((koi) => {
+                return <Select.Option key={koi.id}>{koi.name}</Select.Option>;
+              })}
+            </Select>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 }
@@ -74,6 +125,7 @@ const Product = ({ products }) => {
       nav("/login");
     }
   };
+
   return (
     <div className="product">
       <Link

@@ -25,9 +25,8 @@
     margin: 10px 0;
 }
 .buttons{
-    display: flex;
     margin-top: 20px;
-    margin-left: 600px;
+    margin-left: 800px;
 }
 .buttons Button{
     margin-left: 10px;

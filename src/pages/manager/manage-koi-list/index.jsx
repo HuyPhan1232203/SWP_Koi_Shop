@@ -223,18 +223,6 @@ const ManagementKoi = () => {
       key: "description",
     },
     {
-      title: "certificate",
-      dataIndex: "certificate",
-      key: "certificate",
-      render: (img, koi) => {
-        return (
-          <PDFViewer width={100} height={100} style={{ objectFit: "cover" }}>
-            <Certificate koi={koi} />
-          </PDFViewer>
-        );
-      },
-    },
-    {
       title: "Action",
       dataIndex: "id",
       key: "id",
@@ -287,11 +275,6 @@ const ManagementKoi = () => {
 
   const handleSubmitKoi = async (Koi) => {
     try {
-      // Koi.imagesList = [
-      //   {
-      //     image: "string"
-      //   }
-      // ]
       setSubmitKoi(true);
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
@@ -389,7 +372,7 @@ const ManagementKoi = () => {
             rules={[{ required: true, message: "Please Input" }]}
             name="quantity"
           >
-            <InputNumber></InputNumber>
+            <InputNumber min={1}></InputNumber>
           </Form.Item>
           <Form.Item label="Breed Name" name="breedId">
             <Select mode="multiple">

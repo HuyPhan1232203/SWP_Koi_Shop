@@ -10,8 +10,8 @@ function SuccessConsignmentPage() {
   const nav = useNavigate();
 
   const params = useGetParams();
-  const Orderid = params("Orderid");
-  const Consignmentid = params("Consignmentid");
+  const Orderid = params("orderID");
+  const Consignmentid = params("consignmentID");
   const vnp_TransactionStatus = params("vnp_TransactionStatus");
   console.log("Orderid: ", Orderid);
   console.log("Consignmentid: ", Consignmentid);

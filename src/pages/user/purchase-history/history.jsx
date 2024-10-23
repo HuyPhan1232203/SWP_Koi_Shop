@@ -33,7 +33,6 @@ function History() {
   };
   const handleShowButton = (order) => {
     if (order.feedback?.content == null) {
-      console.log("show");
       return (
         <Button
           className="bton"
@@ -114,11 +113,9 @@ function History() {
                 Total: <p style={{ color: "green" }}>${order.finalAmount}</p>
               </div>
             </div>
-            <div className="buttons">
-              {handleShowButton(order)}
-              <Button>Connect to seller</Button>
-            </div>
+            <div className="buttons">{handleShowButton(order)}</div>
             <Modal
+              key={order.id}
               open={openModal}
               title="Rating"
               onCancel={() => {

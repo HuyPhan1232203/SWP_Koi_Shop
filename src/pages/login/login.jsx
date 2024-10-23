@@ -51,8 +51,8 @@ function LoginPage() {
         });
         // IdP data available using getAdditionalUserInfo(result)
         console.log(response.data);
-        // dispatch(login(response.data));
-        // navigate("/");
+        dispatch(login(response.data));
+        navigate("/");
         // ...
       })
       .catch((error) => {
