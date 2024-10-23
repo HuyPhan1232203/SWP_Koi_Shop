@@ -114,15 +114,18 @@ const Product = ({ products }) => {
               return (
                 <div
                   key={breedItem}
-                  style={{ marginRight: "10px", fontWeight: "700" }}
+                  style={{
+                    marginRight: "10px",
+                    fontWeight: "700",
+                  }}
                 >
-                  {breedItem.name}
+                  {breedItem}
                 </div>
               );
             })}
           </div>
         </p>
-        <p className="product_name">Price: {products.price}</p>
+        <p className="product_name">Price: {products?.price}</p>
       </div>
       <Button
         onClick={handleAddToCart}

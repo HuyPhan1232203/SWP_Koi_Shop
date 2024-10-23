@@ -133,7 +133,11 @@ function ManageVoucher() {
               type="primary"
               onClick={() => {
                 setOpenModal(true);
-                formStand.setFieldsValue(koi);
+                try {
+                  formStand.setFieldsValue(koi);
+                } catch (err) {
+                  console.log(err);
+                }
               }}
             >
               Edit
@@ -172,8 +176,8 @@ function ManageVoucher() {
         rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
       >
-        <Input></Input>
-        {/* <DatePicker /> */}
+        {/* <Input></Input> */}
+        <DatePicker />
       </Form.Item>
 
       <Form.Item

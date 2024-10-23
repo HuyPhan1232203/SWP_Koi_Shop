@@ -1,11 +1,12 @@
 import "./check_out.css";
 import { Button, Image, Input } from "antd";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Outlet, useNavigate } from "react-router-dom";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
+import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 function CheckOut() {
   const [promoCode, setPromoCode] = useState("");
   const [voucherList, setVoucherList] = useState([]);
@@ -21,6 +22,7 @@ function CheckOut() {
       }
     });
   };
+  const dispatch = useDispatch();
   const fetchVoucher = async () => {
     try {
       const res = await api.get("voucher");
@@ -33,17 +35,33 @@ function CheckOut() {
   const cart = useSelector((store) => store.cart);
   const details = useSelector((store) => store.checkout);
   const handelSubmitOrder = async () => {
+    console.log(details);
     try {
-      console.log(details);
-      const val = {
-        detail: details,
-        // voucherCode: promoCode,
-      };
-      console.log({ val });
-      const response = await api.post("order", val);
+      var val = [];
+      var response = "";
+      if (promoCode != "") {
+        val = {
+          detail: details,
+          voucherCode: promoCode,
+        };
+      } else {
+        val = {
+          detail: details,
+        };
+      }
+      console.log(val.detail[0]);
+
+      if (details.careTypeId) {
+        response = await api.post("consignmentOrder", val);
+      } else {
+        response = await api.post("order", val);
+      }
       console.log(response.data);
-      console.log(cart);
-      // window.open(response.data);
+      val.detail.map((value) => {
+        dispatch(removeProduct(value?.koiId));
+      });
+      window.open(response.data);
+      nav(0);
     } catch (err) {
       toast.error(err.response.data);
     }
@@ -77,7 +95,8 @@ function CheckOut() {
             {voucherList.map((voucher) => {
               if (voucher.code === promoCode) {
                 {
-                  finalPrice = (finalPrice * voucher.discountValue) / 100;
+                  finalPrice =
+                    finalPrice - (finalPrice * voucher.discountValue) / 100;
                 }
                 return <div key={voucher.code}>{voucher.discountValue}% </div>;
               }
