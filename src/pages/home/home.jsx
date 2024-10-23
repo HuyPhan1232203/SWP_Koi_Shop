@@ -439,7 +439,7 @@ function HomePage() {
             <div className="col-md-4 col-lg-2">
               <div className="footer-widget">
                 <h2 className="heading-2">Explore</h2>
-                <ul className="list-unstyled">
+                <ul className="list-unstyled explore">
                   <li>
                     <a href="">
                       <span className="arrow-icon">
