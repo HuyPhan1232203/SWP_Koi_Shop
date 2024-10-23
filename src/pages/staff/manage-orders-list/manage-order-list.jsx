@@ -20,7 +20,9 @@ function ManageOrders() {
   const handleEditOrderStatus = async (id) => {
     const status = String(selectedStatus.value);
     try {
-      const res = await api.put(`order/${id}/status?newStatus=${status}`);
+      const res = await api.put(
+        `order/status?orderId=${id}&newStatus=${status}`
+      );
       console.log(res.data);
       fetchOrder();
     } catch (err) {
