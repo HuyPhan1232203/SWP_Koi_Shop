@@ -46,6 +46,10 @@ import Care from "./src/pages/user/check_consignedKoi/check_consignedKoi-care/ca
 import Sell from "./src/pages/user/check_consignedKoi/check_consignedKoi-sell/sell";
 import SuccessConsignmentPage from "./src/pages/user/successPage/success-consignment";
 import CheckOutALL from "./src/pages/user/check_out/checkout-all";
+import ManageKoiSale from "./src/pages/manager/manage-koi-sale/manage-koi-sale";
+import PDF from "./src/PDF/pdf";
+import Certificate from "./src/pages/certificate/certificate";
+import { PDFViewer } from "@react-pdf/renderer";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -167,6 +171,11 @@ function App() {
       element: <LoginPage />,
     },
     {
+      path: "certi",
+      element: <Certificate />,
+    },
+
+    {
       path: "forgot_password",
       element: <ForgotPassword />,
     },
@@ -232,6 +241,10 @@ function App() {
         {
           path: "caretype",
           element: <ManageCareType />,
+        },
+        {
+          path: "koi-sale",
+          element: <ManageKoiSale />,
         },
       ],
     },

@@ -30,19 +30,20 @@ function CheckOut() {
       toast.error(err.res.data);
     }
   };
-
+  const cart = useSelector((store) => store.cart);
   const details = useSelector((store) => store.checkout);
   const handelSubmitOrder = async () => {
     try {
       console.log(details);
       const val = {
         detail: details,
-        voucherCode: promoCode,
+        // voucherCode: promoCode,
       };
       console.log({ val });
       const response = await api.post("order", val);
       console.log(response.data);
-      window.open(response.data);
+      console.log(cart);
+      // window.open(response.data);
     } catch (err) {
       toast.error(err.response.data);
     }

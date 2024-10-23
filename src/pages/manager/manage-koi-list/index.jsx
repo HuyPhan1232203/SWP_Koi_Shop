@@ -18,6 +18,8 @@ import api from "../../../config/axios";
 import uploadFile from "../../../utils/file";
 import TextArea from "antd/es/input/TextArea";
 import { PlusOutlined } from "@ant-design/icons";
+import Certificate from "../../certificate/certificate";
+import { PDFViewer } from "@react-pdf/renderer";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
@@ -224,8 +226,12 @@ const ManagementKoi = () => {
       title: "certificate",
       dataIndex: "certificate",
       key: "certificate",
-      render: (img) => {
-        return <Image src={img} width={100} height={100}></Image>;
+      render: (img, koi) => {
+        return (
+          <PDFViewer width={100} height={100} style={{ objectFit: "cover" }}>
+            <Certificate koi={koi} />
+          </PDFViewer>
+        );
       },
     },
     {

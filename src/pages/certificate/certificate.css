@@ -1,0 +1,62 @@
+.koi-certificate-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #eef6f9;
+  }
+  
+  .koi-certificate-border {
+    width: 750px;
+    padding: 50px;
+    border: 10px solid #333;
+    background-color: #fff;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    position: relative;
+  }
+  
+  .koi-certificate-title {
+    font-size: 38px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .koi-certificate-text {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .koi-certificate-name {
+    font-size: 30px;
+    font-weight: bold;
+    color: #d63447;
+  }
+  
+  .koi-certificate-degree {
+    font-size: 26px;
+    margin: 15px 0;
+    color: #444;
+  }
+  
+  .koi-certificate-owner {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .koi-certificate-date {
+    font-size: 16px;
+    margin-top: 40px;
+    color: #777;
+  }
+  
+  .koi-certificate-signature {
+    font-size: 18px;
+    margin-top: 40px;
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    color: #555;
+  }
+  
