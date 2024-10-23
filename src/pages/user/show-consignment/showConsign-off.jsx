@@ -18,7 +18,7 @@ function ShowConsignOff() {
   const handleCheckOut = async (Koi) => {
     // Koi.type = "OFFLINE";
     console.log(Koi);
-    const response = await api.post("consignment/", {
+    const response = await api.post("consignment", {
       type: "OFFLINE",
       address: Koi.address,
       startDate: Koi.startDate,

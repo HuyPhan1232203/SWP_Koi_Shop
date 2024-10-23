@@ -4,16 +4,13 @@ import api from "../../../config/axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./success.css";
 
-
 function SuccessPageForConsign() {
   const nav = useNavigate();
 
   const params = useGetParams();
-  const orderID = params("orderID");
-  const transID = params("consignmentID");
+  const consignmentID = params("consignmentID");
   const vnp_TransactionStatus = params("vnp_TransactionStatus");
-  console.log("orderID: ", orderID);
-  console.log("consignmentID: ", transID);
+  console.log("consignmentID: ", consignmentID);
   console.log("vnp_TransactionStatus: ", vnp_TransactionStatus);
 
   const postOrderID = async () => {
@@ -47,8 +44,8 @@ function SuccessPageForConsign() {
         ></img>
         <p>Payment Successful</p>
         <p className="sub-text">
-          Consign number: {consignmentID} Cloud server configuration takes 1-5 minutes,
-          please wait.
+          Consign number: {consignmentID} Cloud server configuration takes 1-5
+          minutes, please wait.
         </p>
         <Link to="/">
           <button>Go To Home Page</button>
