@@ -6,7 +6,9 @@
 }
 .koi-1{
 width: 100%;
-
+display: flex;
+border-bottom: 1px #ccc solid;
+padding-bottom: 20px;
 }
 .price{
     margin-left: 700px;

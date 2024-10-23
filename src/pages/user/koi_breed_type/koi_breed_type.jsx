@@ -16,7 +16,6 @@ function KoiBreedType() {
   const fetchProduct = async (breed) => {
     if (!breed) return; // Check if breedId exists before making the API call
     try {
-      // const response = await api.get(`koi?breedId=${breed}&page=0&size=10`);
       const response = await api.get(`koi?breedId=${breed}`);
       setKoiList(response.data); // Set the koi list data in the state
       console.log(koiList);

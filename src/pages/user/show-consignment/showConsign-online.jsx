@@ -12,7 +12,7 @@ function ShowConsignOnl() {
   console.log(KoiSubmit);
   const handleSubmitConsign = async (Koi) => {
     console.log(Koi);
-    const response = await api.post("consignment/", {
+    const response = await api.post("consignment", {
       type: "ONLINE",
       startDate: Koi.startDate,
       description: Koi.description,
