@@ -21,6 +21,7 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
+  getItem("Overview", "overview", <ProductOutlined style={{ color: "#fff" }} />),
   getItem("Koi List", "koilist", <ProductOutlined style={{ color: "#fff" }} />),
   getItem(
     "Voucher List",
@@ -61,8 +62,9 @@ const Dashboard = () => {
         <h4
           style={{
             fontFamily: "serif",
-            color: "#3652AD",
-            border: "1px solid #3652AD",
+            color: "#fff",
+            border: "1px solid #000",
+            backgroundColor: "#000",
             borderRadius: "10px",
             paddingBottom: "10px",
             paddingTop: "10px",
@@ -96,50 +98,55 @@ const Dashboard = () => {
         },
         components: {
           Menu: {
-            darkItemBg: "#FE7A36",
-            darkItemSelectedBg: "#3652AD",
+            darkItemBg: "#000",
+            darkItemSelectedBg: "#aaa",
             darkItemSelectedColor: "#fff",
             darkItemColor: "#fff",
           },
           Button: {
             /* here is your component tokens */
-            defaultHoverBorderColor: "#E35C40",
-            defaultHoverColor: "#E35C40",
-            defaultBorderColor: "#3652AD",
-            defaultColor: "#3652AD",
-            defaultBg: "#E9F6FF",
+            defaultHoverBorderColor: "#ccc",
+            defaultHoverColor: "#aaa",
+            defaultBorderColor: "#000",
+            defaultColor: "#000",
+            defaultBg: "#fff",
           },
           Layout: {
             /* here is your component tokens */
-            siderBg: "#FE7A36",
-            triggerBg: "#3652AD",
-            triggerColor: "#FE7A36",
+            siderBg: "#000",
+            triggerBg: "#aaa",
+            triggerColor: "#000",
             lightTriggerColor: "#fff",
           },
           Table: {
             /* here is your component tokens */
-            headerColor: "#fff",
-            headerSplitColor: "#E35C40",
-            rowHoverBg: "#280274",
-            colorBgContainer: "#3652AD",
+            headerColor: "#000",
+            headerSplitColor: "#aaa",
+            rowHoverBg: "#E4E4E3",
+            colorBgContainer: "#fff",
             bodySortBg: "#E9F6FF",
-            colorText: "#fff",
+            colorText: "#000",
           },
           Form: {
-            labelColor: "#FE7A36",
+            labelColor: "#000",
           },
           Modal: {
-            contentBg: "#E9F6FF",
-            headerBg: "#E9F6FF",
-            titleColor: "#FE7A36",
+            contentBg: "#fff",
+            headerBg: "#fff",
+            titleColor: "#000",
           },
           Input: {
-            colorBgContainer: "#E9F6FF",
-            activeBorderColor: "#3652AD",
-            hoverBorderColor: "#3652AD",
+            colorBgContainer: "#fff",
+            activeBorderColor: "#fff",
+            hoverBorderColor: "#000",
+          },
+          InputNumber: {
+            colorBgContainer: "#fff",
+            activeBorderColor: "#fff",
+            hoverBorderColor: "#000",
           },
           Radio: {
-            colorText: "#FE7A36",
+            colorText: "#000",
           },
         },
       }}
@@ -166,20 +173,20 @@ const Dashboard = () => {
           <Header
             style={{
               padding: 0,
-              background: "#E9F6FF",
+              background: "#fff",
             }}
           />
           <Content
             style={{
               margin: "0 16px",
-              backgroundColor: "#E9F6FF",
+              backgroundColor: "#fff",
             }}
           >
             <div
               style={{
                 padding: 24,
                 minHeight: 360,
-                background: "#E9F6FF",
+                background: "#fff",
                 borderRadius: borderRadiusLG,
               }}
             >

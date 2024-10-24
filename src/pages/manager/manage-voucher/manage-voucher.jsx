@@ -209,7 +209,7 @@ function ManageVoucher() {
   return (
     <div>
       <div className="header text-center p-5 ">
-        <h1 className="header_text" style={{ color: "#E35C40" }}>
+        <h1 className="header_text" style={{ color: "#000" }}>
           {name} Management
         </h1>
       </div>
@@ -222,7 +222,7 @@ function ManageVoucher() {
           style={{
             width: "300px",
             marginLeft: "580px",
-            border: "1px #3550AA solid",
+            border: "1px #000 solid",
           }}
         ></Input>
       </div>

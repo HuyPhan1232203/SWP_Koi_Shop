@@ -122,7 +122,7 @@ function ManageCareType() {
   return (
     <div>
       <div className="header text-center p-5 ">
-        <h1 className="header_text" style={{ color: "#FE7A36" }}>
+        <h1 className="header_text" style={{ color: "#000" }}>
           Care Type Management
         </h1>
       </div>

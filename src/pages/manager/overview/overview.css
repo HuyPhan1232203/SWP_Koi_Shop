@@ -1,0 +1,16 @@
+.chart-section {
+    /* display: flex; */
+    justify-content: center;
+}
+
+.pie {
+    margin-left: 250px;
+}
+
+.bar {
+    margin-left: 165px;
+}
+
+h3 {
+    margin-top: 20px;
+}

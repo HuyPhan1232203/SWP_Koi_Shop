@@ -51,6 +51,7 @@ import Certificate from "./src/pages/certificate/certificate";
 import { PDFViewer } from "@react-pdf/renderer";
 import CareConsign from "./src/pages/staff/manage-consign-care/manage-consign-care";
 import ManageStaffConsign from "./src/pages/manager/manage-staff-consign/manage-staff-consign";
+import Overview from "./src/pages/manager/overview/overview";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -218,6 +219,10 @@ function App() {
         {
           path: "koilist",
           element: <ManagementKoi />,
+        },
+        {
+          path: "overview",
+          element: <Overview />,
         },
         {
           path: "manage-staff-job",
