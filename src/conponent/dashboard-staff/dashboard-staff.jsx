@@ -30,8 +30,8 @@ const items = [
     <ShoppingOutlined style={{ color: "#fff" }} />
   ),
   getItem(
-    "Blog List",
-    "bloglist",
+    "Care Consign List",
+    "care-consign",
     <SnippetsOutlined style={{ color: "#fff" }} />
   ),
   getItem("Profile", "profile", <ProfileOutlined style={{ color: "#fff" }} />),

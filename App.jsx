@@ -20,7 +20,6 @@ import Cart from "./src/pages/user/shopping_cart/cart";
 import { toast } from "react-toastify";
 import DashboardStaff from "./src/conponent/dashboard-staff/dashboard-staff";
 import ManageOrders from "./src/pages/staff/manage-orders-list/manage-order-list";
-import ManageBlog from "./src/pages/staff/manage-blog-list/manage-blog-list";
 import { useSelector } from "react-redux";
 import KoiBreedType from "./src/pages/user/koi_breed_type/koi_breed_type";
 import ManageProfile from "./src/pages/staff/manage-profile-staff/manage-profile";
@@ -50,6 +49,7 @@ import ManageKoiSale from "./src/pages/manager/manage-koi-sale/manage-koi-sale";
 import PDF from "./src/PDF/pdf";
 import Certificate from "./src/pages/certificate/certificate";
 import { PDFViewer } from "@react-pdf/renderer";
+import CareConsign from "./src/pages/staff/manage-consign-care/manage-consign-care";
 function App() {
   const ProtectRouteAuth = ({ children }) => {
     const user = useSelector((store) => store.user);
@@ -258,8 +258,8 @@ function App() {
           element: <ManageOrders />,
         },
         {
-          path: "bloglist",
-          element: <ManageBlog />,
+          path: "care-consign",
+          element: <CareConsign />,
         },
         {
           path: "profile",
