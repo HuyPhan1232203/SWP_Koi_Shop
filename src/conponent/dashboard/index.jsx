@@ -44,6 +44,11 @@ const items = [
     "koi-Sale",
     <ProfileOutlined style={{ color: "#fff" }} />
   ),
+  getItem(
+    "Staff Consign",
+    "staff-consign",
+    <ProfileOutlined style={{ color: "#fff" }} />
+  ),
 ];
 
 const Dashboard = () => {

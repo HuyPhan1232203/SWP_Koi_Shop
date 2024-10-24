@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import CRUDTemplate from "../../../conponent/crud-template/crud-template";
-import { Table } from "antd";
+import { Image, Table } from "antd";
 import api from "../../../config/axios";
 
 function CareConsign() {
   const [koiList, setKoiList] = useState([]);
   const fetchKoi = async () => {
     const res = await api.get("consignment/staff");
-    console.log(res.data);
+    setKoiList(res.data);
   };
   useEffect(() => {
     fetchKoi();
@@ -15,13 +15,35 @@ function CareConsign() {
   const columns = [
     {
       title: "ID",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "consignmentID",
+      key: "consignmentID",
+    },
+    {
+      title: "type",
+      dataIndex: "type",
+      key: "type",
     },
     {
       title: "Image",
-      dataIndex: "imgUrl",
-      key: "imgUrl",
+      dataIndex: "details",
+      key: "details",
+      render: (details) => {
+        return details.map((detail) => {
+          return (
+            <Image
+              key={detail.koiId}
+              src={detail.imageUrl}
+              width={100}
+              height={100}
+            ></Image>
+          );
+        });
+      },
+    },
+    {
+      title: "Start Date",
+      dataIndex: "startDate",
+      key: "startDate",
     },
     {
       title: "End Date",
@@ -29,17 +51,51 @@ function CareConsign() {
       key: "endDate",
     },
     {
-      title: "Status",
-      dataIndex: "isConsignment",
-      key: "isConsignment",
+      title: "Cost",
+      dataIndex: "cost",
+      key: "cost",
     },
     {
-      title: "Price",
-      dataIndex: "price",
-      key: "price",
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (status) => {
+        if (status === "PENDING") {
+          return (
+            <div
+              style={{
+                padding: "5px",
+                backgroundColor: "red",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {status}
+            </div>
+          );
+        } else {
+          return (
+            <div
+              style={{
+                padding: "5px",
+                backgroundColor: "green",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {status}
+            </div>
+          );
+        }
+      },
+    },
+    {
+      title: "Care Type",
+      dataIndex: "careTypeName",
+      key: "careTypeName",
     },
   ];
-  return <Table columns={columns}></Table>;
+  return <Table columns={columns} dataSource={koiList}></Table>;
 }
 
 export default CareConsign;

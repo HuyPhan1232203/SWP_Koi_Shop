@@ -153,7 +153,8 @@
 }
 
 .nav_li:hover {
-    background-color: #ccc;
+    /* background-color: #ccc; */
+    background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
     border-radius: 10px;
 }
