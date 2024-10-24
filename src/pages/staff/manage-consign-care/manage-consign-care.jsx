@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import CRUDTemplate from "../../../conponent/crud-template/crud-template";
+import { useEffect, useState } from "react";
 import { Button, Image, Select, Table } from "antd";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
