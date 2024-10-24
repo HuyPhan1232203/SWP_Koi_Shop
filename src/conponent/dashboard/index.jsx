@@ -21,7 +21,11 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem("Overview", "overview", <ProductOutlined style={{ color: "#fff" }} />),
+  getItem(
+    "Overview",
+    "overview",
+    <ProductOutlined style={{ color: "#fff" }} />
+  ),
   getItem("Koi List", "koilist", <ProductOutlined style={{ color: "#fff" }} />),
   getItem(
     "Voucher List",
@@ -113,14 +117,16 @@ const Dashboard = () => {
           },
           Layout: {
             /* here is your component tokens */
+            bodyBg: "#ccc",
             siderBg: "#000",
-            triggerBg: "#aaa",
+            triggerBg: "#fff",
             triggerColor: "#000",
             lightTriggerColor: "#fff",
           },
           Table: {
             /* here is your component tokens */
-            headerColor: "#000",
+            headerBg: "#000",
+            headerColor: "#fff",
             headerSplitColor: "#aaa",
             rowHoverBg: "#E4E4E3",
             colorBgContainer: "#fff",
@@ -167,44 +173,48 @@ const Dashboard = () => {
             defaultSelectedKeys={["1"]}
             mode="inline"
             items={items}
-          />
+          ></Menu>
+          <Button
+            style={{
+              marginLeft: "48px",
+              marginTop: "280px",
+              padding: "0 25px",
+              position: "fixed",
+            }}
+            onClick={handleLogOut}
+          >
+            LogOut
+          </Button>
         </Sider>
         <Layout>
           <Header
             style={{
               padding: 0,
-              background: "#fff",
+              background: "#ccc",
             }}
           />
           <Content
             style={{
               margin: "0 16px",
-              backgroundColor: "#fff",
+              backgroundColor: "#ccc",
             }}
           >
             <div
               style={{
                 padding: 24,
                 minHeight: 360,
-                background: "#fff",
+                background: "#ccc",
                 borderRadius: borderRadiusLG,
               }}
             >
               {showName()}
-              <Button
-                style={{
-                  marginLeft: "1050px",
-                }}
-                onClick={handleLogOut}
-              >
-                LogOut
-              </Button>
               <Outlet />
             </div>
           </Content>
           <Footer
             style={{
               textAlign: "center",
+              backgroundColor: "#ccc",
             }}
           ></Footer>
         </Layout>
