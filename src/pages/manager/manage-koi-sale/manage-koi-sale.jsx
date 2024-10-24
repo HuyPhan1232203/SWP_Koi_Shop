@@ -99,16 +99,6 @@ function ManageKoiSale() {
       key: "salePercentage",
     },
     {
-      title: "Start Time",
-      dataIndex: "saleStartTime",
-      key: "saleStartTime",
-    },
-    {
-      title: "End Time",
-      dataIndex: "saleEndTime",
-      key: "saleEndTime",
-    },
-    {
       title: "Action",
       dataIndex: "id",
       key: "id",
@@ -146,17 +136,11 @@ function ManageKoiSale() {
         onOk={form.submit}
       >
         <Form form={form} onFinish={handleSale}>
-          <Form.Item label="ID: " name="id">
+          <Form.Item label="ID: " name="id" hidden>
             <Input></Input>
           </Form.Item>
           <Form.Item label="Precentage: " name="salePercentage">
             <Input></Input>
-          </Form.Item>
-          <Form.Item label="Start Date: " name="saleStartTime">
-            <DatePicker />
-          </Form.Item>
-          <Form.Item label="End Date: " name="saleEndTime">
-            <DatePicker />
           </Form.Item>
         </Form>
       </Modal>
