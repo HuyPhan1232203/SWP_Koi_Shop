@@ -46,8 +46,9 @@ const DashboardStaff = () => {
         <h4
           style={{
             fontFamily: "serif",
-            color: "#3652AD",
-            border: "1px solid #3652AD",
+            color: "#fff",
+            border: "1px solid #000",
+            backgroundColor: "#000",
             borderRadius: "10px",
             paddingBottom: "10px",
             paddingTop: "10px",
@@ -76,54 +77,61 @@ const DashboardStaff = () => {
       theme={{
         token: {
           /* here is your global tokens */
-          colorText: "#fff",
+          colorText: "#000",
         },
         components: {
           Menu: {
-            darkItemBg: "#FE7A36",
-            darkItemSelectedBg: "#3652AD",
+            darkItemBg: "#000",
+            darkItemSelectedBg: "#aaa",
             darkItemSelectedColor: "#fff",
             darkItemColor: "#fff",
           },
           Button: {
             /* here is your component tokens */
-            defaultHoverBorderColor: "#E35C40",
-            defaultHoverColor: "#E35C40",
-            defaultBorderColor: "#3652AD",
-            defaultColor: "#3652AD",
-            defaultBg: "#E9F6FF",
+            defaultHoverBorderColor: "#ccc",
+            defaultHoverColor: "#aaa",
+            defaultBorderColor: "#000",
+            defaultColor: "#000",
+            defaultBg: "#fff",
           },
           Layout: {
             /* here is your component tokens */
-            siderBg: "#FE7A36",
-            triggerBg: "#3652AD",
-            triggerColor: "#FE7A36",
+            bodyBg: "#ccc",
+            siderBg: "#000",
+            triggerBg: "#fff",
+            triggerColor: "#000",
             lightTriggerColor: "#fff",
           },
           Table: {
             /* here is your component tokens */
+            headerBg: "#000",
             headerColor: "#fff",
-            headerSplitColor: "#E35C40",
-            rowHoverBg: "#280274",
-            colorBgContainer: "#3652AD",
+            headerSplitColor: "#aaa",
+            rowHoverBg: "#E4E4E3",
+            colorBgContainer: "#fff",
             bodySortBg: "#E9F6FF",
-            colorText: "#fff",
+            colorText: "#000",
           },
           Form: {
-            labelColor: "#fff",
+            labelColor: "#000",
           },
           Modal: {
-            contentBg: "#3652AD",
-            headerBg: "#3652AD",
-            titleColor: "#FE7A36",
+            contentBg: "#fff",
+            headerBg: "#fff",
+            titleColor: "#000",
           },
           Input: {
-            colorBgContainer: "#E9F6FF",
-            activeBorderColor: "#3652AD",
-            hoverBorderColor: "#3652AD",
+            colorBgContainer: "#fff",
+            activeBorderColor: "#fff",
+            hoverBorderColor: "#000",
+          },
+          InputNumber: {
+            colorBgContainer: "#fff",
+            activeBorderColor: "#fff",
+            hoverBorderColor: "#000",
           },
           Radio: {
-            colorText: "#fff",
+            colorText: "#000",
           },
         },
       }}
@@ -146,18 +154,29 @@ const DashboardStaff = () => {
             mode="inline"
             items={items}
           />
+          <Button
+                style={{
+                  marginLeft: "48px",
+                  marginTop: "540px",
+                  padding: "0 25px",
+                  position: "fixed",
+                }}
+                onClick={handleLogOut}
+              >
+                LogOut
+              </Button>
         </Sider>
         <Layout>
           <Header
             style={{
               padding: 0,
-              background: "#E9F6FF",
+              background: "#ccc",
             }}
           />
           <Content
             style={{
               margin: "0 16px",
-              backgroundColor: "#E9F6FF",
+              backgroundColor: "#ccc",
             }}
           >
             <Breadcrumb
@@ -172,25 +191,20 @@ const DashboardStaff = () => {
               style={{
                 padding: 24,
                 minHeight: 360,
-                background: "#E9F6FF",
+                background: "#ccc",
                 borderRadius: borderRadiusLG,
               }}
             >
               {showName()}
-              <Button
-                style={{
-                  marginLeft: "1050px",
-                }}
-                onClick={handleLogOut}
-              >
-                LogOut
-              </Button>
+              
               <Outlet />
             </div>
           </Content>
           <Footer
             style={{
               textAlign: "center",
+              backgroundColor: "#ccc",
+
             }}
           >
             Ant Design ©{new Date().getFullYear()} Created by Ant UED
