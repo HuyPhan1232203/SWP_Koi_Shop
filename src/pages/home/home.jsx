@@ -408,7 +408,7 @@ function HomePage() {
                     alt=""
                   />
                 </div>
-                <p className="slogan">
+                <p className="slogan text-center ">
                   Swim into Serenity: Find Your Perfect Koi!
                 </p>
                 <ul className="footer-social list-unstyled">
@@ -471,7 +471,7 @@ function HomePage() {
               <div className="footer-widget contact-2">
                 <h2 className="heading-2 buy-koi">Buy a Koi?</h2>
                 <div className="contact-section">
-                  <ul className="">
+                  <ul className="" style={{ width: "500px" }}>
                     <li>
                       <span className="contact-icon">
                         <ShopOutlined />

@@ -193,6 +193,8 @@
     list-style: none;
     padding: 0;
     top: 100px;
+    border-radius: 5px;
+    overflow: hidden;
     background:rgba(237, 235, 235, 0.85) ;
 
 }
@@ -412,6 +414,8 @@
 }
 
 .slogan  {
+    display: flex;
+    justify-content: center;
     color: #000;
     margin-left: 90px;
     font-weight: 600;
