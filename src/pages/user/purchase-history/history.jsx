@@ -40,6 +40,7 @@ function History() {
             setOpenModal(true);
             setSelectedOrder(order.id);
           }}
+          key={`button-${order.id}`}
         >
           Rating
         </Button>
@@ -113,9 +114,11 @@ function History() {
                 Total: <p style={{ color: "green" }}>${order.finalAmount}</p>
               </div>
             </div>
-            <div className="buttons">{handleShowButton(order)}</div>
+            <div className="buttons" key={order.id}>
+              {handleShowButton(order)}
+            </div>
             <Modal
-              key={order.id}
+              key={`modal-${order.id}`}
               open={openModal}
               title="Rating"
               onCancel={() => {

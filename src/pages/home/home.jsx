@@ -170,7 +170,7 @@ function HomePage() {
     });
   };
   return (
-    <div className="homepage">
+    <div className="homepage" style={{ backgroundColor: "#ef7f7" }}>
       <div className="header">
         <div className="headerbar">
           <div className="logo-container">
