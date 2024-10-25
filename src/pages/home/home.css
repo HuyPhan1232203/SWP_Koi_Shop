@@ -32,7 +32,11 @@
     background-color: #f9f9f9; /* Light background color */
     transition: box-shadow 0.3s; /* Smooth shadow transition */
     width: calc(100% / 3 - 10px);
-    background-color: #d9534f;
+    background-color: #fff;
+    background-image: url('https://media.istockphoto.com/id/931377138/vector/top-view-japanese-asian-koi-carp-goldfish.jpg?s=612x612&w=0&k=20&c=jmsyGS6HhqsL7JvndXwp0VfW2PIGB9YIdE9gY6cwuA0=');
+    background-repeat: no-repeat;
+    background-size:  contain;
+    /* background-color: #4dac3e; */
 }
 
 .voucher:hover {
@@ -45,21 +49,27 @@
     /* margin-left: 250px; */
     padding: 0 5px;
     /* background-color: #d9534f; */
+    background-color: #000;
     border-radius: 7px;
     margin-top: -5px;
+    margin-bottom: 70px;
 }
 
 .voucher_code {
+    margin-top: -15px;
     font-weight: bold; /* Bold font for voucher code */
     font-size: 1.6em; /* Slightly larger font size */
 }
 
 .voucher_quanti {
-    color: #fff; 
+    color: #000; 
+    background-color: #ccc;
+    border-radius: 6px;
+    padding: 0 5px;
 }
 
 .voucher_date {
-    color: #fff;
+    color: #000;
     font-size: 0.9em; /* Smaller font size for date */
 }
 .user-img{
@@ -269,15 +279,12 @@
 }
 .homepage-section{
     margin-top: 50px;
-    
 }
 .homepage-design {
-    height: 600px;
-    
+    height: 400px;
     width: 100%;
     position: relative;
-    box-shadow:2px 1px 7px 4px #9d9c9c;
-
+    box-shadow:1px 1px 1px 1px #9d9c9c;
 }
 
 .homepage-design .overlay {
@@ -293,18 +300,14 @@
     height: 850px;
     align-items: center;
     justify-content: center;
-    margin-left: 0;
-    margin-right: 0;
     display: flex;
-    flex-wrap: wrap;
 }
 
 .text-center-slider {
     padding-right: 0;
     padding-left: 0;
-    /* opacity: 0;
-    visibility: hidden; */
     text-align: center;
+    margin-bottom: 200px;
 }
 
 .slider-text h1 {
@@ -343,6 +346,7 @@
 }
 
 .koi-section {
+    padding: 0;
     position: relative;
     z-index: 0;
     padding: 8em 0;
@@ -358,8 +362,23 @@
 .koi-content-center .text-center {
     text-align: center;
 }
-
-.koi-center-heading .sub-heading {
+.sub-heading{
+    font-size: 30px;
+    padding: 20px;
+    border-bottom: 1px #ccc solid;
+    border-radius: 30px;
+    border: 1px #ccc solid;
+    display: flex;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    background-color: #000;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.koi-center-heading {
     font-size: 16px;
     display: block;
     margin-bottom: 5px;

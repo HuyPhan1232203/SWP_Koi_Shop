@@ -408,9 +408,11 @@ function HomePage() {
           </Carousel>
           <div className="koi-section" ref={koiSectionRef}>
             <div className="container">
-              <div className="row koi-content-center" id="koiList">
+              <div className="row koi-content-center">
                 <div className="col-md-10 koi-center-heading text-center">
-                  <span className="sub-heading">Our Kois</span>
+                  <a href="#koiList">
+                    <span className="sub-heading">Our Kois</span>
+                  </a>
                   <h2 className="mb-5">Our Vouchers</h2>
                   <h5 style={{ color: "#aaa" }}>
                     Don't forget to use these vouchers while purchasing our
@@ -452,9 +454,13 @@ function HomePage() {
                       );
                     })}
                   </div>
-                  <h2 className="mb-5">Explore our Kois</h2>
+                  <h2 className="mb-5" id="koiList">
+                    Explore our Kois
+                  </h2>
                 </div>
-                <div className="koi_fetch_breed">{showKoiBreed()}</div>
+                <div className="koi_fetch_breed" id="koi">
+                  {showKoiBreed()}
+                </div>
               </div>
             </div>
           </div>
