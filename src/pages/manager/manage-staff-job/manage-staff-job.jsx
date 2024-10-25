@@ -11,7 +11,7 @@ function ManageStaffJob() {
 
   const fetchOrder = async () => {
     try {
-      const response = await api.get("order");
+      const response = await api.get("order/all-payments");
       setOrderList(response.data);
     } catch (error) {
       toast.error("Error fetching orders");
@@ -37,14 +37,31 @@ function ManageStaffJob() {
 
   const handleAssignStaff = async (orderId) => {
     console.log(orderId);
-    const staffId = selectedStaff[orderId];
-
+    const staffId = selectedStaff[orderId.paymentID];
+    console.log(staffId);
     if (!staffId) {
       toast.error("Please select a staff member.");
       return;
     }
     try {
-      // await api.put(`order/assign-staff?orderId=${orderId}&staffId=${staffId}`);
+      // await
+      if (orderId.consignmentID == undefined) {
+        api.put(
+          `order/assign-staff?orderId=${orderId.orderID}&staffId=${staffId}`
+        );
+      } else if (orderId.orderID == undefined) {
+        api.put(
+          `order/assign-staff?staffId=${staffId}&consignmentId=${orderId.consignmentID}`
+        );
+      } else if (
+        orderId.orderID != undefined &&
+        orderId.consignmentID != undefined
+      ) {
+        api.put(
+          `order/assign-staff?orderId=${orderId.orderID}&staffId=${staffId}&consignmentId=${orderId.consignmentID}`
+        );
+      }
+      fetchOrder();
       toast.success("Staff assigned successfully!");
     } catch (err) {
       toast.error("Error assigning staff");
@@ -59,11 +76,14 @@ function ManageStaffJob() {
     },
     {
       title: "Staff ID",
-      dataIndex: "staffId",
-      key: "staffId",
-      render: (staffId) => {
+      dataIndex: "id",
+      key: "id",
+      render: (_, record) => {
         return staffList.map((staff) => {
-          if (staff.id === staffId) {
+          if (
+            staff.id === record?.order?.staffId ||
+            staff.id === record?.consignment?.staffid
+          ) {
             console.log(staff);
             return <div key={staff.id}>{staff.username}</div>;
           }
@@ -92,11 +112,20 @@ function ManageStaffJob() {
     },
     {
       title: "Action",
-      dataIndex: "id",
+      dataIndex: "id", // Set to a single index, since multiple indices directly are not supported
       key: "action",
-      render: (id) => (
+      render: (_, record) => (
         <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <Button type="primary" onClick={() => handleAssignStaff(id)}>
+          <Button
+            type="primary"
+            onClick={() =>
+              handleAssignStaff({
+                paymentID: record?.id,
+                orderID: record?.order?.id, // Optional chaining for safe access
+                consignmentID: record?.consignment?.consignmentID, // Optional chaining for safe access
+              })
+            }
+          >
             Save
           </Button>
         </div>

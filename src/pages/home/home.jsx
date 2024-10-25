@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./home.css";
 import "animate.css";
 import {
   ArrowRightOutlined,
+  CopyOutlined,
   DownOutlined,
   FacebookOutlined,
   InstagramOutlined,
@@ -14,7 +15,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Carousel, Modal, Rate } from "antd";
+import { Badge, Button, Carousel, message, Modal, Rate } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,7 +26,7 @@ import { storeBreedId } from "../../redux/features/breedIdSlice";
 function HomePage() {
   const nav = useNavigate();
   const userData = useSelector((store) => store.user);
-
+  const [voucherList, setVoucherList] = useState([]);
   const cart = useSelector((store) => store.cart);
 
   const [openModal, setOpenModal] = useState(false);
@@ -46,14 +47,58 @@ function HomePage() {
     handleCloseModal();
     nav("/");
   };
+  //CopyButton
+  const CopyButton = (text) => {
+    const copyText = () => {
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          message.success("Text copied to clipboard!");
+        })
+        .catch((error) => {
+          message.error("Failed to copy text: " + error);
+        });
+    };
 
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          // width: "50%",
+          justifyContent: "center",
+        }}
+      >
+        <Button
+          onClick={copyText}
+          style={{
+            padding: "0 5px",
+            margin: "0",
+          }}
+        >
+          {/* <CopyOutlined /> */}
+          Copy
+        </Button>
+      </div>
+    );
+  };
+  //VOUCHER
+  const fetchVoucher = async () => {
+    try {
+      const res = await api.get("voucher");
+      setVoucherList(res.data);
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+  //BREED
   const fetchBreed = async () => {
     try {
       const response = await api.get("breed");
       setBreed(response.data);
       console.log(breed);
     } catch (err) {
-      toast.error("fetch breed");
+      toast.error(err + "fetch breed");
     }
   };
   //SHOW LIST BREED
@@ -76,11 +121,16 @@ function HomePage() {
   useEffect(() => {
     fetchBreed();
     authenticate(userData);
+    fetchVoucher();
   }, []);
-  const scrollToKoiSection = () => {
-    if (koiSectionRef.current) {
-      koiSectionRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+  //FORMAT DATE
+  const StartDateDisplay = (startDate) => {
+    const formattedDate = new Date(startDate).toLocaleString();
+    return (
+      <div>
+        <div>{formattedDate}</div>
+      </div>
+    );
   };
   const [submitFeedback, setSubmitFeedback] = useState([]);
   //FETCH FEEDBACK
@@ -361,6 +411,47 @@ function HomePage() {
               <div className="row koi-content-center" id="koiList">
                 <div className="col-md-10 koi-center-heading text-center">
                   <span className="sub-heading">Our Kois</span>
+                  <h2 className="mb-5">Our Vouchers</h2>
+                  <h5 style={{ color: "#aaa" }}>
+                    Don't forget to use these vouchers while purchasing our
+                    Kois!!!
+                  </h5>
+                  <div className="voucher_list ">
+                    {voucherList.map((voucher) => {
+                      return (
+                        <div key={voucher.id} className="voucher">
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <div className="voucher_code">{voucher.code}</div>
+                            <div className="voucher_discount">
+                              {voucher.discountValue}%
+                            </div>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              width: "100%",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <div>
+                              <div className="voucher_quanti">
+                                Available: {voucher.quantity}
+                              </div>
+                            </div>
+                            {CopyButton(voucher.code)}
+                          </div>
+                          <small className="voucher_date">
+                            {StartDateDisplay(voucher.expiredDate)}
+                          </small>
+                        </div>
+                      );
+                    })}
+                  </div>
                   <h2 className="mb-5">Explore our Kois</h2>
                 </div>
                 <div className="koi_fetch_breed">{showKoiBreed()}</div>

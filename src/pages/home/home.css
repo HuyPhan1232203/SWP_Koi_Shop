@@ -19,6 +19,49 @@
     display: flex;
     
 }
+.voucher_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between vouchers */
+}
+
+.voucher {
+    border: 1px solid #ccc; /* Border around each voucher */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding inside each voucher */
+    background-color: #f9f9f9; /* Light background color */
+    transition: box-shadow 0.3s; /* Smooth shadow transition */
+    width: calc(100% / 3 - 10px);
+    background-color: #d9534f;
+}
+
+.voucher:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.voucher_discount {
+    font-size: 1.5em; /* Larger font for discount */
+    color: #fff; /* Red color for discount */
+    /* margin-left: 250px; */
+    padding: 0 5px;
+    /* background-color: #d9534f; */
+    border-radius: 7px;
+    margin-top: -5px;
+}
+
+.voucher_code {
+    font-weight: bold; /* Bold font for voucher code */
+    font-size: 1.6em; /* Slightly larger font size */
+}
+
+.voucher_quanti {
+    color: #fff; 
+}
+
+.voucher_date {
+    color: #fff;
+    font-size: 0.9em; /* Smaller font size for date */
+}
 .user-img{
     padding-right: 30px;
 }
