@@ -122,14 +122,6 @@ const CRUDTemplate = ({ columns, formItems, apiName, name }) => {
         <Button className="add_btn" onClick={handleOpenModal}>
           Create {name}
         </Button>
-        <Input
-          placeholder="Search"
-          style={{
-            width: "300px",
-            marginLeft: "580px",
-            border: "1px #3550AA solid",
-          }}
-        ></Input>
       </div>
       <Modal
         confirmLoading={submitKoi}

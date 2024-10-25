@@ -36,13 +36,15 @@ function ManageStaffJob() {
   }, []);
 
   const handleAssignStaff = async (orderId) => {
+    console.log(orderId);
     const staffId = selectedStaff[orderId];
+
     if (!staffId) {
       toast.error("Please select a staff member.");
       return;
     }
     try {
-      await api.put(`order/assign-staff?orderId=${orderId}&staffId=${staffId}`);
+      // await api.put(`order/assign-staff?orderId=${orderId}&staffId=${staffId}`);
       toast.success("Staff assigned successfully!");
     } catch (err) {
       toast.error("Error assigning staff");

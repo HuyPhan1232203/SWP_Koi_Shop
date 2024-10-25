@@ -7,7 +7,6 @@ const ManageStaff = () => {
   const [formStand] = Form.useForm();
   const [submitKoi, setSubmitKoi] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [searchValue, setSearchValue] = useState();
 
   //FETCH
   const fetchKoi = async () => {
@@ -16,23 +15,7 @@ const ManageStaff = () => {
     console.log("ada");
     setKoiFish(response.data);
   };
-  const handleInputChange = (e) => {
-    setSearchValue(e.target.value);
-  };
-  //SEARCH
-  const handleSearchByName = async () => {
-    try {
-      let response = null;
-      if (searchValue) {
-        response = await api.get(`account/name/${searchValue}`);
-      } else {
-        response = await api.get("account/role/STAFF");
-      }
-      setKoiFish(response.data);
-    } catch (err) {
-      toast.error(err);
-    }
-  };
+
   //USE EFFECT
   useEffect(() => {
     fetchKoi();
@@ -154,17 +137,6 @@ const ManageStaff = () => {
         <Button className="add_btn" onClick={handleOpenModal}>
           Create Staff
         </Button>
-        <Input
-          placeholder="Search"
-          style={{
-            width: "300px",
-            marginLeft: "580px",
-            border: "1px #000 solid",
-          }}
-          value={searchValue}
-          onChange={handleInputChange}
-        ></Input>
-        <Button onClick={handleSearchByName()}>Search</Button>
       </div>
       <Modal
         confirmLoading={submitKoi}

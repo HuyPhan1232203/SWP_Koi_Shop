@@ -217,14 +217,6 @@ function ManageVoucher() {
         <Button className="add_btn" onClick={handleOpenModal}>
           Create {name}
         </Button>
-        <Input
-          placeholder="Search"
-          style={{
-            width: "300px",
-            marginLeft: "580px",
-            border: "1px #000 solid",
-          }}
-        ></Input>
       </div>
       <Modal
         confirmLoading={submitKoi}
