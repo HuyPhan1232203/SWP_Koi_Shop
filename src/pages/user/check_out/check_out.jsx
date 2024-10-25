@@ -52,6 +52,7 @@ function CheckOut() {
       console.log(val.detail.detail);
 
       if (details.careTypeId) {
+        console.log("consginment");
         console.log(details.careTypeId);
         response = await api.post("consignmentOrder", val.detail);
         console.log(response.data);
@@ -59,6 +60,7 @@ function CheckOut() {
           dispatch(removeProduct(value?.koiId));
         });
       } else {
+        console.log("normal");
         response = await api.post("order", val);
         console.log(response.data);
         val.detail.map((value) => {
@@ -67,8 +69,8 @@ function CheckOut() {
       }
 
       console.log(response.data);
-      nav(0);
       window.open(response.data);
+      nav(0);
     } catch (err) {
       toast.error(err.response.data);
     }
