@@ -67,9 +67,8 @@ function CheckOut() {
       }
 
       console.log(response.data);
-      window.open(response.data);
       nav(0);
-      window.open(response.data);c
+      window.open(response.data);
     } catch (err) {
       toast.error(err.response.data);
     }
