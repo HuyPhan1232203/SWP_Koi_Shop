@@ -101,15 +101,29 @@ function CheckOutNormal() {
             <Radio.Group name="radiogroup" className="radio_delivery">
               <Radio value="Standard" className="delivery">
                 <div className="delivery_item ">Standard Delivery</div>
-                <small>3-4 days via Fedex</small>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "103%",
+                  }}
+                >
+                  <div style={{ color: "#272727" }}>3-4</div>
+                  <div style={{ color: "#aaa" }}> days via Fedex</div>
+                </div>
               </Radio>
               <Radio value="Express" className="delivery">
                 <div className="delivery_item ">Express Delivery</div>
-                <small>1-2 days via post</small>
-              </Radio>
-              <Radio value="Self" className="delivery">
-                <div className="delivery_item ">Self Pickup</div>
-                <small>Come to our shop</small>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "103%",
+                  }}
+                >
+                  <div style={{ color: "#272727" }}>1-2</div>
+                  <div style={{ color: "#aaa" }}> days via post</div>
+                </div>
               </Radio>
             </Radio.Group>
           </Form.Item>

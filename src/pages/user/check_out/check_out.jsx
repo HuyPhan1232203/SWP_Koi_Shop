@@ -80,9 +80,9 @@ function CheckOut() {
   return (
     <div className="CheckOut row">
       <div className="col-md-8 userInfo">
-        <h1>Check Out</h1>
+        <div className="checkout_header">Check Out</div>
         <div className="deposit">
-          <div>Deposit this Koi fish to the farm</div>
+          <div style={{ fontSize: "20px" }}>Consign to us</div>
           <label className="switch" onClick={handleCheckDeposit}>
             <input type="checkbox" id="depositCheckbox" />
             <span className="slider round"></span>
@@ -159,7 +159,9 @@ function CheckOut() {
             );
           })}
         </div>
-        <Button onClick={handelSubmitOrder}>Purchase</Button>
+        <Button className="purchase_btn" onClick={handelSubmitOrder}>
+          Purchase
+        </Button>
       </div>
     </div>
   );

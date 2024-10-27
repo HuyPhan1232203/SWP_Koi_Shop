@@ -5,19 +5,26 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 45px;
+    height: 24px;
+    box-shadow: 1px 3px 8px #ccc;
+    border-radius: 34px;
   }
   .userInfo h1{
     width: 50%;
-    border-bottom:1px #ccc solid ;
+    border-bottom:1px #000 solid ;
   }
   .deposit{
+    margin-left: 30px;
+    margin-top: 21px;
     font-weight: 700;
     display: flex;
-    width: 70%;
-    justify-content: space-around;
+    width: 25%;
+    justify-content: space-between;
     align-items: center;
+  }
+  .purchase_btn{
+    padding: 22px 135px;
   }
   .switch input { 
     opacity: 0;
@@ -40,9 +47,9 @@
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
+    height: 16px;
+    width: 16px;
+    left: 1px;
     bottom: 4px;
     background-color: white;
     -webkit-transition: .4s;
@@ -79,21 +86,31 @@
     border: 1px #ccc solid;
     background-color: #fff;
 }
-.userInfo h1{
-    padding:20px 40px 0px 60px;
+/* .userInfo h1{
+  padding: 20px 40px 20px 20px;
+} */
+.checkout_header{
+  padding: 10px 40px 10px 20px;
+  width: 300px; 
+  border-bottom: 1px #000 solid;
+  font-size:40px;
+  font-weight: 700;
 }
 .userInfo_input{
-    padding: 40px;
+    padding:10px 40px;
 
 }
 .userInfo_input_field{
     width: calc(50% - 20px);
     
 }
+.userInfo_input_field Input{
+  width: 90%;
+}
 .user_info_contain{
-    padding:0 40px;
+    /* padding:0 40px; */
     display: flex;
-    border-bottom: 1px #ccc solid;
+    border-bottom: 1px #000 solid;
     flex-wrap: wrap;
 }
 .radio_delivery{
@@ -102,6 +119,11 @@
 .delivery{
     border: 1px #ccc solid;
     padding: 25px 30px;
+    margin-right: 40px;
+    border-radius: 10px;
+}
+.delivery_item {
+  font-weight: 650;
 }
 .shipping{
     padding:0 40px;
@@ -111,7 +133,7 @@ small{
     color:#aaa;
 }
 .summary_price,.sumary_totalPrice{
-    border-bottom: #ccc 1px solid;
+    border-bottom: #ccc 000 solid;
 }
 .summary_price{
     padding: 20px 0;

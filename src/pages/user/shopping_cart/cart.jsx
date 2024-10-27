@@ -50,7 +50,7 @@ function Cart() {
       render: (id) => {
         return (
           <Button
-          className="delete-btn"
+            className="delete-btn"
             type="primary"
             danger
             onClick={() => {
@@ -58,7 +58,7 @@ function Cart() {
             }}
             style={{ padding: "0 5px" }}
           >
-            <DeleteOutlined className="delete-icon"/>
+            <DeleteOutlined className="delete-icon" />
           </Button>
         );
       },
@@ -124,19 +124,21 @@ function Cart() {
   return (
     <div className="cart_page">
       <div className="cart_page_cart">
-        <h1 className="cart_title text-center">Your Cart Contain</h1>
+        <h1 className="cart_title text-center">Shopping Cart</h1>
         <Table
           rowKey="id"
           rowSelection={rowSelection}
           columns={col}
           dataSource={data}
         ></Table>
-        <Button className="clear-btn" onClick={() => dispatch(clearAll())}>Clear All</Button>
+        <Button className="clear-btn" onClick={() => dispatch(clearAll())}>
+          Clear All
+        </Button>
       </div>
       <div className="order_bill">
         <h3 className="order_bill_header">Sumary</h3>
         <Form labelCol={{ span: 24 }}>
-          <Form.Item label={"Items :"}>
+          <Form.Item label={"Items :"} style={{ marginTop: "1px" }}>
             {selectedItems.map((item) => {
               return (
                 <div style={{ fontWeight: "500" }} key={item.id}>
@@ -147,14 +149,14 @@ function Cart() {
           </Form.Item>
 
           <Form.Item label="Total Price">
-            <div style={{ color: "green" }}>${total}</div>
+            <div style={{ color: "green" }}>{total} VNĐ</div>
           </Form.Item>
           <Link
             onClick={handleBuy}
             // to="/check-out"
             style={{ textDecoration: "none" }}
           >
-            <Button>Check Out</Button>
+            <Button className="check_out_btn">Check Out</Button>
           </Link>
         </Form>
       </div>

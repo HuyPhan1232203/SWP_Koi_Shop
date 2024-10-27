@@ -67,11 +67,11 @@ function EditProfile() {
           </Form.Item>
         </Form>
       </Modal>
-      <div className="editProfile_title">About:</div>
+      <div className="editProfile_title">About</div>
       <div className="edit">
         <div className="edit_field">
           <div className="edit_field_title font">User Name:</div>
-          <div className="edit_field-parameter font">{userInfo.username}</div>
+          <div className="edit_field-parameter">{userInfo.username}</div>
         </div>
         <Button
           type="primary"
@@ -88,7 +88,7 @@ function EditProfile() {
       <div className="edit">
         <div className="edit_field">
           <div className="edit_field_title font">Email:</div>
-          <div className="edit_field-parameter font">{userInfo.email}</div>
+          <div className="edit_field-parameter">{userInfo.email}</div>
         </div>
         <Button
           type="primary"
@@ -105,7 +105,7 @@ function EditProfile() {
       <div className="edit">
         <div className="edit_field">
           <div className="edit_field_title font">Phone:</div>
-          <div className="edit_field-parameter font">{userInfo.phone}</div>
+          <div className="edit_field-parameter">{userInfo.phone}</div>
         </div>
         <Button
           type="primary"
@@ -122,7 +122,7 @@ function EditProfile() {
       <div className="edit">
         <div className="edit_field">
           <div className="edit_field_title font">Address:</div>
-          <div className="edit_field-parameter font">{userInfo.address}</div>
+          <div className="edit_field-parameter">{userInfo.address}</div>
         </div>
         <Button
           type="primary"

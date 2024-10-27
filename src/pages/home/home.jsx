@@ -184,12 +184,12 @@ function HomePage() {
               <li onClick={handleOpenModal}>LogOut</li>
             </ul>
           </div>
-          <div>
+          <div style={{ marginTop: "-7px" }}>
             <Link className="cart" to="/cart">
               <Badge count={cart.length}>
                 <ShoppingCartOutlined
                   className="cart_icon"
-                  style={{ fontSize: "20px", color: "#000", padding: "3px" }}
+                  style={{ fontSize: "32px", color: "#000", padding: "3px" }}
                 />
               </Badge>
             </Link>
@@ -206,14 +206,15 @@ function HomePage() {
           <div className="koi-item">
             <img src={breedItem.imageUrl} alt="" />
             <h3>{breedItem.name}</h3>
-            <Button
+            <button
+              className="exploreBtn"
               onClick={() => {
                 sessionStorage.setItem("breedId", breedItem.id);
                 nav("/koi-list");
               }}
             >
               Explore
-            </Button>
+            </button>
           </div>
         </div>
       );
@@ -410,18 +411,18 @@ function HomePage() {
             <div className="container">
               <div className="row koi-content-center">
                 <div className="col-md-10 koi-center-heading text-center">
-                  <a href="#koiList">
-                    <span className="sub-heading">Our Kois</span>
+                  <a href="#koiList" className="sub-heading">
+                    <div>Our Kois</div>
                   </a>
-                  <h2 className="mb-5">Our Vouchers</h2>
-                  <h5 style={{ color: "#aaa" }}>
+                  <h2 style={{ marginBottom: "0" }}>Our Vouchers</h2>
+                  {/* <h5 style={{ color: "#aaa" }}>
                     Don't forget to use these vouchers while purchasing our
                     Kois!!!
-                  </h5>
+                  </h5> */}
                   <div className="voucher_list ">
                     {voucherList.map((voucher) => {
                       return (
-                        <div key={voucher.id} className="voucher">
+                        <div key={voucher.id} className="voucher ">
                           <div
                             style={{
                               display: "flex",
@@ -454,9 +455,7 @@ function HomePage() {
                       );
                     })}
                   </div>
-                  <h2 className="mb-5" id="koiList">
-                    Explore our Kois
-                  </h2>
+                  <h2 id="koiList">Explore our Kois</h2>
                 </div>
                 <div className="koi_fetch_breed" id="koi">
                   {showKoiBreed()}

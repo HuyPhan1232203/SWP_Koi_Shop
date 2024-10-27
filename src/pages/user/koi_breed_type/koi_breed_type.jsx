@@ -176,7 +176,7 @@ const Product = ({ products }) => {
             })}
           </div>
         </p>
-        <p className="product_name">Price: {products?.price}</p>
+        <p className="product_name">{products?.price} VNĐ</p>
       </div>
       <Button
         onClick={handleAddToCart}

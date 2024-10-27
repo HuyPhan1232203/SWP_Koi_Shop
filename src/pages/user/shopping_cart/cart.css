@@ -1,6 +1,7 @@
 .cart_title{
     color: #000;
-    margin-top: 30px;
+    margin-top: 18px;
+    margin-bottom: 15px;
 }
 
 Button {
@@ -10,6 +11,10 @@ Button {
     width: 30%;
     padding: 50px;
     background-color: #ddd;
+    margin-top: -30px;
+}
+.check_out_btn{
+    padding: 25px 109px;
 }
 .cart_page_cart{
     width: 70%;

@@ -41,7 +41,7 @@ function Profile() {
             </div>
             <div
               className="right col-md-9"
-              style={{ height: "500px", overflowY: "auto" }}
+              style={{ height: "530px", overflowY: "auto" }}
             >
               <Outlet />
             </div>
