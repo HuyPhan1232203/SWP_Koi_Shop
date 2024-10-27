@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Button,
-  ConfigProvider,
-  Form,
-  Layout,
-  Modal,
-  Pagination,
-  Select,
-} from "antd";
+import { Button, Form, Modal, Pagination, Select } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";

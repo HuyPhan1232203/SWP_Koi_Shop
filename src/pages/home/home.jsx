@@ -218,7 +218,7 @@ function HomePage() {
             <button
               className="exploreBtn"
               onClick={() => {
-                sessionStorage.setItem("breedId", breedItem.id);
+                dispatch(storeBreedId(breedItem.id));
                 nav("/koi-list");
               }}
             >
