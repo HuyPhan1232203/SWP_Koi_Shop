@@ -15,7 +15,8 @@ import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { storeKoi } from "../../../redux/features/koiSlice";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
   const breedId = useSelector((store) => store.breedId);
@@ -32,6 +33,10 @@ function KoiBreedType() {
       toast.error("fetch error");
     }
   };
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   useEffect(() => {
     fetchProduct(breedId);
   }, [breedId]);
@@ -127,7 +132,7 @@ const Product = ({ products }) => {
   };
 
   return (
-    <div className="product">
+    <div className="product" data-aos="zoom-in-down">
       <Link
         onClick={() => {
           try {

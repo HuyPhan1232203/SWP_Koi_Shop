@@ -22,12 +22,13 @@ import { logout } from "../../redux/features/userSlice";
 import { clearAll } from "../../redux/features/cartSlice";
 import { clearAllSelectedItem } from "../../redux/features/selectedItemsSlice";
 import { storeBreedId } from "../../redux/features/breedIdSlice";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function HomePage() {
   const nav = useNavigate();
   const userData = useSelector((store) => store.user);
   const [voucherList, setVoucherList] = useState([]);
   const cart = useSelector((store) => store.cart);
-
   const [openModal, setOpenModal] = useState(false);
   const [breed, setBreed] = useState([]);
   const dispatch = useDispatch();
@@ -35,6 +36,10 @@ function HomePage() {
   const handleOpenModal = () => {
     setOpenModal(true);
   };
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   const handleCloseModal = () => {
     setOpenModal(false);
   };
@@ -68,16 +73,16 @@ function HomePage() {
           justifyContent: "center",
         }}
       >
-        <Button
+        <button
+          className="copy_btn"
           onClick={copyText}
           style={{
-            padding: "0 5px",
             margin: "0",
           }}
         >
           {/* <CopyOutlined /> */}
           Copy
-        </Button>
+        </button>
       </div>
     );
   };
@@ -201,7 +206,7 @@ function HomePage() {
   const showKoiBreed = () => {
     return breed?.map((breedItem) => {
       return (
-        <div key={breedItem.id} className="koi-types">
+        <div key={breedItem.id} className="koi-types" data-aos="fade-up">
           <div className="koi-item">
             <img src={breedItem.imageUrl} alt="" />
             <h3>{breedItem.name}</h3>
@@ -395,15 +400,23 @@ function HomePage() {
                   <a href="#koiList" className="sub-heading">
                     <div>Our Kois</div>
                   </a>
-                  <h2 style={{ marginBottom: "0" }}>Our Vouchers</h2>
+
+                  <h2 style={{ marginBottom: "0" }} data-aos="fade-up">
+                    Our Vouchers
+                  </h2>
                   {/* <h5 style={{ color: "#aaa" }}>
                     Don't forget to use these vouchers while purchasing our
                     Kois!!!
                   </h5> */}
+
                   <div className="voucher_list ">
                     {voucherList.map((voucher) => {
                       return (
-                        <div key={voucher.id} className="voucher ">
+                        <div
+                          key={voucher.id}
+                          className="voucher "
+                          data-aos="fade-up"
+                        >
                           <div
                             style={{
                               display: "flex",
@@ -436,8 +449,11 @@ function HomePage() {
                       );
                     })}
                   </div>
-                  <h2 id="koiList">Explore our Kois</h2>
+                  <h2 id="koiList" data-aos="fade-up">
+                    Explore our Kois
+                  </h2>
                 </div>
+
                 <div className="koi_fetch_breed" id="koi">
                   {showKoiBreed()}
                 </div>

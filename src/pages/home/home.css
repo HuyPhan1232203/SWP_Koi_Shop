@@ -3,6 +3,7 @@
     font-family: "IBM Plex Mono", monospace;
 
 }
+
 /* body{
     background: linear-gradient(-45deg, #ee7752, #ffffff, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
@@ -35,6 +36,7 @@
     
 }
 .voucher_list {
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px; /* Space between vouchers */
@@ -189,7 +191,7 @@
     box-shadow:1px 1px 1px 1px #ccc;
 
 }
-@keyframes userProfileShow {
+/* @keyframes userProfileShow {
     from{
         filter: blur();
         opacity: 0;
@@ -206,7 +208,7 @@
     box-shadow:1px 1px 1px 1px #ccc;
 
     }
-}
+} */
 .authen:hover .user_action{
     display: block;
 }
@@ -267,13 +269,13 @@
     border-radius: 10px;
     animation: hoverAnimation ease 0.5s;
 }
-@keyframes hoverAnimation {
+/* @keyframes hoverAnimation {
     from{
         background-color: rgba(0, 0, 0, 0);
     }to{
         background-color: rgba(0, 0, 0, 0.2);
     }
-}
+} */
 .cart{
     display: flex;
     align-items: center;
@@ -313,9 +315,7 @@
     background:rgba(237, 235, 235, 0.85) ;
 
 }
-.nav_li_koi_elements li{
-    animation: show_koi 0.5 ease-in;
-}
+
 @keyframes show_koi-list {
     from{
         opacity: 0;
@@ -346,6 +346,9 @@
 .koi_list_link{
     width: 100%;
     text-decoration: none;
+}
+.koi_list_link li{
+    animation: show_koi-list 0.3s ease-in;
 }
 .text-center-slider{
     height: 40%;
@@ -440,7 +443,9 @@
 letter-spacing: 3px;
 word-spacing: -3px;
 }
+
 .sub-heading{
+    margin-top: 30px;
     padding: 20px;
     border-bottom: 1px #ccc solid;
     border-radius: 30px;
@@ -457,20 +462,22 @@ word-spacing: -3px;
     background: linear-gradient(-45deg, #ec78e8, #d88282, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
     animation: gradient 5s ease infinite;
-    
 }
 #koiList{
     margin-top: 80px;
     margin-bottom: -25px;
 }
-.exploreBtn{
+.exploreBtn,.copy_btn{
     background: linear-gradient(-45deg, #ec78e8, #d88282, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
 }
-.exploreBtn:hover{
+.exploreBtn:hover,.copy_btn:hover{
     animation: gradient 2s ease infinite;
 }
-button.exploreBtn{
+.copy_btn{
+    padding: 7px 15px !important;
+}
+.exploreBtn{
     padding: 0;
 }
 @keyframes gradient {
@@ -546,7 +553,7 @@ button.exploreBtn{
     margin-bottom: 20px;
 }
 
-.koi-section .koi-item Button {
+.koi-section .exploreBtn,.copy_btn {
     color: white;
     text-decoration: none;
     cursor: pointer;

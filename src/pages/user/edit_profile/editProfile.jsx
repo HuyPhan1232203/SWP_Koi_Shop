@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./editProfile.css";
 import { Button, Form, Input, Modal } from "antd";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/features/userSlice";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function EditProfile() {
   const userInfo = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function EditProfile() {
   const [defaultVal, setDefaultVal] = useState();
   const [defaultField, setDefaultField] = useState();
   const [form] = Form.useForm();
+
   //update
   const handleEditInfo = async (value) => {
     try {
@@ -26,6 +28,10 @@ function EditProfile() {
       setOpenModal(false);
     }
   };
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <div className="editProfile">
       <Modal
@@ -67,8 +73,10 @@ function EditProfile() {
           </Form.Item>
         </Form>
       </Modal>
-      <div className="editProfile_title">About</div>
-      <div className="edit">
+      <div className="editProfile_title" data-aos="fade-down">
+        About
+      </div>
+      <div className="edit" data-aos="fade-right">
         <div className="edit_field">
           <div className="edit_field_title font">User Name:</div>
           <div className="edit_field-parameter">{userInfo.username}</div>
@@ -85,7 +93,7 @@ function EditProfile() {
           Edit
         </Button>
       </div>
-      <div className="edit">
+      <div className="edit" data-aos="fade-right" data-aos-delay="100">
         <div className="edit_field">
           <div className="edit_field_title font">Email:</div>
           <div className="edit_field-parameter">{userInfo.email}</div>
@@ -102,7 +110,7 @@ function EditProfile() {
           Edit
         </Button>
       </div>
-      <div className="edit">
+      <div className="edit" data-aos="fade-right" data-aos-delay="200">
         <div className="edit_field">
           <div className="edit_field_title font">Phone:</div>
           <div className="edit_field-parameter">{userInfo.phone}</div>
@@ -119,7 +127,7 @@ function EditProfile() {
           Edit
         </Button>
       </div>
-      <div className="edit">
+      <div className="edit" data-aos="fade-right" data-aos-delay="300">
         <div className="edit_field">
           <div className="edit_field_title font">Address:</div>
           <div className="edit_field-parameter">{userInfo.address}</div>

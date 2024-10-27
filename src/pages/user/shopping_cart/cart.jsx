@@ -4,7 +4,6 @@ import { Button, Form, Image, Input, Select, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
-import api from "../../../config/axios";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import {
