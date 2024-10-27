@@ -46,6 +46,8 @@
 }
 
 .about-icon {
+    align-items: center;
+    justify-content: space-around;
     align-self: flex-end;
     font-size: 30px;
     padding: 0 50px;

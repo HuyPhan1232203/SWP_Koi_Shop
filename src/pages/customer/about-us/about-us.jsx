@@ -32,11 +32,11 @@ function AboutUs() {
           caring for their aquatic companions.
         </p>
       </div>
-      <div className="about-icon">
+      {/* <div className="about-icon">
         <FacebookOutlined />
         <YoutubeOutlined />
         <InstagramOutlined />
-      </div>
+      </div> */}
     </div>
   );
 }
