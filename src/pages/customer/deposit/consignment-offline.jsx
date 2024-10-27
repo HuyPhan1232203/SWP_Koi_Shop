@@ -17,7 +17,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeKoi } from "../../../redux/features/koiSlice";
 import { CSSTransition } from "react-transition-group";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function ConsignmentOffline() {
   const [formStand] = Form.useForm();
   const [fileList, setFileList] = useState([]);
@@ -36,6 +37,10 @@ function ConsignmentOffline() {
       toast.error(err.response.data);
     }
   };
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -90,7 +95,7 @@ function ConsignmentOffline() {
     }
   };
   return (
-    <div className="Consign_body">
+    <div className="Consign_body" data-aos="flip-right">
       <CSSTransition
         in={showForm}
         timeout={500}
@@ -98,8 +103,8 @@ function ConsignmentOffline() {
         unmountOnExit
       >
         <div className="Consign_body-form row">
-          <div className="col-md-6">
-            <h2>Show Us Your Koi</h2>
+          <div className="col-md-6 form">
+            <div className="form_head">Show Us Your Koi</div>
             <Form
               className="form-depo"
               labelCol={{ span: 8 }}
@@ -206,11 +211,7 @@ function ConsignmentOffline() {
               alignItems: "flex-start",
             }}
           >
-            <img
-              src="/assets/images/koi-1.avif"
-              width={700}
-              className="koi-pic-2"
-            ></img>
+            <img src="/assets/images/koi-1.avif" className="koi-pic-2"></img>
           </div>
         </div>
       </CSSTransition>

@@ -34,4 +34,8 @@ h2 {
     box-shadow: 2px 1px 7px 4px #ccc;
     height: 100%;
     padding: 20px;
+    background: linear-gradient(-45deg, #ee7752, #f056e0, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    border-radius: 20px;
 }

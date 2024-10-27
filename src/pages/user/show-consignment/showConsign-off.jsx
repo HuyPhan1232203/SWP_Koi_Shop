@@ -110,8 +110,10 @@ function ShowConsignOff() {
                     value={item.careTypeId}
                     className="delivery"
                   >
-                    <div className="delivery_item ">{item.careTypeName}</div>
-                    <small>${item.costPerDay}/day</small>
+                    <div className="delivery_item " style={{ color: "#fff" }}>
+                      {item.careTypeName}
+                    </div>
+                    <div style={{ color: "#fff" }}>${item.costPerDay}/day</div>
                   </Radio>
                 );
               })}

@@ -5,7 +5,6 @@
 
 .Intro_header {
     width: 100vw;
-
 }
 
 .form-depo {
@@ -16,35 +15,48 @@
 }
 
 .Consign_body-form {
+    color: #fff;
     box-shadow: 2px 1px 7px 4px #ccc;
-    padding: 20px;
     /* padding-right: 60px;     */
-    background-color: #ddd;
+   
+    border-radius: 30px;
+    overflow: hidden;
 }
 
-
+.form{
+    background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+}
 .Consign_body {
     border-radius: 20px;
     padding: 40px;
 }
-
-.koi-pic {
-    background: cover no-repeat;
+.form_head{
+    padding-top: 30px;
+    padding-left: 30px;
+    font-size: 40px;
+    font-weight: 600;
+}
+:where(.css-dev-only-do-not-override-14i19y2).ant-form-item .ant-form-item-label >label{
+    color: #fff;
+    font-size: 16px;
+}
+.koi-pic,.koi-pic-2 {
     width: 500px;
-    height: 650px;
-    margin-left: 100px;
+    margin: 50px;
     border-radius: 20px;
-    margin-top: 60px;
 }
 
-.koi-pic-2 {
-    background: cover no-repeat;
+/* .koi-pic-2 {
     width: 500px;
     margin-left: 90px;
     border-radius: 20px;
     margin-top: 70px;
+} */
+.contact_online{
+    font-size: 20px;
 }
-
 .con-btn {
     width: 80px;
     margin-left: 600px;

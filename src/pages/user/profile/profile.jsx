@@ -11,7 +11,7 @@ function Profile() {
       <div className="profile_header"></div>
       <div className="profile_body ">
         <Layout>
-          <div className="row">
+          <div className="row bodyprofile">
             <div className="left col-md-3">
               <img
                 className="profile_avatar"

@@ -7,12 +7,17 @@
     flex-direction: column;
     align-items: center;
     padding: 0;
+    background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+
 }
 .profile{
     margin-bottom: 100px;
 }
+
 .right{
-    background-color: #e9e7e7;
+    background-color: #fff;
 }
 .profile_avatar{
     height: 200px;
@@ -20,6 +25,11 @@
     border-radius: 50%;
     margin-bottom: 20px;
     margin-top: 40px;
+}
+.bodyprofile{
+    box-shadow:2px 1px 7px 4px #ccc;
+    border-radius: 30px;
+    overflow: hidden;
 }
 .profile_name{
     width: 100%;
@@ -36,6 +46,6 @@
 }
 .profile_children:hover{
     cursor: pointer;
-    background-color: #ccc;
+    background-color: #fff;
     color: #000;
 }

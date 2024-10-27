@@ -81,8 +81,7 @@ function EditProfile() {
           <div className="edit_field_title font">User Name:</div>
           <div className="edit_field-parameter">{userInfo.username}</div>
         </div>
-        <Button
-          type="primary"
+        <button
           className="edit_btn"
           onClick={() => {
             setOpenModal(true);
@@ -91,15 +90,14 @@ function EditProfile() {
           }}
         >
           Edit
-        </Button>
+        </button>
       </div>
       <div className="edit" data-aos="fade-right" data-aos-delay="100">
         <div className="edit_field">
           <div className="edit_field_title font">Email:</div>
           <div className="edit_field-parameter">{userInfo.email}</div>
         </div>
-        <Button
-          type="primary"
+        <button
           className="edit_btn"
           onClick={() => {
             setOpenModal(true);
@@ -108,15 +106,14 @@ function EditProfile() {
           }}
         >
           Edit
-        </Button>
+        </button>
       </div>
       <div className="edit" data-aos="fade-right" data-aos-delay="200">
         <div className="edit_field">
           <div className="edit_field_title font">Phone:</div>
           <div className="edit_field-parameter">{userInfo.phone}</div>
         </div>
-        <Button
-          type="primary"
+        <button
           className="edit_btn"
           onClick={() => {
             setOpenModal(true);
@@ -125,15 +122,14 @@ function EditProfile() {
           }}
         >
           Edit
-        </Button>
+        </button>
       </div>
       <div className="edit" data-aos="fade-right" data-aos-delay="300">
         <div className="edit_field">
           <div className="edit_field_title font">Address:</div>
           <div className="edit_field-parameter">{userInfo.address}</div>
         </div>
-        <Button
-          type="primary"
+        <button
           className="edit_btn"
           onClick={() => {
             setOpenModal(true);
@@ -142,7 +138,7 @@ function EditProfile() {
           }}
         >
           Edit
-        </Button>
+        </button>
       </div>
     </div>
   );

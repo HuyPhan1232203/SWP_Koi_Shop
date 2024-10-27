@@ -12,18 +12,24 @@ Button {
     padding: 50px;
     background-color: #ddd;
     margin-top: -30px;
-}
-.check_out_btn{
-    color: #fff;
-    border: 1px #ccc solid;
-    padding: 10px 109px;
-    width: 100%;
     background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    color: #fff;
 }
-.check_out_btn:hover{
-    animation: gradient 5s ease infinite;
+.check_out_btn{
+    /* color: #fff; */
+    font-size: 20px;
+    /* border: 1px #ccc solid; */
+    padding: 20px 0;
+    width: 100%;
+    border-radius: 27px;
+    box-sizing: unset;
 }
+.order_bill_header{
+    font-size: 40px;
+}
+
 @keyframes gradient {
     0% {
 		background-position: 0% 50%;
@@ -37,6 +43,8 @@ Button {
 }
 .cart_page_cart{
     width: 70%;
+    
+
 }
 .cart_page{
     display: flex;
@@ -45,6 +53,7 @@ Button {
     overflow: hidden;
     margin:80px 0;
     box-shadow:2px 1px 7px 4px #ccc;
+    
 }
 
 .clear-btn {

@@ -505,7 +505,10 @@ function HomePage() {
       </div>
       <div className="footer">
         <div className="container-xl">
-          <div className="row mb-5 justify-content-between">
+          <div
+            className="row mb-5 justify-content-between"
+            style={{ height: "100%" }}
+          >
             <div className="col-md-4 col-lg mb-4">
               <div className="footer-widget">
                 <div className="heading-footer">

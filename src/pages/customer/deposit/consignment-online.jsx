@@ -20,6 +20,8 @@ import { storeKoi } from "../../../redux/features/koiSlice";
 import "./consignment.css";
 import { CSSTransition } from "react-transition-group";
 import TextArea from "antd/es/input/TextArea";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const ConsignmentOnline = () => {
   const [formStand] = Form.useForm();
   const [submitBreed, setSubmitBreed] = useState([]);
@@ -42,7 +44,10 @@ const ConsignmentOnline = () => {
   useEffect(() => {
     fetchBreed();
   }, []);
-
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -104,7 +109,7 @@ const ConsignmentOnline = () => {
     }
   };
   return (
-    <div className="Consign_body">
+    <div className="Consign_body" data-aos="flip-left">
       <CSSTransition
         in={showForm}
         timeout={500}
@@ -112,8 +117,8 @@ const ConsignmentOnline = () => {
         unmountOnExit
       >
         <div className="Consign_body-form row">
-          <div className="col-md-6">
-            <h2>Show Us Your Koi</h2>
+          <div className="col-md-6 form">
+            <div className="form_head">Show Us Your Koi</div>
             <Form
               className="form-depo"
               labelCol={{ span: 6 }}
@@ -125,6 +130,7 @@ const ConsignmentOnline = () => {
               </Form.Item>
               <Form.Item
                 label="Name"
+                style={{ color: "white" }}
                 rules={[{ required: true, message: "Please Input" }]}
                 name="name"
               >
@@ -253,19 +259,14 @@ const ConsignmentOnline = () => {
               />
             )}
           </div>
-          <div
-            className="col-md-6"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "flex-start",
-            }}
-          >
-            <img
-              src="/assets/images/koi-2.avif"
-              width={700}
-              className="koi-pic"
-            ></img>
+          <div className="col-md-6">
+            <img src="/assets/images/koi-2.avif" className="koi-pic"></img>
+            <div
+              style={{ color: "#000" }}
+              className="contact_online text-center"
+            >
+              <div>Contact us if you need more information!!! </div>
+            </div>
           </div>
         </div>
       </CSSTransition>

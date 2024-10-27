@@ -137,7 +137,17 @@ function Cart() {
       <div className="order_bill">
         <h3 className="order_bill_header">Sumary</h3>
         <Form labelCol={{ span: 24 }}>
-          <Form.Item label={"Items :"} style={{ marginTop: "1px" }}>
+          <div
+            style={{
+              marginTop: "40px",
+              fontSize: "20px",
+              fontWeight: "600",
+              color: "#fff",
+            }}
+          >
+            Items:
+          </div>
+          <Form.Item style={{ color: "#fff" }}>
             {selectedItems.map((item) => {
               return (
                 <div style={{ fontWeight: "500" }} key={item.id}>
@@ -146,12 +156,16 @@ function Cart() {
               );
             })}
           </Form.Item>
-
-          <Form.Item label="Total Price">
-            <div style={{ color: "green" }}>{total} VNĐ</div>
+          <div style={{ color: "#fff" }}>Total price:</div>
+          <Form.Item>
+            <div
+              style={{ color: "green", fontSize: "20px", fontWeight: "600" }}
+            >
+              {total} VNĐ
+            </div>
           </Form.Item>
           <Link onClick={handleBuy} style={{ textDecoration: "none" }}>
-            <button className="check_out_btn">Check Out</button>
+            <Button className="check_out_btn">Check Out</Button>
           </Link>
         </Form>
       </div>
