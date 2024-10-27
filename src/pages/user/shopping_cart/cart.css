@@ -14,7 +14,26 @@ Button {
     margin-top: -30px;
 }
 .check_out_btn{
-    padding: 25px 109px;
+    color: #fff;
+    border: 1px #ccc solid;
+    padding: 10px 109px;
+    width: 100%;
+    background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+}
+.check_out_btn:hover{
+    animation: gradient 5s ease infinite;
+}
+@keyframes gradient {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 .cart_page_cart{
     width: 70%;

@@ -55,23 +55,9 @@
     background-size:  contain;
     /* background-color: #4dac3e; */
 }
-@keyframes voucherHover {
-    from{
-        transform: translateY(0px);
-
-    }to{
-        transform: translateY(-10px);
-    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow on hover */
-    }
+.voucher:hover{
+    box-shadow: 3px 5px 4px #ccc;
 }
-
-.voucher:hover {
-    animation: voucherHover ease-in 0.1s ;
-    transform: translateY(-10px);
-    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow on hover */
-    /* background-color: #aaa; */
-}
-
 .voucher_discount {
     font-size: 1.5em; /* Larger font for discount */
     color: #fff; /* Red color for discount */

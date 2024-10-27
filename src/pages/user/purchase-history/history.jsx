@@ -4,6 +4,8 @@ import api from "../../../config/axios";
 import "./history.css";
 import TextArea from "antd/es/input/TextArea";
 import { toast } from "react-toastify";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function History() {
   const [orderList, setOrderList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
@@ -16,6 +18,10 @@ function History() {
   };
   useEffect(() => {
     fetchOrder();
+  }, []);
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
   }, []);
   const handleRating = async (feedback) => {
     console.log(selectedOrder);
@@ -72,7 +78,9 @@ function History() {
   };
   return (
     <div className="history">
-      <p style={{ fontSize: "50px" }}>Order History</p>
+      <p style={{ fontSize: "50px" }} data-aos="fade-down">
+        Order History
+      </p>
       {[...orderList].reverse().map((order) => {
         return (
           <div key={order.id} className="order">

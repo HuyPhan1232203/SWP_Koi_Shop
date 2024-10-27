@@ -150,12 +150,8 @@ function Cart() {
           <Form.Item label="Total Price">
             <div style={{ color: "green" }}>{total} VNĐ</div>
           </Form.Item>
-          <Link
-            onClick={handleBuy}
-            // to="/check-out"
-            style={{ textDecoration: "none" }}
-          >
-            <Button className="check_out_btn">Check Out</Button>
+          <Link onClick={handleBuy} style={{ textDecoration: "none" }}>
+            <button className="check_out_btn">Check Out</button>
           </Link>
         </Form>
       </div>

@@ -206,7 +206,12 @@ function HomePage() {
   const showKoiBreed = () => {
     return breed?.map((breedItem) => {
       return (
-        <div key={breedItem.id} className="koi-types" data-aos="fade-up">
+        <div
+          key={breedItem.id}
+          className="koi-types"
+          data-aos-duration="500"
+          data-aos="fade-up"
+        >
           <div className="koi-item">
             <img src={breedItem.imageUrl} alt="" />
             <h3>{breedItem.name}</h3>
@@ -401,7 +406,11 @@ function HomePage() {
                     <div>Our Kois</div>
                   </a>
 
-                  <h2 style={{ marginBottom: "0" }} data-aos="fade-up">
+                  <h2
+                    style={{ marginBottom: "0" }}
+                    data-aos-duration="500"
+                    data-aos="fade-up-left"
+                  >
                     Our Vouchers
                   </h2>
                   {/* <h5 style={{ color: "#aaa" }}>
@@ -415,6 +424,7 @@ function HomePage() {
                         <div
                           key={voucher.id}
                           className="voucher "
+                          data-aos-duration="500"
                           data-aos="fade-up"
                         >
                           <div
@@ -449,7 +459,11 @@ function HomePage() {
                       );
                     })}
                   </div>
-                  <h2 id="koiList" data-aos="fade-up">
+                  <h2
+                    id="koiList"
+                    data-aos-duration="500"
+                    data-aos="fade-up-left"
+                  >
                     Explore our Kois
                   </h2>
                 </div>
