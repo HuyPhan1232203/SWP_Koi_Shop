@@ -61,10 +61,12 @@ function ManageStaffJob() {
           `order/assign-staff?orderId=${orderId.orderID}&staffId=${staffId}&consignmentId=${orderId.consignmentID}`
         );
       }
-      fetchOrder();
       toast.success("Staff assigned successfully!");
     } catch (err) {
       toast.error("Error assigning staff");
+    } finally {
+      fetchOrder();
+      fetchStaff();
     }
   };
 

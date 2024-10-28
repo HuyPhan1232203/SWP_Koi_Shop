@@ -6,7 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 import { Button } from "antd";
 function CheckConsignOnl() {
   return (
-    <div>
+    <div className="consign-history">
       <Link to="">
         <Button>Sell</Button>
       </Link>

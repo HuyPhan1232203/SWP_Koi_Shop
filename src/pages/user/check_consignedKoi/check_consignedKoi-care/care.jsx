@@ -33,8 +33,8 @@ function Care() {
               <img
                 className="col-md-2"
                 src={koi.imgUrl}
-                width={100}
-                height={100}
+                height={200}
+                style={{ objectFit: "contain" }}
                 alt=""
               />
               <div className="col-md-6" style={{ display: "flex" }}>
@@ -43,7 +43,9 @@ function Care() {
                   {StartDateDisplay(koi.endDate)}
                 </div>
               </div>
-              <div className="col-md-4">{koi.isConsignment}</div>
+              <div className="col-md-4 koi_status">
+                Status: {koi.isConsignment}
+              </div>
             </div>
             <div className="price">Price: {koi.price}</div>
           </div>

@@ -32,12 +32,9 @@ function Profile() {
               >
                 <div className="profile_children">Purchase History</div>
               </Link>
-              <Link
-                to="consign-history"
-                style={{ width: "100%", textDecoration: "none" }}
-              >
-                <div className="profile_children">Consign History</div>
-              </Link>
+              <div style={{ width: "100%", textDecoration: "none" }}>
+                <div className="profile_children">Logout</div>
+              </div>
             </div>
             <div
               className="right col-md-9"

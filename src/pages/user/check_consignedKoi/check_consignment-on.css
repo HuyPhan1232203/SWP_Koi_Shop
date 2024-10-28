@@ -13,4 +13,15 @@ padding-bottom: 20px;
 .price{
     margin-left: 700px;
     font-weight: 700;
+    font-size: 20px;
+}
+
+.consign-history{
+    margin-bottom: 80px;
+}
+.koi_name{
+    font-size: 30px;
+}
+.koi_status{
+    font-size: 20px;
 }

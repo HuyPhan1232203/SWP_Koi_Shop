@@ -25,14 +25,14 @@ function Sell() {
               <img
                 className="col-md-2"
                 src={koi.imgUrl}
-                width={100}
-                height={100}
+                height={200}
+                style={{ objectFit: "contain" }}
                 alt=""
               />
-              <div className="col-md-6">name: {koi.name}</div>
-              <div className="col-md-4">Status: {koi.status}</div>
+              <div className="col-md-6 koi_name">{koi.name}</div>
+              <div className="col-md-4 koi_status">Status: {koi.status}</div>
             </div>
-            <div className="price">Price: {koi.price}</div>
+            <div className="price">Price: {koi.price} VNĐ</div>
           </div>
         );
       })}

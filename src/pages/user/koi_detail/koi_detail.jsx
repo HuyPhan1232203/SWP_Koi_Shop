@@ -6,11 +6,11 @@ import { addProduct } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function KoiDetail() {
   const { TextArea } = Input;
   const [isDisable, setIsDisable] = useState(false);
-  const [rating, setRating] = useState(0);
-  const [content, setContent] = useState("");
   const koiDetail = useSelector((store) => store.koi);
   const user = useSelector((store) => store.user);
   const cart = useSelector((store) => store.cart);
@@ -38,7 +38,10 @@ function KoiDetail() {
   const onChange = (key) => {
     console.log(key);
   };
-
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <div className="koi-item">
       <div className="KoiDetail row">

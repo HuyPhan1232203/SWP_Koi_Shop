@@ -181,7 +181,7 @@ function HomePage() {
               </Link>
               <Link
                 style={{ textDecoration: "none", color: "#000" }}
-                to="consign-tracking"
+                to="consign-history"
               >
                 <li>My Consignment</li>
               </Link>

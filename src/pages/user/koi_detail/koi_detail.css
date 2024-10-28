@@ -43,14 +43,17 @@ h3{
 .koi-detail_button {
     margin-top: 30px;
     padding: 30px;
-    background-color: #000;
     color: #fff;
     border: none;
+    background: linear-gradient(-45deg, #ee7752, #e65dcf, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    border-radius: 30px;
+    animation: gradient 5s ease infinite;
+    font-size: 20px;
 }
 
 .koi-detail_button:hover {
-    background-color: #aaa;
-    color: #000;
+    
 }
 
 .koi-detail_button:disabled {
@@ -68,6 +71,7 @@ h3{
     color: #fff;
     border: none;
     border-radius: 5px;
+    
 }
 
 .post-btn:hover {

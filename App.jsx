@@ -139,6 +139,20 @@ function App() {
           element: <ConsignTracking />,
         },
         {
+          path: "consign-history",
+          element: <CheckConsignOnl />,
+          children: [
+            {
+              path: "",
+              element: <Sell />,
+            },
+            {
+              path: "care",
+              element: <Care />,
+            },
+          ],
+        },
+        {
           path: "profile",
           element: <Profile />,
           children: [
@@ -149,20 +163,6 @@ function App() {
             {
               path: "order-history",
               element: <History />,
-            },
-            {
-              path: "consign-history",
-              element: <CheckConsignOnl />,
-              children: [
-                {
-                  path: "",
-                  element: <Sell />,
-                },
-                {
-                  path: "care",
-                  element: <Care />,
-                },
-              ],
             },
           ],
         },
