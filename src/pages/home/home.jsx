@@ -210,6 +210,7 @@ function HomePage() {
           key={breedItem.id}
           className="koi-types"
           data-aos-duration="500"
+          data-aos-delay="100"
           data-aos="fade-up"
         >
           <div className="koi-item">
