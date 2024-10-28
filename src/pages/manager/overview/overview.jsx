@@ -58,7 +58,7 @@ function Overview() {
   return (
     <div>
       <Row gutter={16}>
-        <Col span={12}>
+        <Col span={8}>
           <Card bordered={false}>
             <Statistic
               title="Total Customer"
@@ -71,11 +71,24 @@ function Overview() {
             />
           </Card>
         </Col>
-        <Col span={12}>
+        <Col span={8}>
           <Card bordered={false}>
             <Statistic
-              title="Total Products"
-              value={data?.totalProducts}
+              title="Sold Kois"
+              value={data?.SoldKois}
+              valueStyle={{
+                color: "#3f8600",
+              }}
+              prefix={<ShoppingOutlined />}
+              suffix=""
+            />
+          </Card>
+        </Col>
+        <Col span={8}>
+          <Card bordered={false}>
+            <Statistic
+              title="Available Kois"
+              value={data?.AvailableKois}
               valueStyle={{
                 color: "#3f8600",
               }}
