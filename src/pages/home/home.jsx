@@ -121,6 +121,12 @@ function HomePage() {
       </Link>
     );
   };
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
   //USE EFFECT
   useEffect(() => {
     fetchBreed();
@@ -256,7 +262,12 @@ function HomePage() {
                   </Link>
                 </li>
                 <li className="nav_li nav_li_koi">
-                  <a className="nav_elements" href="#koiList">
+                  <a
+                    className="nav_elements"
+                    onClick={() => {
+                      scrollToSection("koiList");
+                    }}
+                  >
                     Koi List{" "}
                     <span className="arrow-down-icon">
                       <DownOutlined />
@@ -403,7 +414,12 @@ function HomePage() {
             <div className="container">
               <div className="row koi-content-center">
                 <div className="col-md-10 koi-center-heading text-center">
-                  <a href="#koiList" className="sub-heading">
+                  <a
+                    onClick={() => {
+                      scrollToSection("koiList");
+                    }}
+                    className="sub-heading"
+                  >
                     <div>Our Kois</div>
                   </a>
 
