@@ -39,8 +39,26 @@ function Cart() {
       dataIndex: "name",
     },
     {
-      title: "Price",
-      dataIndex: "price",
+      title: "id",
+      dataIndex: "id",
+      key: "id",
+      render: (_, record) => {
+        if (record.salePrice > 0) {
+          {
+            record.price = record.salePrice;
+          }
+          return (
+            <div>
+              {/* <div style={{ textDecoration: "line-through" }}>
+                {record.price} VNĐ
+              </div> */}
+              <div>{record.salePrice} VNĐ </div>
+            </div>
+          );
+        } else {
+          return <div>{record.price} VNĐ</div>;
+        }
+      },
     },
 
     {

@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./profile.css";
-import { Layout } from "antd";
-import { Link, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Layout, Modal } from "antd";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../redux/features/userSlice";
+import { clearAll } from "../../../redux/features/cartSlice";
+import { clearAllSelectedItem } from "../../../redux/features/selectedItemsSlice";
 
 function Profile() {
   const username = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  const [openModal, setOpenModal] = useState(false);
+  const nav = useNavigate();
+  const handleLogOut = () => {
+    sessionStorage.removeItem("username");
+    dispatch(logout());
+    dispatch(clearAll());
+    dispatch(clearAllSelectedItem());
+    setOpenModal(false);
+    nav("/");
+  };
   return (
     <div className="profile">
       <div className="profile_header"></div>
@@ -30,9 +44,26 @@ function Profile() {
                 <div className="profile_children">Purchase History</div>
               </Link>
               <div style={{ width: "100%", textDecoration: "none" }}>
-                <div className="profile_children">Logout</div>
+                <div
+                  className="profile_children"
+                  onClick={() => {
+                    setOpenModal(true);
+                  }}
+                >
+                  Logout
+                </div>
               </div>
             </div>
+            <Modal
+              title="LogOut"
+              open={openModal}
+              onCancel={() => {
+                setOpenModal(false);
+              }}
+              onOk={handleLogOut}
+            >
+              Are you sure want to log out?
+            </Modal>
             <div
               className="right col-md-9"
               style={{ height: "530px", overflowY: "auto" }}

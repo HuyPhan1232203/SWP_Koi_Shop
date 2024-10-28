@@ -122,7 +122,31 @@ const Product = ({ products }) => {
       nav("/login");
     }
   };
-
+  const handleCheckSalePrice = (salePrice, price, salePercentage) => {
+    if (salePrice > 0) {
+      return (
+        <div>
+          <div style={{ textDecoration: "line-through", color: "#aaa" }}>
+            {price} VNĐ
+          </div>
+          <div style={{ display: "flex", fontSize: "20px" }}>
+            {salePrice} VNĐ{" "}
+            <div
+              style={{
+                color: "red",
+                marginLeft: "20px",
+                fontWeight: "500",
+              }}
+            >
+              -{salePercentage}%
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return <div style={{ fontSize: "20px" }}>{price} VNĐ</div>;
+    }
+  };
   return (
     <div className="product" data-aos="zoom-in-down">
       <Link
@@ -173,7 +197,14 @@ const Product = ({ products }) => {
             })}
           </div>
         </p>
-        <p className="product_name">{products?.price} VNĐ</p>
+
+        <p className="product_name">
+          {handleCheckSalePrice(
+            products.salePrice,
+            products.price,
+            products.salePercentage
+          )}{" "}
+        </p>
       </div>
       <Button
         onClick={handleAddToCart}

@@ -42,6 +42,31 @@ function KoiDetail() {
     AOS.init();
     AOS.refresh();
   }, []);
+  const handleCheckSalePrice = (salePrice, price, salePercentage) => {
+    if (salePrice > 0) {
+      return (
+        <div>
+          <div style={{ textDecoration: "line-through", color: "#aaa" }}>
+            {price} VNĐ
+          </div>
+          <div style={{ display: "flex", fontSize: "40px" }}>
+            {salePrice} VNĐ{" "}
+            <div
+              style={{
+                color: "red",
+                marginLeft: "20px",
+                fontWeight: "500",
+              }}
+            >
+              -{salePercentage}%
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return <div style={{ fontSize: "20px" }}>{price} VNĐ</div>;
+    }
+  };
   return (
     <div className="koi-item">
       <div className="KoiDetail row">
@@ -65,7 +90,13 @@ function KoiDetail() {
         </div>
         <div className="koi-detail col-md-6">
           <h1 className="koi-detail_name">{koiDetail.name}</h1>
-          <h3 className="koi-detail_price">${koiDetail.price}</h3>
+          <h3 className="koi-detail_price">
+            {handleCheckSalePrice(
+              koiDetail.salePrice,
+              koiDetail.price,
+              koiDetail.salePercentage
+            )}
+          </h3>
           <h3 className="koi-detail_gender">Gender: {koiDetail.gender}</h3>
           <h3 className="koi-detail_origin">Origin: {koiDetail.origin}</h3>
           <h3 className="koi-detail_vendor">Vendor: {koiDetail.vendor}</h3>
