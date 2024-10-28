@@ -1,49 +1,65 @@
-.koi_detail {
+.order{
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-    background-color: #fff;
-    align-items: center;
-    padding: 20px;
-    margin:0;
-}
-
-.koi_detail img{
-    object-fit: contain;
-
-}
-.status{
-    display: flex;
-    justify-content: space-between;
-    padding:10px 30px;
-    background-color: #fff;
-    border-bottom: 1px #ccc solid;
-}
-.order {
+    padding: 20px 0;
     border: 1px solid #ccc;
-    background-color: #faf6f6;
-    margin: 10px 0;
-}
-.buttons{
-    margin-top: 20px;
-    margin-left: 800px;
-}
-.buttons Button{
-    margin-left: 10px;
-}
-.buttons:first-child{
-    background-color: #ccc;
-}
-.koiPrice{
-    color: green;
-}
-.total{
-    padding-top: 10px;
-    margin-left: 600px;
-    font-size: 20px;
+    margin-bottom: 10px;
+    align-items: center;
+    background-color: #f9eded;
+ }
+ .koi{
     display: flex;
-}
-.bton{
-    background-color: #000;
+    align-items: center;
+ }
+ .order_id{
+ 
+ }
+ .order_date{
+ color: red;
+ }
+ .order_method{
+ color:green;
+ font-weight: 500;
+ font-size: 18px;
+ }
+ .order_descript{
+ 
+ 
+ }
+ .order_status{
+    font-size: 25px;
+    font-weight: 600;
+    color: green;
+ }
+ .order_total{
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 700px;
+ }
+ .koi-img{
+    width: 150px;
+    height: 150px;
+ }
+ .koi-name{
+    font-size: 20px;
+ 
+ }
+ .koi-price{
+ font-style: 20px;
+ }
+
+ .order_bot{
+    display: flex;
+    align-items: center;
+ }
+ .rate_btn{
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    padding: 10px 10px;
     color: #fff;
-}
+    background: linear-gradient(-45deg, #ee7752, #e95fd6, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+ }
+ .rate_btn:hover{
+    animation: gradient 5s ease infinite;
+ }
+ 

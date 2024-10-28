@@ -17,6 +17,7 @@ Button {
     animation: gradient 20s ease infinite;
     color: #fff;
 }
+
 .check_out_btn{
     /* color: #fff; */
     font-size: 20px;

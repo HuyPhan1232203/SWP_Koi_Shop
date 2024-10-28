@@ -66,10 +66,10 @@ function KoiDetail() {
         <div className="koi-detail col-md-6">
           <h1 className="koi-detail_name">{koiDetail.name}</h1>
           <h3 className="koi-detail_price">${koiDetail.price}</h3>
-          <h3 className="koi-detail_gender">gender: {koiDetail.gender}</h3>
-          <h3 className="koi-detail_origin">origin: {koiDetail.origin}</h3>
-          <h3 className="koi-detail_vendor">vendor: {koiDetail.vendor}</h3>
-          <h3 className="koi-detail_size">size: {koiDetail.size}</h3>
+          <h3 className="koi-detail_gender">Gender: {koiDetail.gender}</h3>
+          <h3 className="koi-detail_origin">Origin: {koiDetail.origin}</h3>
+          <h3 className="koi-detail_vendor">Vendor: {koiDetail.vendor}</h3>
+          <h3 className="koi-detail_size">Size: {koiDetail.size}</h3>
           <h3 className="koi-detail_description">
             description: {koiDetail.description}
           </h3>

@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 import TextArea from "antd/es/input/TextArea";
 import api from "../../../config/axios";
 import { storeProduct } from "../../../redux/features/checkoutcart";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function CheckOutConsignment() {
   const [form] = Form.useForm();
   const userInfo = useSelector((store) => store.user);
@@ -17,6 +18,10 @@ function CheckOutConsignment() {
     console.log(response.data);
     setCareType(response.data);
   };
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   useEffect(() => {
     fetchCareType();
   }, []);
@@ -46,7 +51,7 @@ function CheckOutConsignment() {
     }
   };
   return (
-    <div>
+    <div data-aos="fade-right">
       <Form
         labelCol={{ span: 24 }}
         className="userInfo_input"

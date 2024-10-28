@@ -1,13 +1,19 @@
 import "./check_out.css";
 import { Button, Image, Input } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Outlet, useNavigate } from "react-router-dom";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
 import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
+import AOS from "aos";
+import "aos/dist/aos.css";
 function CheckOut() {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   const [promoCode, setPromoCode] = useState("");
   const [voucherList, setVoucherList] = useState([]);
   const nav = useNavigate();
@@ -78,7 +84,7 @@ function CheckOut() {
   const total = cartItems.reduce((total, item) => total + item.price, 0);
   var finalPrice = total;
   return (
-    <div className="CheckOut row">
+    <div className="CheckOut row" data-aos="fade-up">
       <div className="col-md-8 userInfo">
         <div className="checkout_header">Check Out</div>
         <div className="deposit">

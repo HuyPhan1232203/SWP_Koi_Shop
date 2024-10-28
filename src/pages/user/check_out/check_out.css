@@ -1,6 +1,14 @@
 .CheckOut{
+  color: #fff;
     margin: 80px 0;
-    background-color: #ddd;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow:2px 1px 7px 4px #ccc;
+}
+.userInfo{
+  background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
 }
 .switch {
     position: relative;
@@ -124,6 +132,7 @@
 }
 .delivery_item {
   font-weight: 650;
+  color: #fff;
 }
 .shipping{
     padding:0 40px;

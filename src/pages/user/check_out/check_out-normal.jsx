@@ -6,7 +6,8 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { storeProduct } from "../../../redux/features/checkoutcart";
 import { useEffect } from "react";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function CheckOutNormal() {
   const dispatch = useDispatch();
   const userInfo = useSelector((store) => store.user);
@@ -21,6 +22,10 @@ function CheckOutNormal() {
       side.style.display = "block";
     });
   };
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   const handelSubmitOrder = async () => {
     try {
       const selectedItems = cartItems;
@@ -34,7 +39,7 @@ function CheckOutNormal() {
     }
   };
   return (
-    <div>
+    <div data-aos="fade-left">
       <Form
         labelCol={{ span: 24 }}
         className="userInfo_input"
@@ -108,8 +113,8 @@ function CheckOutNormal() {
                     width: "103%",
                   }}
                 >
-                  <div style={{ color: "#272727" }}>3-4</div>
-                  <div style={{ color: "#aaa" }}> days via Fedex</div>
+                  <div style={{ color: "#fff" }}>3-4</div>
+                  <div style={{ color: "#fff" }}> days via Fedex</div>
                 </div>
               </Radio>
               <Radio value="Express" className="delivery">
@@ -121,8 +126,8 @@ function CheckOutNormal() {
                     width: "103%",
                   }}
                 >
-                  <div style={{ color: "#272727" }}>1-2</div>
-                  <div style={{ color: "#aaa" }}> days via post</div>
+                  <div style={{ color: "#fff" }}>1-2</div>
+                  <div style={{ color: "#fff" }}> days via post</div>
                 </div>
               </Radio>
             </Radio.Group>

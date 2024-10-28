@@ -290,7 +290,7 @@ function HomePage() {
         </Modal>
       </div>
       {location.pathname === "/" && (
-        <div className="homepage-section container">
+        <div className="homepage-section container" data-aos="zoom-in-down">
           <Carousel autoplay>
             <div>
               <div
