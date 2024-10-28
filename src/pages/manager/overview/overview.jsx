@@ -57,14 +57,14 @@ function Overview() {
   }, []);
   return (
     <div>
-      <Row gutter={16}>
+      <Row gutter={16} style={{marginTop: "50px"}}>
         <Col span={8}>
           <Card bordered={false}>
             <Statistic
               title="Total Customer"
               value={data?.CUSTOMER}
               valueStyle={{
-                color: "#3f8600",
+                color: "orange",
               }}
               prefix={<UserOutlined />}
               suffix=""
@@ -77,7 +77,7 @@ function Overview() {
               title="Sold Kois"
               value={data?.SoldKois}
               valueStyle={{
-                color: "#3f8600",
+                color: "red",
               }}
               prefix={<ShoppingOutlined />}
               suffix=""
