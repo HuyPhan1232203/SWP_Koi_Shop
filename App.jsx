@@ -157,7 +157,7 @@ function App() {
           element: <Profile />,
           children: [
             {
-              path: "edit_profile",
+              path: "",
               element: <EditProfile />,
             },
             {

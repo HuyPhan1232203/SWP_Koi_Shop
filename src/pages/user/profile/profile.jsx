@@ -20,10 +20,7 @@ function Profile() {
               <div className="profile_name text-center">
                 {username.username}
               </div>
-              <Link
-                to="edit_profile"
-                style={{ width: "100%", textDecoration: "none" }}
-              >
+              <Link to="" style={{ width: "100%", textDecoration: "none" }}>
                 <div className="profile_children">Edit Profile</div>
               </Link>
               <Link
