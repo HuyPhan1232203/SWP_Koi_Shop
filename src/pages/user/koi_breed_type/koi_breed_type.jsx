@@ -206,13 +206,13 @@ const Product = ({ products }) => {
           )}{" "}
         </p>
       </div>
-      <Button
+      <button
         onClick={handleAddToCart}
         className="Add_btn"
         disabled={isDisable}
       >
         <span className="Add_btn_value">Add to cart</span>
-      </Button>
+      </button>
     </div>
   );
 };

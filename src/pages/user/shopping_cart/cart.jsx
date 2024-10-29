@@ -3,7 +3,11 @@ import "./cart.css";
 import { Button, Form, Image, Input, Select, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
+import {
+  changePrice,
+  clearAll,
+  removeProduct,
+} from "../../../redux/features/cartSlice";
 import { DeleteOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -44,9 +48,14 @@ function Cart() {
       key: "id",
       render: (_, record) => {
         if (record.salePrice > 0) {
+          const action = {
+            price: record.price,
+            salePrice: record.salePrice,
+          };
+          dispatch(changePrice(action));
           return (
             <div>
-              <div>{record.salePrice} VNĐ </div>
+              <div>{record.price} VNĐ </div>
             </div>
           );
         } else {

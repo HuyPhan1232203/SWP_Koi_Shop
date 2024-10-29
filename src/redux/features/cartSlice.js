@@ -12,8 +12,13 @@ const cartSlice=createSlice({
             const productId = action.payload;
              return state.filter(product => product.id !== productId);
         },
+        changePrice:(state,action)=>{
+            console.log(action.payload.price);
+            const result=state.find(koi=>koi.price==action.payload.price);
+            result.price=action.payload.salePrice;
+        },
         clearAll: () => []
     },
 })
-export const {addProduct, clearAll,removeProduct}= cartSlice.actions;
+export const {addProduct, clearAll,removeProduct,changePrice}= cartSlice.actions;
 export default cartSlice.reducer;

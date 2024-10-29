@@ -99,13 +99,13 @@ function CheckOut() {
         </div>
       </div>
       <div className="col-md-4 sumary" id="side" style={{ display: "none" }}>
-        <h3>Summary</h3>
+        <h3 style={{ color: "#000" }}>Summary</h3>
         <div className="summary_price">
-          <p style={{ display: "flex" }}>
+          <p style={{ display: "flex", color: "#000" }}>
             Estimated price:
             <p style={{ color: "green" }}>{total} VNĐ</p>
           </p>
-          <p style={{ display: "flex" }}>
+          <p style={{ display: "flex", color: "#000" }}>
             Discount:
             {voucherList.map((voucher) => {
               if (voucher.code === promoCode) {
@@ -113,13 +113,17 @@ function CheckOut() {
                   finalPrice =
                     finalPrice - (finalPrice * voucher.discountValue) / 100;
                 }
-                return <div key={voucher.code}>{voucher.discountValue}% </div>;
+                return (
+                  <div style={{ color: "#000" }} key={voucher.code}>
+                    {voucher.discountValue}%{" "}
+                  </div>
+                );
               }
             })}
           </p>
         </div>
         <div className="sumary_totalPrice">
-          <p style={{ fontWeight: "600", fontSize: "20px" }}>
+          <p style={{ fontWeight: "600", fontSize: "20px", color: "#000" }}>
             Total Price: {finalPrice} VNĐ{" "}
           </p>
           <div className="row" style={{ padding: " 0px 14px" }}>
@@ -143,10 +147,10 @@ function CheckOut() {
           </div>
         </div>
         <div className="sumary_cart_items">
-          <h6>Items:</h6>
+          <h6 style={{ color: "#000" }}>Items:</h6>
           {cartItems.map((item) => {
             return (
-              <div key={item.id} className="item">
+              <div key={item.id} className="item" style={{ color: "#000" }}>
                 <div className="item_name">
                   <Image
                     src={item.images}
