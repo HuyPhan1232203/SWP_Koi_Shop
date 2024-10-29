@@ -1,5 +1,6 @@
 import {
   Button,
+  Collapse,
   Form,
   Image,
   Input,
@@ -84,6 +85,28 @@ const ConsignmentOnline = () => {
       </div>
     </button>
   );
+  const text = `
+  Support customers to consign Koi fish for online business
+                through the farm's system. Customers choose the online
+                consignment method and provide basic information about Koi fish.
+                Finalize consignment price and agreement: After receiving
+                information, the store and customer agree and finalize the
+                consignment value for the Koi fish. Pay consignment fee online:
+                Customers pay a consignment fee of 20,000 VND to the store.
+                Upload fish to the system for sale: If the fish is accepted for
+                sale on the system, the fish will be posted to the store's shop
+                platform. Consign Fee Regulations Online consignment fee: 20,000
+                VND for each consignment. The online consignment process helps
+                customers trade Koi fish effectively and conveniently through
+                the store's online sales platform.
+`;
+  const items = [
+    {
+      key: "1",
+      label: "Make sure you have read this!!!",
+      children: <p>{text}</p>,
+    },
+  ];
   const nav = useNavigate();
   //CREATE OR UPDATE
   const dispatch = useDispatch();
@@ -108,6 +131,9 @@ const ConsignmentOnline = () => {
       toast.error(err);
     }
   };
+  const onChange = (key) => {
+    console.log(key);
+  };
   return (
     <div className="Consign_body" data-aos="flip-left">
       <CSSTransition
@@ -117,6 +143,17 @@ const ConsignmentOnline = () => {
         unmountOnExit
       >
         <div className="Consign_body-form row">
+          <div className="col-md-6">
+            <img src="/assets/images/koi-2.avif" className="koi-pic"></img>
+            <div style={{ color: "#000" }} className="contact_online">
+              <p style={{ fontSize: "16px" }}></p>
+              <Collapse
+                items={items}
+                defaultActiveKey={["1"]}
+                onChange={onChange}
+              />
+            </div>
+          </div>
           <div className="col-md-6 form">
             <div className="form_head">Show Us Your Koi</div>
             <Form
@@ -138,10 +175,7 @@ const ConsignmentOnline = () => {
               </Form.Item>
               <Form.Item
                 label="Price"
-                rules={[
-                  { required: true, message: "Please Input" },
-                  // { min: 1000, message: "Price cannot lower than 1000" },
-                ]}
+                rules={[{ required: true, message: "Please Input" }]}
                 name="price"
               >
                 <Input></Input>
@@ -258,15 +292,6 @@ const ConsignmentOnline = () => {
                 src={previewImage}
               />
             )}
-          </div>
-          <div className="col-md-6">
-            <img src="/assets/images/koi-2.avif" className="koi-pic"></img>
-            <div
-              style={{ color: "#000" }}
-              className="contact_online text-center"
-            >
-              <div>Contact us if you need more information!!! </div>
-            </div>
           </div>
         </div>
       </CSSTransition>

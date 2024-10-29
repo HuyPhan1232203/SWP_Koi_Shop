@@ -44,14 +44,8 @@ function Cart() {
       key: "id",
       render: (_, record) => {
         if (record.salePrice > 0) {
-          {
-            record.price = record.salePrice;
-          }
           return (
             <div>
-              {/* <div style={{ textDecoration: "line-through" }}>
-                {record.price} VNĐ
-              </div> */}
               <div>{record.salePrice} VNĐ </div>
             </div>
           );
