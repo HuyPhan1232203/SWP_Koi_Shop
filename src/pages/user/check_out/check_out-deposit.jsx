@@ -33,6 +33,7 @@ function CheckOutConsignment() {
       side.style.display = "block";
     });
     console.log(value);
+    console.log(value.message);
     try {
       const selectedItems = cartItems;
       const details = selectedItems.map((item) => ({
@@ -46,6 +47,7 @@ function CheckOutConsignment() {
       };
       console.log(values);
       dispatch(storeProduct(values));
+      sessionStorage("description", value.message);
     } catch (err) {
       toast.error("err");
     }

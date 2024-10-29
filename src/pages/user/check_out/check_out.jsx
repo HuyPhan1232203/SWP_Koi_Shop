@@ -38,10 +38,12 @@ function CheckOut() {
       toast.error(err.res.data);
     }
   };
+  const description = sessionStorage.getItem("description");
   const cart = useSelector((store) => store.cart);
   const details = useSelector((store) => store.checkout);
   const handelSubmitOrder = async () => {
     console.log(details);
+    console.log(description);
     try {
       var val = [];
       var response = "";
@@ -49,10 +51,12 @@ function CheckOut() {
         val = {
           detail: details,
           voucherCode: promoCode,
+          description: description,
         };
       } else {
         val = {
           detail: details,
+          description: description,
         };
       }
       console.log(val.detail.detail);

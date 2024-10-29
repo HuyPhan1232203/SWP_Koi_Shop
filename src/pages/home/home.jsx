@@ -14,7 +14,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Carousel, message, Modal, Rate } from "antd";
+import { Badge, Carousel, message, Modal, Rate } from "antd";
 import api from "../../config/axios";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";

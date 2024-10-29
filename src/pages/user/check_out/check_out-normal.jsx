@@ -1,32 +1,28 @@
 import { Button, Form, Input, Radio, Select } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../../../config/axios";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
 import { storeProduct } from "../../../redux/features/checkoutcart";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 function CheckOutNormal() {
   const dispatch = useDispatch();
+  const [form] = Form.useForm();
   const userInfo = useSelector((store) => store.user);
   const cartItems = useSelector((store) => store.selectedItems);
-  const nav = useNavigate();
   console.log(cartItems);
   console.log(userInfo);
-  const handleShowSide = () => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+  const handelSubmitOrder = async (value) => {
     const btn = document.getElementById("continue");
     const side = document.getElementById("side");
     btn.addEventListener("click", () => {
       side.style.display = "block";
     });
-  };
-  useEffect(() => {
-    AOS.init();
-    AOS.refresh();
-  }, []);
-  const handelSubmitOrder = async () => {
     try {
       const selectedItems = cartItems;
       const detail = selectedItems.map((item) => ({
@@ -34,6 +30,7 @@ function CheckOutNormal() {
       }));
       console.log({ detail });
       dispatch(storeProduct(detail));
+      sessionStorage.setItem("description", value.message);
     } catch (err) {
       toast.error("err");
     }
@@ -43,10 +40,8 @@ function CheckOutNormal() {
       <Form
         labelCol={{ span: 24 }}
         className="userInfo_input"
-        onFinish={() => {
-          handleShowSide();
-          handelSubmitOrder();
-        }}
+        onFinish={handelSubmitOrder}
+        form={form}
       >
         <div className="user_info_contain">
           <Form.Item
@@ -213,7 +208,12 @@ function CheckOutNormal() {
             <TextArea rows={4}></TextArea>
           </Form.Item>
         </div>
-        <Button htmlType="submit" id="continue">
+        <Button
+          onClick={() => {
+            form.submit();
+          }}
+          id="continue"
+        >
           Continue
         </Button>
       </Form>
