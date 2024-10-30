@@ -24,10 +24,8 @@ function LoginPage() {
       localStorage.setItem("token", token);
       if (role === "MANAGER") {
         navigate("/dashboard/koilist");
-        navigate(0);
       } else if (role === "CUSTOMER") {
         navigate("/");
-        navigate(0);
       } else if (role === "STAFF") {
         navigate("/dashboard-staff/orderlist");
       }
