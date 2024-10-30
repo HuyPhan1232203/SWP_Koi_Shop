@@ -41,6 +41,7 @@ function EditProfile() {
           setOpenModal(false);
         }}
         onOk={form.submit}
+        className="edit_profile-modal"
       >
         <Form form={form} onFinish={handleEditInfo}>
           <Form.Item

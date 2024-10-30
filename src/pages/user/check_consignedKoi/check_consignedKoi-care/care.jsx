@@ -29,25 +29,26 @@ function Care() {
       {koiList.map((koi) => {
         return (
           <div className="koi" key={koi.id}>
-            <div className="koi-1 row ">
+            <div className="koi-1 row">
               <img
                 className="col-md-2"
                 src={koi.imgUrl}
                 height={200}
+                width={200}
                 style={{ objectFit: "contain" }}
                 alt=""
               />
-              <div className="col-md-6" style={{ display: "flex" }}>
+              <div className="col-md-7" style={{ display: "flex" }}>
                 End date:
                 <div style={{ color: "red", marginLeft: "10px" }}>
                   {StartDateDisplay(koi.endDate)}
                 </div>
               </div>
-              <div className="col-md-4 koi_status">
+              <div className="col-md-3 koi_status">
                 Status: {koi.isConsignment}
               </div>
             </div>
-            <div className="price">Price: {koi.price}</div>
+            <div className="price">Price: {koi.price} VNĐ</div>
           </div>
         );
       })}

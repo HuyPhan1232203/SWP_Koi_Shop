@@ -1,20 +1,27 @@
-import React, { useEffect, useState } from "react";
-import api from "../../../config/axios";
-import { toast } from "react-toastify";
 import "./check_consignment-on.css";
-import { Link, Outlet } from "react-router-dom";
-import { Button } from "antd";
+import { Tabs } from "antd";
+import Sell from "./check_consignedKoi-sell/sell";
+import Care from "./check_consignedKoi-care/care";
 function CheckConsignOnl() {
+  const onChange = (key) => {
+    console.log(key);
+  };
+  const items = [
+    {
+      key: "1",
+      label: "Consign for sell",
+      children: <Sell />,
+    },
+    {
+      key: "2",
+      label: "Consign for care",
+      children: <Care />,
+    },
+  ];
   return (
     <div className="consign-history">
-      <Link to="">
-        <Button>Sell</Button>
-      </Link>
-      <Link to="care">
-        <Button>Care</Button>
-      </Link>
       <div className="check_consign">
-        <Outlet />
+        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
       </div>
     </div>
   );

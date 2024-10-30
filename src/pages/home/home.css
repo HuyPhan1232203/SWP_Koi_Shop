@@ -115,6 +115,7 @@ html {
     /* background-color: #7A191F; */
     /* background-color: #B78E75; */
     /* background-color: #E35C40; */
+    color: #fff;
     background: linear-gradient(-45deg, #ee7752, #f3c9f1, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
     animation: gradient 20s ease infinite;
@@ -577,23 +578,25 @@ word-spacing: -3px;
     justify-content: space-between;
 }
 
-.heading-footer {
-}
-
 .slogan  {
     display: flex;
     justify-content: center;
     color: #000;
     margin-left: 90px;
     font-weight: 600;
+    color: #fff;
+
 }
 
 .footer-social {
+    
     margin-left: 30px;
 }
 
+
 .footer-social .social-icon {
-    color: #000;
+    color: #fff;
+
     margin-left: 60px;
 }
 
@@ -601,20 +604,24 @@ word-spacing: -3px;
     margin-top: 25px;
     margin-bottom: 40px;
     font-size: 18px;
+    
     font-weight: 600;
 }
 .buy-koi {
     margin-left: -100px;
+    
 }
 
 .list-unstyled {
     padding-left: 25px;
     list-style-type: none;
+    
 }
 
 
 .list-unstyled a {
-    color: #000;
+    color: #fff;
+
 
 }
 
@@ -622,6 +629,7 @@ word-spacing: -3px;
     list-style: none;
     margin-left: 5px;
     display: inline-block;
+    
     font-size: 40px;
 }
 
@@ -630,12 +638,15 @@ word-spacing: -3px;
     text-decoration: none;
     color: #000;
 
+    
 }
 
 .arrow-icon {
     font-size: 14px;
     color: #000;
     margin-right: 5px;
+    color: #fff;
+
 }
 
 .contact-section li {
@@ -647,11 +658,13 @@ word-spacing: -3px;
 }
 
 .contact-section .contact-icon {
-    color: #000;
+    color: #fff;
+
 }
 
 .contact-section .text-contact {
     color: #000;
+    color: #fff;
 
     margin-left: 24px;
     font-size: 15px;
@@ -669,6 +682,7 @@ word-spacing: -3px;
     margin-left: 180px;
     width: 150px; /* Adjust size as needed */
     height: auto; /* Maintain aspect ratio */
+    
 }
 
 .footer-widget {

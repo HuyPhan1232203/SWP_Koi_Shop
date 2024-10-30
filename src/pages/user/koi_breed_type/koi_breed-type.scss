@@ -36,6 +36,10 @@
 .Add_btn:hover{
     animation: gradient 3s ease infinite;
 }
+.Add_btn:disabled{
+    color: #aaa;
+    background: #ddd !important;
+}
 .Add_btn{
     cursor: pointer;
     background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);

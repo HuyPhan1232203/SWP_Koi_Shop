@@ -293,12 +293,22 @@ function HomePage() {
           </div>
         </div>
         <Modal
-          title="LogOut"
           open={openModal}
-          onCancel={handleCloseModal}
+          onCancel={() => {
+            setOpenModal(false);
+          }}
           onOk={handleLogOut}
+          className="modal_logout"
         >
-          Are you sure want to log out?
+          <div style={{ display: "flex", alignItems: "flex-end" }}>
+            <img
+              src="/assets/images/koi-sad.png"
+              width={100}
+              style={{ paddingBottom: "20px" }}
+              alt=""
+            />
+            <div>Are you sure want to log out?</div>
+          </div>
         </Modal>
       </div>
       {location.pathname === "/" && (

@@ -15,7 +15,17 @@
 .profile{
     margin-bottom: 100px;
 }
-
+.modal_logout .ant-modal-content {
+    background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    color: #fff;
+    border: #ccc solid 1px;
+  }
+  .ant-modal .ant-modal-content .ant-modal-body {
+    font-size: 20px; 
+    padding: 20px 0;
+  }
 .right{
     background-color: #fff;
 }
