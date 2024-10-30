@@ -24,6 +24,7 @@ import "./overview.css";
 function Overview() {
   const [data, setData] = useState([]);
   const [monthlyData, setMonthlyData] = useState([]);
+  const [breed, setBreed] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -34,6 +35,20 @@ function Overview() {
       console.log(err);
     }
   };
+
+  const fetchBreed = async () => {
+    try {
+      const response = await api.get("/dashboard/stats");
+      console.log(response.data);
+      const formatData = response?.data.topBreeds?.map((item) => ({
+        name: `${item?.BreedName}`,
+        TotalSold: `${item?.TotalSold}`
+      }))
+      setBreed(formatData)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const fetchMonthlyData = async () => {
     try {
@@ -54,11 +69,12 @@ function Overview() {
   useEffect(() => {
     fetchData();
     fetchMonthlyData();
+    fetchBreed();
   }, []);
   return (
     <div>
-      <Row gutter={16} style={{marginTop: "50px"}}>
-        <Col span={8}>
+      <Row gutter={16} style={{ marginTop: "50px" }}>
+        <Col span={6}>
           <Card bordered={false}>
             <Statistic
               title="Total Customer"
@@ -71,7 +87,20 @@ function Overview() {
             />
           </Card>
         </Col>
-        <Col span={8}>
+        <Col span={6}>
+          <Card bordered={false}>
+            <Statistic
+              title="Total Staff"
+              value={data?.STAFF}
+              valueStyle={{
+                color: "#3f6600",
+              }}
+              prefix={<ShoppingOutlined />}
+              suffix=""
+            />
+          </Card>
+        </Col>
+        <Col span={6}>
           <Card bordered={false}>
             <Statistic
               title="Sold Kois"
@@ -84,7 +113,7 @@ function Overview() {
             />
           </Card>
         </Col>
-        <Col span={8}>
+        <Col span={6}>
           <Card bordered={false}>
             <Statistic
               title="Available Kois"
@@ -100,7 +129,7 @@ function Overview() {
       </Row>
       <div className="chart-section">
         <h3>Product</h3>
-        <PieChart className="pie" width={650} height={400}>
+        {/* <PieChart className="pie" width={650} height={400}>
           <Pie
             data={data?.topBreeds}
             dataKey="TotalSold"
@@ -117,7 +146,15 @@ function Overview() {
           </Pie>
           <Tooltip />
           <Legend />
-        </PieChart>
+        </PieChart> */}
+        <BarChart className="bar" width={800} height={400} data={breed}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="TotalSold" fill="#82ca9d" />
+        </BarChart>
         <h3>Revenue</h3>
         <BarChart className="bar" width={800} height={400} data={monthlyData}>
           <CartesianGrid strokeDasharray="3 3" />
