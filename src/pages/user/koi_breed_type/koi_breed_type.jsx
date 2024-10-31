@@ -36,8 +36,8 @@ function KoiBreedType() {
   const endIndex = startIndex + pageSize;
   const currentKoiList = koiList.slice(startIndex, endIndex);
   const [form] = Form.useForm();
-  const handleCompare = (value) => {
-    console.log(value);
+  const handleCompare = async (value) => {
+    const res = await api.psot(``);
   };
   return (
     <div className="koi_breed_fetch">

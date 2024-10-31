@@ -46,9 +46,7 @@ import Sell from "./src/pages/user/check_consignedKoi/check_consignedKoi-sell/se
 import SuccessConsignmentPage from "./src/pages/user/successPage/success-consignment";
 import CheckOutALL from "./src/pages/user/check_out/checkout-all";
 import ManageKoiSale from "./src/pages/manager/manage-koi-sale/manage-koi-sale";
-import PDF from "./src/PDF/pdf";
 import Certificate from "./src/pages/certificate/certificate";
-import { PDFViewer } from "@react-pdf/renderer";
 import CareConsign from "./src/pages/staff/manage-consign-care/manage-consign-care";
 import ManageStaffConsign from "./src/pages/manager/manage-staff-consign/manage-staff-consign";
 import Overview from "./src/pages/manager/overview/overview";
