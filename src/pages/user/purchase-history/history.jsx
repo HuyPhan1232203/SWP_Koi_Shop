@@ -8,6 +8,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 function History() {
+  const [form] = Form.useForm();
+  const [orderDetail, setOrderDetail] = useState();
+  const [isDisable, setDisable] = useState(false);
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -20,18 +23,49 @@ function History() {
       </div>
     );
   };
-  const handleRating = async (orderID, consignmentid, value) => {
-    const res = await api.postForm(
-      `feedback/all?orderid=${orderID}&consignmentid=${consignmentid}`,
-      value
-    );
-    console.log(res);
+  const handleCheckRate = (order) => {
+    if (!order.order.feedback) {
+      return (
+        <button
+          className="rate_btn col-md-2"
+          onClick={() => {
+            setShowModal(true);
+            setOrderDetail(order);
+          }}
+          hidden={isDisable}
+        >
+          Rating
+        </button>
+      );
+    }
+  };
+  const handleRating = async (value) => {
+    try {
+      if (orderDetail?.consignment?.consignmentID === undefined) {
+        const res = await api.post(
+          `feedback/all?orderid=${orderDetail.order.id}`,
+          value
+        );
+        console.log(res.data);
+      } else {
+        const res = await api.post(
+          `feedback/all?orderid=${orderDetail.order.id}&consignmentid=${orderDetail.consignment.consignmentID}`,
+          value
+        );
+        console.log(res.data);
+      }
+      toast.success("Thanks for your lovely feedback!!!");
+    } catch (err) {
+      toast.error(err.res.data);
+    } finally {
+      fetchOrder();
+      setShowModal(false);
+    }
   };
   const [orderList, setOrderList] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const fetchOrder = async () => {
     const res = await api.get("order/current-user");
-    console.log(res.data);
     setOrderList(res.data);
   };
   useEffect(() => {
@@ -39,9 +73,9 @@ function History() {
   }, []);
   return (
     <div>
-      {orderList.map((order, index) => {
+      {orderList.map((order) => {
         return (
-          <div key={index}>
+          <div key={order.id}>
             <div className="order row">
               <div className="order_id col-md-1">ID: {order.id}</div>
               <div className="order_date col-md-3">
@@ -71,14 +105,7 @@ function History() {
                       <Rate value={order.order?.feedback?.rating}></Rate>
                     </div>
                   </div>
-                  <button
-                    className="rate_btn col-md-2"
-                    onClick={() => {
-                      setShowModal(true);
-                    }}
-                  >
-                    Rating
-                  </button>
+                  {handleCheckRate(order)}
                   <div className="order_total  col-md-3">{order.total} VNĐ</div>
                 </div>
               </div>
@@ -91,9 +118,9 @@ function History() {
         onCancel={() => {
           setShowModal(false);
         }}
+        onOk={form.submit}
       >
-        <Form>
-          {console.log("askjdb")}
+        <Form form={form} onFinish={handleRating}>
           <Form.Item label="Message" name="content">
             <TextArea></TextArea>
           </Form.Item>

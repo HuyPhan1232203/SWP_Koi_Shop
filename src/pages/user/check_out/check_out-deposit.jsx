@@ -32,7 +32,7 @@ function CheckOutConsignment() {
     btn.addEventListener("click", () => {
       side.style.display = "block";
     });
-    console.log(value);
+    console.log(value.endDate.$d);
     console.log(value.message);
     try {
       const selectedItems = cartItems;
@@ -42,14 +42,13 @@ function CheckOutConsignment() {
       const values = {
         detail: details,
         describe: value.description,
-        endDate: value.endDate,
+        endDate: value.endDate.toISOString(),
         careTypeId: value.careTypeId,
       };
       console.log(values);
       dispatch(storeProduct(values));
-      sessionStorage("description", value.message);
     } catch (err) {
-      toast.error("err");
+      toast.error(err.response.data);
     }
   };
   return (
