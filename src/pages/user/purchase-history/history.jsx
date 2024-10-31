@@ -66,6 +66,21 @@ function History() {
     const res = await api.get("order/current-user");
     setOrderList(res.data);
   };
+  const checkCanceled = (order) => {
+    if (order.order.status === "CANCELED") {
+      return (
+        <div className="order_status col-md-2" style={{ color: "red" }}>
+          {order.order.status}
+        </div>
+      );
+    } else {
+      return (
+        <div className="order_status col-md-2" style={{ color: "green" }}>
+          {order.order.status}
+        </div>
+      );
+    }
+  };
   useEffect(() => {
     fetchOrder();
   }, []);
@@ -80,7 +95,7 @@ function History() {
                 {StartDateDisplay(order.createAt)}
               </div>
               <div className="order_descript col-md-6">{order.description}</div>
-              <div className="order_status col-md-2">{order.order.status}</div>
+              {checkCanceled(order)}
               <div>
                 {order.order.orderDetails.map((koi) => {
                   return (

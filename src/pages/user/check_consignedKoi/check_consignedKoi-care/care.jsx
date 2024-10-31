@@ -48,7 +48,7 @@ function Care() {
                 Status: {koi.isConsignment}
               </div>
             </div>
-            <div className="price">Price: {koi.price} VNĐ</div>
+            <div className="price">Cost: {koi.price} VNĐ</div>
           </div>
         );
       })}

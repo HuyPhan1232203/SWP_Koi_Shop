@@ -11,7 +11,7 @@ function ManageCareType() {
 
   const fetchCareType = async () => {
     try {
-      const response = await api.get("caretypes");
+      const response = await api.get("caretypes/manager");
       setSubmitCareType(response.data);
       console.log(response.data);
     } catch (err) {
