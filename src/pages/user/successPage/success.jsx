@@ -4,16 +4,18 @@ import { Link, useNavigate } from "react-router-dom";
 import useGetParams from "../../hooks/useGetParam";
 import "./success.css";
 import api from "../../../config/axios";
+import { useDispatch, useSelector } from "react-redux";
+import { removeProduct } from "../../../redux/features/cartSlice";
 
 function Success() {
   const nav = useNavigate();
-
+  const orderedProducts = useSelector((store) => store.orderProduct);
   const params = useGetParams();
   const orderID = params("orderID");
   const vnp_TransactionStatus = params("vnp_TransactionStatus");
   console.log("orderID: ", orderID);
   console.log("vnp_TransactionStatus: ", vnp_TransactionStatus);
-
+  const dispatch = useDispatch();
   const postOrderID = async () => {
     try {
       const response = await api.post(`/order/transaction?id=${orderID}`);
@@ -22,12 +24,13 @@ function Success() {
       console.log(err);
     }
   };
-
   useEffect(() => {
     if (vnp_TransactionStatus === "00") {
       postOrderID();
+      orderedProducts.detail.map((product) => {
+        dispatch(removeProduct(product?.koiId));
+      });
     } else {
-      // Failed
       nav("/failed");
     }
   }, [vnp_TransactionStatus]);

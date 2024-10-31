@@ -50,9 +50,17 @@ function LoginPage() {
           token: user.accessToken,
         });
         // IdP data available using getAdditionalUserInfo(result)
+        localStorage.setItem("token", response.data.token);
         console.log(response.data);
         dispatch(login(response.data));
-        navigate("/");
+        const { role } = response.data;
+        if (role === "MANAGER") {
+          navigate("/dashboard/koilist");
+        } else if (role === "CUSTOMER") {
+          navigate("/");
+        } else if (role === "STAFF") {
+          navigate("/dashboard-staff/orderlist");
+        }
         // ...
       })
       .catch((error) => {

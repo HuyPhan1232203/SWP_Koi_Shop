@@ -39,9 +39,9 @@ function History() {
   }, []);
   return (
     <div>
-      {orderList.map((order) => {
+      {orderList.map((order, index) => {
         return (
-          <div key={order.id}>
+          <div key={index}>
             <div className="order row">
               <div className="order_id col-md-1">ID: {order.id}</div>
               <div className="order_date col-md-3">
@@ -83,24 +83,25 @@ function History() {
                 </div>
               </div>
             </div>
-            <Modal
-              open={showModal}
-              onCancel={() => {
-                setShowModal(false);
-              }}
-            >
-              <Form>
-                <Form.Item label="Message" name="content">
-                  <TextArea></TextArea>
-                </Form.Item>
-                <Form.Item label="Rate" name="rating">
-                  <Rate></Rate>
-                </Form.Item>
-              </Form>
-            </Modal>
           </div>
         );
       })}
+      <Modal
+        open={showModal}
+        onCancel={() => {
+          setShowModal(false);
+        }}
+      >
+        <Form>
+          {console.log("askjdb")}
+          <Form.Item label="Message" name="content">
+            <TextArea></TextArea>
+          </Form.Item>
+          <Form.Item label="Rate" name="rating">
+            <Rate></Rate>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { storeOrder } from "../../../redux/features/orderedProduct";
 function CheckOut() {
   useEffect(() => {
     AOS.init();
@@ -39,11 +40,8 @@ function CheckOut() {
     }
   };
   const description = sessionStorage.getItem("description");
-  const cart = useSelector((store) => store.cart);
   const details = useSelector((store) => store.checkout);
   const handelSubmitOrder = async () => {
-    console.log(details);
-    console.log(description);
     try {
       var val = [];
       var response = "";
@@ -66,18 +64,20 @@ function CheckOut() {
         console.log(details.careTypeId);
         response = await api.post("consignmentOrder", val.detail);
         console.log(response.data);
-        val.detail.detail.map((value) => {
-          dispatch(removeProduct(value?.koiId));
-        });
+        dispatch(storeOrder(val.detail));
+
+        // val.detail.detail.map((value) => {
+        //   dispatch(removeProduct(value?.koiId));
+        // });
       } else {
         console.log("normal");
         response = await api.post("order", val);
         console.log(response.data);
-        val.detail.map((value) => {
-          dispatch(removeProduct(value?.koiId));
-        });
+        dispatch(storeOrder(val));
+        // val.detail.map((value) => {
+        //   dispatch(removeProduct(value?.koiId));
+        // });
       }
-
       console.log(response.data);
       window.open(response.data);
       nav(0);
