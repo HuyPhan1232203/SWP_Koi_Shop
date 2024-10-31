@@ -6,9 +6,8 @@
     align-items: center;
     background-color: #f9eded;
  }
- .koi{
-    display: flex;
-    align-items: center;
+.koiShow{
+   background-color: #fff;
  }
  .order_id{
  
@@ -36,12 +35,15 @@
     margin-left: 700px;
  }
  .koi-img{
-    width: 150px;
+    width: 200px;
     height: 150px;
  }
  .koi-name{
     font-size: 20px;
  
+ }
+ .content{
+   padding: 20px 0;
  }
  .koi-price{
  font-style: 20px;

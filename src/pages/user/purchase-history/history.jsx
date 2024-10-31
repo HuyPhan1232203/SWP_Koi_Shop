@@ -10,7 +10,6 @@ import "aos/dist/aos.css";
 function History() {
   const [form] = Form.useForm();
   const [orderDetail, setOrderDetail] = useState();
-  const [isDisable, setDisable] = useState(false);
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -24,7 +23,7 @@ function History() {
     );
   };
   const handleCheckRate = (order) => {
-    if (!order.order.feedback) {
+    if (!order.order.feedback && order.order.status === "COMPLETED") {
       return (
         <button
           className="rate_btn col-md-2"
@@ -32,7 +31,6 @@ function History() {
             setShowModal(true);
             setOrderDetail(order);
           }}
-          hidden={isDisable}
         >
           Rating
         </button>
@@ -86,12 +84,15 @@ function History() {
               <div>
                 {order.order.orderDetails.map((koi) => {
                   return (
-                    <div key={koi.id} className="koi row">
+                    <div key={koi.id} className="koiShow row">
                       <img
-                        className="koi-img col-md-2"
+                        className="koi-img col-md-3"
                         src={koi.imageUrl}
                       ></img>
-                      <div className="koi-name col-md-7">{koi.koiName}</div>
+                      <div className="col-md-6">
+                        <div className="koi-name ">{koi.koiName}</div>
+                        <div>{order.order.description}</div>
+                      </div>
                       <div className="koi-price col-md-3">{koi.price} VNĐ</div>
                     </div>
                   );
