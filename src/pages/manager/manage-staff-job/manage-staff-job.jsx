@@ -86,7 +86,6 @@ function ManageStaffJob() {
             staff.id === record?.order?.staffId ||
             staff.id === record?.consignment?.staffid
           ) {
-            console.log(staff);
             return <div key={staff.id}>{staff.username}</div>;
           }
         });

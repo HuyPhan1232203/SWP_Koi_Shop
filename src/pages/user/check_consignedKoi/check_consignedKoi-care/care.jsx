@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../../config/axios";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 function Care() {
   const [koiList, setKoiList] = useState([]);
   const fetchKoi = async () => {
@@ -22,13 +23,17 @@ function Care() {
     );
   };
   useEffect(() => {
+    Aos.init();
+    Aos.refresh();
+  }, []);
+  useEffect(() => {
     fetchKoi();
   }, []);
   return (
     <div>
       {koiList.map((koi) => {
         return (
-          <div className="koi" key={koi.id}>
+          <div className="koi" key={koi.id} data-aos="fade-right">
             <div className="koi-1 row">
               <img
                 className="col-md-2"

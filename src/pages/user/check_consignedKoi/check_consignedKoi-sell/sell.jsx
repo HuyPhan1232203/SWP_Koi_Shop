@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../../config/axios";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 function Sell() {
   const [koiList, setKoiList] = useState([]);
   const fetchKoi = async () => {
@@ -16,11 +17,15 @@ function Sell() {
   useEffect(() => {
     fetchKoi();
   }, []);
+  useEffect(() => {
+    Aos.init();
+    Aos.refresh();
+  }, []);
   return (
     <div>
       {[...koiList].reverse().map((koi) => {
         return (
-          <div className="koi" key={koi.id}>
+          <div className="koi" key={koi.id} data-aos="fade-right">
             <div className="koi-1 row">
               <img
                 className="col-md-2"
