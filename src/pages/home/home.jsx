@@ -54,14 +54,27 @@ function HomePage() {
   //CopyButton
   const CopyButton = (text) => {
     const copyText = () => {
-      navigator.clipboard
-        .writeText(text)
-        .then(() => {
+      if (navigator.clipboard) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => message.success("Text copied to clipboard!"))
+          .catch((error) => message.error("Failed to copy text: " + error));
+      } else {
+        // Fallback method for unsupported environments
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px"; // Move it off-screen
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");
           message.success("Text copied to clipboard!");
-        })
-        .catch((error) => {
+        } catch (error) {
           message.error("Failed to copy text: " + error);
-        });
+        }
+        document.body.removeChild(textarea);
+      }
     };
 
     return (

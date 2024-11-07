@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Select, Table, Spin } from "antd";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
@@ -14,7 +14,7 @@ function ManageStaffJob() {
       const response = await api.get("order/all-payments");
       setOrderList(response.data);
     } catch (error) {
-      toast.error("Error fetching orders");
+      toast.error(error + "Error fetching orders");
     }
   };
 
@@ -23,7 +23,7 @@ function ManageStaffJob() {
       const response = await api.get("account?role=STAFF");
       setStaffList(response.data);
     } catch (error) {
-      toast.error("Error fetching staff");
+      toast.error(error + "Error fetching staff");
     }
   };
 
@@ -63,7 +63,7 @@ function ManageStaffJob() {
       }
       toast.success("Staff assigned successfully!");
     } catch (err) {
-      toast.error("Error assigning staff");
+      toast.error(err + "Error assigning staff");
     } finally {
       fetchOrder();
       fetchStaff();
