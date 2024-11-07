@@ -18,6 +18,14 @@
     box-shadow: 1px 3px 8px #ccc;
     border-radius: 34px;
   }
+ .radio_delivery{
+  display: flex;
+  flex-wrap: wrap;
+ }
+ .delivery{
+  width: 180px;
+  margin-bottom: 10px;
+ }
   .userInfo h1{
     width: 50%;
     border-bottom:1px #000 solid ;

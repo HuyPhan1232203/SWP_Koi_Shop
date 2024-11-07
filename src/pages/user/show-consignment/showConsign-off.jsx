@@ -4,10 +4,12 @@ import api from "../../../config/axios";
 import TextArea from "antd/es/input/TextArea";
 import { useSelector } from "react-redux";
 import "./showConsign-off.css";
+import moment from "moment";
 
 function ShowConsignOff() {
   const [form] = Form.useForm();
   const [careType, setCareType] = useState([]);
+  const [startDate, setStartDate] = useState(null);
   const KoiSubmit = useSelector((store) => store.koi);
   //FETCH
   const fetchCareType = async () => {
@@ -55,7 +57,18 @@ function ShowConsignOff() {
     console.log(response.data);
     window.open(response.data);
   };
-
+  const disablePastDates = (current) => {
+    console.log(startDate);
+    if (!startDate) return true; // Disable all dates if dateA is not set
+    const minDateB = startDate.add(1, "days").startOf("day");
+    return current && current < minDateB;
+  };
+  const disableBefore7thDate = (current) => {
+    // Calculate the date 7 days from now
+    const minDate = moment().add(7, "days").startOf("day");
+    // Disable all dates before the 7th day from now
+    return current && current < minDate;
+  };
   useEffect(() => {
     fetchCareType();
   }, []);
@@ -84,10 +97,14 @@ function ShowConsignOff() {
             label="Start date"
             name="startDate"
           >
-            <DatePicker className="date-form-2" />
+            <DatePicker
+              className="date-form-2"
+              disabledDate={disableBefore7thDate}
+              onChange={(date) => setStartDate(date)}
+            />
           </Form.Item>
           <Form.Item labelCol={{ span: 9 }} label="End date" name="endDate">
-            <DatePicker />
+            <DatePicker disabledDate={disablePastDates} disabled={!startDate} />
           </Form.Item>
         </div>
         <div className="shipping">

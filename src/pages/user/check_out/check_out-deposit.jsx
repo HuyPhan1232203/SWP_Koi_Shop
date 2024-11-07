@@ -7,6 +7,7 @@ import api from "../../../config/axios";
 import { storeProduct } from "../../../redux/features/checkoutcart";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import moment from "moment";
 function CheckOutConsignment() {
   const [form] = Form.useForm();
   const userInfo = useSelector((store) => store.user);
@@ -50,6 +51,13 @@ function CheckOutConsignment() {
     } catch (err) {
       toast.error(err.response.data);
     }
+  };
+  const disablePastDates = (current) => {
+    // Calculate the date 1 day from now
+    const minDate = moment().add(5, "days").startOf("day");
+
+    // Disable all dates before 1 day from now (i.e., only allow tomorrow onward)
+    return current && current < minDate;
   };
   return (
     <div data-aos="fade-right">
@@ -140,7 +148,7 @@ function CheckOutConsignment() {
         </div>
         <Form.Item>
           <Form.Item labelCol={{ span: 9 }} label="End date" name="endDate">
-            <DatePicker />
+            <DatePicker disabledDate={disablePastDates} />
           </Form.Item>
         </Form.Item>
         <div className="message">
@@ -155,5 +163,4 @@ function CheckOutConsignment() {
     </div>
   );
 }
-
 export default CheckOutConsignment;

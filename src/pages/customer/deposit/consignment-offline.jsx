@@ -14,7 +14,7 @@ import {
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { storeKoi } from "../../../redux/features/koiSlice";
 import { CSSTransition } from "react-transition-group";
 import AOS from "aos";
