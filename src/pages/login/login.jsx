@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form } from "antd";
 import "./login.css";
-import { messaging, provider } from "../../config/firebase";
+import { provider } from "../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../config/axios";
 import { GoogleOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/features/userSlice";
-import { getToken } from "firebase/messaging";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
