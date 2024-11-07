@@ -1,20 +1,12 @@
-import {
-  ArrowDownOutlined,
-  ArrowUpOutlined,
-  ShoppingOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { ShoppingOutlined, UserOutlined } from "@ant-design/icons";
 import { Card, Col, Row, Statistic } from "antd";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import {
   Bar,
   BarChart,
   CartesianGrid,
-  Cell,
   Legend,
-  Pie,
-  PieChart,
   Tooltip,
   XAxis,
   YAxis,
@@ -42,13 +34,14 @@ function Overview() {
       console.log(response.data);
       const formatData = response?.data.topBreeds?.map((item) => ({
         name: `${item?.BreedName}`,
-        TotalSold: `${item?.TotalSold}`
-      }))
-      setBreed(formatData)
+        TotalSold: `${item?.TotalSold}`,
+      }));
+      console.log(formatData);
+      setBreed(formatData);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const fetchMonthlyData = async () => {
     try {
@@ -63,8 +56,6 @@ function Overview() {
       console.log(err);
     }
   };
-
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
   useEffect(() => {
     fetchData();
@@ -129,24 +120,6 @@ function Overview() {
       </Row>
       <div className="chart-section">
         <h3>Product</h3>
-        {/* <PieChart className="pie" width={650} height={400}>
-          <Pie
-            data={data?.topBreeds}
-            dataKey="TotalSold"
-            nameKey="BreedName"
-            cx="50%"
-            cy="50%"
-            outerRadius={120}
-            fill="#8884d8"
-            label
-          >
-            {data?.topBreeds?.map((item, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-          <Legend />
-        </PieChart> */}
         <BarChart className="bar" width={800} height={400} data={breed}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />

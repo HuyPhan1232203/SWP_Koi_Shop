@@ -77,7 +77,7 @@ function ManageStaffJob() {
       key: "id",
     },
     {
-      title: "Staff ID",
+      title: "Staff Name",
       dataIndex: "id",
       key: "id",
       render: (_, record) => {
@@ -92,7 +92,7 @@ function ManageStaffJob() {
       },
     },
     {
-      title: "Staff",
+      title: "Assign Work To Staff",
       dataIndex: "id",
       key: "staff",
       render: (id) => (

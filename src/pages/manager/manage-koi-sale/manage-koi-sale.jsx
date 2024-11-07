@@ -1,18 +1,22 @@
-import { Button, DatePicker, Form, Image, Input, Modal, Table } from "antd";
-import React, { useEffect, useState } from "react";
+import { Button, Form, Image, Input, Modal, Table } from "antd";
+import { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
 
 function ManageKoiSale() {
   const [koiList, setKoiList] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [koiListShow, setKoiListShow] = useState(false);
   const [form] = Form.useForm();
   const handleSale = async (value) => {
-    value.koiId = value.id;
-    console.log(value);
-    const res = await api.post("koi/sale", value);
-    console.log(res.data);
+    try {
+      value.koiId = value.id;
+      console.log(value);
+      const res = await api.post("koi/sale", value);
+      console.log(res.data);
+    } finally {
+      fetchKoi();
+      setShowModal(false);
+    }
   };
   const fetchKoi = async () => {
     try {
