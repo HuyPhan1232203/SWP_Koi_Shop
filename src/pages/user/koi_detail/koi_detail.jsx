@@ -49,7 +49,7 @@ function KoiDetail() {
           <div style={{ textDecoration: "line-through", color: "#aaa" }}>
             {price} VNĐ
           </div>
-          <div style={{ display: "flex", fontSize: "40px" }}>
+          <div style={{ display: "flex", fontSize: "30px" }}>
             {salePrice} VNĐ{" "}
             <div
               style={{
@@ -90,20 +90,25 @@ function KoiDetail() {
         </div>
         <div className="koi-detail col-md-6">
           <h1 className="koi-detail_name">{koiDetail.name}</h1>
-          <h3 className="koi-detail_price">
+          <div className="koi-detail_price">
             {handleCheckSalePrice(
               koiDetail.salePrice,
               koiDetail.price,
               koiDetail.salePercentage
             )}
-          </h3>
-          <h3 className="koi-detail_gender">Gender: {koiDetail.gender}</h3>
-          <h3 className="koi-detail_origin">Origin: {koiDetail.origin}</h3>
-          <h3 className="koi-detail_vendor">Vendor: {koiDetail.vendor}</h3>
-          <h3 className="koi-detail_size">Size: {koiDetail.size}</h3>
-          <h3 className="koi-detail_description">
-            description: {koiDetail.description}
-          </h3>
+          </div>
+          <div className="koi-detail_gender">Gender: {koiDetail.gender}</div>
+          <div className="koi-detail_origin">Origin: {koiDetail.origin}</div>
+          <div className="koi-detail_origin">
+            Quantity: {koiDetail.quantity}
+          </div>
+          <div className="koi-detail_vendor">Vendor: {koiDetail.vendor}</div>
+          <div className="koi-detail_size">Size: {koiDetail.size}cm</div>
+          <div className="koi-detail_size">Born Year: {koiDetail.bornYear}</div>
+          <div className="koi-detail_description">
+            Description:{" "}
+            <h6 style={{ color: "#aaa" }}>{koiDetail.description}</h6>
+          </div>
           <button
             id="btn"
             className="koi-detail_button"

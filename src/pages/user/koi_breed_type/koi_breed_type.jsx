@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "./koi_breed-type.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Form, Modal, Pagination, Select } from "antd";
+import { Button, Drawer, Pagination, Tabs } from "antd";
 import api from "../../../config/axios";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { toast } from "react-toastify";
@@ -9,6 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { storeKoi } from "../../../redux/features/koiSlice";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Unique from "./compare_unique/unique";
+import Lot from "./compare_lot/lot";
 function KoiBreedType() {
   const [koiList, setKoiList] = useState([]);
   const breedId = useSelector((store) => store.breedId);
@@ -22,7 +25,7 @@ function KoiBreedType() {
       setKoiList(response.data); // Set the koi list data in the state
       console.log(koiList);
     } catch (err) {
-      toast.error("fetch error");
+      toast.error(err.response.data);
     }
   };
   useEffect(() => {
@@ -35,10 +38,21 @@ function KoiBreedType() {
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const currentKoiList = koiList.slice(startIndex, endIndex);
-  const [form] = Form.useForm();
-  const handleCompare = async (value) => {
-    const res = await api.psot(``);
-  };
+  //unique or lot
+
+  const items = [
+    {
+      key: "1",
+      label: "Unique Koi",
+      children: <Unique />,
+    },
+    {
+      key: "2",
+      label: "Koi Lot",
+      children: <Lot />,
+    },
+  ];
+
   return (
     <div className="koi_breed_fetch">
       <Button
@@ -60,39 +74,15 @@ function KoiBreedType() {
         total={koiList.length}
         onChange={(page) => setCurrentPage(page)}
       />
-      <Modal
+      <Drawer
         open={isOpen}
         className="form_handle"
-        onCancel={() => {
+        onClose={() => {
           setIsOpen(false);
         }}
-        onOk={form.submit}
       >
-        <Form form={form} onFinish={handleCompare}>
-          <Form.Item
-            label="Item 1 "
-            name="a"
-            rules={[{ required: true, message: "please choose" }]}
-          >
-            <Select>
-              {koiList.map((koi) => {
-                return <Select.Option key={koi.id}>{koi.name}</Select.Option>;
-              })}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label="Item 2 "
-            name="b"
-            rules={[{ required: true, message: "please choose" }]}
-          >
-            <Select>
-              {koiList.map((koi) => {
-                return <Select.Option key={koi.id}>{koi.name}</Select.Option>;
-              })}
-            </Select>
-          </Form.Item>
-        </Form>
-      </Modal>
+        <Tabs defaultActiveKey="1" items={items} />
+      </Drawer>
     </div>
   );
 }
@@ -102,7 +92,6 @@ const Product = ({ products }) => {
   const items = useSelector((store) => store.cart);
   const nav = useNavigate();
   const dispatch = useDispatch();
-  console.log(products);
   const checkExist = () => {
     const exists = items.some(
       (item) => String(item.id) === String(products.id)
@@ -111,7 +100,20 @@ const Product = ({ products }) => {
       setIsDisable(true);
     }
   };
-
+  const checkKoiLot = (koi) => {
+    if (koi.quantity > 1) {
+      return (
+        <div className="koiLot">
+          <div className="koilot_sign">Lot</div>
+        </div>
+      );
+    }
+  };
+  const checkQuantity = (koi) => {
+    if (koi.quantity > 1) {
+      return <div className="koi_quan">Quantity: {koi.quantity}</div>;
+    }
+  };
   useEffect(() => {
     checkExist();
   }, [items]);
@@ -154,7 +156,7 @@ const Product = ({ products }) => {
           try {
             dispatch(storeKoi(products));
           } catch (err) {
-            console.log("err");
+            console.log(err);
           }
         }}
         to="/koi-detail"
@@ -163,6 +165,7 @@ const Product = ({ products }) => {
           color: "#000",
         }}
       >
+        {checkKoiLot(products)}
         <img
           className="product_img"
           src={products?.images}
@@ -170,14 +173,14 @@ const Product = ({ products }) => {
         />
       </Link>
       <p className="product_name">Name: {products?.name}</p>
-      <p className="product_name">Size: {products?.size}</p>
+      <p className="product_name">Size: {products?.size}cm</p>
+      {checkQuantity(products)}
       <div style={{ height: "100px" }}>
         <p className="product_name" style={{ display: "flex" }}>
           Breeds:
           <div
             style={{
               display: "flex",
-              // justifyContent: "space-around",
               width: "100%",
               flexWrap: "wrap",
             }}

@@ -2,6 +2,7 @@
 .product{
     width: calc(100% / 4 - 20px);
     img{
+        position: relative;
         width: 100%;
         height: 200px;
         border-radius: 20px;
@@ -23,9 +24,30 @@
     flex-direction: column;
     box-shadow:2px 1px 7px 4px #ccc;
 }
-// .product_name{
-//     padding: -10px 0;
-// }
+.koiLot{
+    position: absolute;
+    color: #fff;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+.koilot_sign{
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+}
+.compare_header{
+    padding-bottom: 20px;
+}
+.koi_quan{
+    padding-bottom: 10px;
+}
+.ant-drawer-header {
+    background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    color:#fff;
+  }
 .form_handle .ant-modal-content {
   background-color: #6d6e6e; /* Replace with your preferred color */
 }
@@ -79,3 +101,7 @@
         margin-right: 5px;
     }
 }
+.form_compare .ant-form-item-label > label {
+    color: #000 !important;
+  }
+  

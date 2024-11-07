@@ -3,13 +3,14 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Authen_template from "../../conponent/authen_template/authen_template";
 import { Button, Form } from "antd";
 import "./login.css";
-import { provider } from "../../config/firebase";
+import { messaging, provider } from "../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../config/axios";
 import { GoogleOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/features/userSlice";
+import { getToken } from "firebase/messaging";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,6 +23,12 @@ function LoginPage() {
       dispatch(login(response.data));
       const { role, token } = response.data;
       localStorage.setItem("token", token);
+      // create FCM(Firebase Cloud Messaging) token
+
+      // const fcmToken = await getToken(messaging, {
+      //   validKey:
+      //     "BItd_f6bOLUL8BLDzJ5NPnWKbdUo2keLV-Bwe8iY75dH94e85yJNtcx9UOiesYo1OWyqXqFJAuSnffphRRAEcMw	",
+      // });
       if (role === "MANAGER") {
         navigate("/dashboard/koilist");
       } else if (role === "CUSTOMER") {

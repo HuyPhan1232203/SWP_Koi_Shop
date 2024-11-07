@@ -16,7 +16,7 @@ function ManageKoiSale() {
   };
   const fetchKoi = async () => {
     try {
-      const response = await api.get("koi/manager?page=0&size=40");
+      const response = await api.get("koi?page=0&size=100");
       console.log(response.data);
       setKoiList(response.data.content);
     } catch (err) {
