@@ -150,7 +150,11 @@ const Product = ({ products }) => {
     }
   };
   return (
-    <div className="product" data-aos="zoom-in-down">
+    <div
+      className="product"
+      data-aos="zoom-in-down"
+      data-aos-anchor-placement="top-bottom"
+    >
       <Link
         onClick={() => {
           try {

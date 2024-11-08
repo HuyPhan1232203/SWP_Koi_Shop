@@ -201,8 +201,18 @@ html {
 
     }
 } */
+@keyframes fadeProfile {
+    from{
+        opacity: 0;
+        transform: translateX(20px);
+    }to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 .authen:hover .user_action{
     display: block;
+    animation:fadeProfile 0.3s ease;
 }
 .user_action::before{
     content: "";
@@ -454,6 +464,7 @@ word-spacing: -3px;
     background: linear-gradient(-45deg, #ec78e8, #d88282, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
     animation: gradient 5s ease infinite;
+    cursor: pointer;
 }
 #koiList{
     margin-top: 80px;
@@ -528,7 +539,7 @@ word-spacing: -3px;
 
 .koi-section .koi-item img {
     width: 100%;
-    height: 400px;
+    height: 350px;
     left: 50%;
     text-align: center;
     border-bottom: 1px solid #000;
