@@ -125,12 +125,7 @@ function LoginPage() {
           ></input>
         </Form.Item>
         <div className="button_container">
-          <Button
-            disabled={loading}
-            className="button"
-            type="primary"
-            htmlType="submit"
-          >
+          <Button disabled={loading} className="button" htmlType="submit">
             Login
           </Button>
           <Button className="gg-button" onClick={handleLoginWithEmail}>

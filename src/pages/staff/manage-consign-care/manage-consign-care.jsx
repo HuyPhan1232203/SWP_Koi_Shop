@@ -23,6 +23,14 @@ function CareConsign() {
       toast.error(err);
     }
   };
+  const StartDateDisplay = (startDate) => {
+    const formattedDate = new Date(startDate).toLocaleString();
+    return (
+      <div>
+        <div>{formattedDate}</div>
+      </div>
+    );
+  };
   useEffect(() => {
     fetchKoi();
   }, []);
@@ -33,9 +41,26 @@ function CareConsign() {
       key: "consignmentID",
     },
     {
+      title: "Koi ID",
+      dataIndex: "details",
+      key: "details",
+      render: (details) => {
+        return details.map((koi) => {
+          return <div key={koi.koiId}>{koi.koiId}</div>;
+        });
+      },
+    },
+    {
       title: "type",
       dataIndex: "type",
       key: "type",
+      render: (type) => {
+        if (type === "OFFLINE") {
+          return <div style={{ color: "red" }}>{type}</div>;
+        } else {
+          return <div style={{ color: "green" }}>{type}</div>;
+        }
+      },
     },
     {
       title: "Image",
@@ -58,16 +83,41 @@ function CareConsign() {
       title: "Start Date",
       dataIndex: "startDate",
       key: "startDate",
+      render: (startDate) => {
+        return StartDateDisplay(startDate);
+      },
     },
     {
       title: "End Date",
       dataIndex: "endDate",
       key: "endDate",
+      render: (endDate) => {
+        return StartDateDisplay(endDate);
+      },
     },
     {
       title: "Cost",
       dataIndex: "cost",
       key: "cost",
+    },
+    {
+      title: "Koi Price",
+      dataIndex: "details",
+      key: "details",
+      render: (details) => {
+        return details.map((koi) => {
+          return (
+            <div key={koi.koiId}>
+              {koi.price || <div style={{ color: "red" }}>N/A</div>}
+            </div>
+          );
+        });
+      },
+    },
+    {
+      title: "address",
+      dataIndex: "address",
+      key: "address",
     },
     {
       title: "Status",
@@ -160,7 +210,14 @@ function CareConsign() {
       ),
     },
   ];
-  return <Table columns={columns} dataSource={koiList}></Table>;
+
+  return (
+    <Table
+      columns={columns}
+      dataSource={koiList}
+      scroll={{ x: "max-content" }}
+    ></Table>
+  );
 }
 
 export default CareConsign;

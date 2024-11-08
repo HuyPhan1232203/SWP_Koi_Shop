@@ -113,7 +113,6 @@ function HomePage() {
     try {
       const response = await api.get("breed");
       setBreed(response.data);
-      console.log(breed);
     } catch (err) {
       toast.error(err + "fetch breed");
     }
@@ -125,7 +124,6 @@ function HomePage() {
         to="koi-list"
         className="koi_list_link"
         onClick={() => {
-          console.log(breed.id);
           dispatch(storeBreedId(breed.id));
           // fetchProduct();
         }}
@@ -160,7 +158,6 @@ function HomePage() {
   const fetchFeedback = async () => {
     try {
       const response = await api.get("feedback");
-      console.log(response.data);
       setSubmitFeedback(response.data);
     } catch (err) {
       console.error(err);
@@ -171,7 +168,6 @@ function HomePage() {
   }, []);
 
   const authenticate = (userData) => {
-    console.log(userData);
     if (userData == null) {
       return (
         <div className="authenticate">
@@ -288,7 +284,6 @@ function HomePage() {
                   </a>
                   <ul className="nav_li_koi_elements">
                     {breed.map((breed) => breeds(breed))}
-                    {/* {console.log(breed)} */}
                   </ul>
                 </li>
 

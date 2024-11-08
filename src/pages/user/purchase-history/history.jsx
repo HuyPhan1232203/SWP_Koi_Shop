@@ -122,7 +122,9 @@ function History() {
                     </div>
                   </div>
                   {handleCheckRate(order)}
-                  <div className="order_total  col-md-3">{order.total} VNĐ</div>
+                  <div className="order_total  col-md-3">
+                    {order?.order?.finalAmount} VNĐ
+                  </div>
                 </div>
               </div>
             </div>

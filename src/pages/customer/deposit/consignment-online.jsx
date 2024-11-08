@@ -16,7 +16,7 @@ import api from "../../../config/axios";
 import uploadFile from "../../../utils/file";
 import { PlusOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { storeKoi } from "../../../redux/features/koiSlice";
 import "./consignment.css";
 import { CSSTransition } from "react-transition-group";
@@ -36,7 +36,6 @@ const ConsignmentOnline = () => {
     try {
       const response = await api.get("breed");
       setSubmitBreed(response.data);
-      console.log(response.data);
     } catch (err) {
       toast.error(err.response.data);
     }
@@ -110,8 +109,13 @@ const ConsignmentOnline = () => {
   const nav = useNavigate();
   //CREATE OR UPDATE
   const dispatch = useDispatch();
+  const user = useSelector((store) => store?.user);
   const handleSubmitKoi = async (Koi) => {
     try {
+      if (user === null) {
+        nav("/login");
+        return true;
+      }
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       Koi.imagesList = await Promise.all(

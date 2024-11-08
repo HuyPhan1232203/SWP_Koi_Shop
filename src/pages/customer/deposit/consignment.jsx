@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import "./consignment.css";
 import { Outlet, useNavigate } from "react-router-dom";
 
@@ -14,7 +15,12 @@ function Consignment() {
     });
   };
   //SUBMIT
-
+  const user = useSelector((store) => store.user);
+  const checkuser = () => {
+    if (user === null) {
+      return <div style={{ color: "red" }}>Please login before consign!!!</div>;
+    }
+  };
   return (
     <div className="Introduction">
       <h1 className="Intro_header">DEPOSIT KOI</h1>
@@ -34,6 +40,7 @@ function Consignment() {
           <span className="slider round"></span>
         </label>
       </div>
+      {checkuser()}
       <Outlet />
     </div>
   );

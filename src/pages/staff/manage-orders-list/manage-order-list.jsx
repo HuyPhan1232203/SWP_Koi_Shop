@@ -16,6 +16,14 @@ function ManageOrders() {
       console.log(err);
     }
   };
+  const StartDateDisplay = (startDate) => {
+    const formattedDate = new Date(startDate).toLocaleString();
+    return (
+      <div>
+        <div>{formattedDate}</div>
+      </div>
+    );
+  };
   //UPDATE
   const handleEditOrderStatus = async (id) => {
     const status = String(selectedStatus.value);
@@ -42,11 +50,9 @@ function ManageOrders() {
       title: "Date",
       dataIndex: "date",
       key: "date",
-    },
-    {
-      title: "Voucher ID",
-      dataIndex: "voucherId",
-      key: "voucherId",
+      render: (date) => {
+        return StartDateDisplay(date);
+      },
     },
     {
       title: "Price",
@@ -112,7 +118,13 @@ function ManageOrders() {
     },
   ];
 
-  return <Table columns={columns} dataSource={orderList}></Table>;
+  return (
+    <Table
+      columns={columns}
+      dataSource={orderList}
+      scroll={{ x: "max-content" }}
+    ></Table>
+  );
 }
 
 export default ManageOrders;

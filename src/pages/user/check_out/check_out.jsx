@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
-import { clearAll, removeProduct } from "../../../redux/features/cartSlice";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { storeOrder } from "../../../redux/features/orderedProduct";

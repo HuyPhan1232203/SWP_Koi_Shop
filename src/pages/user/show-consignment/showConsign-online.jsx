@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import { useSelector } from "react-redux";
 import "./showConsign-online.css";
+import moment from "moment";
 
 function ShowConsignOnl() {
   const [form] = Form.useForm();
@@ -46,7 +47,12 @@ function ShowConsignOnl() {
     console.log(response.data);
     window.open(response.data);
   };
-
+  const disableBefore7thDate = (current) => {
+    // Calculate the date 7 days from now
+    const minDate = moment().add(7, "days").startOf("day");
+    // Disable all dates before the 7th day from now
+    return current && current < minDate;
+  };
   return (
     <div className="form-deposit">
       <h2>More Info</h2>
@@ -57,7 +63,7 @@ function ShowConsignOnl() {
         onFinish={handleSubmitConsign}
       >
         <Form.Item label="Start date" name="startDate">
-          <DatePicker />
+          <DatePicker disabledDate={disableBefore7thDate} />
         </Form.Item>
         <Form.Item
           initialValue={[{ koiRequest: { KoiSubmit } }]}

@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
   ProfileOutlined,
   ShoppingOutlined,
   SnippetsOutlined,
-  TeamOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Button, ConfigProvider, Layout, Menu, theme } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -30,11 +25,10 @@ const items = [
     <ShoppingOutlined style={{ color: "#fff" }} />
   ),
   getItem(
-    "Care Consign List",
+    "Consign List",
     "care-consign",
     <SnippetsOutlined style={{ color: "#fff" }} />
   ),
-  getItem("Profile", "profile", <ProfileOutlined style={{ color: "#fff" }} />),
 ];
 const DashboardStaff = () => {
   const nav = useNavigate();
@@ -70,7 +64,7 @@ const DashboardStaff = () => {
   };
   const [collapsed, setCollapsed] = useState(false);
   const {
-    token: { colorBgContainer, borderRadiusLG },
+    token: { borderRadiusLG },
   } = theme.useToken();
   return (
     <ConfigProvider
@@ -155,16 +149,16 @@ const DashboardStaff = () => {
             items={items}
           />
           <Button
-                style={{
-                  marginLeft: "48px",
-                  marginTop: "540px",
-                  padding: "0 25px",
-                  position: "fixed",
-                }}
-                onClick={handleLogOut}
-              >
-                LogOut
-              </Button>
+            style={{
+              marginLeft: "48px",
+              marginTop: "540px",
+              padding: "0 25px",
+              position: "fixed",
+            }}
+            onClick={handleLogOut}
+          >
+            LogOut
+          </Button>
         </Sider>
         <Layout>
           <Header
@@ -196,7 +190,7 @@ const DashboardStaff = () => {
               }}
             >
               {showName()}
-              
+
               <Outlet />
             </div>
           </Content>
@@ -204,7 +198,6 @@ const DashboardStaff = () => {
             style={{
               textAlign: "center",
               backgroundColor: "#ccc",
-
             }}
           >
             Ant Design ©{new Date().getFullYear()} Created by Ant UED

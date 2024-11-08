@@ -80,9 +80,13 @@ function ConsignmentOffline() {
   }, []);
   const nav = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((store) => store?.user);
   const handleSubmitKoi = async (Koi) => {
     try {
-      console.log(Koi);
+      if (user === null) {
+        nav("/login");
+        return;
+      }
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       console.log(Koi.imageUrl);

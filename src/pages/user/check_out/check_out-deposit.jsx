@@ -54,7 +54,7 @@ function CheckOutConsignment() {
   };
   const disablePastDates = (current) => {
     // Calculate the date 1 day from now
-    const minDate = moment().add(5, "days").startOf("day");
+    const minDate = moment().add(1, "days").startOf("day");
 
     // Disable all dates before 1 day from now (i.e., only allow tomorrow onward)
     return current && current < minDate;

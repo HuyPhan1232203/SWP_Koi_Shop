@@ -1,9 +1,9 @@
 .authen-template{
     width: 100vw;
     height: 100vh;
-    background-image: url('https://plus.unsplash.com/premium_photo-1723351183913-f1015b61b230?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-image: url('https://cdn11.bigcommerce.com/s-m39bqdjce8/images/stencil/1280x1280/uploaded_images/what-you-should-know-about-black-colored-koi.jpg?t=1700625824');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:100% 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,6 +12,9 @@
     border: 1px white solid;
     /* width: 500px;
     height: 700px; */
+    /* background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite; */
     border-radius: 15px;
     box-shadow:5px 5px 9px rgb(201, 195, 195);
     background: transparent;
