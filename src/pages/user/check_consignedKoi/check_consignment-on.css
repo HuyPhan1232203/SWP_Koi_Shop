@@ -1,23 +1,31 @@
 .koi{
     border: 1px #ccc solid;
     margin: 10px 0;
-    background-color: #fff;
-    padding: 8px 5px;
     display: flex;
     flex-direction: column;
+    background-color: #f9eded;
+    border-radius: 20px;
+    overflow: hidden;
 }
 .koi-1{
+    padding: 8px 5px;
     width: 100%;
 display: flex;
 border-bottom: 1px #ccc solid;
 padding-bottom: 20px;
 }
 .price{
-    margin-left: 700px;
+    color: #fff;
+    padding-left: 1000px;
     font-weight: 700;
     font-size: 20px;
+    background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
 }
-
+.order_total{
+    border-top: 1px #ccc solid;
+}
 .consign-history{
     margin-bottom: 80px;
     min-height:800px

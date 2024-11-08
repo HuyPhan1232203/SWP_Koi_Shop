@@ -1,23 +1,20 @@
 .authen-template{
     width: 100vw;
     height: 100vh;
-    background-image: url('https://cdn11.bigcommerce.com/s-m39bqdjce8/images/stencil/1280x1280/uploaded_images/what-you-should-know-about-black-colored-koi.jpg?t=1700625824');
+    /* background-image: url('https://cdn11.bigcommerce.com/s-m39bqdjce8/images/stencil/1280x1280/uploaded_images/what-you-should-know-about-black-colored-koi.jpg?t=1700625824'); */
     background-repeat: no-repeat;
-    background-size:100% 100%;
+    /* background-size:100% 100%; */
     display: flex;
     align-items: center;
     justify-content: center;
+      background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	/* background-size: 400% 400%; */
+    /* animation: gradient 20s ease infinite; */
 }
 .authen-template_form{
     border: 1px white solid;
-    /* width: 500px;
-    height: 700px; */
-    /* background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-    animation: gradient 20s ease infinite; */
     border-radius: 15px;
     box-shadow:5px 5px 9px rgb(201, 195, 195);
-    background: transparent;
-    backdrop-filter: blur(8px);
     padding: 50px;
+    background-color: #fff;
 }
