@@ -25,6 +25,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 const ConsignmentOnline = () => {
   const [formStand] = Form.useForm();
+  const [loading, setLoading] = useState(false);
   const [submitBreed, setSubmitBreed] = useState([]);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
@@ -116,6 +117,7 @@ const ConsignmentOnline = () => {
         nav("/login");
         return true;
       }
+      setLoading(true);
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       Koi.imagesList = await Promise.all(
@@ -133,6 +135,8 @@ const ConsignmentOnline = () => {
       nav("check-consign");
     } catch (err) {
       toast.error(err);
+    } finally {
+      setLoading(false);
     }
   };
   const onChange = (key) => {
@@ -279,7 +283,11 @@ const ConsignmentOnline = () => {
                   {fileList.length >= 8 ? null : uploadButton}
                 </Upload>
               </Form.Item>
-              <Button className="con-btn" onClick={formStand.submit}>
+              <Button
+                className="con-btn"
+                onClick={formStand.submit}
+                disabled={loading}
+              >
                 Consign
               </Button>
             </Form>

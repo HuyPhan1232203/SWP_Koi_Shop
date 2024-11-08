@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import uploadFile from "../../../utils/file";
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
@@ -10,6 +10,7 @@ import {
   InputNumber,
   Radio,
   Select,
+  Spin,
   Upload,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
@@ -21,6 +22,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 function ConsignmentOffline() {
   const [formStand] = Form.useForm();
+  const [loading, setLoading] = useState(false);
   const [fileList, setFileList] = useState([]);
   const [submitBreed, setSubmitBreed] = useState([]);
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -87,6 +89,7 @@ function ConsignmentOffline() {
         nav("/login");
         return;
       }
+      setLoading(true);
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       console.log(Koi.imageUrl);
@@ -95,7 +98,9 @@ function ConsignmentOffline() {
       console.log(Koi);
       nav("check-consign");
     } catch (err) {
-      toast.error("err");
+      toast.error(err);
+    } finally {
+      setLoading(true);
     }
   };
   return (
@@ -189,7 +194,11 @@ function ConsignmentOffline() {
                   {fileList.length >= 8 ? null : uploadButton}
                 </Upload>
               </Form.Item>
-              <Button className="con-btn" onClick={formStand.submit}>
+              <Button
+                className="con-btn"
+                onClick={formStand.submit}
+                disabled={loading}
+              >
                 Consign
               </Button>
             </Form>

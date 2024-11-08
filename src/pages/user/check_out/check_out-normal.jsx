@@ -32,7 +32,7 @@ function CheckOutNormal() {
       dispatch(storeProduct(detail));
       sessionStorage.setItem("description", value.message);
     } catch (err) {
-      toast.error("err");
+      toast.error(err);
     }
   };
   return (
