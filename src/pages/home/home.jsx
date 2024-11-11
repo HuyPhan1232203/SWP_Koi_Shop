@@ -321,7 +321,7 @@ function HomePage() {
       </div>
       {location.pathname === "/" && (
         <div className="homepage-section container" data-aos="zoom-in-down">
-          <Carousel autoplay>
+          <Carousel autoplay className="home_img-cover">
             <div>
               <div
                 className="homepage-design"
@@ -336,7 +336,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Your Perfect Koi!
+                        Swim into Serenity: Find Y Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -357,7 +357,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Your Perfect Koi!
+                        Swim into Serenity: Find Y Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -378,7 +378,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Your Perfect Koi!
+                        Swim into Serenity: Find Y Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -399,7 +399,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Your Perfect Koi!
+                        Swim into Serenity: Find Y Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -420,7 +420,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Your Perfect Koi!
+                        Swim into Serenity: Find Y Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -431,7 +431,11 @@ function HomePage() {
           <div className="koi-section" ref={koiSectionRef}>
             <div className="container">
               <div className="row koi-content-center">
-                <div className="col-md-10 koi-center-heading text-center">
+                <div
+                  className="col-md-10 koi-center-heading text-center"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
                   <a
                     onClick={() => {
                       scrollToSection("koiList");
@@ -446,10 +450,10 @@ function HomePage() {
                     data-aos-duration="500"
                     data-aos="fade-up-left"
                   >
-                    Our Vouchers
+                    Vouchers
                   </h2>
                   {/* <h5 style={{ color: "#aaa" }}>
-                    Don't forget to use these vouchers while purchasing our
+                    Don't forget to use these vouchers while purchasing 
                     Kois!!!
                   </h5> */}
 
@@ -499,7 +503,7 @@ function HomePage() {
                     data-aos-duration="500"
                     data-aos="fade-up-left"
                   >
-                    Explore our Kois
+                    Explore Kois
                   </h2>
                 </div>
 
@@ -554,7 +558,7 @@ function HomePage() {
                   />
                 </div>
                 <p className="slogan text-center ">
-                  Swim into Serenity: Find Your Perfect Koi!
+                  Swim into Serenity: Find Y Perfect Koi!
                 </p>
                 <ul className="footer-social list-unstyled">
                   <li>

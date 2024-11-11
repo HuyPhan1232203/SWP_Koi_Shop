@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./cart.css";
-import { Button, Form, Image, Input, Select, Table } from "antd";
+import { Button, Form, Image, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
@@ -27,7 +27,7 @@ function Cart() {
       console.log(id);
       dispatch(removeProduct(id));
     } catch (err) {
-      toast.error("err");
+      toast.error(err);
     }
   };
   const col = [
@@ -139,6 +139,8 @@ function Cart() {
       } catch (err) {
         toast.error("Failed");
       }
+    } else {
+      toast.error("Oops!!! please check again if you have chosen an item.");
     }
   };
   return (

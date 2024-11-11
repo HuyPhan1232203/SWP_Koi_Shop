@@ -18,6 +18,13 @@ html {
 .voucher_text{
     opacity: 0;
 }
+/* .home_img-cover{
+    padding: 3px;
+    background: linear-gradient(-45deg, #ee7752, #d845da, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+    border-radius: 15px;
+} */
 .headerbar{
     z-index: 100;
     width: 90%;
@@ -30,7 +37,6 @@ html {
     border-bottom: 2px #ccc solid;
     display: flex;
     align-items: center;
-
 }
 .feedback{
     padding: 20px 20px;

@@ -89,7 +89,7 @@ function History() {
       {orderList.map((order) => {
         return (
           <div key={order.id}>
-            <div className="order row" data-aos="fade-right">
+            <div className="order row">
               <div className="order_id col-md-1">ID: {order.id}</div>
               <div className="order_date col-md-3">
                 {StartDateDisplay(order.createAt)}

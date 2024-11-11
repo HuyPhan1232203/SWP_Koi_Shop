@@ -71,7 +71,9 @@ function Lot() {
             })}
           </Select>
         </Form.Item>
-        <Button htmlType="submit">Compare</Button>
+        <Button htmlType="submit" type="primary">
+          Compare
+        </Button>
       </Form>
       {handleShowCompare()}
     </div>

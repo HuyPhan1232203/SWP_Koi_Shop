@@ -20,7 +20,7 @@ function ManageStaffJob() {
 
   const fetchStaff = async () => {
     try {
-      const response = await api.get("account?role=STAFF");
+      const response = await api.get("staff");
       setStaffList(response.data);
     } catch (error) {
       toast.error(error + "Error fetching staff");
@@ -83,10 +83,10 @@ function ManageStaffJob() {
       render: (_, record) => {
         return staffList.map((staff) => {
           if (
-            staff.id === record?.order?.staffId ||
-            staff.id === record?.consignment?.staffid
+            staff.staff.id === record?.order?.staffId ||
+            staff.staff.id === record?.consignment?.staffid
           ) {
-            return <div key={staff.id}>{staff.username}</div>;
+            return <div key={staff.staff.id}>{staff.staff.username}</div>;
           }
         });
       },
@@ -104,8 +104,8 @@ function ManageStaffJob() {
           value={selectedStaff[id] || undefined}
         >
           {staffList.map((staff) => (
-            <Select.Option key={staff.id} value={staff.id}>
-              {staff.username}
+            <Select.Option key={staff.staff.id} value={staff.staff.id}>
+              {staff.staff.username}
             </Select.Option>
           ))}
         </Select>
