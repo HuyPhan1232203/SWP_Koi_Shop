@@ -31,6 +31,11 @@ function CheckOutNormal() {
       console.log({ detail });
       dispatch(storeProduct(detail));
       sessionStorage.setItem("description", value.message);
+      sessionStorage.setItem(
+        "address",
+        `${value.address}, ${value.district}, ${value.city}`
+      );
+      console.log(sessionStorage.getItem("address"));
     } catch (err) {
       toast.error(err);
     }
@@ -163,14 +168,14 @@ function CheckOutNormal() {
           </div>
           <div className="row">
             <Form.Item
-              name="house"
+              name="district"
               rules={[
                 {
                   required: true,
                   message: "Please Input",
                 },
               ]}
-              label="House"
+              label="District"
               className="col-md-4"
             >
               <Input></Input>

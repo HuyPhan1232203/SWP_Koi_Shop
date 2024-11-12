@@ -39,6 +39,7 @@ function CheckOut() {
     }
   };
   const description = sessionStorage.getItem("description");
+  const address = sessionStorage.getItem("address");
   const details = useSelector((store) => store.checkout);
   const handelSubmitOrder = async () => {
     try {
@@ -49,11 +50,13 @@ function CheckOut() {
           detail: details,
           voucherCode: promoCode,
           description: description,
+          address: address,
         };
       } else {
         val = {
           detail: details,
           description: description,
+          address: address,
         };
       }
       console.log(val.detail.detail);
@@ -64,18 +67,11 @@ function CheckOut() {
         response = await api.post("consignmentOrder", val.detail);
         console.log(response.data);
         dispatch(storeOrder(val.detail));
-
-        // val.detail.detail.map((value) => {
-        //   dispatch(removeProduct(value?.koiId));
-        // });
       } else {
         console.log("normal");
         response = await api.post("order", val);
         console.log(response.data);
         dispatch(storeOrder(val));
-        // val.detail.map((value) => {
-        //   dispatch(removeProduct(value?.koiId));
-        // });
       }
       console.log(response.data);
       window.open(response.data);
@@ -149,7 +145,10 @@ function CheckOut() {
             </button>
           </div>
         </div>
-        <div className="sumary_cart_items">
+        <div
+          className="sumary_cart_items"
+          style={{ height: "300px", overflowY: "auto" }}
+        >
           <h6 style={{ color: "#000" }}>Items:</h6>
           {cartItems.map((item) => {
             return (

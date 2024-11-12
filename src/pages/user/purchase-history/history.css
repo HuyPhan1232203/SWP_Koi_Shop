@@ -9,9 +9,6 @@
 .koiShow{
    background-color: #fff;
  }
- .order_id{
- 
- }
  .order_date{
  color: red;
  }
@@ -19,10 +16,6 @@
  color:green;
  font-weight: 500;
  font-size: 18px;
- }
- .order_descript{
- 
- 
  }
  .order_status{
     font-size: 25px;

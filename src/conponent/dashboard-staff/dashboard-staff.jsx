@@ -199,9 +199,7 @@ const DashboardStaff = () => {
               textAlign: "center",
               backgroundColor: "#ccc",
             }}
-          >
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
-          </Footer>
+          ></Footer>
         </Layout>
       </Layout>
     </ConfigProvider>
