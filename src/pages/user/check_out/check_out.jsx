@@ -14,6 +14,9 @@ function CheckOut() {
     AOS.init();
     AOS.refresh();
   }, []);
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   const [promoCode, setPromoCode] = useState("");
   const [voucherList, setVoucherList] = useState([]);
   const nav = useNavigate();
@@ -102,7 +105,7 @@ function CheckOut() {
         <div className="summary_price">
           <p style={{ display: "flex", color: "#000" }}>
             Estimated price:
-            <p style={{ color: "green" }}>{total} VNĐ</p>
+            <p style={{ color: "green" }}>{formatCurrency(total)}VNĐ</p>
           </p>
           <p style={{ display: "flex", color: "#000" }}>
             Discount:
@@ -123,7 +126,7 @@ function CheckOut() {
         </div>
         <div className="sumary_totalPrice">
           <p style={{ fontWeight: "600", fontSize: "20px", color: "#000" }}>
-            Total Price: {finalPrice} VNĐ{" "}
+            Total Price: {formatCurrency(finalPrice)}VNĐ{" "}
           </p>
           <div className="row" style={{ padding: " 0px 14px" }}>
             <Input
@@ -165,7 +168,9 @@ function CheckOut() {
                 </div>
                 <div className="item_detail">
                   <div className="item_name">{item.name}</div>
-                  <small className="item_price">price: {item.price}</small>
+                  <small className="item_price">
+                    price: {formatCurrency(item.price)}VNĐ
+                  </small>
                 </div>
               </div>
             );

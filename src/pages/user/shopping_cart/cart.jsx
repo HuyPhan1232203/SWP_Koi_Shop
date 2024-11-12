@@ -16,6 +16,9 @@ import {
 } from "../../../redux/features/selectedItemsSlice";
 
 function Cart() {
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
@@ -55,11 +58,11 @@ function Cart() {
           dispatch(changePrice(action));
           return (
             <div>
-              <div>{record.price} VNĐ </div>
+              <div>{formatCurrency(record.price)} VNĐ </div>
             </div>
           );
         } else {
-          return <div>{record.price} VNĐ</div>;
+          return <div>{formatCurrency(record.price)} VNĐ</div>;
         }
       },
     },
@@ -184,7 +187,7 @@ function Cart() {
             <div
               style={{ color: "green", fontSize: "20px", fontWeight: "600" }}
             >
-              {total} VNĐ
+              {formatCurrency(total)} VNĐ
             </div>
           </Form.Item>
           <Link onClick={handleBuy} style={{ textDecoration: "none" }}>

@@ -1,4 +1,4 @@
-import { Button, Form, Modal, Popconfirm, Rate } from "antd";
+import { Button, Form, Image, Modal, Popconfirm, Rate } from "antd";
 import { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import "./history.css";
@@ -25,15 +25,17 @@ function History() {
   const handleCheckRate = (order) => {
     if (!order.order.feedback && order.order.status === "COMPLETED") {
       return (
-        <button
-          className="rate_btn col-md-2"
-          onClick={() => {
-            setShowModal(true);
-            setOrderDetail(order);
-          }}
-        >
-          Rating
-        </button>
+        <div className="col-md-4" style={{ display: "flex" }}>
+          <button
+            className="rate_btn"
+            onClick={() => {
+              setShowModal(true);
+              setOrderDetail(order);
+            }}
+          >
+            Rating
+          </button>
+        </div>
       );
     }
   };
@@ -114,12 +116,11 @@ function History() {
   }, []);
   return (
     <div>
-      {orderList.map((order) => {
+      {[...orderList].reverse().map((order) => {
         return (
           <div key={order.id}>
             <div className="order row">
-              <div className="order_id col-md-1">ID: {order.id}</div>
-              <div className="order_date col-md-3">
+              <div className="order_date col-md-4">
                 {StartDateDisplay(order.createAt)}
               </div>
               <div className="order_descript col-md-6">{order.description}</div>

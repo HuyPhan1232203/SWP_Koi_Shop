@@ -17,6 +17,10 @@
  font-weight: 500;
  font-size: 18px;
  }
+
+
+
+
  .order_status{
     font-size: 25px;
     font-weight: 600;
@@ -53,6 +57,9 @@
     color: #fff;
     background: linear-gradient(-45deg, #ee7752, #e95fd6, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
+   width: 150px;
+   margin-left: 20px;
+   height:40px;
  }
  .rate_btn:hover{
     animation: gradient 5s ease infinite;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./profile.css";
-import { Layout, Modal } from "antd";
+import { Layout, Modal, Skeleton } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/features/userSlice";
@@ -76,7 +76,15 @@ function Profile() {
               className="right col-md-9"
               style={{ height: "530px", overflowY: "auto" }}
             >
+              {/* <Suspense
+                fallback={
+                  <div>
+                    <Skeleton active />
+                  </div>
+                }
+              > */}
               <Outlet />
+              {/* </Suspense> */}
             </div>
           </div>
         </Layout>

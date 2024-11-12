@@ -9,6 +9,9 @@ import api from "../../../config/axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 function KoiDetail() {
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   const { TextArea } = Input;
   const [isDisable, setIsDisable] = useState(false);
   const koiDetail = useSelector((store) => store.koi);
@@ -93,7 +96,7 @@ function KoiDetail() {
           <div className="koi-detail_price">
             {handleCheckSalePrice(
               koiDetail.salePrice,
-              koiDetail.price,
+              formatCurrency(koiDetail.price),
               koiDetail.salePercentage
             )}
           </div>

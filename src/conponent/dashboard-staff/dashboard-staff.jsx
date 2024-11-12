@@ -1,9 +1,5 @@
 import { useState } from "react";
-import {
-  ProfileOutlined,
-  ShoppingOutlined,
-  SnippetsOutlined,
-} from "@ant-design/icons";
+import { ShoppingOutlined, SnippetsOutlined } from "@ant-design/icons";
 import { Breadcrumb, Button, ConfigProvider, Layout, Menu, theme } from "antd";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

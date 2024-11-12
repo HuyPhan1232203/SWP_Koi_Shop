@@ -253,7 +253,16 @@ const ConsignmentOnline = () => {
                   { required: true, message: "Please Input" },
                   {
                     type: "number",
+                    transform: (value) => Number(value),
                     message: "Invalid Input",
+                  },
+                  {
+                    validator: (_, value) =>
+                      value >= 3
+                        ? Promise.resolve()
+                        : Promise.reject(
+                            new Error("Size must be at least 3cm")
+                          ),
                   },
                 ]}
                 name="size"

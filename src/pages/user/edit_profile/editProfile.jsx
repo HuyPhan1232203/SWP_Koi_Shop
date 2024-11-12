@@ -13,7 +13,14 @@ function EditProfile() {
   const [openModal, setOpenModal] = useState(false);
   const [defaultVal, setDefaultVal] = useState();
   const [defaultField, setDefaultField] = useState();
+  const [balance, setBalance] = useState([]);
   const [form] = Form.useForm();
+  //Fetch
+  const fetchBalance = async () => {
+    const res = await api.get(`account?role=CUSTOMER&id=${userInfo.id}`);
+    console.log(res.data);
+    setBalance(res.data.balance);
+  };
 
   //update
   const handleEditInfo = async (value) => {
@@ -29,9 +36,15 @@ function EditProfile() {
     }
   };
   useEffect(() => {
+    fetchBalance();
+  }, []);
+  useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   return (
     <div className="editProfile">
       <Modal
@@ -76,6 +89,9 @@ function EditProfile() {
       </Modal>
       <div className="editProfile_title" data-aos="fade-down">
         About
+      </div>
+      <div style={{ marginLeft: "700px", color: "red" }}>
+        Balance: {formatCurrency(balance)} VNĐ
       </div>
       <div className="edit" data-aos="fade-right">
         <div className="edit_field">

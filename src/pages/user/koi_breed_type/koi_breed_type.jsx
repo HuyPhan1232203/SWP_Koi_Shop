@@ -28,6 +28,7 @@ function KoiBreedType() {
       toast.error(err.response.data);
     }
   };
+
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -124,6 +125,9 @@ const Product = ({ products }) => {
       nav("/login");
     }
   };
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   const handleCheckSalePrice = (salePrice, price, salePercentage) => {
     if (salePrice > 0) {
       return (
@@ -132,7 +136,7 @@ const Product = ({ products }) => {
             {price} VNĐ
           </div>
           <div style={{ display: "flex", fontSize: "20px" }}>
-            {salePrice} VNĐ{" "}
+            {formatCurrency(salePrice)} VNĐ{" "}
             <div
               style={{
                 color: "red",
@@ -208,7 +212,7 @@ const Product = ({ products }) => {
         <p className="product_name">
           {handleCheckSalePrice(
             products.salePrice,
-            products.price,
+            formatCurrency(products.price),
             products.salePercentage
           )}{" "}
         </p>
