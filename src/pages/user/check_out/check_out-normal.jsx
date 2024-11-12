@@ -136,15 +136,14 @@ function CheckOutNormal() {
         <div className="address">
           <div className="row">
             <Form.Item
-              initialValue={userInfo.address}
-              name="address"
+              name="district"
               rules={[
                 {
                   required: true,
                   message: "Please Input",
                 },
               ]}
-              label="Address"
+              label="District"
               className="col-md-8"
             >
               <Input placeholder="Type here"></Input>
@@ -168,40 +167,15 @@ function CheckOutNormal() {
           </div>
           <div className="row">
             <Form.Item
-              name="district"
+              initialValue={userInfo.address}
+              name="address"
               rules={[
                 {
                   required: true,
                   message: "Please Input",
                 },
               ]}
-              label="District"
-              className="col-md-4"
-            >
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              name="postal"
-              rules={[
-                {
-                  required: true,
-                  message: "Please Input",
-                },
-              ]}
-              label="Postal code"
-              className="col-md-4"
-            >
-              <Input></Input>
-            </Form.Item>
-            <Form.Item
-              name="zip"
-              rules={[
-                {
-                  required: true,
-                  message: "Please Input",
-                },
-              ]}
-              label="Zip"
+              label="Address"
               className="col-md-4"
             >
               <Input></Input>
