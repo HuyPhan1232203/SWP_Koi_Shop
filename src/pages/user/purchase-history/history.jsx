@@ -1,4 +1,4 @@
-import { Button, Form, Modal, Rate, Table } from "antd";
+import { Button, Form, Modal, Popconfirm, Rate } from "antd";
 import { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import "./history.css";
@@ -67,7 +67,7 @@ function History() {
     setOrderList(res.data);
   };
   const checkCanceled = (order) => {
-    if (order.order.status === "CANCELED") {
+    if (order.order.status === "CANCELLED") {
       return (
         <div className="order_status col-md-2" style={{ color: "red" }}>
           {order.order.status}
@@ -78,6 +78,34 @@ function History() {
         <div className="order_status col-md-2" style={{ color: "green" }}>
           {order.order.status}
         </div>
+      );
+    }
+  };
+  const handleCancel = async (id) => {
+    console.log(id);
+    try {
+      const response = await api.put(`order/cancel?orderId=${id}`);
+      toast.success("Cancelled successfully!!!");
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      fetchOrder();
+    }
+  };
+  const handleShowCancel = (order) => {
+    if (order.status !== "CANCELLED") {
+      return (
+        <Popconfirm
+          title="Are you sure you want to cancel this order?"
+          onConfirm={() => {
+            handleCancel(order.id);
+          }}
+        >
+          <Button type="primary" danger>
+            Cancel
+          </Button>
+        </Popconfirm>
       );
     }
   };
@@ -126,6 +154,7 @@ function History() {
                     {order?.order?.finalAmount} VNĐ
                   </div>
                 </div>
+                {handleShowCancel(order.order)}
               </div>
             </div>
           </div>
