@@ -9,6 +9,10 @@ import { useState } from "react";
 function RegisterPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   const handleRegister = async (values) => {
     try {
       setLoading(true);
@@ -41,13 +45,14 @@ function RegisterPage() {
             { min: 3, message: "Must be at least 3 characters" },
           ]}
         >
-          <input className="inputplace" placeholder="Username"></input>
+          <Input className="inputplace" placeholder="Username" />
         </Form.Item>
+
         <Form.Item
           name="email"
           rules={[{ required: true, message: "Please enter your email" }]}
         >
-          <input className="inputplace" placeholder="Email"></input>
+          <Input className="inputplace" placeholder="Email" />
         </Form.Item>
 
         <Form.Item
@@ -57,7 +62,12 @@ function RegisterPage() {
             { min: 6, message: "Must be at least 6 characters" },
           ]}
         >
-          <input className="inputplace" placeholder="Password"></input>
+          <Input.Password
+            className="inputplace"
+            placeholder="Password"
+            visibilityToggle={isPasswordVisible}
+            onClick={togglePasswordVisibility}
+          />
         </Form.Item>
 
         <Form.Item
@@ -75,7 +85,10 @@ function RegisterPage() {
             }),
           ]}
         >
-          <input className="inputplace" placeholder="Confirm Password"></input>
+          <Input.Password
+            className="inputplace"
+            placeholder="Confirm Password"
+          />
         </Form.Item>
 
         <Form.Item
@@ -88,7 +101,7 @@ function RegisterPage() {
             },
           ]}
         >
-          <input className="inputplace" placeholder="Phone"></input>
+          <Input className="inputplace" placeholder="Phone" />
         </Form.Item>
 
         <div className="button_container">

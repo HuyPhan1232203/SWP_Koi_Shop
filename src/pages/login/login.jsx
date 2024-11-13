@@ -7,12 +7,20 @@ import { provider } from "../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../../config/axios";
-import { GoogleOutlined } from "@ant-design/icons";
+import {
+  EyeInvisibleOutlined,
+  EyeOutlined,
+  GoogleOutlined,
+} from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/features/userSlice";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   const [loading, setLoading] = useState(false);
   const handleLogin = async (values) => {
     try {
@@ -108,8 +116,6 @@ function LoginPage() {
           <input className="inputplace" placeholder="Email"></input>
         </Form.Item>
         <Form.Item
-          // label="Password"
-          // name="txtPassword"
           name="password"
           rules={[
             {
@@ -118,12 +124,29 @@ function LoginPage() {
             },
           ]}
         >
-          <input
-            type="password"
-            className="inputplace"
-            placeholder="Password"
-          ></input>
+          <div style={{ position: "relative" }}>
+            <input
+              type={isPasswordVisible ? "text" : "password"}
+              className="inputplace"
+              placeholder="Password"
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              style={{
+                position: "absolute",
+                right: "25px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                border: "none",
+                background: "transparent",
+              }}
+            >
+              {isPasswordVisible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+            </button>
+          </div>
         </Form.Item>
+
         <div className="button_container">
           <Button disabled={loading} className="button" htmlType="submit">
             Login
