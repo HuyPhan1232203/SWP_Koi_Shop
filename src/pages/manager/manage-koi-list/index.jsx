@@ -309,6 +309,7 @@ const ManagementKoi = () => {
   };
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
+    console.log(Koi);
     try {
       setSubmitKoi(true);
       //convert Object to string img
@@ -317,21 +318,39 @@ const ManagementKoi = () => {
       } else {
         Koi.imageUrl = Koi.imageUrl.file.url;
       }
-      Koi.imagesList = await Promise.all(
-        Koi.imagesList.fileList.map(async (img) => {
-          const url = await uploadFile(img.originFileObj);
-          return {
-            image: url,
-          };
-        })
-      );
+
+      Koi.imagesList.fileList.map(async (img) => {
+        if (img.file.url) {
+          console.log("Using existing URL...");
+          return { image: img.file.url };
+        } else {
+          console.log("Uploading file...");
+          const uploadedUrl = await uploadFile(img.file.originFileObj);
+          return { image: uploadedUrl };
+        }
+      });
+
+      // Koi.imagesList.fileList.map(async (img) => {
+      //   if (!img.file.url) {
+      //     return (Koi.imageUrl = await uploadFile(
+      //       Koi.imageUrl.file.originFileObj
+      //     ));
+      //   } else {
+      //     return { image: img.file.url };
+      //   }
+      // });
       if (Koi.id) {
         //update
-        await api.put(`koi/${Koi.id}`, Koi);
+        const res = await api.put(`koi/${Koi.id}`, Koi);
+        console.log("update" + res.data);
+        setFileList([]);
+        setFileListArray([]);
       } else {
         //create
         await api.post(`koi`, Koi);
         console.log(Koi.imagesList);
+        setFileList([]);
+        setFileListArray([]);
       }
       fetchKoi();
       toast.success("Successfully!!!");
