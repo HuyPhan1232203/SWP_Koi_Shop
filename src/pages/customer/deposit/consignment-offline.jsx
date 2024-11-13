@@ -10,7 +10,6 @@ import {
   InputNumber,
   Radio,
   Select,
-  Spin,
   Upload,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
@@ -28,7 +27,9 @@ function ConsignmentOffline() {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [showForm, setShowForm] = useState(true);
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList.slice(-1));
+  };
   //FETCH
   const fetchBreed = async () => {
     try {
@@ -120,67 +121,108 @@ function ConsignmentOffline() {
               onFinish={handleSubmitKoi}
               form={formStand}
             >
-              <Form.Item label="Born Year" name="bornYear">
-                <Input></Input>
+              <Form.Item
+                label="Born Year"
+                name="bornYear"
+                rules={[
+                  { required: true, message: "Please input the born year" },
+                  {
+                    type: "number",
+                    min: 1900,
+                    max: new Date().getFullYear(),
+                    message: "Please enter a valid year",
+                  },
+                ]}
+              >
+                <InputNumber />
               </Form.Item>
 
-              <Form.Item label="Breed Name" name="breedId">
+              <Form.Item
+                label="Breed Name"
+                name="breedId"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select at least one breed",
+                  },
+                ]}
+              >
                 <Select mode="multiple">
                   {submitBreed.map((breed) => (
-                    <Select.Option
-                      key={breed.name}
-                      breed={breed}
-                      value={breed.id}
-                    >
+                    <Select.Option key={breed.name} value={breed.id}>
                       {breed.name}
                     </Select.Option>
                   ))}
                 </Select>
               </Form.Item>
+
               <Form.Item
                 label="Description"
-                rules={[{ required: true, message: "Please Input" }]}
                 name="description"
+                rules={[
+                  { required: true, message: "Please enter a description" },
+                  {
+                    min: 10,
+                    message: "Description must be at least 10 characters long",
+                  },
+                ]}
               >
-                <Input></Input>
+                <Input />
               </Form.Item>
 
               <Form.Item
                 label="Origin"
-                rules={[{ required: true, message: "Please Input" }]}
                 name="origin"
+                rules={[
+                  { required: true, message: "Please input the origin" },
+                  {
+                    min: 3,
+                    message: "Origin must be at least 3 characters long",
+                  },
+                ]}
               >
-                <Input></Input>
+                <Input />
               </Form.Item>
+
               <Form.Item
                 label="Gender"
-                rules={[{ required: true, message: "Please Input" }]}
                 name="gender"
+                rules={[{ required: true, message: "Please select a gender" }]}
               >
                 <Radio.Group name="radiogroup">
                   <Radio value="Male">Male</Radio>
                   <Radio value="Female">Female</Radio>
                 </Radio.Group>
               </Form.Item>
+
               <Form.Item
                 label="Quantity"
-                rules={[{ required: true, message: "Please Input" }]}
                 name="quantity"
-              >
-                <InputNumber></InputNumber>
-              </Form.Item>
-              <Form.Item
-                label="Size"
                 rules={[
-                  { required: true, message: "Please Input" },
+                  { required: true, message: "Please input the quantity" },
                   {
                     type: "number",
-                    message: "Invalid Input",
+                    min: 1,
+                    message: "Quantity must be at least 1",
                   },
                 ]}
-                name="size"
               >
-                <InputNumber></InputNumber>
+                <InputNumber />
+              </Form.Item>
+
+              <Form.Item
+                label="Size"
+                name="size"
+                rules={[
+                  { required: true, message: "Please input the size" },
+                  {
+                    type: "number",
+                    min: 1,
+                    message: "Size must be a positive number",
+                  },
+                ]}
+              >
+                <InputNumber />
               </Form.Item>
 
               <Form.Item label="Image" name="imageUrl">
@@ -191,7 +233,7 @@ function ConsignmentOffline() {
                   onPreview={handlePreview}
                   onChange={handleChange}
                 >
-                  {fileList.length >= 8 ? null : uploadButton}
+                  {fileList.length < 1 ? uploadButton : null}
                 </Upload>
               </Form.Item>
               <Button

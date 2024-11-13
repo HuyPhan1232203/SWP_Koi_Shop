@@ -49,7 +49,6 @@ function EditProfile() {
     <div className="editProfile">
       <Modal
         open={openModal}
-        title={`Change ${defaultField}`}
         onCancel={() => {
           setOpenModal(false);
         }}

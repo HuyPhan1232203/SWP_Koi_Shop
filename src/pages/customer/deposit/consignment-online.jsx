@@ -63,7 +63,9 @@ const ConsignmentOnline = () => {
     setPreviewImage(file.url || file.preview);
     setPreviewOpen(true);
   };
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList.slice(-1));
+  };
   const handleChangeList = ({ fileList: newFileList }) =>
     setFileListArray(newFileList);
 
@@ -277,7 +279,7 @@ const ConsignmentOnline = () => {
                   onPreview={handlePreview}
                   onChange={handleChange}
                 >
-                  {fileList.length >= 8 ? null : uploadButton}
+                  {fileList.length < 1 ? uploadButton : null}
                 </Upload>
               </Form.Item>
 

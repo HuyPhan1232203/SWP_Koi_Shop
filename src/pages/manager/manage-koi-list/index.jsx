@@ -81,7 +81,10 @@ const ManagementKoi = () => {
     setPreviewImage(file.url || file.preview);
     setPreviewOpen(true);
   };
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChange = ({ fileList: newFileList }) => {
+    // Limit the fileList to a maximum of 1
+    setFileList(newFileList.slice(-1)); // Keep only the last uploaded file
+  };
   const handleChangeList = ({ fileList: newFileList }) =>
     setFileListArray(newFileList);
 
@@ -422,15 +425,15 @@ const ManagementKoi = () => {
             <InputNumber></InputNumber>
           </Form.Item>
           <Form.Item label="imageUrl" name="imageUrl">
-            <Upload
-              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-              listType="picture-card"
-              fileList={fileList}
-              onPreview={handlePreview}
-              onChange={handleChange}
-            >
-              {fileList.length >= 8 ? null : uploadButton}
-            </Upload>
+          <Upload
+    action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+    listType="picture-card"
+    fileList={fileList}
+    onPreview={handlePreview}
+    onChange={handleChange}
+  >
+    {fileList.length < 1 ? uploadButton : null} 
+  </Upload>
           </Form.Item>
 
           <Form.Item label="imagesList" name="imagesList">

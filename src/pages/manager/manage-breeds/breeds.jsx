@@ -59,7 +59,9 @@ const ManagementKoi = () => {
     setPreviewImage(file.url || file.preview);
     setPreviewOpen(true);
   };
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList.slice(-1));
+  };
   const uploadButton = (
     <button
       style={{
@@ -115,7 +117,11 @@ const ManagementKoi = () => {
               type="primary"
               onClick={() => {
                 setOpenModal(true);
-                formStand.setFieldsValue(koi);
+                formStand.setFieldsValue({
+                  ...koi,
+                  imageUrl: koi.imageUrl ? { file: { url: koi.imageUrl } } : null,
+                });
+                setFileList(koi.imageUrl ? [{ uid: '-1', name: 'image.png', status: 'done', url: koi.imageUrl }] : []);
               }}
             >
               Edit
@@ -150,7 +156,6 @@ const ManagementKoi = () => {
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
     try {
-      console.log(Koi);
       setSubmitKoi(true);
       //convert Object to string img
       Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
@@ -167,7 +172,7 @@ const ManagementKoi = () => {
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
-      toast.error("err");
+      toast.error(err);
     } finally {
       setSubmitKoi(false);
     }
@@ -217,7 +222,7 @@ const ManagementKoi = () => {
               onPreview={handlePreview}
               onChange={handleChange}
             >
-              {fileList.length >= 8 ? null : uploadButton}
+              {fileList.length < 1 ? uploadButton : null}
             </Upload>
           </Form.Item>
         </Form>

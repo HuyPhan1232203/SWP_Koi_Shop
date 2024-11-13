@@ -336,7 +336,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Y Perfect Koi!
+                        Swim into Serenity: Find Yours Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -357,7 +357,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Y Perfect Koi!
+                        Swim into Serenity: Find Yours Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -378,7 +378,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Y Perfect Koi!
+                        Swim into Serenity: Find Yours Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -399,7 +399,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Y Perfect Koi!
+                        Swim into Serenity: Find Yours Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -420,7 +420,7 @@ function HomePage() {
                   <div className="row slider-text">
                     <div className="col-md-11 text-center-slider ">
                       <h1 className="mb-4 ">
-                        Swim into Serenity: Find Y Perfect Koi!
+                        Swim into Serenity: Find Yours Perfect Koi!
                       </h1>
                     </div>
                   </div>
@@ -558,7 +558,7 @@ function HomePage() {
                   />
                 </div>
                 <p className="slogan text-center ">
-                  Swim into Serenity: Find Y Perfect Koi!
+                  Swim into Serenity: Find Yours Perfect Koi!
                 </p>
                 <ul className="footer-social list-unstyled">
                   <li>

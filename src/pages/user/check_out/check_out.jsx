@@ -100,7 +100,7 @@ function CheckOut() {
           <Outlet />
         </div>
       </div>
-      <div className="col-md-4 sumary" id="side" style={{ display: "none" }}>
+      <div className="col-md-4 sumary" id="side">
         <h3 style={{ color: "#000" }}>Summary</h3>
         <div className="summary_price">
           <p style={{ display: "flex", color: "#000" }}>

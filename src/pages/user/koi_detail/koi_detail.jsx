@@ -53,7 +53,7 @@ function KoiDetail() {
             {price} VNĐ
           </div>
           <div style={{ display: "flex", fontSize: "30px" }}>
-            {salePrice} VNĐ{" "}
+            {formatCurrency(salePrice)} VNĐ{" "}
             <div
               style={{
                 color: "red",

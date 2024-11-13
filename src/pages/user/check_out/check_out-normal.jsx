@@ -17,12 +17,11 @@ function CheckOutNormal() {
     AOS.init();
     AOS.refresh();
   }, []);
+
   const handelSubmitOrder = async (value) => {
-    const btn = document.getElementById("continue");
     const side = document.getElementById("side");
-    btn.addEventListener("click", () => {
-      side.style.display = "block";
-    });
+    // Set style directly without needing to add a new event listener each time
+    side.style.display = "block";
     try {
       const selectedItems = cartItems;
       const detail = selectedItems.map((item) => ({

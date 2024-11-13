@@ -10,6 +10,9 @@
 	background-size: 400% 400%;
     animation: gradient 20s ease infinite;
 }
+#side{
+  display: none;
+}
 .switch {
     position: relative;
     display: inline-block;
