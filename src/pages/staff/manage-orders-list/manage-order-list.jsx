@@ -106,6 +106,21 @@ function ManageOrders() {
       key: "id",
     },
     {
+      title: "Koi id",
+      dataIndex: "id",
+      key: "id",
+      render: (_, record) => {
+        console.log(record);
+        return (
+          <div key={record.id}>
+            {record.orderDetails.map((koi) => {
+              return <div key={koi.koiId}>{koi.koiId}</div>;
+            })}
+          </div>
+        );
+      },
+    },
+    {
       title: "Date",
       dataIndex: "date",
       key: "date",
@@ -161,17 +176,8 @@ function ManageOrders() {
             setSelectedStatus((prev) => ({ ...prev, value }))
           }
         >
-          <Select.Option style={{ color: "#000" }} value="PENDING">
-            PENDING
-          </Select.Option>
           <Select.Option style={{ color: "#000" }} value="CONFIRMED">
             CONFIRMED
-          </Select.Option>
-          <Select.Option style={{ color: "#000" }} value="PAID">
-            PAID
-          </Select.Option>
-          <Select.Option style={{ color: "#000" }} value="CANCELLED">
-            CANCELLED
           </Select.Option>
           <Select.Option style={{ color: "#000" }} value="DECLINED">
             DECLINED
