@@ -104,7 +104,7 @@ function CheckOut() {
     );
   };
   const total = cartItems.reduce((total, item) => total + item.price, 0);
-  var finalPrice = total + (daysDifference || 0);
+  var finalPrice = total + (daysDifference * cartItems.length || 0);
   console.log(daysDifference);
   return (
     <div className="CheckOut row" data-aos="fade-up">
