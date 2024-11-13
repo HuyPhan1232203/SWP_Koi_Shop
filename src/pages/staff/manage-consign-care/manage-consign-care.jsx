@@ -169,26 +169,11 @@ function CareConsign() {
             setSelectedStatus((prev) => ({ ...prev, value }))
           }
         >
-          <Select.Option style={{ color: "#000" }} value="PENDING">
-            PENDING
-          </Select.Option>
           <Select.Option style={{ color: "#000" }} value="CONFIRMED">
             CONFIRMED
           </Select.Option>
-          <Select.Option style={{ color: "#000" }} value="PAID">
-            PAID
-          </Select.Option>
-          <Select.Option style={{ color: "#000" }} value="CANCELLED">
-            CANCELLED
-          </Select.Option>
           <Select.Option style={{ color: "#000" }} value="DECLINED">
             DECLINED
-          </Select.Option>
-          <Select.Option style={{ color: "#000" }} value="SHIPPED">
-            SHIPPED
-          </Select.Option>
-          <Select.Option style={{ color: "#000" }} value="COMPLETED">
-            COMPLETED
           </Select.Option>
         </Select>
       ),

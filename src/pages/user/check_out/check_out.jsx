@@ -67,24 +67,29 @@ function CheckOut() {
 
       if (details.careTypeId) {
         console.log(val.detail);
-        // response = await api.post("consignmentOrder", val.detail);
-        // console.log(response.data);
-        // dispatch(storeOrder(val.detail));
+        response = await api.post("consignmentOrder", val.detail);
+        console.log(response.data);
+        dispatch(storeOrder(val.detail));
       } else {
         console.log("normal");
         response = await api.post("order", val);
         console.log(response.data);
         dispatch(storeOrder(val));
       }
-      // console.log(response.data);
-      // window.open(response.data);
-      // nav(0);
+      console.log(response.data);
+      window.open(response.data);
+      nav(0);
     } catch (err) {
       toast.error(err.response.data);
     }
   };
+  const carePrice = sessionStorage.getItem("careType");
+  useEffect(() => {
+    DateDifference();
+  }, [carePrice, details.endDate]);
+  const [daysDifference, setDayDifference] = useState(0);
   const DateDifference = () => {
-    console.log(details.endDate);
+    // console.log(details.endDate);
     const specificDate = new Date(details.endDate);
     const currentDate = new Date();
 
@@ -94,11 +99,12 @@ function CheckOut() {
 
     // Calculate difference in days
     const timeDifference = specificDate - currentDate;
-    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    console.log(daysDifference);
+    setDayDifference(
+      Math.floor(timeDifference / (1000 * 60 * 60 * 24)) * carePrice
+    );
   };
   const total = cartItems.reduce((total, item) => total + item.price, 0);
-  var finalPrice = total;
+  var finalPrice = total + daysDifference;
   return (
     <div className="CheckOut row" data-aos="fade-up">
       <div className="col-md-8 userInfo">
@@ -190,7 +196,7 @@ function CheckOut() {
             );
           })}
         </div>
-        <Button className="purchase_btn" onClick={DateDifference}>
+        <Button className="purchase_btn" onClick={handelSubmitOrder}>
           Purchase
         </Button>
       </div>

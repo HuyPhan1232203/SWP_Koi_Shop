@@ -245,15 +245,16 @@ const ManagementKoi = () => {
                   .filter((breed) => koi.breeds.includes(breed.name))
                   .map((breed) => breed.id);
 
-                formStand.setFieldsValue({
-                  ...koi, // Lấy tất cả các trường từ đối tượng koi
-                  breedId: selectedBreeds, // Thiết lập giá trị cho breedId trong Select
-                  imageUrl: koi.images ? { file: { url: koi.images } } : null,
-                  imagesList: koi.imagesList
-                    ? koi.imagesList.map((image) => ({ file: { url: image } }))
-                    : null, // Assuming koi.imagesList is an array
-                });
+                const fileList = koi.imagesList
+                  ? koi.imagesList.map((image) => ({ url: image }))
+                  : [];
 
+                formStand.setFieldsValue({
+                  ...koi, // Spread tất cả các trường từ đối tượng koi
+                  breedId: selectedBreeds, // Thiết lập giá trị cho breedId trong Select
+                  imageUrl: koi.images ? { file: { url: koi.images } } : null, // Thiết lập giá trị cho imageUrl
+                  imagesList: { fileList }, // imagesList là một object chứa mảng fileList
+                });
                 // Handling single image file item
                 const fileItem = koi.images
                   ? {
@@ -318,27 +319,18 @@ const ManagementKoi = () => {
       } else {
         Koi.imageUrl = Koi.imageUrl.file.url;
       }
-
-      Koi.imagesList.fileList.map(async (img) => {
-        if (img.file.url) {
-          console.log("Using existing URL...");
-          return { image: img.file.url };
-        } else {
-          console.log("Uploading file...");
-          const uploadedUrl = await uploadFile(img.file.originFileObj);
-          return { image: uploadedUrl };
-        }
-      });
-
-      // Koi.imagesList.fileList.map(async (img) => {
-      //   if (!img.file.url) {
-      //     return (Koi.imageUrl = await uploadFile(
-      //       Koi.imageUrl.file.originFileObj
-      //     ));
-      //   } else {
-      //     return { image: img.file.url };
-      //   }
-      // });
+      Koi.imagesList = await Promise.all(
+        Koi.imagesList.fileList.map(async (img, index) => {
+          if (img.url) {
+            console.log("Using existing URL...");
+            return { key: index, image: img.url };
+          } else {
+            console.log("Uploading file...");
+            const uploadedUrl = await uploadFile(img.originFileObj);
+            return { key: index, image: uploadedUrl };
+          }
+        })
+      );
       if (Koi.id) {
         //update
         const res = await api.put(`koi/${Koi.id}`, Koi);

@@ -28,6 +28,14 @@ function CheckOutConsignment() {
   }, []);
   const dispatch = useDispatch();
   const handelSubmitOrder = async (value) => {
+    console.log(value);
+    console.log(careType);
+    careType.map((care) => {
+      if (care.careTypeId === value.careTypeId) {
+        sessionStorage.setItem("careType", care.costPerDay);
+        // console.log(care.costPerDay);
+      }
+    });
     const side = document.getElementById("side");
     side.style.display = "block";
     try {
