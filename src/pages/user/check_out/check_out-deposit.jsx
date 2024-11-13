@@ -43,14 +43,17 @@ function CheckOutConsignment() {
       const details = selectedItems.map((item) => ({
         koiId: item.id,
       }));
-      const values = {
-        detail: details,
-        describe: value.description,
-        endDate: value.endDate.toISOString(),
-        careTypeId: value.careTypeId,
-      };
-      console.log(values);
-      dispatch(storeProduct(values));
+      // const values = {
+      //   detail: details,
+      // };
+      sessionStorage.setItem("description", value.description);
+      sessionStorage.setItem("endDate", value.endDate.toISOString());
+      sessionStorage.setItem("careTypeId", value.careTypeId);
+      // describe: value.description,
+      // endDate: value.endDate.toISOString(),
+      // careTypeId: value.careTypeId,
+      console.log(details);
+      dispatch(storeProduct(details));
     } catch (err) {
       toast.error(err.response.data);
     }

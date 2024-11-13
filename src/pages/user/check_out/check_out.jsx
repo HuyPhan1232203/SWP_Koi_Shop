@@ -45,6 +45,8 @@ function CheckOut() {
   const description = sessionStorage.getItem("description");
   const address = sessionStorage.getItem("address");
   const details = useSelector((store) => store.checkout);
+  var careTypeId = sessionStorage.getItem("careTypeId");
+  const endDate = sessionStorage.getItem("endDate");
   const handelSubmitOrder = async () => {
     try {
       var val = [];
@@ -55,19 +57,21 @@ function CheckOut() {
           voucherCode: promoCode,
           description: description,
           address: address,
+          careTypeId: careTypeId,
+          endDate: endDate,
         };
       } else {
         val = {
           detail: details,
           description: description,
           address: address,
+          careTypeId: careTypeId,
+          endDate: endDate,
         };
       }
-      console.log(val.detail.detail);
 
-      if (details.careTypeId) {
-        console.log(val.detail);
-        response = await api.post("consignmentOrder", val.detail);
+      if (careTypeId != null) {
+        response = await api.post("consignmentOrder", val);
         console.log(response.data);
         dispatch(storeOrder(val.detail));
       } else {
@@ -81,16 +85,18 @@ function CheckOut() {
       nav(0);
     } catch (err) {
       toast.error(err.response.data);
+    } finally {
+      careTypeId = null;
     }
   };
   const carePrice = sessionStorage.getItem("careType");
   useEffect(() => {
     DateDifference();
-  }, [carePrice, details.endDate]);
+  }, [carePrice, endDate]);
   const [daysDifference, setDayDifference] = useState(0);
   const DateDifference = () => {
     // console.log(details.endDate);
-    const specificDate = new Date(details.endDate);
+    const specificDate = new Date(endDate);
     const currentDate = new Date();
 
     // Set the time to midnight for both dates to ignore hours, minutes, and seconds
@@ -105,7 +111,6 @@ function CheckOut() {
   };
   const total = cartItems.reduce((total, item) => total + item.price, 0);
   var finalPrice = total + (daysDifference * cartItems.length || 0);
-  console.log(daysDifference);
   return (
     <div className="CheckOut row" data-aos="fade-up">
       <div className="col-md-8 userInfo">
@@ -134,7 +139,9 @@ function CheckOut() {
               if (voucher.code === promoCode) {
                 {
                   finalPrice =
-                    finalPrice - (finalPrice * voucher.discountValue) / 100;
+                    (finalPrice - (daysDifference * cartItems.length || 0)) *
+                      ((100 - voucher.discountValue) / 100) +
+                    (daysDifference * cartItems.length || 0);
                 }
                 return (
                   <div style={{ color: "#000" }} key={voucher.code}>
