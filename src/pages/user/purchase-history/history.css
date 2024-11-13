@@ -68,3 +68,11 @@
   font-size: 15px;
   color: #000 !important;
 }
+.btn_cancel{
+   position: absolute;
+   bottom: 50px;
+   right: 50px;
+}
+.order{
+   position: relative;
+}

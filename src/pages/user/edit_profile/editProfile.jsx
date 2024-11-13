@@ -89,7 +89,7 @@ function EditProfile() {
       <div className="editProfile_title" data-aos="fade-down">
         About
       </div>
-      <div style={{ marginLeft: "700px", color: "red" }}>
+      <div style={{ marginLeft: "600px", color: "red", fontSize: "20px" }}>
         Balance: {formatCurrency(balance)} VNĐ
       </div>
       <div className="edit" data-aos="fade-right">

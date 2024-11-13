@@ -99,15 +99,16 @@ function History() {
     }
   };
   const handleShowCancel = (order) => {
-    if (order.status !== "CANCELLED") {
+    if (order.status !== "CANCELLED" && order.status !== "COMPLETED") {
       return (
         <Popconfirm
-          title="Are you sure you want to cancel this order?"
+          title="Cancel this order?"
           onConfirm={() => {
             handleCancel(order.id);
           }}
+          description="Your money will be back within 24 hours"
         >
-          <Button type="primary" danger>
+          <Button type="primary" danger className="btn_cancel">
             Cancel
           </Button>
         </Popconfirm>
@@ -152,7 +153,10 @@ function History() {
                       {order.order?.feedback?.content}
                     </div>
                     <div className="rating">
-                      <Rate value={order.order?.feedback?.rating}></Rate>
+                      <Rate
+                        value={order.order?.feedback?.rating}
+                        disabled
+                      ></Rate>
                     </div>
                   </div>
                   {handleCheckRate(order)}
