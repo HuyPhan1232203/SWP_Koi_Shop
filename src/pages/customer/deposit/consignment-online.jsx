@@ -114,6 +114,7 @@ const ConsignmentOnline = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store?.user);
   const handleSubmitKoi = async (Koi) => {
+    console.log(Koi);
     try {
       if (user === null) {
         nav("/login");

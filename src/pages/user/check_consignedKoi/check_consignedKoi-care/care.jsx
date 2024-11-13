@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../../config/axios";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Button, Popconfirm } from "antd";
 function Care() {
   const [koiList, setKoiList] = useState([]);
   const fetchKoi = async () => {
@@ -21,6 +22,32 @@ function Care() {
         <div>{formattedDate}</div>
       </div>
     );
+  };
+  const handleCancel = async (id) => {
+    try {
+      await api.put(`consignment/cancel?consginementid=${id}`);
+      toast.success("Cancelled Successfully!!!");
+    } catch (err) {
+      toast.error(err.res.data);
+    } finally {
+      fetchKoi();
+    }
+  };
+  const handleShowCancel = (status, koi) => {
+    if (status !== "CANCELLED") {
+      return (
+        <Popconfirm
+          title="Are you sure you want to cancel this?"
+          onConfirm={() => {
+            handleCancel(koi.id);
+          }}
+        >
+          <Button type="primary" danger className="cancel_btn">
+            Cancel
+          </Button>
+        </Popconfirm>
+      );
+    }
   };
   useEffect(() => {
     Aos.init();
@@ -45,6 +72,9 @@ function Care() {
               />
               <div className="col-md-7" style={{ display: "flex" }}>
                 End date:
+                <div className="cancel_btn-div2">
+                  {handleShowCancel(koi.isConsignment, koi)}
+                </div>
                 <div style={{ color: "red", marginLeft: "10px" }}>
                   {StartDateDisplay(koi.endDate)}
                 </div>

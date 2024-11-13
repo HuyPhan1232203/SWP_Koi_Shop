@@ -124,7 +124,7 @@ function CareConsign() {
       dataIndex: "status",
       key: "status",
       render: (status) => {
-        if (status === "PENDING") {
+        if (status === "CANCELLED" || status === "DECLINED") {
           return (
             <div
               style={{
@@ -132,6 +132,7 @@ function CareConsign() {
                 backgroundColor: "red",
                 display: "flex",
                 justifyContent: "center",
+                color: "#fff",
               }}
             >
               {status}
@@ -145,6 +146,7 @@ function CareConsign() {
                 backgroundColor: "green",
                 display: "flex",
                 justifyContent: "center",
+                color: "#fff",
               }}
             >
               {status}

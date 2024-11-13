@@ -23,14 +23,16 @@ function Sell() {
   }, []);
   const handleCancel = async (id) => {
     try {
-      const res = await api.put(`consignment/cancel?consginementid=${id}`);
+      await api.put(`consignment/cancel?consginementid=${id}`);
       toast.success("Cancelled Successfully!!!");
     } catch (err) {
       toast.error(err.res.data);
+    } finally {
+      fetchKoi();
     }
   };
   const handleShowCancel = (status, koi) => {
-    if (status !== "ON SELL" && status !== "CANCELLED") {
+    if (status !== "SOLD" && status !== "CANCELLED") {
       return (
         <Popconfirm
           title="Are you sure you want to cancel this?"
@@ -47,7 +49,7 @@ function Sell() {
   };
   return (
     <div>
-      {[...koiList].reverse().map((koi) => {
+      {koiList.map((koi) => {
         return (
           <div className="koi" key={koi.id} data-aos="fade-right">
             <div className="koi-1 row">

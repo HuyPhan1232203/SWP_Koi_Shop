@@ -27,6 +27,8 @@ function ShowConsignOnl() {
               Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.gender,
             bornYear:
               Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.bornYear,
+            vendor:
+              Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.vendor,
             size: Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.size,
             breedId:
               Koi.consignmentDetailRequests[0].koiRequest.KoiSubmit.breedId,

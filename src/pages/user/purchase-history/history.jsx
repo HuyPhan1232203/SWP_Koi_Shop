@@ -22,6 +22,9 @@ function History() {
       </div>
     );
   };
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   const handleCheckRate = (order) => {
     if (!order.order.feedback && order.order.status === "COMPLETED") {
       return (
@@ -137,7 +140,9 @@ function History() {
                         <div className="koi-name ">{koi.koiName}</div>
                         <div>{order.order.description}</div>
                       </div>
-                      <div className="koi-price col-md-3">{koi.price} VNĐ</div>
+                      <div className="koi-price col-md-3">
+                        {formatCurrency(koi.price)} VNĐ
+                      </div>
                     </div>
                   );
                 })}
@@ -152,7 +157,7 @@ function History() {
                   </div>
                   {handleCheckRate(order)}
                   <div className="order_total  col-md-3">
-                    {order?.order?.finalAmount} VNĐ
+                    {formatCurrency(order?.order?.finalAmount)} VNĐ
                   </div>
                 </div>
                 {handleShowCancel(order.order)}
