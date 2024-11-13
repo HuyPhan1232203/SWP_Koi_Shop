@@ -3,9 +3,12 @@ import { toast } from "react-toastify";
 import api from "../../../../config/axios";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { Button, Modal, Popconfirm } from "antd";
+import { Button, DatePicker, Form, Modal, Popconfirm } from "antd";
+import { useNavigate } from "react-router-dom";
 function Care() {
   const [koiList, setKoiList] = useState([]);
+  const [form] = Form.useForm();
+  const [orderID, setOrderID] = useState();
   const fetchKoi = async () => {
     try {
       const response = await api.get("consignment/getOfflineConsignmentKoi");
@@ -34,7 +37,7 @@ function Care() {
     }
   };
   const [openExtendModal, setOpenExtendModal] = useState(false);
-  const handleShowExtend = (status, koi) => {
+  const handleShowExtend = (status, id) => {
     if (status === "CONSIGNED") {
       return (
         <div>
@@ -43,6 +46,7 @@ function Care() {
             className="extend_btn"
             onClick={() => {
               setOpenExtendModal(true);
+              setOrderID(id);
             }}
           >
             Extend
@@ -65,6 +69,19 @@ function Care() {
           </Button>
         </Popconfirm>
       );
+    }
+  };
+  const nav = useNavigate();
+  const handleExtend = async (value) => {
+    try {
+      const response = await api.put(`consignment/extend?id=${orderID}`, value);
+      console.log(response.data);
+      window.open(response.data);
+      nav(0);
+    } catch (err) {
+      toast.error(err.response.data);
+    } finally {
+      setOpenExtendModal(false);
     }
   };
   useEffect(() => {
@@ -92,7 +109,7 @@ function Care() {
                 End date:
                 <div className="cancel_btn-div2">
                   {handleShowCancel(koi.isConsignment, koi)}
-                  {handleShowExtend(koi.isConsignment, koi)}
+                  {handleShowExtend(koi.isConsignment, koi.id)}
                 </div>
                 <div style={{ color: "red", marginLeft: "10px" }}>
                   {StartDateDisplay(koi.endDate)}
@@ -111,8 +128,18 @@ function Care() {
         onCancel={() => {
           setOpenExtendModal(false);
         }}
+        onOk={form.submit}
       >
-        {console.log("object")}
+        <Form form={form} onFinish={handleExtend}>
+          <Form.Item
+            labelCol={{ span: 7 }}
+            label="New EndDate"
+            name="extendDate"
+            rules={[{ required: true, message: "Please Input Expired Date" }]}
+          >
+            <DatePicker />
+          </Form.Item>
+        </Form>
       </Modal>
     </div>
   );

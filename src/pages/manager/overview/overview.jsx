@@ -49,14 +49,13 @@ function Overview() {
       console.log(response.data.RevenueData);
       const formatData = response?.data?.RevenueData?.map((item) => ({
         name: `${item?.Month}/${item?.Year}`,
-        Revenue: `${item?.Total}`,
+        Revenue: `${item.Total}`,
       }));
       setMonthlyData(formatData);
     } catch (err) {
       console.log(err);
     }
   };
-
   useEffect(() => {
     fetchData();
     fetchMonthlyData();

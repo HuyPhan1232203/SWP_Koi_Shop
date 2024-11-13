@@ -1,4 +1,4 @@
-import { Button, Form, Image, Modal, Popconfirm, Rate } from "antd";
+import { Button, Form, Modal, Popconfirm, Rate } from "antd";
 import { useEffect, useState } from "react";
 import api from "../../../config/axios";
 import "./history.css";
@@ -99,7 +99,11 @@ function History() {
     }
   };
   const handleShowCancel = (order) => {
-    if (order.status !== "CANCELLED" && order.status !== "COMPLETED") {
+    if (
+      order.status !== "CANCELLED" &&
+      order.status !== "COMPLETED" &&
+      order.status !== "SHIPPING"
+    ) {
       return (
         <Popconfirm
           title="Cancel this order?"
@@ -139,7 +143,16 @@ function History() {
                       ></img>
                       <div className="col-md-6">
                         <div className="koi-name ">{koi.koiName}</div>
-                        <div>{order.order.description}</div>
+                        <div>
+                          {order.order.description === "undefined"
+                            ? ""
+                            : order.order.description}
+                        </div>
+                        <div>
+                          {order.order.address !== null
+                            ? "Address:" + order.order.address
+                            : ""}
+                        </div>
                       </div>
                       <div className="koi-price col-md-3">
                         {formatCurrency(koi.price)} VNĐ

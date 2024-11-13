@@ -72,9 +72,33 @@ function ManageStaffJob() {
 
   const cols = [
     {
+      title: "Payment ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
       title: "Order ID",
       dataIndex: "id",
       key: "id",
+      render: (_, record) => {
+        return (
+          <div>{record.order?.id !== undefined ? record.order?.id : "N/A"}</div>
+        );
+      },
+    },
+    {
+      title: "Consignment ID",
+      dataIndex: "id",
+      key: "id",
+      render: (_, record) => {
+        return (
+          <div>
+            {record.consignment?.consignmentID !== undefined
+              ? record.consignment?.consignmentID
+              : "N/A"}
+          </div>
+        );
+      },
     },
     {
       title: "Staff Name",

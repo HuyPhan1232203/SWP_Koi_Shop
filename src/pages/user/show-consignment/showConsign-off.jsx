@@ -130,7 +130,9 @@ function ShowConsignOff() {
                     <div className="delivery_item " style={{ color: "#fff" }}>
                       {item.careTypeName}
                     </div>
-                    <div style={{ color: "#fff" }}>${item.costPerDay}/day</div>
+                    <div style={{ color: "#fff" }}>
+                      {item.costPerDay}VNĐ/day
+                    </div>
                   </Radio>
                 );
               })}

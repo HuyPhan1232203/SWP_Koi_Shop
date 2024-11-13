@@ -46,6 +46,7 @@ function ManageVoucher() {
   };
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
+    console.log(Koi.expiredDate);
     try {
       let response = null;
       if (Koi.id) {
@@ -176,7 +177,6 @@ function ManageVoucher() {
         rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
       >
-        {/* <Input></Input> */}
         <DatePicker />
       </Form.Item>
 

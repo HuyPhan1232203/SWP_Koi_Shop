@@ -4,8 +4,6 @@ import "./koi_detail.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import api from "../../../config/axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 function KoiDetail() {

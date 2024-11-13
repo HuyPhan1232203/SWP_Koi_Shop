@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Input, Radio } from "antd";
+import { Button, DatePicker, Form, Input, Radio, Select } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -49,6 +49,10 @@ function CheckOutConsignment() {
       sessionStorage.setItem("description", value.description);
       sessionStorage.setItem("endDate", value.endDate.toISOString());
       sessionStorage.setItem("careTypeId", value.careTypeId);
+      sessionStorage.setItem(
+        "address",
+        `${value.address}, ${value.district}, ${value.city}`
+      );
       // describe: value.description,
       // endDate: value.endDate.toISOString(),
       // careTypeId: value.careTypeId,
@@ -151,11 +155,58 @@ function CheckOutConsignment() {
           >
             <TextArea></TextArea>
           </Form.Item>
+          <div className="address">
+            <div className="row">
+              <Form.Item
+                name="district"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Input",
+                  },
+                ]}
+                label="District"
+                className="col-md-8"
+              >
+                <Input placeholder="Type here"></Input>
+              </Form.Item>
+              <Form.Item
+                name="city"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Input",
+                  },
+                ]}
+                label="City"
+                className="col-md-4"
+              >
+                <Select>
+                  <Select.Option value="HCM">Ho Chi Minh</Select.Option>
+                  <Select.Option value="HN">Ha Noi</Select.Option>
+                </Select>
+              </Form.Item>
+            </div>
+            <div className="row">
+              <Form.Item
+                initialValue={userInfo.address}
+                name="address"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Input",
+                  },
+                ]}
+                label="Address"
+                className="col-md-4"
+              >
+                <Input></Input>
+              </Form.Item>
+            </div>
+          </div>
         </div>
-        <Form.Item>
-          <Form.Item labelCol={{ span: 9 }} label="End date" name="endDate">
-            <DatePicker disabledDate={disablePastDates} />
-          </Form.Item>
+        <Form.Item labelCol={{ span: 9 }} label="End date" name="endDate">
+          <DatePicker disabledDate={disablePastDates} />
         </Form.Item>
         <div className="message">
           <Form.Item name="message" label="Message to shop">

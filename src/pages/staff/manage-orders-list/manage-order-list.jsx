@@ -8,11 +8,12 @@ import uploadFile from "../../../utils/file";
 function ManageOrders() {
   const [orderList, setOrderList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
+  const [setPreviewOpen] = useState(false);
+  const [setPreviewImage] = useState("");
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]);
   const [selectedStatus, setSelectedStatus] = useState({}); // Track staff assignments by order ID
+  const [loading, setLoading] = useState(false);
   //FETCH
   const fetchOrder = async () => {
     try {
@@ -84,6 +85,7 @@ function ManageOrders() {
   };
   //UPDATE
   const handleEditOrderStatus = async (id) => {
+    setLoading(true);
     const status = String(selectedStatus.value);
     try {
       const res = await api.put(
@@ -94,6 +96,7 @@ function ManageOrders() {
       toast.error(err);
     } finally {
       fetchOrder();
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -202,6 +205,7 @@ function ManageOrders() {
             onClick={() => {
               handleEditOrderStatus(id);
             }}
+            disabled={loading}
           >
             Confirm
           </Button>
