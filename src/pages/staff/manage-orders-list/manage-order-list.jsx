@@ -182,7 +182,7 @@ function ManageOrders() {
           <Select.Option style={{ color: "#000" }} value="DECLINED">
             DECLINED
           </Select.Option>
-          <Select.Option style={{ color: "#000" }} value="SHIPPED">
+          <Select.Option style={{ color: "#000" }} value="SHIPPING">
             SHIPPING
           </Select.Option>
           <Select.Option style={{ color: "#000" }} value="COMPLETED">

@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import api from "../../../../config/axios";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { Button, Popconfirm } from "antd";
+import { Button, Modal, Popconfirm } from "antd";
 function Care() {
   const [koiList, setKoiList] = useState([]);
   const fetchKoi = async () => {
@@ -31,6 +31,24 @@ function Care() {
       toast.error(err.res.data);
     } finally {
       fetchKoi();
+    }
+  };
+  const [openExtendModal, setOpenExtendModal] = useState(false);
+  const handleShowExtend = (status, koi) => {
+    if (status === "CONSIGNED") {
+      return (
+        <div>
+          <Button
+            type="primary"
+            className="extend_btn"
+            onClick={() => {
+              setOpenExtendModal(true);
+            }}
+          >
+            Extend
+          </Button>
+        </div>
+      );
     }
   };
   const handleShowCancel = (status, koi) => {
@@ -74,6 +92,7 @@ function Care() {
                 End date:
                 <div className="cancel_btn-div2">
                   {handleShowCancel(koi.isConsignment, koi)}
+                  {handleShowExtend(koi.isConsignment, koi)}
                 </div>
                 <div style={{ color: "red", marginLeft: "10px" }}>
                   {StartDateDisplay(koi.endDate)}
@@ -87,6 +106,14 @@ function Care() {
           </div>
         );
       })}
+      <Modal
+        open={openExtendModal}
+        onCancel={() => {
+          setOpenExtendModal(false);
+        }}
+      >
+        {console.log("object")}
+      </Modal>
     </div>
   );
 }

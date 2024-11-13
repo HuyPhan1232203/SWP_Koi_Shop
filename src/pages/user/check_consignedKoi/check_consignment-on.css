@@ -42,3 +42,8 @@ padding-bottom: 20px;
     bottom: 50px;
     right:100px;
 }
+.extend_btn{
+    position: absolute;
+    top: 40px;
+    left: 220px;
+}
