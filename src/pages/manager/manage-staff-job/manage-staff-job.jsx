@@ -12,9 +12,10 @@ function ManageStaffJob() {
   const fetchOrder = async () => {
     try {
       const response = await api.get("order/all-payments");
-      setOrderList(response.data);
+      const reversedOrderList = response.data.reverse(); // Reverse the order of the fetched data
+      setOrderList(reversedOrderList);
     } catch (error) {
-      toast.error(error + "Error fetching orders");
+      toast.error(error + " Error fetching orders");
     }
   };
 

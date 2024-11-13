@@ -154,31 +154,43 @@ const ManageStaff = () => {
           form={formStand}
         >
           <Form.Item hidden label="id" name="id">
-            <Input></Input>
+            <Input />
           </Form.Item>
+
           <Form.Item
             label="Email"
-            rules={[{ required: true, message: "Please Input" }]}
             name="email"
+            rules={[
+              { required: true, message: "Please input your email" },
+              { type: "email", message: "Please input a valid email address" },
+            ]}
           >
-            <Input></Input>
+            <Input />
           </Form.Item>
+
           <Form.Item
             label="Username"
-            rules={[
-              { required: true, message: "Please Input" },
-              // { min: 1000, message: "username cannot lower than 1000" },
-            ]}
             name="username"
+            rules={[
+              { required: true, message: "Please input your username" },
+              { min: 3, message: "Username must be at least 3 characters" }, // Adjust this rule as needed
+            ]}
           >
-            <Input></Input>
+            <Input />
           </Form.Item>
+
           <Form.Item
             label="Phone"
-            rules={[{ required: true, message: "Please Input" }]}
             name="phone"
+            rules={[
+              { required: true, message: "Please input your phone number" },
+              {
+                pattern: /^[0-9]{10}$/, // Example for a 10-digit phone number (adjust if necessary)
+                message: "Please input a valid phone number (10 digits)",
+              },
+            ]}
           >
-            <Input></Input>
+            <Input />
           </Form.Item>
         </Form>
       </Modal>

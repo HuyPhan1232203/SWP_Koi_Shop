@@ -176,16 +176,24 @@ function ManageVoucher() {
       <Form.Item
         labelCol={{ span: 7 }}
         label="Discount Value"
-        rules={[{ required: true, message: "Please Input Discount Value" }]}
         name="discountValue"
+        rules={[
+          { required: true, message: "Please input the discount value" },
+          {
+            type: "number",
+            min: 1,
+            message: "Discount value must be at least 1",
+          },
+        ]}
       >
-        <Input></Input>
+        <InputNumber min={0} />
       </Form.Item>
+
       <Form.Item
         labelCol={{ span: 7 }}
         label="Expired Date"
-        rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
+        rules={[{ required: true, message: "Please select an expired date" }]}
       >
         <DatePicker disabledDate={disableBefore7thDate} />
       </Form.Item>
@@ -193,26 +201,37 @@ function ManageVoucher() {
       <Form.Item
         labelCol={{ span: 7 }}
         label="Name"
-        rules={[{ required: true, message: "Please Input Name" }]}
         name="name"
+        rules={[
+          { required: true, message: "Please input a name" },
+          { min: 3, message: "Name must be at least 3 characters long" },
+        ]}
       >
-        <Input></Input>
+        <Input />
       </Form.Item>
+
       <Form.Item
         labelCol={{ span: 7 }}
         label="Code"
-        rules={[{ required: true, message: "Please Input Code" }]}
         name="code"
+        rules={[
+          { required: true, message: "Please input a code" },
+          { min: 3, message: "Code must be at least 3 characters long" },
+        ]}
       >
-        <Input></Input>
+        <Input />
       </Form.Item>
+
       <Form.Item
         labelCol={{ span: 7 }}
         label="Quantity"
-        rules={[{ required: true, message: "Please Input Quantity" }]}
         name="quantity"
+        rules={[
+          { required: true, message: "Please input a quantity" },
+          { type: "number", min: 1, message: "Quantity must be at least 1" },
+        ]}
       >
-        <InputNumber></InputNumber>
+        <InputNumber min={1} />
       </Form.Item>
     </>
   );
