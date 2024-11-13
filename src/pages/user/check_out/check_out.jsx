@@ -31,6 +31,7 @@ function CheckOut() {
       }
     });
   };
+
   const dispatch = useDispatch();
   const fetchVoucher = async () => {
     try {
@@ -65,23 +66,36 @@ function CheckOut() {
       console.log(val.detail.detail);
 
       if (details.careTypeId) {
-        console.log("consginment");
-        console.log(details.careTypeId);
-        response = await api.post("consignmentOrder", val.detail);
-        console.log(response.data);
-        dispatch(storeOrder(val.detail));
+        console.log(val.detail);
+        // response = await api.post("consignmentOrder", val.detail);
+        // console.log(response.data);
+        // dispatch(storeOrder(val.detail));
       } else {
         console.log("normal");
         response = await api.post("order", val);
         console.log(response.data);
         dispatch(storeOrder(val));
       }
-      console.log(response.data);
-      window.open(response.data);
-      nav(0);
+      // console.log(response.data);
+      // window.open(response.data);
+      // nav(0);
     } catch (err) {
       toast.error(err.response.data);
     }
+  };
+  const DateDifference = () => {
+    console.log(details.endDate);
+    const specificDate = new Date(details.endDate);
+    const currentDate = new Date();
+
+    // Set the time to midnight for both dates to ignore hours, minutes, and seconds
+    specificDate.setHours(0, 0, 0, 0);
+    currentDate.setHours(0, 0, 0, 0);
+
+    // Calculate difference in days
+    const timeDifference = specificDate - currentDate;
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    console.log(daysDifference);
   };
   const total = cartItems.reduce((total, item) => total + item.price, 0);
   var finalPrice = total;
@@ -126,7 +140,7 @@ function CheckOut() {
         </div>
         <div className="sumary_totalPrice">
           <p style={{ fontWeight: "600", fontSize: "20px", color: "#000" }}>
-            Total Price: {formatCurrency(finalPrice)}VNĐ{" "}
+            Total Price: {formatCurrency(finalPrice)}VNĐ
           </p>
           <div className="row" style={{ padding: " 0px 14px" }}>
             <Input
@@ -176,7 +190,7 @@ function CheckOut() {
             );
           })}
         </div>
-        <Button className="purchase_btn" onClick={handelSubmitOrder}>
+        <Button className="purchase_btn" onClick={DateDifference}>
           Purchase
         </Button>
       </div>

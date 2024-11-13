@@ -37,5 +37,12 @@ padding-bottom: 20px;
     font-size: 20px;
 }
 
-
-  
+.cancel_btn-div{
+    height: 100%;
+    position: relative;
+}
+.cancel_btn{
+    position: absolute;
+    bottom: 10px;
+    right:0;
+}

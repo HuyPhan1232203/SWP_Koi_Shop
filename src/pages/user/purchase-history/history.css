@@ -64,4 +64,7 @@
  .rate_btn:hover{
     animation: gradient 5s ease infinite;
  }
- 
+ .rating_form .ant-form-item-label > label {
+  font-size: 15px;
+  color: #000 !important;
+}

@@ -13,6 +13,9 @@
 #side{
   display: none;
 }
+small{
+  color: #aaa;
+}
 .switch {
     position: relative;
     display: inline-block;
@@ -148,9 +151,6 @@
 .shipping{
     padding:0 40px;
 
-}
-small{
-    color:#aaa;
 }
 .summary_price,.sumary_totalPrice{
     border-bottom: #ccc 000 solid;

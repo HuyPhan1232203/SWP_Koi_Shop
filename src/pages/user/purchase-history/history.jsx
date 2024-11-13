@@ -168,7 +168,7 @@ function History() {
         }}
         onOk={form.submit}
       >
-        <Form form={form} onFinish={handleRating}>
+        <Form form={form} onFinish={handleRating} className="rating_form">
           <Form.Item label="Message" name="content">
             <TextArea></TextArea>
           </Form.Item>

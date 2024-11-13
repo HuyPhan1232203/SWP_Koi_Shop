@@ -18,8 +18,6 @@ import api from "../../../config/axios";
 import uploadFile from "../../../utils/file";
 import TextArea from "antd/es/input/TextArea";
 import { PlusOutlined } from "@ant-design/icons";
-import Certificate from "../../certificate/certificate";
-import { PDFViewer } from "@react-pdf/renderer";
 const ManagementKoi = () => {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
@@ -59,6 +57,7 @@ const ManagementKoi = () => {
       })
     );
   }, []);
+
   //OPEN MODAL
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -242,7 +241,41 @@ const ManagementKoi = () => {
               type="primary"
               onClick={() => {
                 setOpenModal(true);
-                formStand.setFieldsValue(koi);
+                const selectedBreeds = submitBreed
+                  .filter((breed) => koi.breeds.includes(breed.name))
+                  .map((breed) => breed.id);
+
+                formStand.setFieldsValue({
+                  ...koi, // Lấy tất cả các trường từ đối tượng koi
+                  breedId: selectedBreeds, // Thiết lập giá trị cho breedId trong Select
+                  imageUrl: koi.images ? { file: { url: koi.images } } : null,
+                  imagesList: koi.imagesList
+                    ? koi.imagesList.map((image) => ({ file: { url: image } }))
+                    : null, // Assuming koi.imagesList is an array
+                });
+
+                // Handling single image file item
+                const fileItem = koi.images
+                  ? {
+                      uid: "-1",
+                      name: "image.png",
+                      status: "done",
+                      url: koi.images,
+                    }
+                  : null;
+
+                // Handling list of images
+                const fileListItems = koi.imagesList
+                  ? koi.imagesList.map((image, index) => ({
+                      uid: String(index), // Unique id for each file item
+                      name: `image-${index}.png`,
+                      status: "done",
+                      url: image,
+                    }))
+                  : [];
+
+                setFileList(fileItem ? [fileItem] : []); // Set single image in file list
+                setFileListArray(fileListItems); // Set list of images in file list array
               }}
             >
               Edit
@@ -275,12 +308,15 @@ const ManagementKoi = () => {
     }
   };
   //CREATE OR UPDATE
-
   const handleSubmitKoi = async (Koi) => {
     try {
       setSubmitKoi(true);
       //convert Object to string img
-      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      if (!Koi.imageUrl.file.url) {
+        Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      } else {
+        Koi.imageUrl = Koi.imageUrl.file.url;
+      }
       Koi.imagesList = await Promise.all(
         Koi.imagesList.fileList.map(async (img) => {
           const url = await uploadFile(img.originFileObj);
@@ -289,8 +325,6 @@ const ManagementKoi = () => {
           };
         })
       );
-
-      console.log(Koi);
       if (Koi.id) {
         //update
         await api.put(`koi/${Koi.id}`, Koi);
@@ -300,11 +334,11 @@ const ManagementKoi = () => {
         console.log(Koi.imagesList);
       }
       fetchKoi();
-      toast.success("Update successfully!!!");
+      toast.success("Successfully!!!");
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {
-      toast.error("err");
+      toast.error(err);
     } finally {
       setSubmitKoi(false);
     }
@@ -380,7 +414,7 @@ const ManagementKoi = () => {
           <Form.Item label="Breed Name" name="breedId">
             <Select mode="multiple">
               {submitBreed.map((breed) => (
-                <Select.Option key={breed.name} breed={breed} value={breed.id}>
+                <Select.Option key={breed.id} breed={breed} value={breed.id}>
                   {breed.name}
                 </Select.Option>
               ))}
@@ -425,15 +459,15 @@ const ManagementKoi = () => {
             <InputNumber></InputNumber>
           </Form.Item>
           <Form.Item label="imageUrl" name="imageUrl">
-          <Upload
-    action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-    listType="picture-card"
-    fileList={fileList}
-    onPreview={handlePreview}
-    onChange={handleChange}
-  >
-    {fileList.length < 1 ? uploadButton : null} 
-  </Upload>
+            <Upload
+              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+              listType="picture-card"
+              fileList={fileList}
+              onPreview={handlePreview}
+              onChange={handleChange}
+            >
+              {fileList.length < 1 ? uploadButton : null}
+            </Upload>
           </Form.Item>
 
           <Form.Item label="imagesList" name="imagesList">

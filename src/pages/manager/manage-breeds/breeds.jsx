@@ -119,9 +119,22 @@ const ManagementKoi = () => {
                 setOpenModal(true);
                 formStand.setFieldsValue({
                   ...koi,
-                  imageUrl: koi.imageUrl ? { file: { url: koi.imageUrl } } : null,
+                  imageUrl: koi.imageUrl
+                    ? { file: { url: koi.imageUrl } }
+                    : null,
                 });
-                setFileList(koi.imageUrl ? [{ uid: '-1', name: 'image.png', status: 'done', url: koi.imageUrl }] : []);
+                setFileList(
+                  koi.imageUrl
+                    ? [
+                        {
+                          uid: "-1",
+                          name: "image.png",
+                          status: "done",
+                          url: koi.imageUrl,
+                        },
+                      ]
+                    : []
+                );
               }}
             >
               Edit
@@ -157,18 +170,26 @@ const ManagementKoi = () => {
   const handleSubmitKoi = async (Koi) => {
     try {
       setSubmitKoi(true);
+      if (!Koi.imageUrl.file.url) {
+        Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
+      } else {
+        Koi.imageUrl = Koi.imageUrl.file.url;
+      }
       //convert Object to string img
-      Koi.imageUrl = await uploadFile(Koi.imageUrl.file.originFileObj);
       console.log(Koi.imageUrl);
       if (Koi.id) {
         //update
-        await api.put(`breed/${Koi.id}`, Koi);
+        console.log("update");
+        const res = await api.put(`breed/${Koi.id}`, Koi);
+        console.log(res.data);
+        setFileList([]);
       } else {
         //create
         await api.post(`breed`, Koi);
+        setFileList([]);
       }
       fetchBreed();
-      toast.success("Update successfully!!!");
+      toast.success("Successfully!!!");
       formStand.resetFields();
       handleClosenModal();
     } catch (err) {

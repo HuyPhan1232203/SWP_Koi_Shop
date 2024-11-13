@@ -37,7 +37,9 @@ function ManageOrders() {
     setPreviewImage(file.url || file.preview);
     setPreviewOpen(true);
   };
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const handleChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList.slice(-1));
+  };
   const uploadButton = (
     <button
       style={{
@@ -227,7 +229,7 @@ function ManageOrders() {
               onPreview={handlePreview}
               onChange={handleChange}
             >
-              {fileList.length >= 8 ? null : uploadButton}
+              {fileList.length < 1 ? uploadButton : null}
             </Upload>
           </Form.Item>
         </Form>

@@ -20,7 +20,6 @@ function CheckOutNormal() {
 
   const handelSubmitOrder = async (value) => {
     const side = document.getElementById("side");
-    // Set style directly without needing to add a new event listener each time
     side.style.display = "block";
     try {
       const selectedItems = cartItems;

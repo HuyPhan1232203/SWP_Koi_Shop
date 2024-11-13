@@ -1,5 +1,5 @@
 import { Button, DatePicker, Form, Input, Radio } from "antd";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import TextArea from "antd/es/input/TextArea";
@@ -28,13 +28,8 @@ function CheckOutConsignment() {
   }, []);
   const dispatch = useDispatch();
   const handelSubmitOrder = async (value) => {
-    const btn = document.getElementById("continue");
     const side = document.getElementById("side");
-    btn.addEventListener("click", () => {
-      side.style.display = "block";
-    });
-    console.log(value.endDate.$d);
-    console.log(value.message);
+    side.style.display = "block";
     try {
       const selectedItems = cartItems;
       const details = selectedItems.map((item) => ({
@@ -52,11 +47,11 @@ function CheckOutConsignment() {
       toast.error(err.response.data);
     }
   };
+  function formatCurrency(value) {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   const disablePastDates = (current) => {
-    // Calculate the date 1 day from now
     const minDate = moment().add(1, "days").startOf("day");
-
-    // Disable all dates before 1 day from now (i.e., only allow tomorrow onward)
     return current && current < minDate;
   };
   return (
@@ -132,7 +127,7 @@ function CheckOutConsignment() {
                     className="delivery"
                   >
                     <div className="delivery_item ">{item.careTypeName}</div>
-                    <small>${item.costPerDay}/day</small>
+                    <p>{formatCurrency(item.costPerDay)}VNĐ/day </p>
                   </Radio>
                 );
               })}
