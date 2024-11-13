@@ -5,10 +5,12 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { Button, DatePicker, Form, Modal, Popconfirm } from "antd";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 function Care() {
   const [koiList, setKoiList] = useState([]);
   const [form] = Form.useForm();
   const [orderID, setOrderID] = useState();
+  const [oldEndDate, setOldEndDate] = useState();
   const fetchKoi = async () => {
     try {
       const response = await api.get("consignment/getOfflineConsignmentKoi");
@@ -37,7 +39,7 @@ function Care() {
     }
   };
   const [openExtendModal, setOpenExtendModal] = useState(false);
-  const handleShowExtend = (status, id) => {
+  const handleShowExtend = (status, id, end) => {
     if (status === "CONSIGNED") {
       return (
         <div>
@@ -47,6 +49,7 @@ function Care() {
             onClick={() => {
               setOpenExtendModal(true);
               setOrderID(id);
+              setOldEndDate(String(end));
             }}
           >
             Extend
@@ -71,6 +74,7 @@ function Care() {
       );
     }
   };
+
   const nav = useNavigate();
   const handleExtend = async (value) => {
     try {
@@ -91,6 +95,12 @@ function Care() {
   useEffect(() => {
     fetchKoi();
   }, []);
+  const disablePastDates = (current) => {
+    if (!oldEndDate) return true; // Disable all dates if oldEndDate is not set
+    const minDateB = moment(oldEndDate).add(1, "days").startOf("day");
+    return current && current < minDateB;
+  };
+
   return (
     <div>
       {koiList.map((koi) => {
@@ -109,7 +119,7 @@ function Care() {
                 End date:
                 <div className="cancel_btn-div2">
                   {handleShowCancel(koi.isConsignment, koi)}
-                  {handleShowExtend(koi.isConsignment, koi.id)}
+                  {handleShowExtend(koi.isConsignment, koi.id, koi.endDate)}
                 </div>
                 <div style={{ color: "red", marginLeft: "10px" }}>
                   {StartDateDisplay(koi.endDate)}
@@ -130,14 +140,14 @@ function Care() {
         }}
         onOk={form.submit}
       >
-        <Form form={form} onFinish={handleExtend}>
+        <Form form={form} onFinish={handleExtend} className="form_extend">
           <Form.Item
             labelCol={{ span: 7 }}
             label="New EndDate"
             name="extendDate"
             rules={[{ required: true, message: "Please Input Expired Date" }]}
           >
-            <DatePicker />
+            <DatePicker disabledDate={disablePastDates} />
           </Form.Item>
         </Form>
       </Modal>

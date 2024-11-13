@@ -382,94 +382,117 @@ const ManagementKoi = () => {
           form={formStand}
         >
           <Form.Item hidden label="ID" name="id">
-            <Input></Input>
+            <Input />
           </Form.Item>
+
           <Form.Item
             label="Name"
-            rules={[{ required: true, message: "Please Input" }]}
             name="name"
+            rules={[{ required: true, message: "Please enter the name" }]}
           >
-            <Input></Input>
+            <Input />
           </Form.Item>
+
           <Form.Item
             label="Price"
-            rules={[
-              { required: true, message: "Please Input" },
-              // { min: 1000, message: "Price cannot lower than 1000" },
-            ]}
             name="price"
+            rules={[
+              { required: true, message: "Please enter the price" },
+              {
+                type: "number",
+                min: 1000,
+                message: "Price must be at least 1000",
+              },
+            ]}
           >
-            <Input></Input>
+            <InputNumber min={1000} />
           </Form.Item>
+
           <Form.Item
             label="Vendor"
-            rules={[{ required: true, message: "Please Input" }]}
             name="vendor"
+            rules={[{ required: true, message: "Please enter the vendor" }]}
           >
-            <Input></Input>
+            <Input />
           </Form.Item>
+
           <Form.Item
             label="Born Year"
-            rules={[{ required: true, message: "Please Input" }]}
             name="bornYear"
+            rules={[
+              { required: true, message: "Please enter the born year" },
+              {
+                type: "number",
+                min: 1900,
+                max: new Date().getFullYear(),
+                message: "Enter a valid year",
+              },
+            ]}
           >
-            <Input></Input>
+            <InputNumber min={1900} max={new Date().getFullYear()} />
           </Form.Item>
+
           <Form.Item
             label="Quantity"
-            rules={[{ required: true, message: "Please Input" }]}
             name="quantity"
+            rules={[{ required: true, message: "Please enter the quantity" }]}
           >
-            <InputNumber min={1}></InputNumber>
+            <InputNumber min={1} />
           </Form.Item>
+
           <Form.Item label="Breed Name" name="breedId">
             <Select mode="multiple">
               {submitBreed.map((breed) => (
-                <Select.Option key={breed.id} breed={breed} value={breed.id}>
+                <Select.Option key={breed.id} value={breed.id}>
                   {breed.name}
                 </Select.Option>
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             label="Description"
-            rules={[{ required: true, message: "Please Input" }]}
             name="description"
+            rules={[{ required: true, message: "Please enter a description" }]}
           >
-            <TextArea></TextArea>
+            <TextArea />
           </Form.Item>
 
           <Form.Item
             label="Origin"
-            rules={[{ required: true, message: "Please Input" }]}
             name="origin"
+            rules={[{ required: true, message: "Please enter the origin" }]}
           >
-            <Input></Input>
+            <Input />
           </Form.Item>
+
           <Form.Item
             label="Gender"
-            rules={[{ required: true, message: "Please Input" }]}
             name="gender"
+            rules={[{ required: true, message: "Please select a gender" }]}
           >
-            <Radio.Group name="radiogroup">
+            <Radio.Group>
               <Radio value="Male">Male</Radio>
               <Radio value="Female">Female</Radio>
             </Radio.Group>
           </Form.Item>
+
           <Form.Item
             label="Size"
-            rules={[
-              { required: true, message: "Please Input" },
-              {
-                type: "number",
-                message: "Invalid Input",
-              },
-            ]}
             name="size"
+            rules={[
+              { required: true, message: "Please enter the size" },
+              { type: "number", message: "Invalid input for size" },
+            ]}
           >
-            <InputNumber></InputNumber>
+            <InputNumber />
           </Form.Item>
-          <Form.Item label="imageUrl" name="imageUrl">
+
+          <Form.Item
+            label="Image URL"
+            name="imageUrl"
+            rules={[{ required: true, message: "Please upload an image" }]}
+          >
             <Upload
               action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
               listType="picture-card"
@@ -481,7 +504,13 @@ const ManagementKoi = () => {
             </Upload>
           </Form.Item>
 
-          <Form.Item label="imagesList" name="imagesList">
+          <Form.Item
+            label="Image List"
+            name="imagesList"
+            rules={[
+              { required: true, message: "Please upload at least one image" },
+            ]}
+          >
             <Upload
               action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
               listType="picture-card"
@@ -489,7 +518,7 @@ const ManagementKoi = () => {
               onPreview={handlePreview}
               onChange={handleChangeList}
             >
-              {fileList.length >= 8 ? null : uploadButton}
+              {fileListArray.length >= 8 ? null : uploadButton}
             </Upload>
           </Form.Item>
         </Form>

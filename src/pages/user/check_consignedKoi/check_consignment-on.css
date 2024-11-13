@@ -36,7 +36,10 @@ padding-bottom: 20px;
 .koi_status{
     font-size: 20px;
 }
-
+.form_extend .ant-form-item-label > label {
+    color: #000;
+    /* font-weight: bold; */
+  }
 .cancel_btn{
     position: absolute;
     bottom: 50px;

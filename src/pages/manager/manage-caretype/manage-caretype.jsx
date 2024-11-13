@@ -1,4 +1,12 @@
-import { Button, Form, Input, Modal, Popconfirm, Table } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  InputNumber,
+  Modal,
+  Popconfirm,
+  Table,
+} from "antd";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../../config/axios";
@@ -156,7 +164,7 @@ function ManageCareType() {
             label="Cost Per Day"
             rules={[{ required: true, message: "Please Input" }]}
           >
-            <Input></Input>
+            <InputNumber></InputNumber>
           </Form.Item>
         </Form>
       </Modal>

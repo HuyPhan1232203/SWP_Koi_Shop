@@ -143,8 +143,17 @@ function ManageKoiSale() {
           <Form.Item label="ID: " name="id" hidden>
             <Input></Input>
           </Form.Item>
-          <Form.Item label="Precentage: " name="salePercentage">
-            <Input></Input>
+          <Form.Item
+            label="Percentage: "
+            name="salePercentage"
+            rules={[
+              {
+                required: true,
+                message: "Please enter a percentage.",
+              },
+            ]}
+          >
+            <Input type="number" />
           </Form.Item>
         </Form>
       </Modal>

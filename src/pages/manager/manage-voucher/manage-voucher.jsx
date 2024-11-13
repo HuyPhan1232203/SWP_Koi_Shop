@@ -11,6 +11,7 @@ import {
 import api from "../../../config/axios";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import moment from "moment";
 function ManageVoucher() {
   const [KoiFish, setKoiFish] = useState([]);
   const [formStand] = Form.useForm();
@@ -43,6 +44,12 @@ function ManageVoucher() {
         <div>{formattedDate}</div>
       </div>
     );
+  };
+  const disableBefore7thDate = (current) => {
+    // Calculate the date 7 days from now
+    const minDate = moment().add(7, "days").startOf("day");
+    // Disable all dates before the 7th day from now
+    return current && current < minDate;
   };
   //CREATE OR UPDATE
   const handleSubmitKoi = async (Koi) => {
@@ -135,7 +142,10 @@ function ManageVoucher() {
               onClick={() => {
                 setOpenModal(true);
                 try {
-                  formStand.setFieldsValue(koi);
+                  formStand.setFieldsValue({
+                    ...koi,
+                    expiredDate: moment(koi.expiredDate, "YYYY-MM-DD"),
+                  });
                 } catch (err) {
                   console.log(err);
                 }
@@ -177,7 +187,7 @@ function ManageVoucher() {
         rules={[{ required: true, message: "Please Input Expired Date" }]}
         name="expiredDate"
       >
-        <DatePicker />
+        <DatePicker disabledDate={disableBefore7thDate} />
       </Form.Item>
 
       <Form.Item
