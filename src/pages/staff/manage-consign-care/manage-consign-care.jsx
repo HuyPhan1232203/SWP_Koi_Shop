@@ -8,8 +8,9 @@ function CareConsign() {
   const [koiList, setKoiList] = useState([]);
   const fetchKoi = async () => {
     const res = await api.get("consignment/staff");
-    setKoiList(res.data);
+    setKoiList(res.data.reverse());
   };
+
   const handleEditOrderStatus = async (id) => {
     console.log(id);
     const status = String(selectedStatus.value);

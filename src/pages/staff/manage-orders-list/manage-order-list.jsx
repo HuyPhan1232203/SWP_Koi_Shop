@@ -18,12 +18,14 @@ function ManageOrders() {
   const fetchOrder = async () => {
     try {
       const res = await api.get("order/my-orders");
-      console.log(res.data);
-      setOrderList(res.data);
+      const reversedData = res.data.reverse();
+      console.log(reversedData);
+      setOrderList(reversedData);
     } catch (err) {
       console.log(err);
     }
   };
+
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();

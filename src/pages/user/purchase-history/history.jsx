@@ -72,7 +72,10 @@ function History() {
     setOrderList(res.data);
   };
   const checkCanceled = (order) => {
-    if (order.order.status === "CANCELLED") {
+    if (
+      order.order.status === "CANCELLED" ||
+      order.order.status === "DECLINED"
+    ) {
       return (
         <div className="order_status col-md-2" style={{ color: "red" }}>
           {order.order.status}
@@ -102,7 +105,8 @@ function History() {
     if (
       order.status !== "CANCELLED" &&
       order.status !== "COMPLETED" &&
-      order.status !== "SHIPPING"
+      order.status !== "SHIPPING" &&
+      order.status !== "DECLINED"
     ) {
       return (
         <Popconfirm

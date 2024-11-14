@@ -59,7 +59,7 @@ function Care() {
     }
   };
   const handleShowCancel = (status, koi) => {
-    if (status !== "CANCELLED") {
+    if (status !== "CANCELLED" && status !== "DECLINED") {
       return (
         <Popconfirm
           title="Are you sure you want to cancel this?"
